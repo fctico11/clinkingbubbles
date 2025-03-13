@@ -29,7 +29,7 @@ const Navbar = () => {
       }`}
     >
       {/* Logo */}
-      <div className="text-2xl font-bold text-yellow-500 clinking-font">
+      <div className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font">
         Clinking Bubbles Co.
       </div>
 
