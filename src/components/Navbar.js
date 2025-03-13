@@ -1,12 +1,18 @@
+// src/components/Navbar.js
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    return (
-        <nav className="bg-white shadow-md p-4 flex justify-between items-center">
-            <h1 className="text-xl font-bold">Bartending Co.</h1>
-            <button className="bg-orange-500 text-white px-4 py-2 rounded">Get a Quote</button>
-        </nav>
-    );
+  return (
+    <nav className="bg-black text-white p-4 flex justify-between items-center">
+      <div className="text-2xl font-bold text-yellow-500">Clinking Bubbles Co.</div>
+      <div className="space-x-4">
+        <Link to="/" className="hover:text-yellow-500">Home</Link>
+        <Link to="/about" className="hover:text-yellow-500">About</Link>
+        <Link to="/contact" className="hover:text-yellow-500">Contact</Link>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;
