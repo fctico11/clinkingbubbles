@@ -66,25 +66,25 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay (Small Dropdown) */}
       {isOpen && (
-        <div className="fixed top-14 right-4 w-48 bg-black border border-gray-700 rounded-lg shadow-lg p-4 flex flex-col space-y-3 md:hidden">
-          <Link to="/" className="text-yellow-500 hover:text-white transition" onClick={toggleMenu}>
+        <div className="fixed top-14 left-4 right-4 bg-black border border-gray-700 rounded-lg shadow-lg p-4 flex flex-col items-center space-y-4 md:hidden">
+            <Link to="/" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             Home
-          </Link>
-          <Link to="/about" className="text-yellow-500 hover:text-white transition" onClick={toggleMenu}>
+            </Link>
+            <Link to="/about" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             About
-          </Link>
-          <Link to="/alcohol-calculator" className="text-yellow-500 hover:text-white transition" onClick={toggleMenu}>
+            </Link>
+            <Link to="/alcohol-calculator" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             Alcohol Calculator
-          </Link>
+            </Link>
 
-          {/* Get a Quote Button in Mobile Menu */}
-          <Link to="/contact">
-            <button className="w-full bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
-              Get a Quote!
+            {/* Get a Quote Button in Mobile Menu */}
+            <Link to="/contact" className="w-full flex justify-center">
+            <button className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
+                Get a Quote!
             </button>
-          </Link>
+            </Link>
         </div>
-      )}
+        )}
     </nav>
   );
 };
