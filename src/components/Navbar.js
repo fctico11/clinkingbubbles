@@ -29,10 +29,10 @@ const Navbar = () => {
         isScrolled ? "bg-black shadow-lg" : "bg-transparent"
       }`}
     >
-      {/* Logo with Custom Font */}
-      <div className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font">
+      {/* Clickable Logo with Custom Font */}
+      <Link to="/" className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font hover:opacity-80 transition">
         Clinking Bubbles Co.
-      </div>
+      </Link>
 
       {/* Desktop Links */}
       <div className="hidden md:flex space-x-8 items-center">
