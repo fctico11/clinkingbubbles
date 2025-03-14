@@ -1,12 +1,12 @@
 import "./Navbar.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi"; 
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const menuRef = useRef(null);
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -22,6 +22,23 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   return (
     <nav
@@ -66,29 +83,28 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay (Small Dropdown) */}
       {isOpen && (
-        <div className="fixed top-14 left-4 right-4 bg-black border border-gray-700 rounded-lg shadow-lg p-4 flex flex-col items-center space-y-4 md:hidden">
-            <Link to="/" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
+        <div ref={menuRef} className="fixed top-14 left-4 right-4 bg-black border border-gray-700 rounded-lg shadow-lg p-4 flex flex-col items-center space-y-4 md:hidden">
+          <Link to="/" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             Home
-            </Link>
-            <Link to="/about" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
+          </Link>
+          <Link to="/about" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             About
-            </Link>
-            <Link to="/alcohol-calculator" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
+          </Link>
+          <Link to="/alcohol-calculator" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             Alcohol Calculator
-            </Link>
+          </Link>
 
-            {/* Get a Quote Button in Mobile Menu */}
-            <Link to="/contact" className="w-full flex justify-center">
+          {/* Get a Quote Button in Mobile Menu */}
+          <Link to="/contact" className="w-full flex justify-center">
             <button className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
-                Get a Quote!
+              Get a Quote!
             </button>
-            </Link>
+          </Link>
         </div>
-        )}
+      )}
     </nav>
   );
 };
 
 export default Navbar;
-
 
