@@ -3,6 +3,13 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
 
+const standardEventTypes = [
+  "Birthday Party",
+  "Graduation Party",
+  "Corporate Event",
+  "Wedding",
+];
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -23,10 +30,11 @@ const ContactForm = () => {
     contactMethod: "Email",
     dryHireAccepted: false,
   });
+
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showOtherEventModal, setShowOtherEventModal] = useState(false);
   const [showDryHireOverlay, setShowDryHireOverlay] = useState(false);
+  const [showOtherEventModal, setShowOtherEventModal] = useState(false);
 
   // Google Places Autocomplete Hook
   const {
@@ -37,42 +45,68 @@ const ContactForm = () => {
     clearSuggestions,
   } = usePlacesAutocomplete();
 
+  // Handle address autocomplete selection
   const handleAddressSelect = (address) => {
     setValue(address, false);
     setFormData({ ...formData, eventAddress: address });
     clearSuggestions();
   };
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    let newValue = type === "checkbox" ? checked : value;
 
-    // If event type is changed to "Other", show the modal popup
-    if (name === "eventType" && value === "Other") {
+    // If user selects "Other" from the main eventType dropdown, open the modal
+    if (name === "eventType" && newValue === "Other") {
       setShowOtherEventModal(true);
     }
+
+    setFormData({
+      ...formData,
+      [name]: newValue,
+    });
   };
 
+  // Save the user’s custom event type from the modal
   const handleOtherEventSubmit = (e) => {
     e.preventDefault();
+    // Transfer otherEventType to eventType so it displays in the dropdown
+    if (formData.otherEventType.trim() !== "") {
+      setFormData({
+        ...formData,
+        eventType: formData.otherEventType,
+      });
+    }
     setShowOtherEventModal(false);
+  };
+
+  // Close the "Other Event" modal if clicking outside or on "X"
+  const closeOtherEventModal = () => {
+    setShowOtherEventModal(false);
+    // If user typed nothing, revert eventType to a default
+    if (!formData.otherEventType.trim()) {
+      setFormData({ ...formData, eventType: standardEventTypes[0] });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    // Validate guest count as numeric
     if (isNaN(formData.guestCount) || formData.guestCount.trim() === "") {
       setFeedback("❌ Please enter a numeric value for estimated guests.");
       setLoading(false);
       return;
     }
 
-    const submissionData = { ...formData };
-    if (formData.eventType !== "Other") {
+    // If user’s final eventType is one of the standard ones, remove otherEventType
+    let submissionData = { ...formData };
+    const isStandard =
+      standardEventTypes.includes(formData.eventType) ||
+      formData.eventType.trim() === "";
+    if (isStandard) {
       delete submissionData.otherEventType;
     }
 
@@ -90,6 +124,14 @@ const ContactForm = () => {
 
     setLoading(false);
   };
+
+  // Compute what the eventType <select> should show
+  // If user typed a custom event (not "Other"), show that as an extra <option>
+  const eventTypeValue = standardEventTypes.includes(formData.eventType)
+    ? formData.eventType
+    : formData.eventType === "Other"
+    ? "Other"
+    : formData.eventType; // e.g. "Reunion"
 
   return (
     <div className="bg-white min-h-screen flex flex-col justify-between">
@@ -207,38 +249,22 @@ const ContactForm = () => {
               name="eventType"
               className="w-full p-3 rounded border border-gray-400"
               onChange={handleChange}
-              value={formData.eventType}
+              value={eventTypeValue}
             >
-              <option>Birthday Party</option>
-              <option>Graduation Party</option>
-              <option>Corporate Event</option>
-              <option>Wedding</option>
-              <option>Other</option>
+              {standardEventTypes.map((et) => (
+                <option key={et} value={et}>
+                  {et}
+                </option>
+              ))}
+              <option value="Other">Other</option>
+              {/* If user typed something custom like "Reunion", show it as an extra option */}
+              {!standardEventTypes.includes(formData.eventType) &&
+                formData.eventType !== "Other" &&
+                formData.eventType.trim() !== "" && (
+                  <option value={formData.eventType}>{formData.eventType}</option>
+                )}
             </select>
           </div>
-
-          {/* Other Event Type Popup */}
-          {formData.eventType === "Other" && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-              <div className="bg-white p-6 rounded-lg max-w-md shadow-lg">
-                <h3 className="text-xl font-bold mb-4">Specify Event Type</h3>
-                <input
-                  type="text"
-                  name="otherEventType"
-                  placeholder="e.g. Anniversary, Reunion, etc."
-                  className="w-full p-3 rounded border border-gray-400 mb-4"
-                  onChange={handleChange}
-                  value={formData.otherEventType}
-                />
-                <button
-                  onClick={handleOtherEventSubmit}
-                  className="bg-black text-white px-4 py-2 rounded"
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          )}
 
           {/* Hours of Event */}
           <div>
@@ -310,8 +336,8 @@ const ContactForm = () => {
               onChange={handleChange}
               value={formData.bartendingOption}
             >
-              <option>Bartender(s) only</option>
-              <option>Bartender(s) + Mobile Bar</option>
+              <option>bartender(s) only</option>
+              <option>bartender(s) + Mobile Bar</option>
             </select>
           </div>
 
@@ -374,11 +400,26 @@ const ContactForm = () => {
 
       {/* Dry Hire Overlay */}
       {showDryHireOverlay && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg max-w-md shadow-lg">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setShowDryHireOverlay(false)}
+        >
+          <div
+            className="bg-white p-6 rounded-lg max-w-md shadow-lg relative"
+            onClick={(e) => e.stopPropagation()} // prevent close on modal click
+          >
+            <button
+              onClick={() => setShowDryHireOverlay(false)}
+              className="absolute top-2 right-2 text-black font-bold"
+            >
+              X
+            </button>
             <h3 className="text-xl font-bold mb-4">Dry Hire Agreement</h3>
             <p className="mb-4">
-              By accepting the dry hire agreement, you agree to provide all the alcohol for your event, and we will provide the bartending service, supplies and materials (napkins, cups, straws), bar set-up. This allows you (the client) to purchase alcohol at cost and means you get to keep all of the alcohol unused at the event. Determining how much, and what kind of alcohol/specialty drinks you would like at your event will be calculated at the next step after finishing this form.
+              By accepting the dry hire agreement, you agree to provide all the alcohol for your event, and we will provide 
+              the bartending service, supplies and materials (napkins, cups, straws), bar set-up. This allows you (the client) 
+              to purchase alcohol at cost and means you get to keep all of the alcohol unused at the event. Determining how much, 
+              and what kind of alcohol/specialty drinks you would like at your event will be calculated at the next step after finishing this form.
             </p>
             <button
               onClick={() => setShowDryHireOverlay(false)}
@@ -390,6 +431,43 @@ const ContactForm = () => {
         </div>
       )}
 
+      {/* Other Event Type Modal */}
+      {showOtherEventModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={closeOtherEventModal}
+        >
+          <div
+            className="bg-white p-6 rounded-lg max-w-md shadow-lg relative"
+            onClick={(e) => e.stopPropagation()} // prevent close on modal click
+          >
+            <button
+              onClick={closeOtherEventModal}
+              className="absolute top-2 right-2 text-black font-bold"
+            >
+              X
+            </button>
+            <h3 className="text-xl font-bold mb-4">Specify Event Type</h3>
+            <form onSubmit={handleOtherEventSubmit}>
+              <input
+                type="text"
+                name="otherEventType"
+                placeholder="e.g. Anniversary, Reunion, etc."
+                className="w-full p-3 rounded border border-gray-400 mb-4"
+                onChange={handleChange}
+                value={formData.otherEventType}
+              />
+              <button
+                type="submit"
+                className="bg-black text-white px-4 py-2 rounded"
+              >
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <Footer />
     </div>
@@ -397,5 +475,6 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
 
 
