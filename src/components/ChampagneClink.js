@@ -25,7 +25,7 @@ const ChampagneClink = ({ onAnimationEnd }) => {
       setTimeout(() => {
         setIsVisible(false);
         onAnimationEnd(); // Show homepage when fade completes
-      }, 1200); // ⏳ Reduce fade-out time to 1.2s for a quicker transition
+      }, 1000); // ⏳ Reduce fade-out time to 1.2s for a quicker transition
     }, 500); // ⏳ Reduce wait time after animation finishes
   };
 
