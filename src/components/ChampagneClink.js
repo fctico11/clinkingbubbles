@@ -36,7 +36,7 @@ const ChampagneClink = ({ onAnimationEnd }) => {
       <Lottie
         animationData={champagneAnimation}
         loop={false}
-        speed={0.4} // ⏳ Slow animation significantly (40% of normal speed)
+        speed={0.2} // ⏳ Slow animation significantly (40% of normal speed)
         onComplete={handleAnimationComplete}
         className="champagne-lottie"
       />
