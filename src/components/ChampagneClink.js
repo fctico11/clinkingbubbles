@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
-import champagneAnimation from "../assets/champagne.json"; // Ensure correct file extension
+import champagneAnimation from "../assets/champagne.json"; // Ensure the correct file format
 import "./ChampagneClink.css";
 
 const ChampagneClink = ({ onAnimationEnd }) => {
+  const [isFading, setIsFading] = useState(false); // Controls the fade effect
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -13,26 +14,27 @@ const ChampagneClink = ({ onAnimationEnd }) => {
       localStorage.setItem("champagneClinkPlayed", "true");
       setIsVisible(true);
     } else {
-      setIsVisible(false); // Skip animation if already played
-      onAnimationEnd(); // Show home page immediately
+      setIsVisible(false);
+      onAnimationEnd(); // Immediately show home page
     }
   }, [onAnimationEnd]);
 
   const handleAnimationComplete = () => {
+    setIsFading(true); // Start fading out
     setTimeout(() => {
       setIsVisible(false);
-      onAnimationEnd(); // Show homepage when animation finishes
-    }, 2000); // ⏳ Increase delay before fading out (was 1000ms)
+      onAnimationEnd(); // Show homepage when fade completes
+    }, 1500); // 1.5s fade-out transition
   };
 
-  if (!isVisible) return null; // Hide animation after playing
+  if (!isVisible) return null; // Hide animation when done
 
   return (
-    <div className={`champagne-animation-overlay ${!isVisible ? "fade-out" : ""}`}>
+    <div className={`champagne-overlay ${isFading ? "fade-out" : ""}`}>
       <Lottie
         animationData={champagneAnimation}
         loop={false}
-        speed={0.5} // ⏳ Slow down animation (default speed is 1)
+        speed={0.5} // Slow down animation
         onComplete={handleAnimationComplete}
         className="champagne-lottie"
       />

@@ -1,5 +1,4 @@
-// src/pages/Home.js
-import React,  { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
@@ -8,11 +7,10 @@ import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
 
 const Home = () => {
-
   const [showHome, setShowHome] = useState(false);
 
   return (
-    <div>
+    <div className={`home-container ${showHome ? "show-home" : "hidden-home"}`}>
       {!showHome && <ChampagneClink onAnimationEnd={() => setShowHome(true)} />}
       {showHome && (
         <>
