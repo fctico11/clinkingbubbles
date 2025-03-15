@@ -1,19 +1,28 @@
 // src/pages/Home.js
-import React from "react";
+import React,  { useState } from "react";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import Services from "../components/Services";
 import Footer from "../components/Footer";
+import ChampagneClink from "../components/ChampagneClink";
 
 const Home = () => {
+
+  const [showHome, setShowHome] = useState(false);
+
   return (
     <div>
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <Services />
-      <Footer />
+      {!showHome && <ChampagneClink onAnimationEnd={() => setShowHome(true)} />}
+      {showHome && (
+        <>
+          <Navbar />
+          <HeroSection />
+          <AboutSection />
+          <Services />
+          <Footer />
+        </>
+      )}
     </div>
   );
 };
