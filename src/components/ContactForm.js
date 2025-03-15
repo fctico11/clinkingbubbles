@@ -3,6 +3,7 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
 
+// Default event types
 const standardEventTypes = [
   "Birthday Party",
   "Graduation Party",
@@ -21,9 +22,7 @@ const ContactForm = () => {
     eventType: "Birthday Party",
     otherEventType: "",
     eventStartTime: "",
-    eventStartAMPM: "AM",
     eventEndTime: "",
-    eventEndAMPM: "PM",
     guestCount: "",
     bartendingOption: "bartender(s) only",
     additionalDetails: "",
@@ -84,7 +83,7 @@ const ContactForm = () => {
   // Close the "Other Event" modal if clicking outside or on "X"
   const closeOtherEventModal = () => {
     setShowOtherEventModal(false);
-    // If user typed nothing, revert eventType to a default
+    // If user typed nothing, revert eventType to the first standard type
     if (!formData.otherEventType.trim()) {
       setFormData({ ...formData, eventType: standardEventTypes[0] });
     }
@@ -126,7 +125,6 @@ const ContactForm = () => {
   };
 
   // Compute what the eventType <select> should show
-  // If user typed a custom event (not "Other"), show that as an extra <option>
   const eventTypeValue = standardEventTypes.includes(formData.eventType)
     ? formData.eventType
     : formData.eventType === "Other"
@@ -137,16 +135,17 @@ const ContactForm = () => {
     <div className="bg-white min-h-screen flex flex-col justify-between">
       {/* Intro Section with Black Background */}
       <section className="py-10 px-4 bg-black text-white text-center">
-        <h2 className="text-3xl font-bold">Let's Make Your Event Unforgettable</h2>
+        <h2 className="text-3xl font-bold mt-10">Let's Make Your Event Unforgettable</h2>
         <p className="max-w-2xl mx-auto mt-4">
           We’re excited to craft amazing drinks and create a fun atmosphere for your special occasion!
           Fill out the details below, and we’ll tailor our services to your needs. Once submitted,
-          you’ll be redirected to our booking calendar to finalize your consultation.
+          you’ll be hearing from are team in 2-5 business days to finalize your consultation.
         </p>
       </section>
 
       {/* Contact Form */}
-      <section className="py-12 px-4">
+      {/* Added "mt-10" to create space from the navbar (or top) */}
+      <section className="py-12 px-4 mt-2">
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
           {/* Full Name */}
           <div>
@@ -266,7 +265,7 @@ const ContactForm = () => {
             </select>
           </div>
 
-          {/* Hours of Event */}
+          {/* Hours of Event (Removed AM/PM selects) */}
           <div>
             <label className="block font-semibold mb-1">Hours of Event *</label>
             <div className="flex space-x-4">
@@ -280,15 +279,6 @@ const ContactForm = () => {
                   value={formData.eventStartTime}
                   required
                 />
-                <select
-                  name="eventStartAMPM"
-                  className="w-full p-3 rounded border border-gray-400 mt-1"
-                  onChange={handleChange}
-                  value={formData.eventStartAMPM}
-                >
-                  <option>AM</option>
-                  <option>PM</option>
-                </select>
               </div>
               <div className="w-1/2">
                 <label className="block text-sm font-medium mb-1">End Time</label>
@@ -300,15 +290,6 @@ const ContactForm = () => {
                   value={formData.eventEndTime}
                   required
                 />
-                <select
-                  name="eventEndAMPM"
-                  className="w-full p-3 rounded border border-gray-400 mt-1"
-                  onChange={handleChange}
-                  value={formData.eventEndAMPM}
-                >
-                  <option>AM</option>
-                  <option>PM</option>
-                </select>
               </div>
             </div>
           </div>
@@ -416,10 +397,10 @@ const ContactForm = () => {
             </button>
             <h3 className="text-xl font-bold mb-4">Dry Hire Agreement</h3>
             <p className="mb-4">
-              By accepting the dry hire agreement, you agree to provide all the alcohol for your event, and we will provide 
-              the bartending service, supplies and materials (napkins, cups, straws), bar set-up. This allows you (the client) 
-              to purchase alcohol at cost and means you get to keep all of the alcohol unused at the event. Determining how much, 
-              and what kind of alcohol/specialty drinks you would like at your event will be calculated at the next step after finishing this form.
+              By accepting the dry hire agreement, you agree to provide all the alcohol for your event, and we will provide the bartending 
+              service, supplies and materials (napkins, cups, straws), bar set-up. This allows you (the client) to purchase alcohol at cost 
+              and means you get to keep all of the alcohol unused at the event. Determining how much, and what kind of alcohol/specialty 
+              drinks you would like at your event will be calculated at the next step after finishing this form.
             </p>
             <button
               onClick={() => setShowDryHireOverlay(false)}
@@ -475,6 +456,5 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
 
 
