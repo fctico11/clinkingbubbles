@@ -10,7 +10,7 @@
     justify-content: center;
     z-index: 9999;
     opacity: 1;
-    transition: opacity 2s ease-in-out; /* ⏳ Smooth fading effect */
+    transition: opacity 1.2s ease-in-out; /* ⏳ Faster fade-out */
   }
   
   /* Fade out animation and overlay smoothly */
