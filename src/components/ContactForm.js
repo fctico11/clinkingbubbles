@@ -199,7 +199,7 @@ const ContactForm = () => {
               className="w-full p-3 rounded border border-gray-400"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              disabled={!ready}
+              onBlur={() => setTimeout(() => clearSuggestions(), 200)}
               required
             />
             {status === "OK" &&
