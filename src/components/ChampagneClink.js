@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
-import champagneAnimation from "../assets/champagne.json"; // Ensure the correct file format
+import champagneAnimation from "../assets/champagne.json"; // Ensure correct file format
 import "./ChampagneClink.css";
 
 const ChampagneClink = ({ onAnimationEnd }) => {
-  const [isFading, setIsFading] = useState(false); // Controls the fade effect
+  const [isFading, setIsFading] = useState(false); // Controls fade effect
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const ChampagneClink = ({ onAnimationEnd }) => {
       setIsVisible(true);
     } else {
       setIsVisible(false);
-      onAnimationEnd(); // Immediately show home page
+      onAnimationEnd(); // Immediately show homepage
     }
   }, [onAnimationEnd]);
 
@@ -43,4 +43,3 @@ const ChampagneClink = ({ onAnimationEnd }) => {
 };
 
 export default ChampagneClink;
-

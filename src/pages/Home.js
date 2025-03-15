@@ -7,32 +7,23 @@ import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
 
 const Home = () => {
-  const [showHome, setShowHome] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(true);
 
   return (
     <div className="relative">
-      {/* Render homepage in the background */}
-      <div className={`homepage-content ${animationComplete ? "fade-in" : "hidden"}`}>
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <Services />
-        <Footer />
-      </div>
+      {/* Homepage is visible from the start */}
+      <Navbar />
+      <HeroSection />
+      <AboutSection />
+      <Services />
+      <Footer />
 
-      {/* Champagne animation overlay */}
-      {!showHome && (
-        <ChampagneClink
-          onAnimationEnd={() => {
-            setShowHome(true);
-            setTimeout(() => setAnimationComplete(true), 500); // Delay showing homepage slightly for smoother transition
-          }}
-        />
-      )}
+      {/* Overlay animation on top of homepage */}
+      {showAnimation && <ChampagneClink onAnimationEnd={() => setShowAnimation(false)} />}
     </div>
   );
 };
 
 export default Home;
+
 
