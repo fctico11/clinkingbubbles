@@ -21,11 +21,11 @@ const ChampagneClink = ({ onAnimationEnd }) => {
 
   const handleAnimationComplete = () => {
     setTimeout(() => {
-      setIsFading(true); // Start fading out after 1-second delay
+      setIsFading(true); // Start fading out
       setTimeout(() => {
         setIsVisible(false);
         onAnimationEnd(); // Show homepage when fade completes
-      }, 1200); // 1.5s fade-out transition
+      }, 1200); // ⏳ Reduce fade-out time to 1.2s for a quicker transition
     }, 500); // ⏳ Reduce wait time after animation finishes
   };
 
@@ -36,7 +36,7 @@ const ChampagneClink = ({ onAnimationEnd }) => {
       <Lottie
         animationData={champagneAnimation}
         loop={false}
-        speed={0.4} // ⏳ Slows animation down (default is 1)
+        speed={0.4} // ⏳ Slow animation significantly (40% of normal speed)
         onComplete={handleAnimationComplete}
         className="champagne-lottie"
       />
@@ -45,3 +45,4 @@ const ChampagneClink = ({ onAnimationEnd }) => {
 };
 
 export default ChampagneClink;
+
