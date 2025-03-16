@@ -197,9 +197,12 @@ const ContactForm = () => {
               name="eventAddress"
               placeholder="Start typing address..."
               className="w-full p-3 rounded border border-gray-400"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="none"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              onBlur={() => setTimeout(() => clearSuggestions(), 200)}
+              // onBlur={() => setTimeout(() => clearSuggestions(), 200)}
               required
             />
             {status === "OK" &&
@@ -246,7 +249,7 @@ const ContactForm = () => {
             <label className="block font-semibold mb-1">Type of Event *</label>
             <select
               name="eventType"
-              className="w-full p-3 rounded border border-gray-400"
+              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={eventTypeValue}
             >
@@ -274,7 +277,7 @@ const ContactForm = () => {
                 <input
                   type="time"
                   name="eventStartTime"
-                  className="w-full p-3 rounded border border-gray-400"
+                  className="w-full p-3 rounded border border-gray-400 bg-white text-black"
                   onChange={handleChange}
                   value={formData.eventStartTime}
                   required
@@ -285,7 +288,7 @@ const ContactForm = () => {
                 <input
                   type="time"
                   name="eventEndTime"
-                  className="w-full p-3 rounded border border-gray-400"
+                  className="w-full p-3 rounded border border-gray-400 bg-white text-black"
                   onChange={handleChange}
                   value={formData.eventEndTime}
                   required
@@ -313,7 +316,7 @@ const ContactForm = () => {
             <label className="block font-semibold mb-1">Bartending Options *</label>
             <select
               name="bartendingOption"
-              className="w-full p-3 rounded border border-gray-400"
+              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.bartendingOption}
             >
@@ -339,7 +342,7 @@ const ContactForm = () => {
             <label className="block font-semibold mb-1">Preferred Method of Contact *</label>
             <select
               name="contactMethod"
-              className="w-full p-3 rounded border border-gray-400"
+              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.contactMethod}
             >
