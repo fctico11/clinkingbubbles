@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
+import Lottie from "lottie-react"; // Note the curly braces
+import successAnimation from "../assets/success.json"; // Adjust path if needed
 
 // Default event types
 const standardEventTypes = [
@@ -34,8 +36,6 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [showDryHireOverlay, setShowDryHireOverlay] = useState(false);
   const [showOtherEventModal, setShowOtherEventModal] = useState(false);
-
-  // NEW: Show green success overlay after submission
   const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
 
   // Google Places Autocomplete Hook
@@ -46,14 +46,19 @@ const ContactForm = () => {
     clearSuggestions,
   } = usePlacesAutocomplete();
 
-  // Handle address autocomplete selection
+  // Called when user clicks a suggestion
   const handleAddressSelect = (address) => {
     setValue(address, false);
     setFormData({ ...formData, eventAddress: address });
     clearSuggestions();
   };
 
-  // Handle input changes for all fields
+  // Closes the success overlay
+  const closeSuccessOverlay = () => {
+    window.location.href = "/";
+  };
+
+  // Handle all input changes
   const handleChange = (e) => {
     const { name, value: val, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : val;
@@ -63,27 +68,22 @@ const ContactForm = () => {
       setShowOtherEventModal(true);
     }
 
-    setFormData({
-      ...formData,
-      [name]: newValue,
-    });
+    setFormData({ ...formData, [name]: newValue });
   };
 
-  // Save user’s custom event type from the modal
+  // Save the user’s custom event type from the modal
   const handleOtherEventSubmit = (e) => {
     e.preventDefault();
     if (formData.otherEventType.trim() !== "") {
-      setFormData({
-        ...formData,
-        eventType: formData.otherEventType,
-      });
+      setFormData({ ...formData, eventType: formData.otherEventType });
     }
     setShowOtherEventModal(false);
   };
 
-  // Close "Other Event" modal if clicking outside or on "X"
+  // Close the "Other Event" modal
   const closeOtherEventModal = () => {
     setShowOtherEventModal(false);
+    // If user typed nothing, revert to the first standard event type
     if (!formData.otherEventType.trim()) {
       setFormData({ ...formData, eventType: standardEventTypes[0] });
     }
@@ -112,7 +112,7 @@ const ContactForm = () => {
 
     try {
       await axios.post("https://formspree.io/f/xjkyvqoe", submissionData);
-      // Instead of showing old success message & redirect, show success overlay
+      // Show success overlay
       setShowSuccessOverlay(true);
     } catch (error) {
       setFeedback("❌ There was an error submitting your request. Please try again.");
@@ -127,11 +127,6 @@ const ContactForm = () => {
     : formData.eventType === "Other"
     ? "Other"
     : formData.eventType;
-
-  // Handler for overlay "X" to go home
-  const closeSuccessOverlay = () => {
-    window.location.href = "/";
-  };
 
   return (
     <div className="bg-white min-h-screen flex flex-col justify-between relative">
@@ -213,11 +208,7 @@ const ContactForm = () => {
                 <div
                   key={suggestion.place_id}
                   className="cursor-pointer p-2 bg-gray-100"
-                  onClick={() => {
-                    setValue(suggestion.description, false);
-                    clearSuggestions();
-                    setFormData({ ...formData, eventAddress: suggestion.description });
-                  }}
+                  onClick={() => handleAddressSelect(suggestion.description)}
                 >
                   {suggestion.description}
                 </div>
@@ -458,33 +449,42 @@ const ContactForm = () => {
         </div>
       )}
 
-      {/* NEW: Light Green Success Overlay */}
+      {/* SUCCESS OVERLAY */}
       {showSuccessOverlay && (
-        <div className="fixed inset-0 flex items-center justify-center bg-green-200 bg-opacity-80 z-50">
-          {/* White X in top-right corner → redirect to home */}
+        <div className="fixed inset-0 flex items-center justify-center bg-green-500 bg-opacity-90 z-50">
+          {/* X in top-right with black border */}
           <button
-            onClick={() => (window.location.href = "/")}
-            className="absolute top-4 right-4 text-white text-3xl font-bold"
+            onClick={closeSuccessOverlay}
+            className="absolute top-4 right-4 text-white text-3xl font-bold border-2 border-black rounded-full px-3 py-1"
           >
             X
           </button>
 
-          <div className="max-w-md mx-auto p-6 text-center">
-            <h3 className="text-xl font-bold mb-4">
-              Thank you for submitting the contact form!
+          <div className="max-w-md mx-auto p-6 text-center text-white">
+            {/* Lottie animation above the text */}
+            <div className="w-40 h-40 mx-auto mb-4">
+              <Lottie
+                loop
+                autoplay
+                animationData={successAnimation}
+              />
+            </div>
+
+            <h3 className="text-2xl font-extrabold mb-4">
+              Thank you for submitting the contact form, we're almost ready to get this party started!
             </h3>
-            <p className="mb-6">
-              Hang tight while our team reviews your request. We'll be in touch within 2-5 business days.
-              In the meantime, feel free to check out our{" "}
+            <p className="text-lg">
+              Hang tight while our team reviews your request. We'll be in touch within
+              2-5 business days. In the meantime, feel free to check out our{" "}
               <span
-                className="underline cursor-pointer text-blue-700"
+                className="underline cursor-pointer"
                 onClick={() => (window.location.href = "/alcohol-calculator")}
               >
                 alcohol calculator
               </span>{" "}
               or return to the{" "}
               <span
-                className="underline cursor-pointer text-blue-700"
+                className="underline cursor-pointer"
                 onClick={() => (window.location.href = "/")}
               >
                 home page
