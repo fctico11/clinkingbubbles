@@ -1,6 +1,7 @@
 // src/components/HeroSection.js
 import React from "react";
 import heroImage from "../assets/images/hero.png"; // Import image
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -17,9 +18,11 @@ const HeroSection = () => {
         <p className="text-xl md:text-2xl mb-8">
           Luxury bartending services that dazzle and delight.
         </p>
-        <button className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
-          Book Now
-        </button>
+        <Link to="/contact">
+          <button className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
+            Book Now
+          </button>
+        </Link>
       </div>
     </section>
   );
