@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
-import Lottie from "lottie-react"; // Note the curly braces
+import Lottie from "lottie-react"; 
 import successAnimation from "../assets/success.json"; // Adjust path if needed
 
 // Default event types
@@ -63,7 +63,6 @@ const ContactForm = () => {
     const { name, value: val, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : val;
 
-    // If user selects "Other" from eventType dropdown, open the modal
     if (name === "eventType" && newValue === "Other") {
       setShowOtherEventModal(true);
     }
@@ -83,7 +82,6 @@ const ContactForm = () => {
   // Close the "Other Event" modal
   const closeOtherEventModal = () => {
     setShowOtherEventModal(false);
-    // If user typed nothing, revert to the first standard event type
     if (!formData.otherEventType.trim()) {
       setFormData({ ...formData, eventType: standardEventTypes[0] });
     }
@@ -94,14 +92,12 @@ const ContactForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Validate guest count as numeric
     if (isNaN(formData.guestCount) || formData.guestCount.trim() === "") {
       setFeedback("❌ Please enter a numeric value for estimated guests.");
       setLoading(false);
       return;
     }
 
-    // If user’s final eventType is standard, remove otherEventType
     let submissionData = { ...formData };
     const isStandard =
       standardEventTypes.includes(formData.eventType) ||
@@ -112,12 +108,10 @@ const ContactForm = () => {
 
     try {
       await axios.post("https://formspree.io/f/xjkyvqoe", submissionData);
-      // Show success overlay
       setShowSuccessOverlay(true);
     } catch (error) {
       setFeedback("❌ There was an error submitting your request. Please try again.");
     }
-
     setLoading(false);
   };
 
@@ -130,6 +124,34 @@ const ContactForm = () => {
 
   return (
     <div className="bg-white min-h-screen flex flex-col justify-between relative">
+      {/* Inline Styles for Animations */}
+      <style>{`
+        @keyframes dropDown {
+          0% {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          50% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        .animate-dropDown {
+          animation: dropDown 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-in forwards;
+        }
+      `}</style>
+
       {/* Intro Section with Black Background */}
       <section className="py-10 px-4 bg-black text-white text-center">
         <h2 className="text-3xl font-bold mt-10">Let's Make Your Event Unforgettable</h2>
@@ -451,7 +473,7 @@ const ContactForm = () => {
 
       {/* SUCCESS OVERLAY */}
       {showSuccessOverlay && (
-        <div className="fixed inset-0 flex items-center justify-center bg-green-500 bg-opacity-90 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-green-500 bg-opacity-90 z-50 animate-dropDown">
           {/* X in top-right with black border */}
           <button
             onClick={closeSuccessOverlay}
@@ -460,22 +482,18 @@ const ContactForm = () => {
             X
           </button>
 
-          <div className="max-w-md mx-auto p-6 text-center text-white">
+          <div className="max-w-md mx-auto p-6 text-center text-white animate-fadeIn">
             {/* Lottie animation above the text */}
             <div className="w-40 h-40 mx-auto mb-4">
-              <Lottie
-                loop
-                autoplay
-                animationData={successAnimation}
-              />
+              <Lottie loop autoplay animationData={successAnimation} />
             </div>
 
             <h3 className="text-2xl font-extrabold mb-4">
               Thank you for submitting the contact form, we're almost ready to get this party started!
             </h3>
             <p className="text-lg">
-              Hang tight while our team reviews your request. We'll be in touch within
-              2-5 business days. In the meantime, feel free to check out our{" "}
+              Hang tight while our team reviews your request. We'll be in touch within 2-5 business days.
+              In the meantime, feel free to check out our{" "}
               <span
                 className="underline cursor-pointer"
                 onClick={() => (window.location.href = "/alcohol-calculator")}
@@ -501,3 +519,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
