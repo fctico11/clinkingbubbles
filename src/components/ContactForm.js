@@ -219,7 +219,7 @@ const ContactForm = () => {
             <label className="block font-semibold mb-1">Location of Event *</label>
             <select
               name="eventLocation"
-              className="w-full p-3 rounded border border-gray-400"
+              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.eventLocation}
             >
@@ -234,7 +234,7 @@ const ContactForm = () => {
             <input
               type="date"
               name="eventDate"
-              className="w-full p-3 rounded border border-gray-400"
+              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.eventDate}
               required
