@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
+import FillingCupAnimation from "../components/FillingCupAnimation";
 import Services from "../components/Services";
 import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
@@ -16,6 +17,7 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <FillingCupAnimation />
       <Services />
       <section className="py-12 text-center">
         <Link to="/booking-process">
