@@ -26,7 +26,7 @@ const FillingCupAnimation = () => {
   };
 
   return (
-    <div ref={ref} className="w-full flex justify-center my-1">
+    <div ref={ref} className="w-full flex justify-center ">
       <div className="w-48 h-48">
         <Lottie
           lottieRef={lottieRef}
