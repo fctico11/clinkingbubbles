@@ -23,10 +23,10 @@ const ContactForm = () => {
     eventDate: "",
     eventType: "Birthday Party",
     otherEventType: "",
-    eventStartTime: "",
-    eventEndTime: "",
+    eventStartTime: "17:00",
+    eventEndTime: "22:00",
     guestCount: "",
-    bartendingOption: "bartender(s) only",
+    bartendingOption: "Bartender(s) only",
     additionalDetails: "",
     contactMethod: "Email",
     dryHireAccepted: false,
@@ -339,8 +339,8 @@ const ContactForm = () => {
               onChange={handleChange}
               value={formData.bartendingOption}
             >
-              <option>bartender(s) only</option>
-              <option>bartender(s) + Mobile Bar</option>
+              <option>Bartender(s) only</option>
+              <option>Bartender(s) + Mobile Bar</option>
             </select>
           </div>
 
@@ -420,9 +420,9 @@ const ContactForm = () => {
             <h3 className="text-xl font-bold mb-4">Dry Hire Agreement</h3>
             <p className="mb-4">
               By accepting the dry hire agreement, you agree to provide all the alcohol for your event, and we will provide the bartending 
-              service, supplies and materials (napkins, cups, straws), bar set-up. This allows you (the client) to purchase alcohol at cost 
-              and means you get to keep all of the alcohol unused at the event. Determining how much, and what kind of alcohol/specialty 
-              drinks you would like at your event will be calculated at the next step after finishing this form.
+              service, bar set-up, and any supplies and materials you may need (napkins, cups, straws, etc.). This allows you (the client) to purchase alcohol at cost 
+              and means you get to keep all of the unused alcohol from the event. We will help you determine how much and what kind of alcohol/specialty 
+              drinks you would like at your event at the next step after you submit this form.
             </p>
             <button
               onClick={() => setShowDryHireOverlay(false)}
