@@ -202,7 +202,6 @@ const ContactForm = () => {
               autoCapitalize="none"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              // onBlur={() => setTimeout(() => clearSuggestions(), 200)}
               required
             />
             {status === "OK" &&
