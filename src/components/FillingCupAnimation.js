@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "lottie-react";
 import fillingCupAnimation from "../assets/fillingcup.json"; // adjust path if needed
@@ -6,27 +6,31 @@ import fillingCupAnimation from "../assets/fillingcup.json"; // adjust path if n
 const FillingCupAnimation = () => {
   const lottieRef = useRef(null);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
-  // Track current playback direction: "forward" or "backward"
-  const [direction, setDirection] = useState("forward");
 
-  // When the component comes into view, start the animation (from 0 to 120)
   useEffect(() => {
     if (inView && lottieRef.current) {
-      setDirection("forward");
-      lottieRef.current.playSegments([1, 120], false);
+      const instance = lottieRef.current.getLottie
+        ? lottieRef.current.getLottie()
+        : lottieRef.current;
+      let currentDir = 1; // start forward
+      // Function to play the segment based on the current direction
+      const playLoop = () => {
+        if (currentDir === 1) {
+          instance.setDirection(1);
+          instance.playSegments([2, 120], false);
+        } else {
+          instance.setDirection(-1);
+          instance.playSegments([120, 2], false);
+        }
+        currentDir *= -1;
+      };
+      // Start the loop immediately
+      playLoop();
+      // Set an interval to repeat every 4 seconds (adjust if necessary)
+      const intervalId = setInterval(playLoop, 4000);
+      return () => clearInterval(intervalId);
     }
   }, [inView]);
-
-  // onComplete callback toggles the direction and plays the appropriate segment
-  const handleComplete = () => {
-    if (direction === "forward") {
-      setDirection("backward");
-      lottieRef.current.playSegments([120, 1], false);
-    } else {
-      setDirection("forward");
-      lottieRef.current.playSegments([1, 120], false);
-    }
-  };
 
   return (
     <div ref={ref} className="w-full flex justify-center my-1">
@@ -34,9 +38,8 @@ const FillingCupAnimation = () => {
         <Lottie
           lottieRef={lottieRef}
           animationData={fillingCupAnimation}
-          loop={false}      // We control looping via onComplete
+          loop={false}      // Looping is controlled by our setInterval
           autoplay={false}  // Start manually once in view
-          onComplete={handleComplete}
         />
       </div>
     </div>
@@ -44,3 +47,5 @@ const FillingCupAnimation = () => {
 };
 
 export default FillingCupAnimation;
+
+
