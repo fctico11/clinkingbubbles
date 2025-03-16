@@ -144,7 +144,7 @@ const ContactForm = () => {
       </section>
 
       {/* Contact Form */}
-      <section className="py-12 px-4 mt-10">
+      <section className="py-12 px-4 mt-1">
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
           {/* Full Name */}
           <div>
