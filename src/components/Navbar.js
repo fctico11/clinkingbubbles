@@ -61,6 +61,10 @@ const Navbar = () => {
           About
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
+        <Link to="/booking-process" className="text-yellow-500 relative group transition">
+          Booking Process
+          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
+        </Link>
         <Link to="/alcohol-calculator" className="text-yellow-500 relative group transition">
           Alcohol Calculator
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
@@ -89,6 +93,9 @@ const Navbar = () => {
           </Link>
           <Link to="/about" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             About
+          </Link>
+          <Link to="/booking-process" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
+            Booking Process
           </Link>
           <Link to="/alcohol-calculator" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
             Alcohol Calculator

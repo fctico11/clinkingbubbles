@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
@@ -16,6 +17,13 @@ const Home = () => {
       <HeroSection />
       <AboutSection />
       <Services />
+      <section className="py-12 text-center">
+        <Link to="/booking-process">
+          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-full transition">
+            Learn more about the Booking process
+          </button>
+        </Link>
+      </section>
       <Footer />
 
       {/* Overlay animation on top of homepage */}

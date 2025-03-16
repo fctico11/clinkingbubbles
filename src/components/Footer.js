@@ -1,5 +1,6 @@
 import React from "react";
 import { FaInstagram, FaEnvelope } from "react-icons/fa"; 
+import { SiTiktok } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -10,6 +11,7 @@ const Footer = () => {
         <div className="flex justify-center space-x-6 mb-6">
           <Link to="/" className="hover:text-yellow-500 transition">Home</Link>
           <Link to="/about" className="hover:text-yellow-500 transition">About</Link>
+          <Link to="/booking-process" className="hover:text-yellow-500 transition">Booking Process</Link>
           <Link to="/alcohol-calculator" className="hover:text-yellow-500 transition">Alcohol Calculator</Link>
           <Link to="/contact" className="hover:text-yellow-500 transition">Contact</Link>
         </div>
@@ -18,6 +20,13 @@ const Footer = () => {
         <div className="flex justify-center space-x-6 mb-6">
           <a href="https://www.instagram.com/clinkingbubbles" target="_blank" rel="noopener noreferrer">
             <FaInstagram size={30} className="hover:text-yellow-500 transition" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@clinkingbubbles"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SiTiktok size={30} className="hover:text-yellow-500 transition" />
           </a>
           <Link to="/contact">
             <FaEnvelope size={30} className="hover:text-yellow-500 transition" />
