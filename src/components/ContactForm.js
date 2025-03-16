@@ -37,7 +37,6 @@ const ContactForm = () => {
 
   // Google Places Autocomplete Hook
   const {
-    ready,
     value,
     setValue,
     suggestions: { status, data },
@@ -46,17 +45,18 @@ const ContactForm = () => {
 
   // Handle address autocomplete selection
   const handleAddressSelect = (address) => {
+    // Called when user clicks on a suggestion
     setValue(address, false);
     setFormData({ ...formData, eventAddress: address });
     clearSuggestions();
   };
 
-  // Handle input changes
+  // Handle input changes for all fields
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    let newValue = type === "checkbox" ? checked : value;
+    const { name, value: val, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : val;
 
-    // If user selects "Other" from the main eventType dropdown, open the modal
+    // If user selects "Other" from the eventType dropdown, open the modal
     if (name === "eventType" && newValue === "Other") {
       setShowOtherEventModal(true);
     }
@@ -70,7 +70,6 @@ const ContactForm = () => {
   // Save the user’s custom event type from the modal
   const handleOtherEventSubmit = (e) => {
     e.preventDefault();
-    // Transfer otherEventType to eventType so it displays in the dropdown
     if (formData.otherEventType.trim() !== "") {
       setFormData({
         ...formData,
@@ -89,6 +88,7 @@ const ContactForm = () => {
     }
   };
 
+  // Final form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -100,7 +100,7 @@ const ContactForm = () => {
       return;
     }
 
-    // If user’s final eventType is one of the standard ones, remove otherEventType
+    // If user’s final eventType is standard, remove otherEventType
     let submissionData = { ...formData };
     const isStandard =
       standardEventTypes.includes(formData.eventType) ||
@@ -124,12 +124,12 @@ const ContactForm = () => {
     setLoading(false);
   };
 
-  // Compute what the eventType <select> should show
+  // Decide what the eventType <select> should show
   const eventTypeValue = standardEventTypes.includes(formData.eventType)
     ? formData.eventType
     : formData.eventType === "Other"
     ? "Other"
-    : formData.eventType; // e.g. "Reunion"
+    : formData.eventType;
 
   return (
     <div className="bg-white min-h-screen flex flex-col justify-between">
@@ -139,13 +139,12 @@ const ContactForm = () => {
         <p className="max-w-2xl mx-auto mt-4">
           We’re excited to craft amazing drinks and create a fun atmosphere for your special occasion!
           Fill out the details below, and we’ll tailor our services to your needs. Once submitted,
-          you’ll be hearing from are team in 2-5 business days to finalize your consultation.
+          you’ll be hearing from our team in 2-5 business days to finalize your consultation.
         </p>
       </section>
 
       {/* Contact Form */}
-      {/* Added "mt-10" to create space from the navbar (or top) */}
-      <section className="py-12 px-4 mt-2">
+      <section className="py-12 px-4 mt-10">
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
           {/* Full Name */}
           <div>
@@ -200,8 +199,12 @@ const ContactForm = () => {
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="none"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
+              value={value} // from usePlacesAutocomplete
+              onChange={(e) => {
+                // Update both the autocomplete value AND the formData
+                setValue(e.target.value);
+                setFormData({ ...formData, eventAddress: e.target.value });
+              }}
               required
             />
             {status === "OK" &&
@@ -258,7 +261,6 @@ const ContactForm = () => {
                 </option>
               ))}
               <option value="Other">Other</option>
-              {/* If user typed something custom like "Reunion", show it as an extra option */}
               {!standardEventTypes.includes(formData.eventType) &&
                 formData.eventType !== "Other" &&
                 formData.eventType.trim() !== "" && (
@@ -267,7 +269,7 @@ const ContactForm = () => {
             </select>
           </div>
 
-          {/* Hours of Event (Removed AM/PM selects) */}
+          {/* Hours of Event */}
           <div>
             <label className="block font-semibold mb-1">Hours of Event *</label>
             <div className="flex space-x-4">
@@ -389,7 +391,7 @@ const ContactForm = () => {
         >
           <div
             className="bg-white p-6 rounded-lg max-w-md shadow-lg relative"
-            onClick={(e) => e.stopPropagation()} // prevent close on modal click
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setShowDryHireOverlay(false)}
@@ -422,7 +424,7 @@ const ContactForm = () => {
         >
           <div
             className="bg-white p-6 rounded-lg max-w-md shadow-lg relative"
-            onClick={(e) => e.stopPropagation()} // prevent close on modal click
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={closeOtherEventModal}
@@ -458,5 +460,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
-
