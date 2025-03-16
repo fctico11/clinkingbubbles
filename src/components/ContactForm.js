@@ -35,6 +35,9 @@ const ContactForm = () => {
   const [showDryHireOverlay, setShowDryHireOverlay] = useState(false);
   const [showOtherEventModal, setShowOtherEventModal] = useState(false);
 
+  // NEW: Show green success overlay after submission
+  const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
+
   // Google Places Autocomplete Hook
   const {
     value,
@@ -45,7 +48,6 @@ const ContactForm = () => {
 
   // Handle address autocomplete selection
   const handleAddressSelect = (address) => {
-    // Called when user clicks on a suggestion
     setValue(address, false);
     setFormData({ ...formData, eventAddress: address });
     clearSuggestions();
@@ -56,7 +58,7 @@ const ContactForm = () => {
     const { name, value: val, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : val;
 
-    // If user selects "Other" from the eventType dropdown, open the modal
+    // If user selects "Other" from eventType dropdown, open the modal
     if (name === "eventType" && newValue === "Other") {
       setShowOtherEventModal(true);
     }
@@ -67,7 +69,7 @@ const ContactForm = () => {
     });
   };
 
-  // Save the user’s custom event type from the modal
+  // Save user’s custom event type from the modal
   const handleOtherEventSubmit = (e) => {
     e.preventDefault();
     if (formData.otherEventType.trim() !== "") {
@@ -79,10 +81,9 @@ const ContactForm = () => {
     setShowOtherEventModal(false);
   };
 
-  // Close the "Other Event" modal if clicking outside or on "X"
+  // Close "Other Event" modal if clicking outside or on "X"
   const closeOtherEventModal = () => {
     setShowOtherEventModal(false);
-    // If user typed nothing, revert eventType to the first standard type
     if (!formData.otherEventType.trim()) {
       setFormData({ ...formData, eventType: standardEventTypes[0] });
     }
@@ -111,12 +112,8 @@ const ContactForm = () => {
 
     try {
       await axios.post("https://formspree.io/f/xjkyvqoe", submissionData);
-      setFeedback(
-        "✅ Your request has been submitted! You'll be redirected to our calendar shortly."
-      );
-      setTimeout(() => {
-        window.location.href = "/calendar";
-      }, 3000);
+      // Instead of showing old success message & redirect, show success overlay
+      setShowSuccessOverlay(true);
     } catch (error) {
       setFeedback("❌ There was an error submitting your request. Please try again.");
     }
@@ -131,8 +128,13 @@ const ContactForm = () => {
     ? "Other"
     : formData.eventType;
 
+  // Handler for overlay "X" to go home
+  const closeSuccessOverlay = () => {
+    window.location.href = "/";
+  };
+
   return (
-    <div className="bg-white min-h-screen flex flex-col justify-between">
+    <div className="bg-white min-h-screen flex flex-col justify-between relative">
       {/* Intro Section with Black Background */}
       <section className="py-10 px-4 bg-black text-white text-center">
         <h2 className="text-3xl font-bold mt-10">Let's Make Your Event Unforgettable</h2>
@@ -199,9 +201,8 @@ const ContactForm = () => {
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="none"
-              value={value} // from usePlacesAutocomplete
+              value={value}
               onChange={(e) => {
-                // Update both the autocomplete value AND the formData
                 setValue(e.target.value);
                 setFormData({ ...formData, eventAddress: e.target.value });
               }}
@@ -212,7 +213,11 @@ const ContactForm = () => {
                 <div
                   key={suggestion.place_id}
                   className="cursor-pointer p-2 bg-gray-100"
-                  onClick={() => handleAddressSelect(suggestion.description)}
+                  onClick={() => {
+                    setValue(suggestion.description, false);
+                    clearSuggestions();
+                    setFormData({ ...formData, eventAddress: suggestion.description });
+                  }}
                 >
                   {suggestion.description}
                 </div>
@@ -449,6 +454,42 @@ const ContactForm = () => {
                 Save
               </button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* NEW: Light Green Success Overlay */}
+      {showSuccessOverlay && (
+        <div className="fixed inset-0 flex items-center justify-center bg-green-200 bg-opacity-80 z-50">
+          {/* White X in top-right corner → redirect to home */}
+          <button
+            onClick={() => (window.location.href = "/")}
+            className="absolute top-4 right-4 text-white text-3xl font-bold"
+          >
+            X
+          </button>
+
+          <div className="max-w-md mx-auto p-6 text-center">
+            <h3 className="text-xl font-bold mb-4">
+              Thank you for submitting the contact form!
+            </h3>
+            <p className="mb-6">
+              Hang tight while our team reviews your request. We'll be in touch within 2-5 business days.
+              In the meantime, feel free to check out our{" "}
+              <span
+                className="underline cursor-pointer text-blue-700"
+                onClick={() => (window.location.href = "/alcohol-calculator")}
+              >
+                alcohol calculator
+              </span>{" "}
+              or return to the{" "}
+              <span
+                className="underline cursor-pointer text-blue-700"
+                onClick={() => (window.location.href = "/")}
+              >
+                home page
+              </span>.
+            </p>
           </div>
         </div>
       )}
