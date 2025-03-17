@@ -1,0 +1,109 @@
+
+
+/* Basic container to hold the 3D carousel and nav below it */
+.services-3d-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* The 3D Carousel */
+  .carousel {
+    position: relative;
+    width: 23rem; /* or whatever you prefer for the "card-size" */
+    height: 23rem;
+    perspective: 800px; /* depth of the 3D effect */
+    transform-style: preserve-3d;
+    margin-bottom: 1rem; /* spacing above the nav */
+    overflow: visible;   /* allow side cards to peek out */
+  }
+  
+  /* Each "card-container" with the transforms based on custom properties */
+  .card-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-out;
+  
+    transform:
+      rotateY(calc(var(--offset) * 50deg))
+      scaleY(calc(1 + var(--abs-offset) * -0.4))
+      translateZ(calc(var(--abs-offset) * -30rem))
+      translateX(calc(var(--direction) * -5rem));
+  
+    /* If you don't want them blurred: remove or set blur to 0 */
+    filter: blur(0);
+    opacity: calc(1 - var(--abs-offset) * 0.2);
+  }
+  
+  /* The actual card styling */
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-out;
+  }
+  
+  /* If you want the active card to have a gold border */
+  .card-container[style*="--active: 1"] .card {
+    border: 4px solid #f59e0b; /* Tailwind's text-yellow-500 color */
+  }
+  
+  /* Navigation container (arrows + dots) */
+  .carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* space between arrow, dots, arrow */
+  }
+  
+  /* Arrow button styling */
+  .nav-btn {
+    background: none;
+    border: none;
+    color: #f59e0b; /* gold color */
+    font-size: 2rem;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  /* Dots container */
+  .dots {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Each dot */
+  .dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .dot:hover {
+    background-color: #aaa;
+  }
+  
+  /* Active dot is gold */
+  .active-dot {
+    background-color: #f59e0b;
+  }
+  
