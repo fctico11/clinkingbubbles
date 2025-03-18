@@ -14,7 +14,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Detect scroll and change navbar background
+  // Change navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -23,7 +23,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu if click outside overlay content
+  // Close menu if clicking outside overlay
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -38,7 +38,7 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Disable scrolling when menu is open
+  // Disable body scroll when overlay is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -49,12 +49,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-all duration-300 z-[100] ${
-        isScrolled ? "bg-black shadow-lg" : "bg-transparent"
-      }`}
-      style={{ minHeight: "64px" }} // consistent navbar height
+      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-all duration-300 
+                  z-[999] ${isScrolled ? "bg-black shadow-lg" : "bg-transparent"}`}
+      style={{ minHeight: "64px" }} // ensure consistent navbar height
     >
-      {/* Logo (remains same position & size) */}
+      {/* Logo remains at top-left (above overlay) */}
       <Link
         to="/"
         className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font hover:opacity-80 transition"
@@ -66,29 +65,27 @@ const Navbar = () => {
       <div className="hidden md:flex space-x-8 items-center">
         <Link to="/" className="text-yellow-500 relative group transition">
           Home
-          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
+          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 
+                           transition-all duration-300 group-hover:w-full"></span>
         </Link>
         <Link to="/about" className="text-yellow-500 relative group transition">
           About
-          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
+          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 
+                           transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        <Link
-          to="/booking-process"
-          className="text-yellow-500 relative group transition"
-        >
+        <Link to="/booking-process" className="text-yellow-500 relative group transition">
           Booking Process
-          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
+          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 
+                           transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        <Link
-          to="/alcohol-calculator"
-          className="text-yellow-500 relative group transition"
-        >
+        <Link to="/alcohol-calculator" className="text-yellow-500 relative group transition">
           Alcohol Calculator
-          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
+          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 
+                           transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        {/* Get a Quote Button */}
         <Link to="/contact">
-          <button className="bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
+          <button className="bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md 
+                             hover:bg-yellow-600 transition">
             Get a Quote!
           </button>
         </Link>
@@ -101,23 +98,18 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Full-Screen Overlay (slides from top => down) */}
+      {/* Full-screen Overlay (slides from top => down) */}
       <div
         ref={menuRef}
         className={`mobile-drawer ${isOpen ? "open" : ""}`}
       >
         <div className="drawer-content">
-          {/* Close Button in top-right */}
-          <div className="drawer-top">
-            <button
-              onClick={toggleMenu}
-              className="text-white text-3xl focus:outline-none"
-            >
-              <FiX />
-            </button>
-          </div>
+          {/* Close Button in top-right, always gold */}
+          <button onClick={toggleMenu} className="close-btn">
+            <FiX />
+          </button>
 
-          {/* Navigation Links */}
+          {/* Nav Links */}
           <nav className="drawer-links">
             <Link to="/" className="drawer-link" onClick={toggleMenu}>
               Home
@@ -142,4 +134,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

@@ -9,63 +9,63 @@
     font-family: 'ClinkingBubblesFont', sans-serif;
   }
   
-/* Basic navbar styling from your existing code remains. */
+/* Basic navbar styling remains, 
+   focusing on the overlay that slides from top => bottom. */
 
-/* The overlay is behind the nav, so the nav is z-[100], 
-   and the overlay is a lower z-index (like 99 or less).
-   We'll set .mobile-drawer to z-90. 
-   Or keep it as z-50 but the nav is z-100, so brand remains on top. */
-
+/* Full-screen black overlay behind the navbar logo 
+   (nav has z-index: 999, overlay has z-index: 900 or 50). 
+   We'll use z-900 so that the nav brand is on top. */
    .mobile-drawer {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 0; /* initially 0 height */
+    height: 0;                /* start at 0 height */
     background-color: #000;
-    overflow: hidden; /* prevent scroll within the overlay */
-    transition: height 0.4s ease-in-out; /* smooth expand from 0 to 100% */
-    z-index: 50; /* nav is z-100 => brand stays on top */
+    overflow: hidden;         /* no scroll in overlay */
+    transition: height 0.4s ease-in-out; /* smooth expand from top */
+    z-index: 900;             /* below the navbar's z-[999] */
     display: flex;
     flex-direction: column;
   }
   
   .mobile-drawer.open {
-    height: 100%; /* fill screen from top to bottom */
+    height: 100%; /* fill the screen top => bottom */
   }
   
   .drawer-content {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    position: relative; /* so we can absolutely place close button, etc. */
   }
   
-  /* Top row with close button on the right */
-  .drawer-top {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #333;
+  /* Close button in top-right, always gold */
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #f59e0b; /* always gold */
+    font-size: 2rem;
+    cursor: pointer;
   }
   
   /* The link container */
   .drawer-links {
     display: flex;
     flex-direction: column;
-    padding: 1rem 2rem;
+    padding: 4rem 2rem 2rem 2rem; /* 4rem top so links appear below close button */
     gap: 1.5rem;
-    margin-top: 1rem;
   }
   
-  /* Each link styling with lines and hover effect */
+  /* Each link styling with lines, etc. */
   .drawer-link {
     color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
-    padding-bottom: 0.5rem;
     border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
     transition: color 0.2s;
     text-align: left;
   }
@@ -74,7 +74,7 @@
     color: #f59e0b;
   }
   
-  /* "Get a Quote!" stands out in gold */
+  /* The gold "Get a Quote!" link */
   .drawer-link.quote-btn {
     display: flex;
     justify-content: center;
@@ -91,4 +91,3 @@
     background-color: #e5a700;
   }
   
-
