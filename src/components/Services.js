@@ -48,7 +48,6 @@ const servicesData = [
     description: "No matter the occasion, our team is dedicated to tailoring an experience that exceeds expectations every time",
     icon: champagneIcon,
   },
-  // Add more services if desired
 ];
 
 // Helper to wrap an index around the array length
@@ -67,7 +66,8 @@ function Services() {
   };
 
   const handleNext = () => {
-    if (active < servicesData.length - 1) setActive((prev) => wrapIndex(prev + 1, servicesData.length));
+    if (active < servicesData.length - 1)
+      setActive((prev) => wrapIndex(prev + 1, servicesData.length));
   };
 
   // Setup swipe handlers for mobile
@@ -101,9 +101,13 @@ function Services() {
               >
                 <div className="card">
                   <div className="card-content">
-                    <img src={service.icon} alt={`${service.title} icon`} className="card-icon" />
-                    <h2 className="bubbles-font text-lg">{service.title}</h2>
-                    <p className="bubbles-font text-lg">{service.description}</p>
+                    <img
+                      src={service.icon}
+                      alt={`${service.title} icon`}
+                      className="card-icon"
+                    />
+                    <h2 className="bubbles-font">{service.title}</h2>
+                    <p className="bubbles-font">{service.description}</p>
                   </div>
                 </div>
               </div>
@@ -139,5 +143,3 @@ function Services() {
 }
 
 export default Services;
-
-
