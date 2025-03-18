@@ -194,6 +194,7 @@ const ContactForm = () => {
             />
           </div>
 
+
           {/* Email */}
           <div>
             <label className="block font-semibold mb-1">Email *</label>
