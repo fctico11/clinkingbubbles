@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-all duration-300 z-[999] ${
-        isScrolled ? "bg-[#EBE6D6] shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-black shadow-lg" : "bg-transparent"
       }`}
       style={{ minHeight: "64px" }}
     >
