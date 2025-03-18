@@ -3,34 +3,50 @@ import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 import { useSwipeable } from "react-swipeable";
 import "./Services.css";
 
+// import icons
+import ringsIcon from "../assets/icons/rings.png";
+import privateIcon from "../assets/icons/no-entry.png";
+import corporateIcon from "../assets/icons/handshake.png";
+import birthdayIcon from "../assets/icons/birthday-cake.png";
+import graduationIcon from "../assets/icons/graduate.png";
+import anniversaryIcon from "../assets/icons/anniversary.png";
+import moreIcon from "../assets/icons/more.png";
+
 const servicesData = [
   {
     title: "Private Parties",
     description: "Personalized bartending services for an intimate, memorable event.",
+    icon: privateIcon,
   },
   {
     title: "Corporate Events",
     description: "Elevate your corporate gatherings with tailored cocktail experiences.",
+    icon: corporateIcon,
   },
   {
     title: "Weddings",
     description: "Add a touch of luxury to your special day with bespoke cocktail menus.",
+    icon: ringsIcon,
   },
   {
     title: "Birthday Parties",
     description: "Celebrate in style with custom cocktails and dedicated bartenders.",
+    icon: birthdayIcon,
   },
   {
     title: "Graduation Parties",
     description: "Make the milestone unforgettable with our signature drinks.",
+    icon: graduationIcon,
   },
   {
     title: "Anniversaries",
     description: "Toast to lasting love with a refined cocktail experience.",
+    icon: anniversaryIcon,
   },
   {
     title: "So Much More...",
     description: "No matter the occasion, our team is dedicated to tailoring an experience that exceeds expectations every time",
+    icon: moreIcon,
   },
   // Add more services if desired
 ];
@@ -85,6 +101,7 @@ function Services() {
               >
                 <div className="card">
                   <div className="card-content">
+                    <img src={service.icon} alt={`${service.title} icon`} className="card-icon" />
                     <h2>{service.title}</h2>
                     <p>{service.description}</p>
                   </div>
