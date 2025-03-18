@@ -123,8 +123,8 @@ html, body {
 
   @media (max-width: 768px) {
     .carousel {
-      width: 16rem;  /* smaller so side cards are visible */
-      height: 16rem;
+      width: 17rem;  /* smaller so side cards are visible */
+      height: 17rem;
       perspective: 500; /* remove big 3D perspective on mobile */
     }
   

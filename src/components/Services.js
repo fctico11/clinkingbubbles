@@ -28,6 +28,10 @@ const servicesData = [
     title: "Anniversaries",
     description: "Toast to lasting love with a refined cocktail experience.",
   },
+  {
+    title: "So Much More...",
+    description: "No matter the occasion, our team is dedicated to tailoring an experience that exceeds expectations every time",
+  },
   // Add more services if desired
 ];
 
