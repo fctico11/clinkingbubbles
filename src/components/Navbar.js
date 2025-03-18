@@ -107,7 +107,7 @@ const Navbar = () => {
         </div>
 
         <Link to="/contact">
-          <button className="bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
+          <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
             Get a Quote!
           </button>
         </Link>
