@@ -16,22 +16,88 @@ const Footer = () => {
           <Link to="/contact" className="text-black hover:text-yellow-500 transition">Contact</Link>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex justify-center space-x-6 mb-6">
-          <a href="https://www.instagram.com/clinkingbubbles" target="_blank" rel="noopener noreferrer">
-            <FaInstagram size={30} className="hover:text-yellow-500 transition" />
-          </a>
-          <a
-            href="https://www.tiktok.com/@clinkingbubbles"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <SiTiktok size={30} className="hover:text-yellow-500 transition" />
-          </a>
-          <Link to="/contact">
-            <FaEnvelope size={30} className="hover:text-yellow-500 transition" />
-          </Link>
-        </div>
+      {/* Social Icons */}
+<div className="flex justify-center space-x-6 mb-6">
+  {/* Instagram */}
+  <a
+    href="https://www.instagram.com/clinkingbubbles"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div className="relative inline-block w-[30px] h-[30px]">
+      {/* Black "border" layer (slightly larger) */}
+      <FaInstagram
+        size={28}
+        className="absolute top-1/2 left-1/2 
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-black"
+      />
+      <FaInstagram
+        size={24}
+        className="absolute top-1/2 left-1/2 
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-black"
+      />
+      {/* White (or your preferred color) icon on top */}
+      <FaInstagram
+        size={26}
+        className="absolute top-1/2 left-1/2 
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-white hover:text-yellow-500 transition"
+      />
+    </div>
+  </a>
+
+  {/* TikTok */}
+  <a
+    href="https://www.tiktok.com/@clinkingbubbles"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div className="relative inline-block w-[30px] h-[30px]">
+      <SiTiktok
+        size={30}
+        className="absolute top-1/2 left-1/2
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-black"
+      />
+      <SiTiktok
+        size={20}
+        className="absolute top-1/2 left-1/2
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-black"
+      />
+      <SiTiktok
+        size={26}
+        className="absolute top-1/2 left-1/2
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-white hover:text-yellow-500 transition"
+      />
+      
+    </div>
+  </a>
+
+  {/* Envelope */}
+  <Link to="/contact">
+    <div className="relative inline-block w-[30px] h-[30px]">
+      <FaEnvelope
+        size={30}
+        className="absolute top-1/2 left-1/2
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-black"
+      />
+      <FaEnvelope
+        size={26}
+        className="absolute top-1/2 left-1/2
+                   transform -translate-x-1/2 -translate-y-1/2
+                   text-white hover:text-yellow-500 transition"
+      />
+    </div>
+  </Link>
+</div>
+
+
+        
 
         {/* Disclaimer */}
         <div className="text-sm text-gray-400">
