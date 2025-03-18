@@ -159,7 +159,7 @@ const ContactForm = () => {
         <p className="text-black max-w-2xl mx-auto mt-4">
           We’re excited to craft amazing drinks and create a fun atmosphere for your special occasion!
           Fill out the details below, and we’ll tailor our services to your needs. Once submitted,
-          you’ll be hearing from our team in 2-5 business days to finalize your consultation.
+          you’ll be hearing from our team within 48 hours to finalize your consultation.
         </p>
       </section>
 
@@ -493,7 +493,7 @@ const ContactForm = () => {
               Thank you for submitting the contact form, we're almost ready to get this party started!
             </h3>
             <p className="text-lg">
-              Hang tight while our team reviews your request. We'll be in touch within 2-5 business days.
+              Hang tight while our team reviews your request. We'll be in touch within 48 hours.
               In the meantime, feel free to check out our{" "}
               <span
                 className="underline cursor-pointer"
