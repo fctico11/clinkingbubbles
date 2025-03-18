@@ -60,7 +60,7 @@ const MAX_VISIBILITY = 2;
 
 function Services() {
   // Active (center) card index
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(0);
 
   const handlePrev = () => {
     if (active > 0) setActive((prev) => wrapIndex(prev - 1, servicesData.length));
