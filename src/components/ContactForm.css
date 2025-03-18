@@ -36,7 +36,7 @@
     /* First, run sparkleUnderline (3s, 1s delay, once, forwards)
        Then, after 4 seconds total (3s+1s), run pulseUnderline (2s, infinite) */
     animation: 
-      sparkleUnderline 3s linear 1s 1 forwards, 
+      sparkleUnderline 3s linear 0s 1 forwards, 
       pulseUnderline 2s ease-in-out 4s infinite;
   }
   
