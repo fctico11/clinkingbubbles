@@ -153,10 +153,10 @@ const ContactForm = () => {
         }
       `}</style>
 
-      {/* Intro Section with Black Background */}
-      <section className="py-10 px-4 bg-black text-white text-center">
-        <h2 className="text-3xl font-bold mt-12">Let's Make Your Event <span className="sparkle">Unforgettable</span></h2>
-        <p className="max-w-2xl mx-auto mt-4">
+      {/* Intro Section with bg-[#EBE6D6] Background */}
+      <section className="py-10 px-4 bg-[#EBE6D6] text-white text-center">
+        <h2 className="text-black text-3xl font-bold mt-12">Let's Make Your Event <span className="sparkle">Unforgettable</span></h2>
+        <p className="text-black max-w-2xl mx-auto mt-4">
           We’re excited to craft amazing drinks and create a fun atmosphere for your special occasion!
           Fill out the details below, and we’ll tailor our services to your needs. Once submitted,
           you’ll be hearing from our team in 2-5 business days to finalize your consultation.
