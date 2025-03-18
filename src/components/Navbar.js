@@ -2,6 +2,8 @@ import "./Navbar.css";
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi"; 
+import { FaInstagram } from "react-icons/fa";
+import { SiTiktok } from "react-icons/si";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +19,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Detect scroll to update navbar background (only if not forced black)
+  // Detect scroll and update background if not forced
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -41,15 +43,9 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Disable scrolling when overlay is open (set on both body and html)
+  // Disable scrolling when overlay is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-      document.documentElement.style.overflow = "auto";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
   return (
@@ -59,7 +55,7 @@ const Navbar = () => {
       }`}
       style={{ minHeight: "64px" }}
     >
-      {/* Logo remains at top-left (always visible) */}
+      {/* Logo always visible on top-left */}
       <Link
         to="/"
         className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font hover:opacity-80 transition"
@@ -67,7 +63,7 @@ const Navbar = () => {
         Clinking Bubbles Co.
       </Link>
 
-      {/* Desktop Links */}
+      {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-8 items-center">
         <Link to="/" className="text-yellow-500 relative group transition">
           Home
@@ -85,6 +81,28 @@ const Navbar = () => {
           Alcohol Calculator
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
+
+        {/* Social Icons for Desktop */}
+        <div className="social-icons hidden md:flex items-center space-x-4">
+          <a
+            href="https://www.instagram.com/clinkingbubbles"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-500 hover:text-yellow-500 transition"
+          >
+            <FaInstagram size={30} />
+          </a>
+          <a
+            href="https://www.tiktok.com/@clinkingbubbles"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-500 hover:text-yellow-500 transition"
+          >
+            <SiTiktok size={30} />
+          </a>
+        </div>
+
+        {/* Get a Quote Button */}
         <Link to="/contact">
           <button className="bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
             Get a Quote!
@@ -99,11 +117,11 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Full-Screen Mobile Overlay Menu */}
+      {/* Mobile Overlay Menu */}
       {isOpen && (
         <div ref={menuRef} className={`mobile-drawer ${isOpen ? "open" : ""}`}>
           <div className="drawer-content">
-            {/* Close button in top-right; always yellow */}
+            {/* Close Button in top-right */}
             <button onClick={toggleMenu} className="close-btn">
               <FiX />
             </button>
@@ -125,6 +143,26 @@ const Navbar = () => {
                 Get a Quote!
               </Link>
             </nav>
+
+            {/* Social Icons for Mobile at Bottom */}
+            <div className="drawer-social">
+              <a
+                href="https://www.instagram.com/clinkingbubbles"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-social-icon"
+              >
+                <FaInstagram size={30} />
+              </a>
+              <a
+                href="https://www.tiktok.com/@clinkingbubbles"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-social-icon"
+              >
+                <SiTiktok size={30} />
+              </a>
+            </div>
           </div>
         </div>
       )}
@@ -133,3 +171,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

@@ -9,23 +9,23 @@
   font-family: 'ClinkingBubblesFont', sans-serif;
 }
 
-/* Full-screen mobile overlay that expands from top to bottom */
+/* Mobile Drawer Overlay (Full-Screen, Sliding from Top) */
 .mobile-drawer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 0;                /* hidden initially */
-  background-color: #EBE6D6;  /* light background */
-  overflow: hidden;         /* disable scrolling inside overlay */
+  height: 0; /* initially hidden */
+  background-color: #EBE6D6; /* overlay background */
+  overflow: hidden; /* disable scroll in overlay */
   transition: height 0.4s ease-in-out;
-  z-index: 900;             /* below navbar (navbar is z-[999]) */
+  z-index: 900; /* below navbar which is z-[999] */
   display: flex;
   flex-direction: column;
 }
 
 .mobile-drawer.open {
-  height: 100%; /* overlay fills screen */
+  height: 100%; /* fill screen */
 }
 
 .drawer-content {
@@ -34,7 +34,7 @@
   position: relative;
 }
 
-/* Close button always yellow, positioned at top-right */
+/* Close Button: Always yellow */
 .close-btn {
   position: absolute;
   top: 1rem;
@@ -43,19 +43,22 @@
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: #f59e0b; /* always yellow */
+  color: #000000;
 }
 
-/* Navigation links container */
+.close-btn:hover {
+  color: #f59e0b;
+}
+
+/* Navigation links inside overlay */
 .drawer-links {
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem;
   gap: 1.5rem;
-  margin-top: 4rem; /* space below the close button */
+  margin-top: 4rem; /* space below close button */
 }
 
-/* Each navigation link */
 .drawer-link {
   color: #000; /* dark text on light background */
   text-decoration: none;
@@ -70,7 +73,7 @@
   color: #f59e0b;
 }
 
-/* "Get a Quote!" button styling */
+/* "Get a Quote!" button style */
 .drawer-link.quote-btn {
   display: flex;
   justify-content: center;
@@ -85,4 +88,24 @@
 
 .drawer-link.quote-btn:hover {
   background-color: #e5a700;
+}
+
+/* Mobile Social Icons Container at bottom */
+.drawer-social {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Mobile Social Icon Styling: default black, yellow on hover */
+.mobile-social-icon {
+  color: #000;
+  transition: color 0.3s;
+}
+
+.mobile-social-icon:hover {
+  color: #f59e0b;
 }
