@@ -9,7 +9,7 @@
   font-family: 'ClinkingBubblesFont', sans-serif;
 }
 
-/* Mobile Drawer Overlay (Full-Screen, Sliding from Top) */
+/* Full-screen mobile overlay that expands from top to bottom */
 .mobile-drawer {
   position: fixed;
   top: 0;
@@ -17,15 +17,15 @@
   width: 100%;
   height: 0; /* initially hidden */
   background-color: #EBE6D6; /* overlay background */
-  overflow: hidden; /* disable scroll in overlay */
+  overflow: hidden; /* disable scrolling inside overlay */
   transition: height 0.4s ease-in-out;
-  z-index: 900; /* below navbar which is z-[999] */
+  z-index: 900; /* below navbar (navbar is z-[999]) */
   display: flex;
   flex-direction: column;
 }
 
 .mobile-drawer.open {
-  height: 100%; /* fill screen */
+  height: 100%; /* overlay fills the screen */
 }
 
 .drawer-content {
@@ -34,7 +34,7 @@
   position: relative;
 }
 
-/* Close Button: Always yellow */
+/* Close Button: always yellow */
 .close-btn {
   position: absolute;
   top: 1rem;
@@ -46,11 +46,11 @@
   color: #000000;
 }
 
-.close-btn:hover {
+.close-btn:hover{
   color: #f59e0b;
 }
 
-/* Navigation links inside overlay */
+/* Navigation links container */
 .drawer-links {
   display: flex;
   flex-direction: column;
@@ -59,6 +59,7 @@
   margin-top: 4rem; /* space below close button */
 }
 
+/* Each navigation link */
 .drawer-link {
   color: #000; /* dark text on light background */
   text-decoration: none;
@@ -73,7 +74,7 @@
   color: #f59e0b;
 }
 
-/* "Get a Quote!" button style */
+/* "Get a Quote!" button styling */
 .drawer-link.quote-btn {
   display: flex;
   justify-content: center;

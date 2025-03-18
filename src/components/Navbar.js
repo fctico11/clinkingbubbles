@@ -11,7 +11,7 @@ const Navbar = () => {
   const menuRef = useRef(null);
   const location = useLocation();
 
-  // Force navbar to be black on any route except homepage
+  // Force navbar background to be black on any route except homepage
   const forceBlack = location.pathname !== "/";
 
   // Toggle mobile menu
@@ -19,7 +19,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Detect scroll and update background if not forced
+  // Detect scroll (for non-forced backgrounds)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -28,24 +28,28 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking outside the overlay content
+  // Close menu when clicking outside the overlay (if needed)
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsOpen(false);
+        // Do nothing – disable closing by clicking outside.
       }
     };
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Disable scrolling when overlay is open
+  // Disable scrolling on body and html when overlay is open
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    }
   }, [isOpen]);
 
   return (
@@ -102,7 +106,6 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Get a Quote Button */}
         <Link to="/contact">
           <button className="bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
             Get a Quote!
@@ -117,11 +120,11 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Overlay Menu */}
+      {/* Mobile Full-Screen Overlay Menu (No outside click close) */}
       {isOpen && (
         <div ref={menuRef} className={`mobile-drawer ${isOpen ? "open" : ""}`}>
           <div className="drawer-content">
-            {/* Close Button in top-right */}
+            {/* Close Button at top-right (always yellow) */}
             <button onClick={toggleMenu} className="close-btn">
               <FiX />
             </button>
@@ -143,7 +146,6 @@ const Navbar = () => {
                 Get a Quote!
               </Link>
             </nav>
-
             {/* Social Icons for Mobile at Bottom */}
             <div className="drawer-social">
               <a
