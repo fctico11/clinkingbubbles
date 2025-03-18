@@ -1,13 +1,3 @@
-@font-face {
-  font-family: 'ClinkingBubblesFont';
-  src: url('../assets/fonts/VELISTA.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.clinking-font {
-  font-family: 'ClinkingBubblesFont', sans-serif;
-}
 
 /* Full-screen mobile overlay that expands from top to bottom */
 .mobile-drawer {

@@ -69,19 +69,19 @@ const Navbar = () => {
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-8 items-center">
-        <Link to="/" className="text-yellow-500 relative group transition">
+        <Link to="/" className="bubbles-font text-lg text-yellow-500 relative group transition">
           Home
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        <Link to="/about" className="text-yellow-500 relative group transition">
+        <Link to="/about" className="bubbles-font text-lg text-yellow-500 relative group transition">
           About
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        <Link to="/booking-process" className="text-yellow-500 relative group transition">
+        <Link to="/booking-process" className="bubbles-font text-lg text-yellow-500 relative group transition">
           Booking Process
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        <Link to="/alcohol-calculator" className="text-yellow-500 relative group transition">
+        <Link to="/alcohol-calculator" className="bubbles-font text-lg text-yellow-500 relative group transition">
           Alcohol Calculator
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
@@ -130,19 +130,19 @@ const Navbar = () => {
             </button>
             {/* Navigation Links */}
             <nav className="drawer-links">
-              <Link to="/" className="drawer-link" onClick={toggleMenu}>
+              <Link to="/" className="bubbles-font drawer-link" onClick={toggleMenu}>
                 Home
               </Link>
-              <Link to="/about" className="drawer-link" onClick={toggleMenu}>
+              <Link to="/about" className="bubbles-font drawer-link" onClick={toggleMenu}>
                 About
               </Link>
-              <Link to="/booking-process" className="drawer-link" onClick={toggleMenu}>
+              <Link to="/booking-process" className="bubbles-font drawer-link" onClick={toggleMenu}>
                 Booking Process
               </Link>
-              <Link to="/alcohol-calculator" className="drawer-link" onClick={toggleMenu}>
+              <Link to="/alcohol-calculator" className="bubbles-font drawer-link" onClick={toggleMenu}>
                 Alcohol Calculator
               </Link>
-              <Link to="/contact" className="drawer-link quote-btn" onClick={toggleMenu}>
+              <Link to="/contact" className="bubbles-font drawer-link quote-btn" onClick={toggleMenu}>
                 Get a Quote!
               </Link>
             </nav>

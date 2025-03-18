@@ -21,7 +21,7 @@ const Home = () => {
       <Services />
       <section className="py-12 text-center">
         <Link to="/booking-process">
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-full transition">
+          <button className="bubbles-font text-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-full transition">
             Learn more about the Booking process
           </button>
         </Link>

@@ -9,11 +9,11 @@ const Footer = () => {
       <div className="max-w-4xl mx-auto">
         {/* Navigation Links */}
         <div className="flex justify-center space-x-6 mb-6">
-          <Link to="/" className="text-black hover:text-yellow-500 transition">Home</Link>
-          <Link to="/about" className="text-black hover:text-yellow-500 transition">About</Link>
-          <Link to="/booking-process" className="text-black hover:text-yellow-500 transition">Booking Process</Link>
-          <Link to="/alcohol-calculator" className="text-black hover:text-yellow-500 transition">Alcohol Calculator</Link>
-          <Link to="/contact" className="text-black hover:text-yellow-500 transition">Contact</Link>
+          <Link to="/" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Home</Link>
+          <Link to="/about" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">About</Link>
+          <Link to="/booking-process" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Booking Process</Link>
+          <Link to="/alcohol-calculator" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Alcohol Calculator</Link>
+          <Link to="/contact" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Contact</Link>
         </div>
 
       {/* Social Icons */}

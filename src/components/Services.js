@@ -102,8 +102,8 @@ function Services() {
                 <div className="card">
                   <div className="card-content">
                     <img src={service.icon} alt={`${service.title} icon`} className="card-icon" />
-                    <h2>{service.title}</h2>
-                    <p>{service.description}</p>
+                    <h2 className="bubbles-font text-lg">{service.title}</h2>
+                    <p className="bubbles-font text-lg">{service.description}</p>
                   </div>
                 </div>
               </div>

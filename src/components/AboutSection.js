@@ -5,7 +5,7 @@ const AboutSection = () => {
     <section className="bg-white text-black py-10 px-6 text-center">
       <div className="max-w-4xl mx-auto">
         <h2 className="clinking-font text-3xl md:text-5xl font-bold mb-6">Sip, Smile, and Relax</h2>
-        <p className="text-lg md:text-xl leading-relaxed">
+        <p className="bubbles-font text-lg md:text-xl leading-relaxed">
           At Clinking Bubbles Co., we believe every gathering should be a toast-worthy moment, without the stress.
           Whether you’re hosting a corporate conference or an intimate gathering, our fully trained and insured bartenders
           serve up unforgettable drinks and good vibes. From crafting signature cocktails to supplying all the essentials
