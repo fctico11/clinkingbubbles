@@ -1,10 +1,9 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Hide horizontal scrollbar for desktop */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
   }
   
-  /* Basic container to hold the 3D carousel and nav below it */
   .services-3d-wrapper {
     display: flex;
     flex-direction: column;
@@ -12,36 +11,18 @@ html, body {
     justify-content: center;
   }
   
-  /* The 3D Carousel (desktop defaults) */
+  /* Desktop defaults */
   .carousel {
     position: relative;
-    width: 23rem;  /* desktop size */
+    width: 23rem;  
     height: 23rem;
-    perspective: 800px; /* depth of 3D effect */
+    perspective: 800px;
     transform-style: preserve-3d;
     margin-bottom: 1rem;
-    overflow: visible; /* allow side cards to peek out */
+    overflow: visible;
   }
   
-  /* On mobile, make the carousel smaller and reduce transforms so side cards are partially visible */
-  @media (max-width: 768px) {
-    .carousel {
-      width: 16rem; /* smaller so side cards peek in */
-      height: 16rem;
-      perspective: 600px; /* less intense perspective on mobile */
-    }
   
-    /* Reduce rotation & translateZ so side cards remain within the screen */
-    .card-container {
-      transform:
-        rotateY(calc(var(--offset) * 35deg))  /* was 50deg, lowered for mobile */
-        scaleY(calc(1 + var(--abs-offset) * -0.3)) /* was -0.4, lowered for gentler scale */
-        translateZ(calc(var(--abs-offset) * -15rem)) /* was -30rem, reduce so side cards don't push too far */
-        translateX(calc(var(--direction) * -3rem));  /* was -5rem */
-    }
-  }
-  
-  /* Each card container (desktop transforms) */
   .card-container {
     position: absolute;
     width: 100%;
@@ -57,7 +38,6 @@ html, body {
     opacity: calc(1 - var(--abs-offset) * 0.2);
   }
   
-  /* The actual card styling */
   .card {
     width: 100%;
     height: 100%;
@@ -69,12 +49,12 @@ html, body {
     transition: all 0.3s ease-out;
   }
   
-  /* If you want the active card to have a gold border */
+  /* Gold border for the active card */
   .card-container[style*="--active: 1"] .card {
-    border: 4px solid #f59e0b; /* gold color */
+    border: 4px solid #f59e0b;
   }
   
-  /* Navigation container (arrows + dots) */
+  /* Nav (arrows + dots) */
   .carousel-nav {
     display: flex;
     align-items: center;
@@ -82,7 +62,6 @@ html, body {
     gap: 1rem;
   }
   
-  /* Arrow button styling */
   .nav-btn {
     background: none;
     border: none;
@@ -101,14 +80,12 @@ html, body {
     cursor: not-allowed;
   }
   
-  /* Dots container */
   .dots {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
   
-  /* Each dot */
   .dot {
     width: 0.75rem;
     height: 0.75rem;
@@ -122,8 +99,29 @@ html, body {
     background-color: #aaa;
   }
   
-  /* Active dot is gold */
   .active-dot {
     background-color: #f59e0b;
   }
   
+
+  @media (max-width: 768px) {
+    .carousel {
+      width: 14rem;  /* smaller so side cards are visible */
+      height: 14rem;
+      perspective: none; /* remove big 3D perspective on mobile */
+    }
+  
+    .card-container {
+      /* Overriding the desktop transform with a simpler 2D offset */
+      transform: translateX(calc(var(--offset) * -9rem)) 
+                  translateY(0)
+                  scale(calc(1 - var(--abs-offset)*0.1));
+  
+      /* optional slight rotation if you want a little tilt */
+      /* rotate: e.g. rotateY(calc(var(--offset)*10deg)) */
+      
+      /* Keep the same transition, blur(0), etc. */
+      filter: blur(0);
+      opacity: calc(1 - var(--abs-offset) * 0.2);
+    }
+  }
