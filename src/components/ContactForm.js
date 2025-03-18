@@ -140,7 +140,7 @@ const ContactForm = () => {
         <h2 className="clinking-font text-black text-3xl font-bold mt-12">
           Let's Make Your Event <span className="sparkle">Unforgettable</span>
         </h2>
-        <p className="text-black max-w-2xl mx-auto mt-4">
+        <p className="bubbles-font text-xl text-black max-w-2xl mx-auto mt-4">
           We’re excited to craft amazing drinks and create a fun atmosphere for your special occasion!
           Fill out the details below, and we’ll tailor our services to your needs. Once submitted,
           you’ll be hearing from our team within 48 hours to finalize your consultation.
@@ -152,12 +152,12 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
           {/* Full Name */}
           <div>
-            <label className="block font-semibold mb-1">Full Name *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Full Name *</label>
             <input
               type="text"
               name="name"
               placeholder="e.g. John Doe"
-              className="w-full p-3 rounded border border-gray-400"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
               onChange={handleChange}
               value={formData.name}
               required
@@ -165,12 +165,12 @@ const ContactForm = () => {
           </div>
           {/* Phone Number */}
           <div>
-            <label className="block font-semibold mb-1">Phone Number *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Phone Number *</label>
             <input
               type="tel"
               name="phone"
               placeholder="e.g. (555) 123-4567"
-              className="w-full p-3 rounded border border-gray-400"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
               onChange={handleChange}
               value={formData.phone}
               required
@@ -178,12 +178,12 @@ const ContactForm = () => {
           </div>
           {/* Email */}
           <div>
-            <label className="block font-semibold mb-1">Email *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Email *</label>
             <input
               type="email"
               name="email"
               placeholder="e.g. john@example.com"
-              className="w-full p-3 rounded border border-gray-400"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
               onChange={handleChange}
               value={formData.email}
               required
@@ -191,12 +191,12 @@ const ContactForm = () => {
           </div>
           {/* Event Address with Autocomplete */}
           <div>
-            <label className="block font-semibold mb-1">Event Address *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Event Address *</label>
             <input
               type="text"
               name="eventAddress"
               placeholder="Start typing address..."
-              className="w-full p-3 rounded border border-gray-400"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="none"
@@ -220,10 +220,10 @@ const ContactForm = () => {
           </div>
           {/* Event Location */}
           <div>
-            <label className="block font-semibold mb-1">Location of Event *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Location of Event *</label>
             <select
               name="eventLocation"
-              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.eventLocation}
             >
@@ -233,11 +233,11 @@ const ContactForm = () => {
           </div>
           {/* Date of Event */}
           <div>
-            <label className="block font-semibold mb-1">Date of Event *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Date of Event *</label>
             <input
               type="date"
               name="eventDate"
-              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.eventDate}
               required
@@ -245,10 +245,10 @@ const ContactForm = () => {
           </div>
           {/* Type of Event */}
           <div>
-            <label className="block font-semibold mb-1">Type of Event *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Type of Event *</label>
             <select
               name="eventType"
-              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
+              className="bubbles-font text-lgw-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={eventTypeValue}
             >
@@ -267,25 +267,25 @@ const ContactForm = () => {
           </div>
           {/* Hours of Event */}
           <div>
-            <label className="block font-semibold mb-1">Hours of Event *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Hours of Event *</label>
             <div className="flex space-x-4">
               <div className="w-1/2">
-                <label className="block text-sm font-medium mb-1">Start Time</label>
+                <label className="bubbles-font text-lg block text-sm font-medium mb-1">Start Time</label>
                 <input
                   type="time"
                   name="eventStartTime"
-                  className="w-full p-3 rounded border border-gray-400 bg-white text-black"
+                  className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
                   onChange={handleChange}
                   value={formData.eventStartTime}
                   required
                 />
               </div>
               <div className="w-1/2">
-                <label className="block text-sm font-medium mb-1">End Time</label>
+                <label className="bubbles-font text-lg block text-sm font-medium mb-1">End Time</label>
                 <input
                   type="time"
                   name="eventEndTime"
-                  className="w-full p-3 rounded border border-gray-400 bg-white text-black"
+                  className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
                   onChange={handleChange}
                   value={formData.eventEndTime}
                   required
@@ -295,12 +295,12 @@ const ContactForm = () => {
           </div>
           {/* Estimated Number of Guests */}
           <div>
-            <label className="block font-semibold mb-1">Estimated Number of Guests *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Estimated Number of Guests *</label>
             <input
               type="number"
               name="guestCount"
               placeholder="e.g. 75"
-              className="w-full p-3 rounded border border-gray-400"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
               onChange={handleChange}
               value={formData.guestCount}
               required
@@ -308,10 +308,10 @@ const ContactForm = () => {
           </div>
           {/* Bartending Options */}
           <div>
-            <label className="block font-semibold mb-1">Bartending Options *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Bartending Options *</label>
             <select
               name="bartendingOption"
-              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.bartendingOption}
             >
@@ -321,21 +321,21 @@ const ContactForm = () => {
           </div>
           {/* Additional Details */}
           <div>
-            <label className="block font-semibold mb-1">Any other details you would like for us to know:</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Any other details you would like for us to know:</label>
             <textarea
               name="additionalDetails"
               placeholder="e.g. Special drink requests, event theme, etc."
-              className="w-full p-3 rounded border border-gray-400"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
               onChange={handleChange}
               value={formData.additionalDetails}
             ></textarea>
           </div>
           {/* Preferred Method of Contact */}
           <div>
-            <label className="block font-semibold mb-1">Preferred Method of Contact *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Preferred Method of Contact *</label>
             <select
               name="contactMethod"
-              className="w-full p-3 rounded border border-gray-400 bg-white text-black"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
               value={formData.contactMethod}
             >
@@ -354,7 +354,7 @@ const ContactForm = () => {
               required
             />
             <span
-              className="text-blue-400 underline cursor-pointer"
+              className="bubbles-font text-lg text-blue-400 underline cursor-pointer"
               onClick={() => setShowDryHireOverlay(true)}
             >
               Acknowledgment of Dry Hire
@@ -363,7 +363,7 @@ const ContactForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-black text-white p-3 rounded font-semibold"
+            className="bubbles-font text-lg w-full bg-black text-white p-3 rounded font-semibold"
             disabled={loading}
           >
             {loading ? "Submitting..." : "Submit Form"}
@@ -388,8 +388,8 @@ const ContactForm = () => {
             >
               X
             </button>
-            <h3 className="text-xl font-bold mb-4">Dry Hire Agreement</h3>
-            <p className="mb-4">
+            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">Dry Hire Agreement</h3>
+            <p className="bubbles-font text-lg mb-4">
               By accepting the dry hire agreement, you agree to provide all the alcohol for your event, and we will provide the bartending 
               service, bar set-up, and any supplies and materials you may need (napkins, cups, straws, etc.). This allows you (the client) to purchase alcohol at cost 
               and means you get to keep all of the unused alcohol from the event. We will help you determine how much and what kind of alcohol/specialty 
@@ -397,7 +397,7 @@ const ContactForm = () => {
             </p>
             <button
               onClick={() => setShowDryHireOverlay(false)}
-              className="bg-black text-white px-4 py-2 rounded"
+              className="bubbles-font text-lg bg-black text-white px-4 py-2 rounded"
             >
               Got it!
             </button>
@@ -421,19 +421,19 @@ const ContactForm = () => {
             >
               X
             </button>
-            <h3 className="text-xl font-bold mb-4">Specify Event Type</h3>
+            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">Specify Event Type</h3>
             <form onSubmit={handleOtherEventSubmit}>
               <input
                 type="text"
                 name="otherEventType"
                 placeholder="e.g. Anniversary, Reunion, etc."
-                className="w-full p-3 rounded border border-gray-400 mb-4"
+                className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 mb-4"
                 onChange={handleChange}
                 value={formData.otherEventType}
               />
               <button
                 type="submit"
-                className="bg-black text-white px-4 py-2 rounded"
+                className="bubbles-font text-lg bg-black text-white px-4 py-2 rounded"
               >
                 Save
               </button>
@@ -447,7 +447,7 @@ const ContactForm = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-green-500 bg-opacity-90 z-50 animate-dropDown">
           <button
             onClick={closeSuccessOverlay}
-            className="absolute top-4 right-4 text-white text-3xl font-bold border-2 border-black rounded-full px-3 py-1"
+            className="absolute top-20 right-4 text-white text-3xl font-bold border-2 border-black rounded-full px-3 py-1"
           >
             X
           </button>
@@ -455,21 +455,21 @@ const ContactForm = () => {
             <div className="w-40 h-40 mx-auto mb-4">
               <Lottie loop autoplay animationData={successAnimation} />
             </div>
-            <h3 className="text-2xl font-extrabold mb-4">
+            <h3 className="bubbles-font text-lg text-2xl font-extrabold mb-4">
               Thank you for submitting the contact form, we're almost ready to get this party started!
             </h3>
-            <p className="text-lg">
+            <p className="bubbles-font text-lg text-lg">
               Hang tight while our team reviews your request. We'll be in touch within 48 hours.
               In the meantime, feel free to check out our{" "}
               <span
-                className="underline cursor-pointer"
+                className="bubbles-font text-lg underline cursor-pointer"
                 onClick={() => (window.location.href = "/alcohol-calculator")}
               >
                 alcohol calculator
               </span>{" "}
               or return to the{" "}
               <span
-                className="underline cursor-pointer"
+                className="bubbles-font text-lg underline cursor-pointer"
                 onClick={() => (window.location.href = "/")}
               >
                 home page
