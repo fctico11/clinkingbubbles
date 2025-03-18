@@ -115,7 +115,9 @@ html, body {
       /* Overriding the desktop transform with a simpler 2D offset */
       transform: translateX(calc(var(--offset) * -9rem)) 
                   translateY(0)
+                  rotateY(calc(var(--offset)*10deg))
                   scale(calc(1 - var(--abs-offset)*0.1));
+                
   
       /* optional slight rotation if you want a little tilt */
       /* rotate: e.g. rotateY(calc(var(--offset)*10deg)) */
