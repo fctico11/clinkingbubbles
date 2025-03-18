@@ -79,7 +79,7 @@ function Services() {
 
   return (
     <section className="py-10 px-4 bg-white text-black">
-      <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
+      <h2 className="clinking-font text-3xl font-bold text-center mb-10">Our Services</h2>
       <div className="services-3d-wrapper">
         {/* 3D Carousel with swipe support */}
         <div className="carousel" {...swipeHandlers}>
