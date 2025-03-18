@@ -106,25 +106,22 @@ html, body {
 
   @media (max-width: 768px) {
     .carousel {
-      width: 14rem;  /* smaller so side cards are visible */
-      height: 14rem;
+      width: 15rem;  /* smaller so side cards are visible */
+      height: 15rem;
       perspective: 500; /* remove big 3D perspective on mobile */
     }
   
     .card-container {
        
       /* Overriding the desktop transform with a simpler 2D offset */
-      transform: translateX(calc(var(--offset) * -9rem)) 
+      transform: translateX(calc(var(--offset) * -11rem)) /* mild horizontal shift */
                   translateY(0)
-                  rotateY(calc(var(--offset)*20deg))
-                        /* smaller angle than desktop */
-      translateZ(calc(var(--abs-offset) * -10rem)) /* less push back so side cards stay near */
-      translateX(calc(var(--direction) * -2rem))   /* mild horizontal shift */
-                  scale(calc(1 - var(--abs-offset)*0.1)); /* side cards appear smaller */
+                  rotateY(calc(var(--offset)*15deg)) /* smaller angle than desktop */
+                  translateZ(calc(var(--abs-offset) * -10rem)) /* less push back so side cards stay near */
+                  scale(calc(1 - var(--abs-offset)*0.2)); /* side cards appear smaller */
                 
   
-      /* optional slight rotation if you want a little tilt */
-      /* rotate: e.g. rotateY(calc(var(--offset)*10deg)) */
+      
       
       /* Keep the same transition, blur(0), etc. */
       filter: blur(0);
