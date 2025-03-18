@@ -1,6 +1,7 @@
 // src/components/Services.js
 import React, { useState } from "react";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
+import { useSwipeable } from "react-swipeable"; // <-- react-swipeable
 import "./Services.css";
 
 const servicesData = [
@@ -38,7 +39,7 @@ function Services() {
   // Active card index
   const [active, setActive] = useState(2);
 
-  // Helpers for arrow clicks
+  // Arrow handlers
   const handlePrev = () => {
     if (active > 0) setActive((prev) => prev - 1);
   };
@@ -46,13 +47,22 @@ function Services() {
     if (active < servicesData.length - 1) setActive((prev) => prev + 1);
   };
 
+  // Swipe handlers (react-swipeable)
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    // optionally trackMouse: true if you want swipes to work on desktop dragging too
+    preventScrollOnSwipe: true,
+  });
+
   return (
     <section className="py-10 px-4 bg-white text-black">
       <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
 
       <div className="services-3d-wrapper">
         {/* 3D Carousel */}
-        <div className="carousel">
+        {/* Attach swipeHandlers to the carousel container */}
+        <div className="carousel" {...swipeHandlers}>
           {servicesData.map((service, i) => {
             const offset = active - i;
             const absOffset = Math.abs(offset);
@@ -112,3 +122,4 @@ function Services() {
 }
 
 export default Services;
+

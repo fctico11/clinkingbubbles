@@ -1,13 +1,11 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* No horizontal scrollbar */
-}
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+  }
   
-
-
-/* Basic container to hold the 3D carousel and nav below it */
-.services-3d-wrapper {
+  /* Basic container to hold the 3D carousel and nav below it */
+  .services-3d-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,12 +15,22 @@ html, body {
   /* The 3D Carousel */
   .carousel {
     position: relative;
-    width: 23rem; /* or whatever you prefer for the "card-size" */
+    width: 23rem; /* default for desktop */
     height: 23rem;
     perspective: 800px; /* depth of the 3D effect */
     transform-style: preserve-3d;
     margin-bottom: 1rem; /* spacing above the nav */
     overflow: visible;   /* allow side cards to peek out */
+    /* so user can scroll with finger on mobile, 
+       we rely on react-swipeable for left/right swipes */
+  }
+  
+  /* Make the carousel smaller on mobile so side cards are partially visible */
+  @media (max-width: 768px) {
+    .carousel {
+      width: 18rem;
+      height: 18rem;
+    }
   }
   
   /* Each "card-container" with the transforms based on custom properties */
@@ -38,7 +46,6 @@ html, body {
       translateZ(calc(var(--abs-offset) * -30rem))
       translateX(calc(var(--direction) * -5rem));
   
-    /* If you don't want them blurred: remove or set blur to 0 */
     filter: blur(0);
     opacity: calc(1 - var(--abs-offset) * 0.2);
   }
