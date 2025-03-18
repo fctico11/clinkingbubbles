@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
 import Lottie from "lottie-react"; 
 import successAnimation from "../assets/success.json"; // Adjust path if needed
-import "../components/ContactForm.css"
+import "../components/ContactForm.css";
 
 // Default event types
 const standardEventTypes = [
@@ -63,11 +63,9 @@ const ContactForm = () => {
   const handleChange = (e) => {
     const { name, value: val, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : val;
-
     if (name === "eventType" && newValue === "Other") {
       setShowOtherEventModal(true);
     }
-
     setFormData({ ...formData, [name]: newValue });
   };
 
@@ -92,13 +90,11 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     if (isNaN(formData.guestCount) || formData.guestCount.trim() === "") {
       setFeedback("❌ Please enter a numeric value for estimated guests.");
       setLoading(false);
       return;
     }
-
     let submissionData = { ...formData };
     const isStandard =
       standardEventTypes.includes(formData.eventType) ||
@@ -106,7 +102,6 @@ const ContactForm = () => {
     if (isStandard) {
       delete submissionData.otherEventType;
     }
-
     try {
       await axios.post("https://formspree.io/f/xjkyvqoe", submissionData);
       setShowSuccessOverlay(true);
@@ -128,34 +123,23 @@ const ContactForm = () => {
       {/* Inline Styles for Animations */}
       <style>{`
         @keyframes dropDown {
-          0% {
-            transform: translateY(-100%);
-            opacity: 0;
-          }
-          50% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
+          0% { transform: translateY(-100%); opacity: 0; }
+          50% { transform: translateY(0); opacity: 1; }
+          100% { transform: translateY(0); opacity: 1; }
         }
-        .animate-dropDown {
-          animation: dropDown 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-        }
+        .animate-dropDown { animation: dropDown 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
         @keyframes fadeIn {
           0% { opacity: 0; }
           100% { opacity: 1; }
         }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-in forwards;
-        }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-in forwards; }
       `}</style>
 
       {/* Intro Section with bg-[#EBE6D6] Background */}
       <section className="py-10 px-4 bg-[#EBE6D6] text-white text-center mt-5">
-        <h2 className="clinking-font text-black text-3xl font-bold mt-12">Let's Make Your Event <span className="sparkle">Unforgettable</span></h2>
+        <h2 className="clinking-font text-black text-3xl font-bold mt-12">
+          Let's Make Your Event <span className="sparkle">Unforgettable</span>
+        </h2>
         <p className="text-black max-w-2xl mx-auto mt-4">
           We’re excited to craft amazing drinks and create a fun atmosphere for your special occasion!
           Fill out the details below, and we’ll tailor our services to your needs. Once submitted,
@@ -179,7 +163,6 @@ const ContactForm = () => {
               required
             />
           </div>
-
           {/* Phone Number */}
           <div>
             <label className="block font-semibold mb-1">Phone Number *</label>
@@ -193,8 +176,6 @@ const ContactForm = () => {
               required
             />
           </div>
-
-
           {/* Email */}
           <div>
             <label className="block font-semibold mb-1">Email *</label>
@@ -208,7 +189,6 @@ const ContactForm = () => {
               required
             />
           </div>
-
           {/* Event Address with Autocomplete */}
           <div>
             <label className="block font-semibold mb-1">Event Address *</label>
@@ -231,14 +211,13 @@ const ContactForm = () => {
               data.map((suggestion) => (
                 <div
                   key={suggestion.place_id}
-                  className="cursor-pointer p-2 bg-gray-100"
+                  className="autocomplete-suggestion cursor-pointer p-2 bg-gray-100"
                   onClick={() => handleAddressSelect(suggestion.description)}
                 >
                   {suggestion.description}
                 </div>
               ))}
           </div>
-
           {/* Event Location */}
           <div>
             <label className="block font-semibold mb-1">Location of Event *</label>
@@ -252,7 +231,6 @@ const ContactForm = () => {
               <option>Rented Venue</option>
             </select>
           </div>
-
           {/* Date of Event */}
           <div>
             <label className="block font-semibold mb-1">Date of Event *</label>
@@ -265,7 +243,6 @@ const ContactForm = () => {
               required
             />
           </div>
-
           {/* Type of Event */}
           <div>
             <label className="block font-semibold mb-1">Type of Event *</label>
@@ -288,7 +265,6 @@ const ContactForm = () => {
                 )}
             </select>
           </div>
-
           {/* Hours of Event */}
           <div>
             <label className="block font-semibold mb-1">Hours of Event *</label>
@@ -317,7 +293,6 @@ const ContactForm = () => {
               </div>
             </div>
           </div>
-
           {/* Estimated Number of Guests */}
           <div>
             <label className="block font-semibold mb-1">Estimated Number of Guests *</label>
@@ -331,7 +306,6 @@ const ContactForm = () => {
               required
             />
           </div>
-
           {/* Bartending Options */}
           <div>
             <label className="block font-semibold mb-1">Bartending Options *</label>
@@ -345,7 +319,6 @@ const ContactForm = () => {
               <option>Bartender(s) + Mobile Bar</option>
             </select>
           </div>
-
           {/* Additional Details */}
           <div>
             <label className="block font-semibold mb-1">Any other details you would like for us to know:</label>
@@ -357,7 +330,6 @@ const ContactForm = () => {
               value={formData.additionalDetails}
             ></textarea>
           </div>
-
           {/* Preferred Method of Contact */}
           <div>
             <label className="block font-semibold mb-1">Preferred Method of Contact *</label>
@@ -372,7 +344,6 @@ const ContactForm = () => {
               <option>Email</option>
             </select>
           </div>
-
           {/* Dry Hire Acknowledgment */}
           <div className="flex items-center space-x-2 cursor-pointer">
             <input
@@ -389,7 +360,6 @@ const ContactForm = () => {
               Acknowledgment of Dry Hire
             </span>
           </div>
-
           {/* Submit Button */}
           <button
             type="submit"
@@ -398,7 +368,6 @@ const ContactForm = () => {
           >
             {loading ? "Submitting..." : "Submit Form"}
           </button>
-
           {feedback && <p className="text-center mt-4">{feedback}</p>}
         </form>
       </section>
@@ -476,20 +445,16 @@ const ContactForm = () => {
       {/* SUCCESS OVERLAY */}
       {showSuccessOverlay && (
         <div className="fixed inset-0 flex items-center justify-center bg-green-500 bg-opacity-90 z-50 animate-dropDown">
-          {/* X in top-right with black border */}
           <button
             onClick={closeSuccessOverlay}
             className="absolute top-4 right-4 text-white text-3xl font-bold border-2 border-black rounded-full px-3 py-1"
           >
             X
           </button>
-
           <div className="max-w-md mx-auto p-6 text-center text-white animate-fadeIn">
-            {/* Lottie animation above the text */}
             <div className="w-40 h-40 mx-auto mb-4">
               <Lottie loop autoplay animationData={successAnimation} />
             </div>
-
             <h3 className="text-2xl font-extrabold mb-4">
               Thank you for submitting the contact form, we're almost ready to get this party started!
             </h3>
@@ -514,11 +479,11 @@ const ContactForm = () => {
         </div>
       )}
 
-      {/* Footer */}
       <Footer />
     </div>
   );
 };
 
 export default ContactForm;
+
 
