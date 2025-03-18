@@ -108,14 +108,19 @@ html, body {
     .carousel {
       width: 14rem;  /* smaller so side cards are visible */
       height: 14rem;
-      perspective: none; /* remove big 3D perspective on mobile */
+      perspective: 500; /* remove big 3D perspective on mobile */
     }
   
     .card-container {
+       
       /* Overriding the desktop transform with a simpler 2D offset */
       transform: translateX(calc(var(--offset) * -9rem)) 
                   translateY(0)
-                  rotateY(calc(var(--offset)*10deg))
+                  rotateY(calc(var(--offset)*20deg))
+                        /* smaller angle than desktop */
+      translateZ(calc(var(--abs-offset) * -10rem)) /* less push back so side cards stay near */
+      translateX(calc(var(--direction) * -2rem))   /* mild horizontal shift */
+      scale(calc(1 - var(--abs-offset) * 0.1))    /* side cards appear smaller */
                   scale(calc(1 - var(--abs-offset)*0.1));
                 
   
