@@ -1,7 +1,8 @@
+// src/components/Navbar.js
 import "./Navbar.css";
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi"; 
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,36 +19,46 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking outside
+  // Close menu if click outside overlay content
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
-
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
-
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
+  // Disable scrolling when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   }, [isOpen]);
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-all duration-300 z-50 ${
+      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-all duration-300 z-[100] ${
         isScrolled ? "bg-black shadow-lg" : "bg-transparent"
       }`}
+      style={{ minHeight: "64px" }} // consistent navbar height
     >
-      {/* Clickable Logo with Custom Font */}
-      <Link to="/" className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font hover:opacity-80 transition">
+      {/* Logo (remains same position & size) */}
+      <Link
+        to="/"
+        className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font hover:opacity-80 transition"
+      >
         Clinking Bubbles Co.
       </Link>
 
@@ -61,15 +72,20 @@ const Navbar = () => {
           About
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        <Link to="/booking-process" className="text-yellow-500 relative group transition">
+        <Link
+          to="/booking-process"
+          className="text-yellow-500 relative group transition"
+        >
           Booking Process
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
-        <Link to="/alcohol-calculator" className="text-yellow-500 relative group transition">
+        <Link
+          to="/alcohol-calculator"
+          className="text-yellow-500 relative group transition"
+        >
           Alcohol Calculator
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
-
         {/* Get a Quote Button */}
         <Link to="/contact">
           <button className="bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
@@ -85,30 +101,42 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay (Small Dropdown) */}
-      {isOpen && (
-        <div ref={menuRef} className="fixed top-14 left-4 right-4 bg-black border border-gray-700 rounded-lg shadow-lg p-4 flex flex-col items-center space-y-4 md:hidden">
-          <Link to="/" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
-            Home
-          </Link>
-          <Link to="/about" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
-            About
-          </Link>
-          <Link to="/booking-process" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
-            Booking Process
-          </Link>
-          <Link to="/alcohol-calculator" className="text-yellow-500 hover:text-white transition text-center" onClick={toggleMenu}>
-            Alcohol Calculator
-          </Link>
-
-          {/* Get a Quote Button in Mobile Menu */}
-          <Link to="/contact" className="w-full flex justify-center">
-            <button className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
-              Get a Quote!
+      {/* Full-Screen Overlay (slides from top => down) */}
+      <div
+        ref={menuRef}
+        className={`mobile-drawer ${isOpen ? "open" : ""}`}
+      >
+        <div className="drawer-content">
+          {/* Close Button in top-right */}
+          <div className="drawer-top">
+            <button
+              onClick={toggleMenu}
+              className="text-white text-3xl focus:outline-none"
+            >
+              <FiX />
             </button>
-          </Link>
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="drawer-links">
+            <Link to="/" className="drawer-link" onClick={toggleMenu}>
+              Home
+            </Link>
+            <Link to="/about" className="drawer-link" onClick={toggleMenu}>
+              About
+            </Link>
+            <Link to="/booking-process" className="drawer-link" onClick={toggleMenu}>
+              Booking Process
+            </Link>
+            <Link to="/alcohol-calculator" className="drawer-link" onClick={toggleMenu}>
+              Alcohol Calculator
+            </Link>
+            <Link to="/contact" className="drawer-link quote-btn" onClick={toggleMenu}>
+              Get a Quote!
+            </Link>
+          </nav>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
