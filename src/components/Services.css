@@ -28,8 +28,8 @@ html, body {
   /* Make the carousel smaller on mobile so side cards are partially visible */
   @media (max-width: 768px) {
     .carousel {
-      width: 18rem;
-      height: 18rem;
+      width: 15rem;
+      height: 15rem;
     }
   }
   
