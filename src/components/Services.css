@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar for desktop */
   }
   
   /* Basic container to hold the 3D carousel and nav below it */
@@ -12,34 +12,41 @@ html, body {
     justify-content: center;
   }
   
-  /* The 3D Carousel */
+  /* The 3D Carousel (desktop defaults) */
   .carousel {
     position: relative;
-    width: 23rem; /* default for desktop */
+    width: 23rem;  /* desktop size */
     height: 23rem;
-    perspective: 800px; /* depth of the 3D effect */
+    perspective: 800px; /* depth of 3D effect */
     transform-style: preserve-3d;
-    margin-bottom: 1rem; /* spacing above the nav */
-    overflow: visible;   /* allow side cards to peek out */
-    /* so user can scroll with finger on mobile, 
-       we rely on react-swipeable for left/right swipes */
+    margin-bottom: 1rem;
+    overflow: visible; /* allow side cards to peek out */
   }
   
-  /* Make the carousel smaller on mobile so side cards are partially visible */
+  /* On mobile, make the carousel smaller and reduce transforms so side cards are partially visible */
   @media (max-width: 768px) {
     .carousel {
-      width: 15rem;
-      height: 15rem;
+      width: 16rem; /* smaller so side cards peek in */
+      height: 16rem;
+      perspective: 600px; /* less intense perspective on mobile */
+    }
+  
+    /* Reduce rotation & translateZ so side cards remain within the screen */
+    .card-container {
+      transform:
+        rotateY(calc(var(--offset) * 35deg))  /* was 50deg, lowered for mobile */
+        scaleY(calc(1 + var(--abs-offset) * -0.3)) /* was -0.4, lowered for gentler scale */
+        translateZ(calc(var(--abs-offset) * -15rem)) /* was -30rem, reduce so side cards don't push too far */
+        translateX(calc(var(--direction) * -3rem));  /* was -5rem */
     }
   }
   
-  /* Each "card-container" with the transforms based on custom properties */
+  /* Each card container (desktop transforms) */
   .card-container {
     position: absolute;
     width: 100%;
     height: 100%;
     transition: all 0.3s ease-out;
-  
     transform:
       rotateY(calc(var(--offset) * 50deg))
       scaleY(calc(1 + var(--abs-offset) * -0.4))
@@ -64,7 +71,7 @@ html, body {
   
   /* If you want the active card to have a gold border */
   .card-container[style*="--active: 1"] .card {
-    border: 4px solid #f59e0b; /* Tailwind's text-yellow-500 color */
+    border: 4px solid #f59e0b; /* gold color */
   }
   
   /* Navigation container (arrows + dots) */
@@ -72,14 +79,14 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem; /* space between arrow, dots, arrow */
+    gap: 1rem;
   }
   
   /* Arrow button styling */
   .nav-btn {
     background: none;
     border: none;
-    color: #f59e0b; /* gold color */
+    color: #f59e0b;
     font-size: 2rem;
     cursor: pointer;
     width: 2.5rem;
