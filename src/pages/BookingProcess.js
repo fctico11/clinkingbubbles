@@ -9,7 +9,7 @@ const BookingProcess = () => {
     <div>
       <Navbar />
       <section className="py-12 px-4 bg-[#EBE6D6]">
-        <h1 className="text-3xl font-bold text-center mb-5 mt-10">Booking Process</h1>
+        <h1 className="clinking-font text-3xl font-bold text-center mb-5 mt-10">Booking Process</h1>
         <p className="max-w-3xl mx-auto text-center mb-5">
           Our booking process is as smooth as a perfectly shaken cocktail. From your initial inquiry to final confirmation, we’ll guide you through every step. Discover how simple it is to secure your next unforgettable event!
         </p>
