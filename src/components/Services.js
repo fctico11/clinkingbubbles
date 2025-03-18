@@ -1,7 +1,6 @@
-// src/components/Services.js
 import React, { useState } from "react";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
-import { useSwipeable } from "react-swipeable"; // <-- react-swipeable
+import { useSwipeable } from "react-swipeable";
 import "./Services.css";
 
 const servicesData = [
@@ -29,45 +28,45 @@ const servicesData = [
     title: "Anniversaries",
     description: "Toast to lasting love with a refined cocktail experience.",
   },
-  // etc.
+  // Add more services if desired
 ];
 
-// How many side cards to show
+// Helper to wrap an index around the array length
+function wrapIndex(i, length) {
+  return (i + length) % length;
+}
+
 const MAX_VISIBILITY = 2;
 
 function Services() {
-  // Active card index
+  // Active (center) card index
   const [active, setActive] = useState(2);
 
-  // Arrow handlers
   const handlePrev = () => {
-    if (active > 0) setActive((prev) => prev - 1);
-  };
-  const handleNext = () => {
-    if (active < servicesData.length - 1) setActive((prev) => prev + 1);
+    if (active > 0) setActive((prev) => wrapIndex(prev - 1, servicesData.length));
   };
 
-  // Swipe handlers (react-swipeable)
+  const handleNext = () => {
+    if (active < servicesData.length - 1) setActive((prev) => wrapIndex(prev + 1, servicesData.length));
+  };
+
+  // Setup swipe handlers for mobile
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => handleNext(),
-    onSwipedRight: () => handlePrev(),
-    // optionally trackMouse: true if you want swipes to work on desktop dragging too
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
     preventScrollOnSwipe: true,
   });
 
   return (
     <section className="py-10 px-4 bg-white text-black">
       <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
-
       <div className="services-3d-wrapper">
-        {/* 3D Carousel */}
-        {/* Attach swipeHandlers to the carousel container */}
+        {/* 3D Carousel with swipe support */}
         <div className="carousel" {...swipeHandlers}>
           {servicesData.map((service, i) => {
             const offset = active - i;
             const absOffset = Math.abs(offset);
-            if (absOffset > MAX_VISIBILITY) return null; // hide cards too far from center
-
+            if (absOffset > MAX_VISIBILITY) return null;
             return (
               <div
                 key={i}
@@ -81,22 +80,21 @@ function Services() {
                 }}
               >
                 <div className="card">
-                  <h2>{service.title}</h2>
-                  <p>{service.description}</p>
+                  <div className="card-content">
+                    <h2>{service.title}</h2>
+                    <p>{service.description}</p>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Carousel Navigation (arrows + dots) */}
+        {/* Navigation: Arrows and Dots */}
         <div className="carousel-nav">
-          {/* Left arrow */}
           <button className="nav-btn" onClick={handlePrev} disabled={active <= 0}>
             <TiChevronLeftOutline />
           </button>
-
-          {/* Dots */}
           <div className="dots">
             {servicesData.map((_, i) => (
               <span
@@ -106,8 +104,6 @@ function Services() {
               />
             ))}
           </div>
-
-          {/* Right arrow */}
           <button
             className="nav-btn"
             onClick={handleNext}
@@ -122,4 +118,5 @@ function Services() {
 }
 
 export default Services;
+
 

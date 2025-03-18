@@ -11,7 +11,7 @@ html, body {
     justify-content: center;
   }
   
-  /* Desktop defaults */
+  /* Desktop Carousel */
   .carousel {
     position: relative;
     width: 23rem;  
@@ -22,7 +22,7 @@ html, body {
     overflow: visible;
   }
   
-  
+  /* Desktop transform for each card-container */
   .card-container {
     position: absolute;
     width: 100%;
@@ -33,28 +33,45 @@ html, body {
       scaleY(calc(1 + var(--abs-offset) * -0.4))
       translateZ(calc(var(--abs-offset) * -30rem))
       translateX(calc(var(--direction) * -5rem));
-  
     filter: blur(0);
     opacity: calc(1 - var(--abs-offset) * 0.2);
   }
   
+  /* Card styling */
   .card {
     width: 100%;
     height: 100%;
     padding: 2rem;
     background-color: #fff;
     border-radius: 1rem;
-    text-align: center;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     transition: all 0.3s ease-out;
+    position: relative; /* For absolute positioning of card-content */
+    overflow: hidden;
   }
   
-  /* Gold border for the active card */
+  /* Inner content container to keep text static */
+  .card-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+  }
+  
+  /* Make the title bold */
+  .card-content h2 {
+    font-weight: 700; /* Bold */
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Active card gets a gold border */
   .card-container[style*="--active: 1"] .card {
     border: 4px solid #f59e0b;
   }
   
-  /* Nav (arrows + dots) */
+  /* Navigation: Arrows and Dots */
   .carousel-nav {
     display: flex;
     align-items: center;
@@ -106,8 +123,8 @@ html, body {
 
   @media (max-width: 768px) {
     .carousel {
-      width: 15rem;  /* smaller so side cards are visible */
-      height: 15rem;
+      width: 16rem;  /* smaller so side cards are visible */
+      height: 16rem;
       perspective: 500; /* remove big 3D perspective on mobile */
     }
   
