@@ -1,12 +1,20 @@
+/* Global reset + Hide horizontal scrollbar */
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Hide horizontal scrollbar for entire page */
-  touch-action:pan-y;
-  overscroll-behavior-x: none;
-  -webkit-overflow-scrolling: auto;
 }
 
+/* Only apply iOS scroll-lock properties on mobile */
+@media (max-width: 768px) {
+  html, body {
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
+    -webkit-overflow-scrolling: auto; 
+  }
+}
+
+/* Carousel container: locks horizontal scroll */
 .carousel-container {
   width: 100vw;         /* Full viewport width */
   overflow-x: hidden;   /* Hide horizontal overflow */
@@ -20,7 +28,7 @@ html, body {
   justify-content: center;
 }
 
-/* Desktop Carousel */
+/* Carousel (desktop defaults) */
 .carousel {
   position: relative;
   width: 23rem;
@@ -38,11 +46,12 @@ html, body {
   height: 100%;
   transition: all 0.3s ease-out;
   transform-origin: center center;
+  /* Original larger transforms for desktop */
   transform:
     rotateY(calc(var(--offset) * 50deg))
     scaleY(calc(1 + var(--abs-offset) * -0.4))
-    translateZ(calc(var(--abs-offset) * -10rem))
-    translateX(calc(var(--direction) * -3rem));
+    translateZ(calc(var(--abs-offset) * -30rem))
+    translateX(calc(var(--direction) * -5rem));
   filter: blur(0);
   opacity: calc(1 - var(--abs-offset) * 0.2);
 }
@@ -140,20 +149,23 @@ html, body {
   background-color: #f59e0b;
 }
 
+/* MOBILE OVERRIDES */
 @media (max-width: 768px) {
+  /* Smaller carousel on mobile */
   .carousel {
-    width: 17rem;  /* Smaller so side cards are visible */
+    width: 17rem;
     height: 17rem;
-    perspective: 500; /* Reduced 3D perspective on mobile */
+    perspective: 500px; /* Reduced 3D perspective on mobile */
   }
 
+  /* Less aggressive transforms to reduce “far” cards */
   .card-container {
-    /* Overriding transform for mobile */
-    transform: translateX(calc(var(--offset) * -11rem))
-               translateY(0)
-               rotateY(calc(var(--offset) * 15deg))
-               translateZ(calc(var(--abs-offset) * -10rem))
-               scale(calc(1 - var(--abs-offset) * 0.2));
+    transform: 
+      translateX(calc(var(--offset) * -11rem))
+      translateY(0)
+      rotateY(calc(var(--offset) * 15deg))
+      translateZ(calc(var(--abs-offset) * -10rem))
+      scale(calc(1 - var(--abs-offset) * 0.2));
     filter: blur(0);
     opacity: calc(1 - var(--abs-offset) * 0.2);
   }
