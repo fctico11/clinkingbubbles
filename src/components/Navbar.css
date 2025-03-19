@@ -19,23 +19,21 @@
 .bubbles-font {
   font-family: 'BubblesFont', sans-serif;
 }
-/* Full-screen mobile overlay that expands from top to bottom */
-.mobile-drawer {
+
+/* --------------------------------------------
+   Mobile Overlay
+--------------------------------------------- */
+.mobile-drawer-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 0; /* initially hidden */
-  background-color: #EBE6D6; /* overlay background */
-  overflow: hidden; /* disable scrolling inside overlay */
-  transition: height 0.4s ease-in-out;
-  z-index: 900; /* below navbar (navbar is z-[999]) */
+  height: 100vh;
+  background-color: #EBE6D6;
+  z-index: 2000; /* Higher than the navbar's z-[999] */
   display: flex;
   flex-direction: column;
-}
-
-.mobile-drawer.open {
-  height: 100%; /* overlay fills the screen */
+  overflow-y: auto; /* If content exceeds screen, allow scroll */
 }
 
 .drawer-content {
@@ -44,34 +42,32 @@
   position: relative;
 }
 
-/* Close Button: always yellow */
+/* Close Button: turns yellow on hover */
 .close-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
   background: none;
   border: none;
-  font-size: 2rem;
+  color: #000;
   cursor: pointer;
-  color: #000000;
 }
-
-.close-btn:hover{
-  color: #f59e0b;
+.close-btn:hover {
+  color: #f59e0b; /* Turn same yellow on hover */
 }
 
 /* Navigation links container */
 .drawer-links {
   display: flex;
   flex-direction: column;
-  padding: 2rem 2rem;
+  padding: 2rem;
   gap: 1.5rem;
   margin-top: 4rem; /* space below close button */
 }
 
 /* Each navigation link */
 .drawer-link {
-  color: #000; /* dark text on light background */
+  color: #000;
   text-decoration: none;
   font-size: 1.2rem;
   border-bottom: 1px solid #333;
@@ -79,7 +75,6 @@
   transition: color 0.2s;
   text-align: left;
 }
-
 .drawer-link:hover {
   color: #f59e0b;
 }
@@ -96,12 +91,11 @@
   margin-top: 1rem;
   text-align: center;
 }
-
 .drawer-link.quote-btn:hover {
   background-color: #e5a700;
 }
 
-/* Mobile Social Icons Container at bottom */
+/* Social Icons Container at bottom */
 .drawer-social {
   position: absolute;
   bottom: 2rem;
@@ -111,12 +105,35 @@
   gap: 1rem;
 }
 
-/* Mobile Social Icon Styling: default black, yellow on hover */
 .mobile-social-icon {
   color: #000;
   transition: color 0.3s;
 }
-
 .mobile-social-icon:hover {
   color: #f59e0b;
+}
+
+/* --------------------------------------------
+   Desktop Nav Link Hover (Thicker Underline)
+--------------------------------------------- */
+.desktop-link {
+  position: relative;    /* Needed for pseudo-element positioning */
+  text-decoration: none; /* Remove default underline */
+}
+
+/* Thicker underline from left to right */
+.desktop-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;             /* Adjust vertical position if needed */
+  width: 0;
+  height: 3px;              /* Thicker line */
+  background-color: #f59e0b;
+  transition: width 0.3s ease;
+}
+
+/* Fill underline on hover */
+.desktop-link:hover::after {
+  width: 100%;
 }
