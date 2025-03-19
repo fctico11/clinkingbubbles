@@ -58,19 +58,21 @@ function wrapIndex(i, length) {
 const MAX_VISIBILITY = 2;
 
 function Services() {
-  // Active (center) card index
   const [active, setActive] = useState(0);
 
   const handlePrev = () => {
-    if (active > 0) setActive((prev) => wrapIndex(prev - 1, servicesData.length));
+    if (active > 0) {
+      setActive((prev) => wrapIndex(prev - 1, servicesData.length));
+    }
   };
 
   const handleNext = () => {
-    if (active < servicesData.length - 1)
+    if (active < servicesData.length - 1) {
       setActive((prev) => wrapIndex(prev + 1, servicesData.length));
+    }
   };
 
-  // Setup swipe handlers for mobile
+  // Swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleNext,
     onSwipedRight: handlePrev,
@@ -80,39 +82,43 @@ function Services() {
   return (
     <section className="py-10 px-4 bg-white text-black">
       <h2 className="clinking-font text-3xl font-bold text-center mb-10">Our Services</h2>
+
       <div className="services-3d-wrapper">
-        {/* 3D Carousel with swipe support */}
-        <div className="carousel" {...swipeHandlers}>
-          {servicesData.map((service, i) => {
-            const offset = active - i;
-            const absOffset = Math.abs(offset);
-            if (absOffset > MAX_VISIBILITY) return null;
-            return (
-              <div
-                key={i}
-                className="card-container"
-                style={{
-                  "--active": i === active ? 1 : 0,
-                  "--offset": offset,
-                  "--abs-offset": absOffset,
-                  "--direction": Math.sign(offset),
-                  pointerEvents: active === i ? "auto" : "none",
-                }}
-              >
-                <div className="card">
-                  <div className="card-content">
-                    <img
-                      src={service.icon}
-                      alt={`${service.title} icon`}
-                      className="card-icon"
-                    />
-                    <h2 className="bubbles-font">{service.title}</h2>
-                    <p className="bubbles-font">{service.description}</p>
+        <div className="carousel-viewport">
+          {/* The actual carousel is centered by left: 50%; transform: translateX(-50%) */}
+          <div className="carousel" {...swipeHandlers}>
+            {servicesData.map((service, i) => {
+              const offset = active - i;
+              const absOffset = Math.abs(offset);
+              if (absOffset > MAX_VISIBILITY) return null;
+
+              return (
+                <div
+                  key={i}
+                  className="card-container"
+                  style={{
+                    "--active": i === active ? 1 : 0,
+                    "--offset": offset,
+                    "--abs-offset": absOffset,
+                    "--direction": Math.sign(offset),
+                    pointerEvents: active === i ? "auto" : "none",
+                  }}
+                >
+                  <div className="card">
+                    <div className="card-content">
+                      <img
+                        src={service.icon}
+                        alt={`${service.title} icon`}
+                        className="card-icon"
+                      />
+                      <h2 className="bubbles-font">{service.title}</h2>
+                      <p className="bubbles-font">{service.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         {/* Navigation: Arrows and Dots */}
@@ -129,11 +135,7 @@ function Services() {
               />
             ))}
           </div>
-          <button
-            className="nav-btn"
-            onClick={handleNext}
-            disabled={active >= servicesData.length - 1}
-          >
+          <button className="nav-btn" onClick={handleNext} disabled={active >= servicesData.length - 1}>
             <TiChevronRightOutline />
           </button>
         </div>

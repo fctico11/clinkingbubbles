@@ -1,158 +1,156 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-  }
-  
-  .services-3d-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Desktop Carousel */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Hide horizontal scrollbar for entire page */
+}
+
+.carousel-container {
+  width: 100vw;         /* Full viewport width */
+  overflow-x: hidden;   /* Hide horizontal overflow */
+  position: relative;   /* Establish a new stacking context */
+}
+
+.services-3d-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Desktop Carousel */
+.carousel {
+  position: relative;
+  width: 23rem;
+  height: 23rem;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  margin-bottom: 1rem;
+  overflow: visible; /* Allows side cards to be partially visible */
+}
+
+/* Desktop transform for each card-container */
+.card-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-out;
+  transform:
+    rotateY(calc(var(--offset) * 50deg))
+    scaleY(calc(1 + var(--abs-offset) * -0.4))
+    translateZ(calc(var(--abs-offset) * -30rem))
+    translateX(calc(var(--direction) * -5rem));
+  filter: blur(0);
+  opacity: calc(1 - var(--abs-offset) * 0.2);
+}
+
+/* Card styling */
+.card {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon styling */
+.card-icon {
+  display: block;
+  margin: 0 auto 1rem auto;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+/* Inner content container */
+.card-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+}
+
+/* Title styling */
+.card-content h2 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Active card gets a gold border */
+.card-container[style*="--active: 1"] .card {
+  border: 4px solid #f59e0b;
+}
+
+/* Navigation: Arrows and Dots */
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: #f59e0b;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot:hover {
+  background-color: #aaa;
+}
+
+.active-dot {
+  background-color: #f59e0b;
+}
+
+@media (max-width: 768px) {
   .carousel {
-    position: relative;
-    width: 23rem;  
-    height: 23rem;
-    perspective: 800px;
-    transform-style: preserve-3d;
-    margin-bottom: 1rem;
-    overflow: visible;
+    width: 17rem;  /* Smaller so side cards are visible */
+    height: 17rem;
+    perspective: 500; /* Reduced 3D perspective on mobile */
   }
-  
-  /* Desktop transform for each card-container */
+
   .card-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: all 0.3s ease-out;
-    transform:
-      rotateY(calc(var(--offset) * 50deg))
-      scaleY(calc(1 + var(--abs-offset) * -0.4))
-      translateZ(calc(var(--abs-offset) * -30rem))
-      translateX(calc(var(--direction) * -5rem));
+    /* Overriding transform for mobile */
+    transform: translateX(calc(var(--offset) * -11rem))
+               translateY(0)
+               rotateY(calc(var(--offset) * 15deg))
+               translateZ(calc(var(--abs-offset) * -10rem))
+               scale(calc(1 - var(--abs-offset) * 0.2));
     filter: blur(0);
     opacity: calc(1 - var(--abs-offset) * 0.2);
   }
-  
-  /* Card styling */
-  .card {
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease-out;
-    position: relative; /* For absolute positioning of card-content */
-    overflow: hidden;
-  }
-
-  /* Icon styling */
-.card-icon {
-    display: block;
-    margin: 0 auto 1rem auto;
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    margin-bottom: 1rem;
-  }
-  
-  
-  /* Inner content container to keep text static */
-  .card-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    text-align: center;
-  }
-  
-  /* Make the title bold */
-  .card-content h2 {
-    font-weight: 700; /* Bold */
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Active card gets a gold border */
-  .card-container[style*="--active: 1"] .card {
-    border: 4px solid #f59e0b;
-  }
-  
-  /* Navigation: Arrows and Dots */
-  .carousel-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-  
-  .nav-btn {
-    background: none;
-    border: none;
-    color: #f59e0b;
-    font-size: 2rem;
-    cursor: pointer;
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .nav-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-  
-  .dots {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .dot {
-    width: 0.75rem;
-    height: 0.75rem;
-    background-color: #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .dot:hover {
-    background-color: #aaa;
-  }
-  
-  .active-dot {
-    background-color: #f59e0b;
-  }
-  
-
-  @media (max-width: 768px) {
-    .carousel {
-      width: 17rem;  /* smaller so side cards are visible */
-      height: 17rem;
-      perspective: 500; /* remove big 3D perspective on mobile */
-    }
-  
-    .card-container {
-       
-      /* Overriding the desktop transform with a simpler 2D offset */
-      transform: translateX(calc(var(--offset) * -11rem)) /* mild horizontal shift */
-                  translateY(0)
-                  rotateY(calc(var(--offset)*15deg)) /* smaller angle than desktop */
-                  translateZ(calc(var(--abs-offset) * -10rem)) /* less push back so side cards stay near */
-                  scale(calc(1 - var(--abs-offset)*0.2)); /* side cards appear smaller */
-                
-  
-      
-      
-      /* Keep the same transition, blur(0), etc. */
-      filter: blur(0);
-      opacity: calc(1 - var(--abs-offset) * 0.2);
-    }
-  }
+}
