@@ -99,6 +99,9 @@ const Navbar = () => {
           <Link to="/about" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
             About
           </Link>
+          <Link to="/services" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
+            Services
+          </Link>
           <Link
             to="/booking-process"
             className="desktop-link bubbles-font text-lg text-yellow-500 transition"
@@ -173,6 +176,9 @@ const Navbar = () => {
                 </Link>
                 <Link to="/about" className="bubbles-font drawer-link" onClick={toggleMenu}>
                   About
+                </Link>
+                <Link to="/services" className="bubbles-font drawer-link" onClick={toggleMenu}>
+                  Services
                 </Link>
                 <Link
                   to="/booking-process"
