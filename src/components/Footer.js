@@ -7,24 +7,47 @@ const Footer = () => {
   return (
     <footer className="bg-[#EBE6D6] text-white py-10 px-6 text-center">
       <div className="max-w-4xl mx-auto">
-        {/* Navigation Links */}
-        <div className="flex justify-center space-x-6 mb-6">
-          <Link to="/" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+        {/* Navigation Links with separators */}
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 mb-6">
+          <Link
+            to="/"
+            className="bubbles-font text-base text-black hover:text-yellow-500 transition"
+          >
             Home
           </Link>
-          <Link to="/about" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+          <span className="text-black">|</span>
+          <Link
+            to="/about"
+            className="bubbles-font text-base text-black hover:text-yellow-500 transition"
+          >
             About
           </Link>
-          <Link to="/services" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+          <span className="text-black">|</span>
+          <Link
+            to="/services"
+            className="bubbles-font text-base text-black hover:text-yellow-500 transition"
+          >
             Services
           </Link>
-          <Link to="/booking-process" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+          <span className="text-black">|</span>
+          <Link
+            to="/booking-process"
+            className="bubbles-font text-base text-black hover:text-yellow-500 transition"
+          >
             Booking Process
           </Link>
-          <Link to="/alcohol-calculator" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+          <span className="text-black">|</span>
+          <Link
+            to="/alcohol-calculator"
+            className="bubbles-font text-base text-black hover:text-yellow-500 transition"
+          >
             Alcohol Calculator
           </Link>
-          <Link to="/contact" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+          <span className="text-black">|</span>
+          <Link
+            to="/contact"
+            className="bubbles-font text-base text-black hover:text-yellow-500 transition"
+          >
             Contact
           </Link>
         </div>
@@ -38,7 +61,6 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             <div className="relative inline-block w-[30px] h-[30px]">
-              {/* Black "border" layer (slightly larger) */}
               <FaInstagram
                 size={28}
                 className="absolute top-1/2 left-1/2 
@@ -51,7 +73,6 @@ const Footer = () => {
                           transform -translate-x-1/2 -translate-y-1/2
                           text-black"
               />
-              {/* White icon on top */}
               <FaInstagram
                 size={26}
                 className="absolute top-1/2 left-1/2 
@@ -129,7 +150,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="mt-6 text-gray-500 text-xs">
-          © {new Date().getFullYear()} Clinking Bubbles LLC All rights reserved.
+          © {new Date().getFullYear()} Clinking Bubbles LLC. All rights reserved.
         </p>
       </div>
     </footer>
@@ -137,3 +158,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
