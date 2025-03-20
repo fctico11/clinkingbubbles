@@ -7,6 +7,7 @@ import FillingCupAnimation from "../components/FillingCupAnimation";
 import Services from "../components/Services";
 import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
+import CredentialSection from "../components/CredentialSection";
 
 const Home = () => {
   const [showAnimation, setShowAnimation] = useState(true);
@@ -19,6 +20,7 @@ const Home = () => {
       <AboutSection />
       <FillingCupAnimation />
       <Services />
+      <CredentialSection />
       <section className="py-12 text-center">
         <Link to="/booking-process">
           <button className="bubbles-font text-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-full transition">
