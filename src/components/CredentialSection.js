@@ -11,10 +11,11 @@ const CredentialsSection = () => {
 
         {/* Intro Text */}
         <p className="bubbles-font text-lg mb-8 max-w-3xl mx-auto">
-          We’re proud to be an official LLC in the state of New Jersey. We carry both general liability 
-          and liquor liability insurance, and we’re also Food Manager Certified. In addition, we hold 
-          all necessary alcohol and bartending licenses—ensuring a safe, compliant experience for you 
-          and your guests.
+        We’re a fully licensed and insured LLC in New Jersey, 
+        carrying general and liquor liability insurance. 
+        As Food Manager Certified professionals with all required alcohol and 
+        bartending licenses, we ensure a safe and compliant experience for you 
+        and your guests.
         </p>
 
         {/* Icons / Highlights: 2 columns on mobile, 4 columns on md+ */}
