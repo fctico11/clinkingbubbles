@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -207,6 +208,14 @@ const ServicesPage = () => {
               <p className="bubbles-font text-lg text-gray-500">...Inquire</p>
             </div>
           </div>
+        </div>
+        {/* "Get a Quote!" Button directly below last accessory */}
+        <div className="mt-7 text-center">
+            <Link to="/contact">
+              <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
+                Get a Quote!
+              </button>
+            </Link>
         </div>
       </div>
 
