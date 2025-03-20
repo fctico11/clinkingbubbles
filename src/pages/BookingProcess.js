@@ -91,7 +91,7 @@ const BookingProcess = () => {
             is sit back, relax, and enjoy your celebration.
           </p>
           {/* "Get a Quote!" Button directly below last step */}
-          <div className="mt-4 text-center">
+          <div className="mt-7 text-center">
             <Link to="/contact">
               <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
                 Get a Quote!
