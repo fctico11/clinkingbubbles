@@ -1,8 +1,21 @@
-import React from "react";
-import Navbar from "../components/Navbar"; // Adjust path if needed
-import Footer from "../components/Footer"; // Adjust path if needed
+import React, { useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+// 1. Import AOS and its styles
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ServicesPage = () => {
+  // 2. Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      offset: 100,   // offset (in px) from the original trigger point
+      once: true,    // whether animation should happen only once
+    });
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -10,10 +23,17 @@ const ServicesPage = () => {
       {/* Full-Width Section for Title & Intro */}
       <div className="bg-[#EBE6D6] w-full pt-20 pb-8 px-4 mt-5">
         <div className="max-w-6xl mx-auto">
-          <h1 className="clinking-font text-4xl font-bold mb-6 text-center">
+          <h1
+            className="clinking-font text-4xl font-bold mb-6 text-center"
+            data-aos="fade-up"  // 3. Add AOS attributes
+          >
             OUR SERVICES
           </h1>
-          <p className="bubbles-font text-lg max-w-3xl mx-auto text-center">
+          <p
+            className="bubbles-font text-lg max-w-3xl mx-auto text-center"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             We believe every celebration should be a work of art. From chic soirées 
             to all-out bashes, our packages are designed to pamper your guests and 
             let you sip, smile, and truly relax. Below, you’ll find our essential 
@@ -27,13 +47,18 @@ const ServicesPage = () => {
       <div className="bg-white text-black px-4 py-10">
         <div className="max-w-6xl mx-auto">
           {/* BASIC PACKAGE */}
-          <h2 className="clinking-font text-3xl font-bold mb-6">BASIC PACKAGE INCLUDES</h2>
+          <h2
+            className="clinking-font text-3xl font-bold mb-6"
+            data-aos="fade-up"
+          >
+            BASIC PACKAGE INCLUDES
+          </h2>
 
           {/* Two-Column Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
             {/* Left Column */}
             <div className="space-y-6">
-              <div>
+              <div data-aos="fade-up">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Full Consultation <span className="text-gray-500">...Included</span>
                 </h3>
@@ -44,7 +69,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="100">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Bartenders Kit <span className="text-gray-500">...Included</span>
                 </h3>
@@ -54,7 +79,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="200">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Ice Tubs &amp; Coolers <span className="text-gray-500">...Included</span>
                 </h3>
@@ -64,7 +89,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="300">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Bar Goods <span className="text-gray-500">...Included</span>
                 </h3>
@@ -74,7 +99,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="400">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Insurance <span className="text-gray-500">...Included</span>
                 </h3>
@@ -87,7 +112,7 @@ const ServicesPage = () => {
 
             {/* Right Column */}
             <div className="space-y-6">
-              <div>
+              <div data-aos="fade-up">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Menu Design <span className="text-gray-500">...Included</span>
                 </h3>
@@ -97,7 +122,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="100">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Garnishes <span className="text-gray-500">...Included</span>
                 </h3>
@@ -107,7 +132,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="200">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Mixers <span className="text-gray-500">...Included</span>
                 </h3>
@@ -117,7 +142,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="300">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Drinkware <span className="text-gray-500">...Included</span>
                 </h3>
@@ -127,7 +152,7 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div>
+              <div data-aos="fade-up" data-aos-delay="400">
                 <h3 className="bubbles-font text-lg font-semibold">
                   Ice Delivery <span className="text-gray-500">...Included</span>
                 </h3>
@@ -140,42 +165,44 @@ const ServicesPage = () => {
           </div>
 
           {/* ACCESSORIES / ADD-ONS */}
-          <h2 className="clinking-font text-3xl font-bold mb-6">ACCESSORIES</h2>
-          <p className="bubbles-font text-lg mb-8">
+          <h2 className="clinking-font text-3xl font-bold mb-6" data-aos="fade-up">
+            ACCESSORIES
+          </h2>
+          <p className="bubbles-font text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
             Elevate your bar setup with these additional items. Perfect for those 
             who crave a more immersive, high-end experience.
           </p>
 
           <div className="space-y-6">
-            <div className="flex justify-between items-center border-b pb-3">
+            <div className="flex justify-between items-center border-b pb-3" data-aos="fade-up">
               <p className="bubbles-font text-lg font-semibold">
                 5 ft. Solid Black Bar / Solid White Bar
               </p>
               <p className="bubbles-font text-lg text-gray-500">...Inquire</p>
             </div>
-            <div className="flex justify-between items-center border-b pb-3">
+            <div className="flex justify-between items-center border-b pb-3" data-aos="fade-up" data-aos-delay="100">
               <p className="bubbles-font text-lg font-semibold">
                 5 ft. Faux Wooden / Tuxedo Bar
               </p>
               <p className="bubbles-font text-lg text-gray-500">...Inquire</p>
             </div>
-            <div className="flex justify-between items-center border-b pb-3">
+            <div className="flex justify-between items-center border-b pb-3" data-aos="fade-up" data-aos-delay="200">
               <p className="bubbles-font text-lg font-semibold">
                 6 ft. Industrial Chic Wooden Bar
               </p>
               <p className="bubbles-font text-lg text-gray-500">...Inquire</p>
             </div>
-            <div className="flex justify-between items-center border-b pb-3">
+            <div className="flex justify-between items-center border-b pb-3" data-aos="fade-up" data-aos-delay="300">
               <p className="bubbles-font text-lg font-semibold">
                 Gatsby / Emerson Back Bars
               </p>
               <p className="bubbles-font text-lg text-gray-500">...Inquire</p>
             </div>
-            <div className="flex justify-between items-center border-b pb-3">
+            <div className="flex justify-between items-center border-b pb-3" data-aos="fade-up" data-aos-delay="400">
               <p className="bubbles-font text-lg font-semibold">Jockey Box</p>
               <p className="bubbles-font text-lg text-gray-500">...Inquire</p>
             </div>
-            <div className="flex justify-between items-center border-b pb-3">
+            <div className="flex justify-between items-center border-b pb-3" data-aos="fade-up" data-aos-delay="500">
               <p className="bubbles-font text-lg font-semibold">Hydration Package</p>
               <p className="bubbles-font text-lg text-gray-500">...Inquire</p>
             </div>
