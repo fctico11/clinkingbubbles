@@ -9,14 +9,27 @@ const Footer = () => {
       <div className="max-w-4xl mx-auto">
         {/* Navigation Links */}
         <div className="flex justify-center space-x-6 mb-6">
-          <Link to="/" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Home</Link>
-          <Link to="/about" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">About</Link>
-          <Link to="/booking-process" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Booking Process</Link>
-          <Link to="/alcohol-calculator" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Alcohol Calculator</Link>
-          <Link to="/contact" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">Contact</Link>
+          <Link to="/" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+            Home
+          </Link>
+          <Link to="/about" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+            About
+          </Link>
+          <Link to="/services" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+            Services
+          </Link>
+          <Link to="/booking-process" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+            Booking Process
+          </Link>
+          <Link to="/alcohol-calculator" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+            Alcohol Calculator
+          </Link>
+          <Link to="/contact" className="bubbles-font text-lg text-black hover:text-yellow-500 transition">
+            Contact
+          </Link>
         </div>
 
-      {/* Social Icons */}
+        {/* Social Icons */}
         <div className="flex justify-center space-x-6 mb-6">
           {/* Instagram */}
           <a
@@ -38,7 +51,7 @@ const Footer = () => {
                           transform -translate-x-1/2 -translate-y-1/2
                           text-black"
               />
-              {/* White (or your preferred color) icon on top */}
+              {/* White icon on top */}
               <FaInstagram
                 size={26}
                 className="absolute top-1/2 left-1/2 
@@ -73,7 +86,6 @@ const Footer = () => {
                           transform -translate-x-1/2 -translate-y-1/2
                           text-white hover:text-yellow-500 transition"
               />
-              
             </div>
           </a>
 
@@ -96,9 +108,6 @@ const Footer = () => {
           </Link>
         </div>
 
-
-        
-
         {/* Disclaimer */}
         <div className="text-sm text-gray-400">
           <h3 className="text-yellow-500 font-bold">DRINK RESPONSIBLY</h3>
@@ -112,7 +121,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block ml-1"
-              >
+            >
               <FaExternalLinkAlt size={12} />
             </a>.
           </p>
@@ -120,7 +129,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="mt-6 text-gray-500 text-xs">
-          © {new Date().getFullYear()} Clinking Bubbles Co. All rights reserved.
+          © {new Date().getFullYear()} Clinking Bubbles LLC All rights reserved.
         </p>
       </div>
     </footer>
