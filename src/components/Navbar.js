@@ -87,7 +87,7 @@ const Navbar = () => {
             to="/"
             className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font transition"
           >
-            Clinking Bubbles Co.
+            Clinking Bubbles
           </Link>
         )}
 
