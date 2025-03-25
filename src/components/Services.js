@@ -5,8 +5,8 @@ import "./Services.css";
 
 // import icons
 import ringsIcon from "../assets/icons/rings.webp";
-import privateIcon from "../assets/icons/no-entry.png";
-import corporateIcon from "../assets/icons/handshake.png";
+import privateIcon from "../assets/icons/no-entry.webp";
+import corporateIcon from "../assets/icons/handshake.webp";
 import birthdayIcon from "../assets/icons/birthday-cake.png";
 import graduationIcon from "../assets/icons/graduate.png";
 import anniversaryIcon from "../assets/icons/anniversary.png";
