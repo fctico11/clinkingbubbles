@@ -369,7 +369,7 @@ const AlcoholCalculator = () => {
               className="bubbles-font text-lg text-blue-400 underline cursor-pointer"
               onClick={() => setShowEmailConsentOverlay(true)}
             >
-              I consent to have my info and results emailed*
+              I consent to have my info and results saved*
             </span>
           </div>
 
@@ -401,7 +401,7 @@ const AlcoholCalculator = () => {
             >
               X
             </button>
-            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">Email Consent</h3>
+            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">Info Consent</h3>
             <p className="bubbles-font text-lg mb-4">
               By checking the box, you agree to let us save your name, email, and the results of 
               the calculation for our team. We will use this information solely to follow up regarding 
