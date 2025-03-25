@@ -8,6 +8,7 @@ import Services from "../components/Services";
 import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
 import CredentialSection from "../components/CredentialSection";
+import WhatWeBring from "../components/WhatWeBring";
 
 const Home = () => {
   const [showAnimation, setShowAnimation] = useState(true);
@@ -20,6 +21,7 @@ const Home = () => {
       <AboutSection />
       <FillingCupAnimation />
       <Services />
+      <WhatWeBring />
       <CredentialSection />
       <section className="py-12 text-center">
         <Link to="/booking-process">
