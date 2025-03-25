@@ -16,7 +16,7 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-3xl mx-auto">
         <h1 className="clinking-font text-4xl md:text-6xl font-bold mb-4">Elevate Your Experience</h1>
         <p className="bubbles-font text-2xl md:text-2xl mb-8">
-          Luxury bartending services that dazzle and delight.
+          Private bartending services that dazzle and delight.
         </p>
         <Link to="/contact">
           <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
