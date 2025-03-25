@@ -47,7 +47,7 @@ const WhatWeBring = () => {
               Ice &amp; Coolers
             </h3>
             <p className="bubbles-font text-lg text-gray-600">
-              Keep your drinks frosty all event long with our premium ice and coolers.
+              Keep your drinks frosty all event long with our ice and premium coolers.
             </p>
           </div>
         </div>

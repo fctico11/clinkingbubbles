@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
 import Lottie from "lottie-react"; 
@@ -15,6 +16,7 @@ const standardEventTypes = [
 ];
 
 const ContactForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -463,14 +465,14 @@ const ContactForm = () => {
               In the meantime, feel free to check out our{" "}
               <span
                 className="bubbles-font text-lg underline cursor-pointer"
-                onClick={() => (window.location.href = "/alcohol-calculator")}
+                onClick={() => navigate("/alcohol-calculator")}
               >
                 alcohol calculator
               </span>{" "}
               or return to the{" "}
               <span
                 className="bubbles-font text-lg underline cursor-pointer"
-                onClick={() => (window.location.href = "/")}
+                onClick={() => navigate("/")}
               >
                 home page
               </span>.
