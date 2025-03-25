@@ -1,6 +1,6 @@
 // src/components/HeroSection.js
 import React from "react";
-import heroImage from "../assets/images/hero.png"; // Import image
+import heroImage from "../assets/images/hero.webp"; // Import image
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
