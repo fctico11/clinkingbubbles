@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../components/ContactForm.css"; // Reuse styling if desired
@@ -20,9 +21,14 @@ const AlcoholCalculator = () => {
     wine_percentage: 20,
     cocktail_percentage: 50,
   });
+
   const [resultsData, setResultsData] = useState(null);
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Consent states
+  const [emailConsent, setEmailConsent] = useState(false);
+  const [showEmailConsentOverlay, setShowEmailConsentOverlay] = useState(false);
 
   // Initialize React Router's navigation
   const navigate = useNavigate();
@@ -70,7 +76,7 @@ const AlcoholCalculator = () => {
   };
 
   // Perform the calculation locally on form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setFeedback("");
@@ -129,7 +135,7 @@ const AlcoholCalculator = () => {
     const costLiquor = liquorBottles * priceLiquorBottle;
     const totalCost = costBeer + costWine + costLiquor;
 
-    // Store results in an object
+    // Build results object
     const newResultsData = {
       beerCases,
       wineBottles,
@@ -140,6 +146,40 @@ const AlcoholCalculator = () => {
       totalCost,
     };
 
+    // If user consented, email the data via Formspree
+    if (emailConsent) {
+      try {
+        // Combine user inputs + results
+        const submissionData = {
+          // User input
+          name: formData.name,
+          email: formData.email,
+          hours_of_event: formData.hours_of_event,
+          total_guests: formData.total_guests,
+          drinks_per_hour: formData.drinks_per_hour,
+          beer_percentage: formData.beer_percentage,
+          wine_percentage: formData.wine_percentage,
+          cocktail_percentage: formData.cocktail_percentage,
+
+          // Results
+          beerCases,
+          wineBottles,
+          liquorBottles,
+          costBeer,
+          costWine,
+          costLiquor,
+          totalCost,
+        };
+
+        await axios.post("https://formspree.io/f/xjkyvqoe", submissionData);
+        // Optional: setFeedback("✔️ Your results have been emailed!");
+      } catch (error) {
+        console.error("Error emailing results via Formspree:", error);
+        // Optional: setFeedback("❌ There was an error emailing your results.");
+      }
+    }
+
+    // Set local results for display
     setResultsData(newResultsData);
     setLoading(false);
   };
@@ -189,6 +229,7 @@ const AlcoholCalculator = () => {
       {/* Calculator Form */}
       <section className="py-12 px-4 mt-1">
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
+          {/* Name */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Name *</label>
             <input
@@ -202,6 +243,7 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Email */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Email *</label>
             <input
@@ -215,6 +257,7 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Hours of Event */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Hours of event *</label>
             <input
@@ -228,6 +271,7 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Total Number of Guests */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Total number of guests at event *
@@ -243,6 +287,7 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Drinks per Guest per Hour */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Drinks per guest per hour (1 for average, 2 for heavy) *
@@ -258,6 +303,7 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Beer Slider */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Percentage of guests who prefer beer: {formData.beer_percentage}%
@@ -275,6 +321,7 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Wine Slider */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Percentage of guests who prefer wine: {formData.wine_percentage}%
@@ -292,6 +339,7 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Cocktail Slider */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Percentage of guests who prefer cocktails: {formData.cocktail_percentage}%
@@ -309,6 +357,22 @@ const AlcoholCalculator = () => {
             />
           </div>
 
+          {/* Email Consent Checkbox */}
+          <div className="flex items-center space-x-2 cursor-pointer">
+            <input
+              type="checkbox"
+              name="emailConsent"
+              checked={emailConsent}
+              onChange={(e) => setEmailConsent(e.target.checked)}
+            />
+            <span
+              className="bubbles-font text-lg text-blue-400 underline cursor-pointer"
+              onClick={() => setShowEmailConsentOverlay(true)}
+            >
+              I consent to have my info and results emailed*
+            </span>
+          </div>
+
           <button
             type="submit"
             className="bubbles-font text-lg w-full bg-black text-white p-3 rounded font-semibold"
@@ -321,6 +385,39 @@ const AlcoholCalculator = () => {
         </form>
       </section>
 
+      {/* Email Consent Overlay */}
+      {showEmailConsentOverlay && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setShowEmailConsentOverlay(false)}
+        >
+          <div
+            className="bg-white p-6 rounded-lg max-w-md shadow-lg relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowEmailConsentOverlay(false)}
+              className="absolute top-2 right-2 text-black font-bold"
+            >
+              X
+            </button>
+            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">Email Consent</h3>
+            <p className="bubbles-font text-lg mb-4">
+              By checking the box, you agree to let us save your name, email, and the results of 
+              the calculation for our team. We will use this information solely to follow up regarding 
+              your event and the alcohol calculation.
+            </p>
+            <button
+              onClick={() => setShowEmailConsentOverlay(false)}
+              className="bubbles-font text-lg bg-black text-white px-4 py-2 rounded"
+            >
+              Got it!
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Results Section */}
       {resultsData && (
         <section
           id="resultsSection"
@@ -330,7 +427,7 @@ const AlcoholCalculator = () => {
           <div className="border-4 border-yellow-500 p-6 rounded-lg space-y-6">
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Cases Of Beer Or Seltzers Needed*</h4>
-              <p className="text-gray-600 text-sm">Modelo, Blue Moon, White Claw Etc.</p>
+              <p className="text-gray-600 text-sm">Corona, Blue Moon, White Claw Etc.</p>
               <p className="bubbles-font text-2xl font-bold">{resultsData.beerCases}</p>
             </div>
             <div>
@@ -341,31 +438,39 @@ const AlcoholCalculator = () => {
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Bottles Of Liquor Needed*</h4>
               <p className="text-gray-600 text-sm">
-                A Combination Of Spirits (Vodka, Tequila, Rum, Whiskey, Gin, Etc.)
+                A Combination Of Liquors (Vodka, Tequila, Rum, Whiskey, Gin, Etc.)
               </p>
               <p className="bubbles-font text-2xl font-bold">{resultsData.liquorBottles}</p>
             </div>
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Estimated Beer & Seltzers Cost*</h4>
               <p className="text-gray-600 text-sm">Avg. $30.00 Per Case</p>
-              <p className="bubbles-font text-2xl font-bold">${resultsData.costBeer.toFixed(2)}</p>
+              <p className="bubbles-font text-2xl font-bold">
+                ${resultsData.costBeer.toFixed(2)}
+              </p>
             </div>
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Estimated Wine Cost*</h4>
               <p className="text-gray-600 text-sm">Avg. $15.00 Per Bottle</p>
-              <p className="bubbles-font text-2xl font-bold">${resultsData.costWine.toFixed(2)}</p>
+              <p className="bubbles-font text-2xl font-bold">
+                ${resultsData.costWine.toFixed(2)}
+              </p>
             </div>
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Estimated Liquor Cost*</h4>
               <p className="text-gray-600 text-sm">Avg. $20.00 Per 750ml Bottle</p>
-              <p className="bubbles-font text-2xl font-bold">${resultsData.costLiquor.toFixed(2)}</p>
+              <p className="bubbles-font text-2xl font-bold">
+                ${resultsData.costLiquor.toFixed(2)}
+              </p>
             </div>
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Total Estimated Spend On Alcohol*</h4>
               <p className="text-gray-600 text-sm">
                 Based On 1 Drink Per Person Per Hour (Adjust As Needed)
               </p>
-              <p className="bubbles-font text-2xl font-bold">${resultsData.totalCost.toFixed(2)}</p>
+              <p className="bubbles-font text-2xl font-bold">
+                ${resultsData.totalCost.toFixed(2)}
+              </p>
             </div>
           </div>
 
@@ -395,3 +500,4 @@ const AlcoholCalculator = () => {
 };
 
 export default AlcoholCalculator;
+

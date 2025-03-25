@@ -357,7 +357,7 @@ const ContactForm = () => {
               className="bubbles-font text-lg text-blue-400 underline cursor-pointer"
               onClick={() => setShowDryHireOverlay(true)}
             >
-              Acknowledgment of Dry Hire
+              Acknowledgment of Dry Hire*
             </span>
           </div>
           {/* Submit Button */}
