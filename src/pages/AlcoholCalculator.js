@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../components/ContactForm.css"; // Reuse styling if desired
 
+const SCROLL_OFFSET = 180;
+
 const AlcoholCalculator = () => {
-  // Declare states at the top
+  // State declarations
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,22 +24,27 @@ const AlcoholCalculator = () => {
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Initialize AOS with animations playing only once
+  // Initialize React Router's navigation
+  const navigate = useNavigate();
+
+  // Initialize AOS with animations that play only once
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Auto-scroll to results when resultsData updates
+  // Auto-scroll to the results section with a slight offset so the top is visible below the navbar
   useEffect(() => {
     if (resultsData) {
       const resultsEl = document.getElementById("resultsSection");
       if (resultsEl) {
-        resultsEl.scrollIntoView({ behavior: "smooth" });
+        const y =
+          resultsEl.getBoundingClientRect().top + window.pageYOffset - SCROLL_OFFSET;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     }
   }, [resultsData]);
 
-  // Handle text/number input changes
+  // Handle input changes for text/number fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -54,14 +62,14 @@ const AlcoholCalculator = () => {
     }));
   };
 
-  // Function to set slider background: gold until value%, then gray.
+  // Return a style for the slider track: gold up to the value, gray for the remainder.
   const getSliderStyle = (value) => {
     return {
       background: `linear-gradient(to right, #FFD700 0%, #FFD700 ${value}%, #ccc ${value}%, #ccc 100%)`,
     };
   };
 
-  // Perform the calculation locally
+  // Perform the calculation locally on form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -80,7 +88,7 @@ const AlcoholCalculator = () => {
       return;
     }
 
-    // Validate that slider percentages add up to 100
+    // Validate that slider percentages add up to 100%
     const totalPercentage =
       Number(formData.beer_percentage) +
       Number(formData.wine_percentage) +
@@ -99,35 +107,29 @@ const AlcoholCalculator = () => {
     const winePerc = Number(formData.wine_percentage) / 100;
     const cocktailPerc = Number(formData.cocktail_percentage) / 100;
 
-    // Calculate total drinks needed
+    // Calculate total drinks
     const totalDrinks = guests * hours * drinksPerHour;
-    // Calculate drinks per category
     const beerDrinks = totalDrinks * beerPerc;
     const wineDrinks = totalDrinks * winePerc;
     const cocktailDrinks = totalDrinks * cocktailPerc;
 
-    // Calculate quantity needed for each type:
-    // Beer: 1 drink = 1 bottle (12 oz), 1 case = 24 bottles
+    // Calculate quantities needed
     const beerCases = Math.ceil(beerDrinks / 24);
-
-    // Wine: 1 serving = 5 oz, 1 bottle = 25.4 oz
     const wineBottles = Math.ceil((wineDrinks * 5) / 25.4);
-
-    // Cocktails (liquor): 1 serving = 1.5 oz, 1 bottle = 25.4 oz
     const liquorBottles = Math.ceil((cocktailDrinks * 1.5) / 25.4);
 
     // Hard-coded average prices:
-    const priceBeerCase = 30; // $30 per case of beer
-    const priceWineBottle = 15; // $15 per bottle of wine
-    const priceLiquorBottle = 20; // $20 per bottle of liquor
+    const priceBeerCase = 30; // $30 per case
+    const priceWineBottle = 15; // $15 per bottle
+    const priceLiquorBottle = 20; // $20 per bottle
 
-    // Calculate cost
+    // Calculate costs
     const costBeer = beerCases * priceBeerCase;
     const costWine = wineBottles * priceWineBottle;
     const costLiquor = liquorBottles * priceLiquorBottle;
     const totalCost = costBeer + costWine + costLiquor;
 
-    // Store final data in an object
+    // Store results in an object
     const newResultsData = {
       beerCases,
       wineBottles,
@@ -146,7 +148,7 @@ const AlcoholCalculator = () => {
     <div className="bg-white min-h-screen flex flex-col justify-between relative">
       <Navbar />
 
-      {/* Inline CSS for slider thumb styling */}
+      {/* Inline CSS for slider thumbs styling */}
       <style>{`
         .gold-thumb::-webkit-slider-thumb {
           appearance: none;
@@ -187,7 +189,6 @@ const AlcoholCalculator = () => {
       {/* Calculator Form */}
       <section className="py-12 px-4 mt-1">
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
-          {/* Name */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Name *</label>
             <input
@@ -201,7 +202,6 @@ const AlcoholCalculator = () => {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Email *</label>
             <input
@@ -215,7 +215,6 @@ const AlcoholCalculator = () => {
             />
           </div>
 
-          {/* Hours of Event */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Hours of event *</label>
             <input
@@ -229,7 +228,6 @@ const AlcoholCalculator = () => {
             />
           </div>
 
-          {/* Total Number of Guests */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Total number of guests at event *
@@ -237,7 +235,7 @@ const AlcoholCalculator = () => {
             <input
               type="number"
               name="total_guests"
-              placeholder="e.g. 98"
+              placeholder="e.g. 100"
               className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
               value={formData.total_guests}
               onChange={handleChange}
@@ -245,7 +243,6 @@ const AlcoholCalculator = () => {
             />
           </div>
 
-          {/* Drinks per Guest per Hour */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Drinks per guest per hour (1 for average, 2 for heavy) *
@@ -261,7 +258,6 @@ const AlcoholCalculator = () => {
             />
           </div>
 
-          {/* Sliders with partial gold / partial gray */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">
               Percentage of guests who prefer beer: {formData.beer_percentage}%
@@ -313,7 +309,6 @@ const AlcoholCalculator = () => {
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="bubbles-font text-lg w-full bg-black text-white p-3 rounded font-semibold"
@@ -379,13 +374,13 @@ const AlcoholCalculator = () => {
             data-aos="zoom-in"
           >
             <button
-              onClick={() => (window.location.href = "/booking-process")}
+              onClick={() => navigate("/booking-process")}
               className="bubbles-font text-lg bg-black text-white px-6 py-3 rounded font-semibold hover:bg-gray-800 transition"
             >
               Learn More About The Booking Process
             </button>
             <button
-              onClick={() => (window.location.href = "/contact")}
+              onClick={() => navigate("/contact")}
               className="bubbles-font text-lg bg-yellow-500 text-black px-6 py-3 rounded font-semibold hover:bg-yellow-600 transition"
             >
               Request A Quote
