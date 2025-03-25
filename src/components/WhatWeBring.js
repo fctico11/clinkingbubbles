@@ -36,10 +36,11 @@ const WhatWeBring = () => {
           </div>
           <div className="p-4 border rounded-lg">
             <h3 className="bubbles-font text-xl font-semibold mb-2">
-              Bartenders Kit
+              Bar Goods
             </h3>
             <p className="bubbles-font text-lg text-gray-600">
-              Fully-equipped kits to ensure every cocktail is mixed to perfection.
+            Napkins, straws, cups, and those little finishing touches that make each
+            sip feel extra special—yes, we’ve got it all.
             </p>
           </div>
           <div className="p-4 border rounded-lg">
