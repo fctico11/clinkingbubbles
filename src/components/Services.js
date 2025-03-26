@@ -4,7 +4,7 @@ import { useSwipeable } from "react-swipeable";
 import "./Services.css";
 
 // import icons
-import ringsIcon from "../assets/icons/rings.webp";
+import ringsIcon from "../assets/icons/rings2.webp";
 import privateIcon from "../assets/icons/no-entry.webp";
 import corporateIcon from "../assets/icons/handshake.webp";
 import birthdayIcon from "../assets/icons/birthday-cake.png";
