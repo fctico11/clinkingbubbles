@@ -3,35 +3,36 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
-// Import images from src/assets/images
 import heroDesktop from "../assets/images/hero.webp";
 import heroMobile from "../assets/images/hero-mobile.webp";
 
 const HeroSection = () => {
-  // Start with no background image, just a placeholder color
+  // Decide if we're on mobile or desktop
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  // Start with a placeholder (no background image) so text can render immediately
   const [bgImage, setBgImage] = useState("none");
 
   useEffect(() => {
-    // Decide which image to load based on viewport width
-    const chosenImage = window.innerWidth < 768 ? heroMobile : heroDesktop;
+    // Pick the correct hero image based on viewport
+    const chosenImage = isMobile ? heroMobile : heroDesktop;
 
-    // Preload the chosen image
+    // Defer loading the background image until after text is painted
     const img = new Image();
     img.src = chosenImage;
     img.onload = () => {
-      // Once loaded, set the background image
       setBgImage(`url(${chosenImage})`);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
-      {/* Preload whichever image is likely needed for the current viewport */}
+      {/* Preload whichever image is needed for the current viewport */}
       <Helmet>
         <link
           rel="preload"
           as="image"
-          href={window.innerWidth < 768 ? heroMobile : heroDesktop}
+          href={isMobile ? heroMobile : heroDesktop}
         />
       </Helmet>
 
@@ -44,7 +45,7 @@ const HeroSection = () => {
           backgroundPosition: "center",
         }}
       >
-        {/* Overlay for Better Text Readability */}
+        {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
         {/* Content */}
@@ -67,3 +68,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
