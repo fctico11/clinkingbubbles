@@ -8,33 +8,43 @@ import heroDesktop from "../assets/images/hero.webp";
 import heroMobile from "../assets/images/hero-mobile.webp";
 
 const HeroSection = () => {
-  const [bgImage, setBgImage] = useState(heroDesktop);
+  // Start with no background image, just a placeholder color
+  const [bgImage, setBgImage] = useState("none");
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setBgImage(heroMobile);
-      } else {
-        setBgImage(heroDesktop);
-      }
-    };
+    // Decide which image to load based on viewport width
+    const chosenImage = window.innerWidth < 768 ? heroMobile : heroDesktop;
 
-    // Set the initial image based on current viewport
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // Preload the chosen image
+    const img = new Image();
+    img.src = chosenImage;
+    img.onload = () => {
+      // Once loaded, set the background image
+      setBgImage(`url(${chosenImage})`);
+    };
   }, []);
 
   return (
     <>
+      {/* Preload whichever image is likely needed for the current viewport */}
       <Helmet>
-        <link rel="preload" as="image" href={bgImage} />
+        <link
+          rel="preload"
+          as="image"
+          href={window.innerWidth < 768 ? heroMobile : heroDesktop}
+        />
       </Helmet>
+
       <section
-        className="relative bg-cover bg-center bg-no-repeat text-white py-32 px-4 text-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
+        className="relative text-white py-32 px-4 text-center"
+        style={{
+          backgroundColor: "#000", // placeholder color
+          backgroundImage: bgImage,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
-        {/* Overlay for better text readability */}
+        {/* Overlay for Better Text Readability */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
         {/* Content */}
