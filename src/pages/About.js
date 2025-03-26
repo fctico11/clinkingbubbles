@@ -15,63 +15,76 @@ const About = () => {
     <div className="bg-white min-h-screen flex flex-col justify-between relative">
       <Navbar />
 
-      {/* Logo Section with colored background and reduced bottom spacing */}
+      {/* Logo Section */}
       <section className="bg-[#EBE6D6] pt-20 pb-4">
         <div className="max-w-xs mx-auto">
           <img src={logo} alt="Clinking Bubbles Logo" className="mx-auto" />
         </div>
       </section>
 
-      {/* Hero Text Section (white background) */}
-      <section className="py-16 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="clinking-font text-4xl font-bold mb-6" data-aos="fade-up">
+      {/* About Text Section */}
+      <section className="py-16 px-6 sm:px-10 text-center">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h1
+            className="clinking-font text-4xl font-bold"
+            data-aos="fade-up"
+          >
             About Clinking Bubbles
           </h1>
+
           <p
-            className="bubbles-font text-xl text-black mb-8"
+            className="bubbles-font text-lg sm:text-xl text-black"
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            At Clinking Bubbles, we believe every celebration deserves a touch of magic.
-            We transform ordinary events into unforgettable experiences with our premium beverage services and innovative cocktails.
+            Clinking Bubbles was born from a simple idea: that great drinks and great energy
+            can turn a gathering into something unforgettable.
           </p>
+
           <p
-            className="bubbles-font text-lg text-black mb-8"
+            className="bubbles-font text-lg sm:text-xl text-black"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Founded by industry professionals, our passion for perfection and creativity drives us to tailor our services to your unique vision.
-            Whether you're hosting an intimate gathering or a grand celebration, we ensure every detail sparkles.
+            Mel has spent over seven years in the hospitality industry, crafting cocktails and
+            connections behind the bar. After a few private bartending gigs, she realized how
+            special it felt to create something more personal—something beyond a standard bar
+            experience. Around the same time, she and Francisco started dreaming big together.
+            With his background in tech and business, and her passion for hospitality, the idea
+            clicked: why not build a mobile bartending service that brings warmth, intention, and
+            a little sparkle to private events?
           </p>
+
           <p
-            className="bubbles-font text-lg text-black"
+            className="bubbles-font text-lg sm:text-xl text-black"
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            With exceptional service, a curated drink selection, and a commitment to excellence, Clinking Bubbles creates moments that last a lifetime.
+            We’re both proud Costa Ricans, and we carry that <em>pura vida</em> spirit into
+            everything we do—joyful, welcoming, and always with heart. Our goal is to bring a warm,
+            friendly, and detail-oriented touch to your special occasions. Whether it's a wedding,
+            birthday, or backyard celebration, we aim to elevate your experience with thoughtfully
+            curated drinks and a vibe that feels just right.
           </p>
-        </div>
-      </section>
 
-      {/* Vision & Values Section */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto" data-aos="fade-up">
-          <h2 className="clinking-font text-3xl font-bold mb-4">Our Vision &amp; Values</h2>
-          <p className="bubbles-font text-lg text-black mb-4">
-            Our mission is simple: to create an unparalleled bar experience that brings people together.
-            We pride ourselves on creativity, reliability, and personalized service.
-          </p>
-          <p className="bubbles-font text-lg text-black">
-            At Clinking Bubbles, we don’t just serve drinks; we craft memorable experiences that elevate every celebration.
-            Let us help you create moments that sparkle and leave a lasting impression.
+          <p
+            className="bubbles-font text-lg sm:text-xl text-black"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            At Clinking Bubbles, we don’t just pour drinks. We pour care, creativity, and personality
+            into every cocktail—so you and your guests can focus on what really matters:{" "}
+            <strong>making memories</strong>.
           </p>
         </div>
       </section>
 
       {/* Buttons Section */}
       <section className="py-8 px-4 text-center">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-center gap-4" data-aos="zoom-in">
+        <div
+          className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-center gap-4"
+          data-aos="zoom-in"
+        >
           <Link to="/booking-process">
             <button className="bubbles-font text-lg bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">
               Learn More About The Booking Process
