@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+// src/pages/Home.js
+import React, { useState, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
-import FillingCupAnimation from "../components/FillingCupAnimation";
 import Services from "../components/Services";
 import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
 import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
+
+// Lazy load the FillingCupAnimation so it's not in the initial bundle
+const FillingCupAnimation = React.lazy(() => import("../components/FillingCupAnimation"));
 
 const Home = () => {
   const [showAnimation, setShowAnimation] = useState(true);
@@ -19,7 +22,9 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <FillingCupAnimation />
+      <Suspense fallback={<div style={{ textAlign: "center", marginTop: "2rem" }}>Loading animation...</div>}>
+        <FillingCupAnimation />
+      </Suspense>
       <Services />
       <WhatWeBring />
       <CredentialSection />
@@ -37,12 +42,8 @@ const Home = () => {
           </Link>
         </div>
       </section>
-
-
-      
       <Footer />
-
-      {/* Overlay animation on top of homepage */}
+      {/* Overlay animation on top of homepage remains unchanged */}
       {showAnimation && <ChampagneClink onAnimationEnd={() => setShowAnimation(false)} />}
     </div>
   );
