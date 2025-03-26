@@ -1,20 +1,40 @@
 // src/components/HeroSection.js
-import React from "react";
-import { Helmet } from "react-helmet"; // Import React Helmet
-import heroImage from "../assets/images/hero.webp"; // Import image
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
+// Import images from src/assets/images
+import heroDesktop from "../assets/images/hero.webp";
+import heroMobile from "../assets/images/hero-mobile.webp";
+
 const HeroSection = () => {
+  const [bgImage, setBgImage] = useState(heroDesktop);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setBgImage(heroMobile);
+      } else {
+        setBgImage(heroDesktop);
+      }
+    };
+
+    // Set the initial image based on current viewport
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <Helmet>
-        <link rel="preload" as="image" href={heroImage} />
+        <link rel="preload" as="image" href={bgImage} />
       </Helmet>
       <section
         className="relative bg-cover bg-center bg-no-repeat text-white py-32 px-4 text-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(${bgImage})` }}
       >
-        {/* Overlay for Better Text Readability */}
+        {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
         {/* Content */}
