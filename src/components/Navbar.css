@@ -3,6 +3,7 @@
   src: url('../assets/fonts/VELISTA.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 .clinking-font {
@@ -14,6 +15,7 @@
   src: url('../assets/fonts/AppleGaramond.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 .bubbles-font {
