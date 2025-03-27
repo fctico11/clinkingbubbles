@@ -166,7 +166,7 @@ const ContactForm = () => {
   if (!mapsScriptLoaded) {
     return (
       <div className="bg-white min-h-screen flex flex-col justify-center">
-        <div className="mt-20 text-center">
+        <div className="mt-20 mb-20 text-center">
           <h2 className="text-xl">Loading Contact Form... Please Hang Tight</h2>
         </div>
         <Footer />
