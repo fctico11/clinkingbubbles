@@ -59,6 +59,7 @@ const Footer = () => {
             href="https://www.instagram.com/clinkingbubbles"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Clinking Bubbles Instagram"
           >
             <div className="relative inline-block w-[30px] h-[30px]">
               <FaInstagram
@@ -87,6 +88,7 @@ const Footer = () => {
             href="https://www.tiktok.com/@clinkingbubbles"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Clinking Bubbles TikTok"
           >
             <div className="relative inline-block w-[30px] h-[30px]">
               <SiTiktok
@@ -142,6 +144,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block ml-1"
+              aria-label="Link to professional help organization for alcohol use"
             >
               <FaExternalLinkAlt size={12} />
             </a>.
