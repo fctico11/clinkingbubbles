@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "lottie-react";
-import fillingCupAnimation from "../assets/fillingcup.json"; // Adjust path if needed
+import fillingCupAnimation from "../assets/optimizedcup.json"; // Adjust path if needed
 
 const FillingCupAnimation = () => {
   const lottieRef = useRef(null);
