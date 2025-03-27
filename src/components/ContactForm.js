@@ -165,7 +165,7 @@ const ContactForm = () => {
   // Optional: If the Google Maps script isn't loaded yet, display a simple loading message.
   if (!mapsScriptLoaded) {
     return (
-      <div className="bg-white min-h-screen flex flex-col justify-between">
+      <div className="bg-white min-h-screen flex flex-col justify-center">
         <div className="mt-20 text-center">
           <h2 className="text-xl">Loading Contact Form... Please Hang Tight</h2>
         </div>
