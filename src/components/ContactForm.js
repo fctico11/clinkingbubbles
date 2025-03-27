@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+// src/pages/ContactForm.js
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
-import Lottie from "lottie-react"; 
-import successAnimation from "../assets/success.json"; // Adjust path if needed
+import Lottie from "lottie-react";
+import successAnimation from "../assets/success.json";
 import "../components/ContactForm.css";
 
-// Default event types
 const standardEventTypes = [
   "Birthday Party",
   "Graduation Party",
@@ -15,8 +15,72 @@ const standardEventTypes = [
   "Wedding",
 ];
 
+// AddressAutocomplete component encapsulates the autocomplete hook.
+// It renders an input field and suggestion list.
+const AddressAutocomplete = ({ onSelect, initialValue }) => {
+  const {
+    value,
+    setValue,
+    suggestions: { status, data },
+    clearSuggestions,
+  } = usePlacesAutocomplete();
+
+  // If an initial value is provided, set it.
+  useEffect(() => {
+    if (initialValue) {
+      setValue(initialValue, false);
+    }
+  }, [initialValue, setValue]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        name="eventAddress"
+        placeholder="Start typing address..."
+        className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      {status === "OK" &&
+        data.map((suggestion) => (
+          <div
+            key={suggestion.place_id}
+            className="autocomplete-suggestion cursor-pointer p-2 bg-gray-100"
+            onClick={() => {
+              setValue(suggestion.description, false);
+              onSelect(suggestion.description);
+              clearSuggestions();
+            }}
+          >
+            {suggestion.description}
+          </div>
+        ))}
+    </div>
+  );
+};
+
 const ContactForm = () => {
   const navigate = useNavigate();
+
+  // Track if the Google Maps Places API script has loaded.
+  const [mapsScriptLoaded, setMapsScriptLoaded] = useState(false);
+
+  // Dynamically load the Google Maps API script on mount.
+  useEffect(() => {
+    if (window.google && window.google.maps) {
+      setMapsScriptLoaded(true);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src =
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyBQgCzOmUK7dZ06L22eHjYWC1rMIjCJU5Y&libraries=places";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => setMapsScriptLoaded(true);
+    document.body.appendChild(script);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -41,27 +105,15 @@ const ContactForm = () => {
   const [showOtherEventModal, setShowOtherEventModal] = useState(false);
   const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
 
-  // Google Places Autocomplete Hook
-  const {
-    value,
-    setValue,
-    suggestions: { status, data },
-    clearSuggestions,
-  } = usePlacesAutocomplete();
-
-  // Called when user clicks a suggestion
+  // Handler to update eventAddress when an address is selected.
   const handleAddressSelect = (address) => {
-    setValue(address, false);
     setFormData({ ...formData, eventAddress: address });
-    clearSuggestions();
   };
 
-  // Closes the success overlay
   const closeSuccessOverlay = () => {
     window.location.href = "/";
   };
 
-  // Handle all input changes
   const handleChange = (e) => {
     const { name, value: val, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : val;
@@ -71,7 +123,6 @@ const ContactForm = () => {
     setFormData({ ...formData, [name]: newValue });
   };
 
-  // Save the user’s custom event type from the modal
   const handleOtherEventSubmit = (e) => {
     e.preventDefault();
     if (formData.otherEventType.trim() !== "") {
@@ -80,7 +131,6 @@ const ContactForm = () => {
     setShowOtherEventModal(false);
   };
 
-  // Close the "Other Event" modal
   const closeOtherEventModal = () => {
     setShowOtherEventModal(false);
     if (!formData.otherEventType.trim()) {
@@ -88,7 +138,6 @@ const ContactForm = () => {
     }
   };
 
-  // Final form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -113,16 +162,21 @@ const ContactForm = () => {
     setLoading(false);
   };
 
-  // Decide what the eventType <select> should show
-  const eventTypeValue = standardEventTypes.includes(formData.eventType)
-    ? formData.eventType
-    : formData.eventType === "Other"
-    ? "Other"
-    : formData.eventType;
+  // Optional: If the Google Maps script isn't loaded yet, display a simple loading message.
+  if (!mapsScriptLoaded) {
+    return (
+      <div className="bg-white min-h-screen flex flex-col justify-between">
+        <div className="py-10 text-center">
+          <h2 className="text-xl">Loading Google Maps Autocomplete...</h2>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white min-h-screen flex flex-col justify-between relative">
-      {/* Inline Styles for Animations */}
+      {/* Inline styles for animations */}
       <style>{`
         @keyframes dropDown {
           0% { transform: translateY(-100%); opacity: 0; }
@@ -137,7 +191,7 @@ const ContactForm = () => {
         .animate-fadeIn { animation: fadeIn 0.5s ease-in forwards; }
       `}</style>
 
-      {/* Intro Section with bg-[#EBE6D6] Background */}
+      {/* Intro Section */}
       <section className="py-10 px-4 bg-[#EBE6D6] text-white text-center mt-5">
         <h2 className="clinking-font text-black text-3xl font-bold mt-12">
           Let's Make Your Event <span className="sparkle">Unforgettable</span>
@@ -165,6 +219,7 @@ const ContactForm = () => {
               required
             />
           </div>
+
           {/* Phone Number */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Phone Number *</label>
@@ -178,6 +233,7 @@ const ContactForm = () => {
               required
             />
           </div>
+
           {/* Email */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Email *</label>
@@ -191,35 +247,16 @@ const ContactForm = () => {
               required
             />
           </div>
+
           {/* Event Address with Autocomplete */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Event Address *</label>
-            <input
-              type="text"
-              name="eventAddress"
-              placeholder="Start typing address..."
-              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="none"
-              value={value}
-              onChange={(e) => {
-                setValue(e.target.value);
-                setFormData({ ...formData, eventAddress: e.target.value });
-              }}
-              required
+            <AddressAutocomplete
+              onSelect={handleAddressSelect}
+              initialValue={formData.eventAddress}
             />
-            {status === "OK" &&
-              data.map((suggestion) => (
-                <div
-                  key={suggestion.place_id}
-                  className="autocomplete-suggestion cursor-pointer p-2 bg-gray-100"
-                  onClick={() => handleAddressSelect(suggestion.description)}
-                >
-                  {suggestion.description}
-                </div>
-              ))}
           </div>
+
           {/* Event Location */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Location of Event *</label>
@@ -233,6 +270,7 @@ const ContactForm = () => {
               <option>Rented Venue</option>
             </select>
           </div>
+
           {/* Date of Event */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Date of Event *</label>
@@ -245,14 +283,26 @@ const ContactForm = () => {
               required
             />
           </div>
+
           {/* Type of Event */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Type of Event *</label>
             <select
               name="eventType"
-              className="bubbles-font text-lgw-full p-3 rounded border border-gray-400 bg-white text-black"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
               onChange={handleChange}
-              value={eventTypeValue}
+              value={
+                (() => {
+                  const isStandard =
+                    standardEventTypes.includes(formData.eventType) ||
+                    formData.eventType.trim() === "";
+                  return isStandard
+                    ? formData.eventType
+                    : formData.eventType === "Other"
+                    ? "Other"
+                    : formData.eventType;
+                })()
+              }
             >
               {standardEventTypes.map((et) => (
                 <option key={et} value={et}>
@@ -267,6 +317,7 @@ const ContactForm = () => {
                 )}
             </select>
           </div>
+
           {/* Hours of Event */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Hours of Event *</label>
@@ -295,9 +346,12 @@ const ContactForm = () => {
               </div>
             </div>
           </div>
+
           {/* Estimated Number of Guests */}
           <div>
-            <label className="bubbles-font text-lg block font-semibold mb-1">Estimated Number of Guests *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">
+              Estimated Number of Guests *
+            </label>
             <input
               type="number"
               name="guestCount"
@@ -308,6 +362,7 @@ const ContactForm = () => {
               required
             />
           </div>
+
           {/* Bartending Options */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Bartending Options *</label>
@@ -321,9 +376,12 @@ const ContactForm = () => {
               <option>Bartender(s) + Mobile Bar</option>
             </select>
           </div>
+
           {/* Additional Details */}
           <div>
-            <label className="bubbles-font text-lg block font-semibold mb-1">Any other details you would like for us to know:</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">
+              Any other details you would like for us to know:
+            </label>
             <textarea
               name="additionalDetails"
               placeholder="e.g. Special drink requests, event theme, etc."
@@ -332,9 +390,12 @@ const ContactForm = () => {
               value={formData.additionalDetails}
             ></textarea>
           </div>
+
           {/* Preferred Method of Contact */}
           <div>
-            <label className="bubbles-font text-lg block font-semibold mb-1">Preferred Method of Contact *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">
+              Preferred Method of Contact *
+            </label>
             <select
               name="contactMethod"
               className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
@@ -346,6 +407,7 @@ const ContactForm = () => {
               <option>Email</option>
             </select>
           </div>
+
           {/* Dry Hire Acknowledgment */}
           <div className="flex items-center space-x-2 cursor-pointer">
             <input
@@ -362,6 +424,7 @@ const ContactForm = () => {
               Acknowledgment of Dry Hire*
             </span>
           </div>
+
           {/* Submit Button */}
           <button
             type="submit"
@@ -374,7 +437,6 @@ const ContactForm = () => {
         </form>
       </section>
 
-      {/* Dry Hire Overlay */}
       {showDryHireOverlay && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
@@ -390,12 +452,17 @@ const ContactForm = () => {
             >
               X
             </button>
-            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">Dry Hire Agreement</h3>
+            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">
+              Dry Hire Agreement
+            </h3>
             <p className="bubbles-font text-lg mb-4">
-              By accepting the dry hire agreement, you agree to provide all the alcohol for your event, and we will provide the bartending 
-              service, bar set-up, and any supplies and materials you may need (napkins, cups, straws, etc.). This allows you (the client) to purchase alcohol at cost 
-              and means you get to keep all of the unused alcohol from the event. We will help you determine how much and what kind of alcohol/specialty 
-              drinks you would like at your event at the next step after you submit this form.
+              By accepting the dry hire agreement, you agree to provide all the alcohol for
+              your event, and we will provide the bartending service, bar set-up, and any
+              supplies and materials you may need (napkins, cups, straws, etc.). This allows
+              you (the client) to purchase alcohol at cost and means you get to keep all of
+              the unused alcohol from the event. We will help you determine how much and
+              what kind of alcohol/specialty drinks you would like at your event at the next
+              step after you submit this form.
             </p>
             <button
               onClick={() => setShowDryHireOverlay(false)}
@@ -407,7 +474,6 @@ const ContactForm = () => {
         </div>
       )}
 
-      {/* Other Event Type Modal */}
       {showOtherEventModal && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
@@ -423,7 +489,9 @@ const ContactForm = () => {
             >
               X
             </button>
-            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">Specify Event Type</h3>
+            <h3 className="bubbles-font text-lg text-xl font-bold mb-4">
+              Specify Event Type
+            </h3>
             <form onSubmit={handleOtherEventSubmit}>
               <input
                 type="text"
@@ -444,7 +512,6 @@ const ContactForm = () => {
         </div>
       )}
 
-      {/* SUCCESS OVERLAY */}
       {showSuccessOverlay && (
         <div className="fixed inset-0 flex items-center justify-center bg-green-500 bg-opacity-90 z-50 animate-dropDown">
           <button
@@ -460,7 +527,7 @@ const ContactForm = () => {
             <h3 className="bubbles-font text-lg text-2xl font-extrabold mb-4">
               Thank you for submitting the contact form, we're almost ready to get this party started!
             </h3>
-            <p className="bubbles-font text-lg text-lg">
+            <p className="bubbles-font text-lg">
               Hang tight while our team reviews your request. We'll be in touch within 48 hours.
               In the meantime, feel free to check out our{" "}
               <span
@@ -487,5 +554,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
-
