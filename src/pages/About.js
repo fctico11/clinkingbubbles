@@ -6,7 +6,6 @@ import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import logo from "../assets/logos/transparent.PNG"; // Adjust the path if needed
-import { Helmet } from "react-helmet";
 
 const About = () => {
   useEffect(() => {
@@ -17,22 +16,25 @@ const About = () => {
     <div className="bg-white min-h-screen flex flex-col relative">
       <Navbar />
 
-      {/* Preload the logo so it's fetched early (optional) */}
-      <Helmet>
-        <link rel="preload" as="image" href={logo} />
-      </Helmet>
-
-      {/* Logo Section */}
-      <section className="bg-[#EBE6D6] pt-20 pb-4">
+      {/* 
+        We give the top section a background color of #EBE6D6 
+        and ensure the container has enough height so there's no jarring flash. 
+      */}
+      <section className="bg-[#EBE6D6] pt-20 pb-4" style={{ minHeight: "250px" }}>
         <div className="max-w-xs mx-auto">
-          {/* Provide width/height so the browser knows the image size immediately */}
+          {/*
+            1) Provide explicit width/height so the browser reserves space immediately.
+            2) Use loading="eager" to tell the browser to load it ASAP.
+            3) Optionally, use decoding="async" or "sync" to experiment with how it’s drawn.
+          */}
           <img
             src={logo}
             alt="Clinking Bubbles Logo"
             className="mx-auto"
             width="300"
             height="300"
-            // or use a Tailwind approach: w-[300px] h-auto object-contain
+            loading="eager"
+            decoding="sync"
           />
         </div>
       </section>
