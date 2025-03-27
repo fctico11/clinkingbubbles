@@ -5,7 +5,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import logo from "../assets/logos/transparent.PNG"; // Adjust path if needed
+import logo from "../assets/logos/transparent.PNG"; // Adjust the path if needed
+import { Helmet } from "react-helmet";
 
 const About = () => {
   useEffect(() => {
@@ -16,14 +17,27 @@ const About = () => {
     <div className="bg-white min-h-screen flex flex-col relative">
       <Navbar />
 
-      {/* Logo Section: Always visible with a solid colored background */}
+      {/* Preload the logo so it's fetched early (optional) */}
+      <Helmet>
+        <link rel="preload" as="image" href={logo} />
+      </Helmet>
+
+      {/* Logo Section */}
       <section className="bg-[#EBE6D6] pt-20 pb-4">
         <div className="max-w-xs mx-auto">
-          <img src={logo} alt="Clinking Bubbles Logo" className="mx-auto" />
+          {/* Provide width/height so the browser knows the image size immediately */}
+          <img
+            src={logo}
+            alt="Clinking Bubbles Logo"
+            className="mx-auto"
+            width="300"
+            height="300"
+            // or use a Tailwind approach: w-[300px] h-auto object-contain
+          />
         </div>
       </section>
 
-      {/* About Text Section: Animates on scroll */}
+      {/* About Text Section */}
       <section className="py-16 px-6 sm:px-10 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <h1 className="clinking-font text-4xl font-bold" data-aos="fade-up">
@@ -98,5 +112,3 @@ const About = () => {
 };
 
 export default About;
-
-

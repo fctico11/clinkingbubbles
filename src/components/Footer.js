@@ -113,7 +113,7 @@ const Footer = () => {
           </a>
 
           {/* Envelope */}
-          <Link to="/contact">
+          <Link to="/contact" aria-label="Contact us via email">
             <div className="relative inline-block w-[30px] h-[30px]">
               <FaEnvelope
                 size={30}
