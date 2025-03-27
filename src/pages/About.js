@@ -1,10 +1,11 @@
+// src/pages/About.js
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import logo from "../assets/logos/transparent.PNG"; // Adjust the path if needed
+import logo from "../assets/logos/transparent.PNG"; // Adjust path if needed
 
 const About = () => {
   useEffect(() => {
@@ -12,26 +13,22 @@ const About = () => {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen flex flex-col justify-between relative">
+    <div className="bg-white min-h-screen flex flex-col relative">
       <Navbar />
 
-      {/* Logo Section */}
+      {/* Logo Section: Always visible with a solid colored background */}
       <section className="bg-[#EBE6D6] pt-20 pb-4">
         <div className="max-w-xs mx-auto">
           <img src={logo} alt="Clinking Bubbles Logo" className="mx-auto" />
         </div>
       </section>
 
-      {/* About Text Section */}
+      {/* About Text Section: Animates on scroll */}
       <section className="py-16 px-6 sm:px-10 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
-          <h1
-            className="clinking-font text-4xl font-bold"
-            data-aos="fade-up"
-          >
+          <h1 className="clinking-font text-4xl font-bold" data-aos="fade-up">
             About Clinking Bubbles
           </h1>
-
           <p
             className="bubbles-font text-lg sm:text-xl text-black"
             data-aos="fade-up"
@@ -40,7 +37,6 @@ const About = () => {
             Clinking Bubbles was born from a simple idea: that great drinks and great energy
             can turn a gathering into something unforgettable.
           </p>
-
           <p
             className="bubbles-font text-lg sm:text-xl text-black"
             data-aos="fade-up"
@@ -54,7 +50,6 @@ const About = () => {
             clicked: why not build a mobile bartending service that brings warmth, intention, and
             a little sparkle to private events?
           </p>
-
           <p
             className="bubbles-font text-lg sm:text-xl text-black"
             data-aos="fade-up"
@@ -66,7 +61,6 @@ const About = () => {
             birthday, or backyard celebration, we aim to elevate your experience with thoughtfully
             curated drinks and a vibe that feels just right.
           </p>
-
           <p
             className="bubbles-font text-lg sm:text-xl text-black"
             data-aos="fade-up"
