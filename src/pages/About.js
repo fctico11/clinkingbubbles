@@ -5,10 +5,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import logo from "../assets/logos/transparent.PNG"; // Adjust the path if needed
+import logo from "../assets/logos/transparent.PNG"; // Adjust path if needed
 
 const About = () => {
   useEffect(() => {
+    // Initialize AOS with your desired settings
     AOS.init({ duration: 800, once: true });
   }, []);
 
@@ -17,16 +18,11 @@ const About = () => {
       <Navbar />
 
       {/* 
-        We give the top section a background color of #EBE6D6 
-        and ensure the container has enough height so there's no jarring flash. 
+        We give the top section a background color (#EBE6D6)
+        and enough height to avoid visible flashing 
       */}
       <section className="bg-[#EBE6D6] pt-20 pb-4" style={{ minHeight: "250px" }}>
         <div className="max-w-xs mx-auto">
-          {/*
-            1) Provide explicit width/height so the browser reserves space immediately.
-            2) Use loading="eager" to tell the browser to load it ASAP.
-            3) Optionally, use decoding="async" or "sync" to experiment with how it’s drawn.
-          */}
           <img
             src={logo}
             alt="Clinking Bubbles Logo"
@@ -35,6 +31,8 @@ const About = () => {
             height="300"
             loading="eager"
             decoding="sync"
+            data-aos="fade-up"
+            data-aos-delay="50" 
           />
         </div>
       </section>
@@ -114,3 +112,4 @@ const About = () => {
 };
 
 export default About;
+
