@@ -123,7 +123,7 @@ function Services() {
 
         {/* Navigation: Arrows and Dots */}
         <div className="carousel-nav">
-          <button className="nav-btn" onClick={handlePrev} disabled={active <= 0}>
+          <button className="nav-btn" onClick={handlePrev} disabled={active <= 0} aria-label="Left navigation arrow">
             <TiChevronLeftOutline />
           </button>
           <div className="dots">
@@ -135,7 +135,7 @@ function Services() {
               />
             ))}
           </div>
-          <button className="nav-btn" onClick={handleNext} disabled={active >= servicesData.length - 1}>
+          <button className="nav-btn" onClick={handleNext} disabled={active >= servicesData.length - 1} aria-label="Right navigation arrow">
             <TiChevronRightOutline />
           </button>
         </div>

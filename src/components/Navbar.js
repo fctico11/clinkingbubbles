@@ -145,7 +145,7 @@ const Navbar = () => {
         {/* Mobile Menu Button (Hamburger) */}
         <div className="md:hidden">
           {!isOpen && (
-            <button onClick={toggleMenu} className="text-yellow-500 focus:outline-none">
+            <button onClick={toggleMenu} className="text-yellow-500 focus:outline-none" aria-label="Open navigation menu">
               <FiMenu size={30} />
             </button>
           )}
@@ -165,7 +165,7 @@ const Navbar = () => {
           >
             <div className="drawer-content">
               {/* Close Button */}
-              <button onClick={toggleMenu} className="close-btn">
+              <button onClick={toggleMenu} className="close-btn" aria-label="Close menu">
                 <FiX size={30} />
               </button>
 
