@@ -166,8 +166,8 @@ const ContactForm = () => {
   if (!mapsScriptLoaded) {
     return (
       <div className="bg-white min-h-screen flex flex-col justify-between">
-        <div className="py-10 text-center">
-          <h2 className="text-xl">Loading Google Maps Autocomplete...</h2>
+        <div className="mt-20 text-center">
+          <h2 className="text-xl">Loading Contact Form... Please Hang Tight</h2>
         </div>
         <Footer />
       </div>
