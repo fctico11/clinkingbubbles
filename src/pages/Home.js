@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React, { useState, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
