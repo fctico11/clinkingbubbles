@@ -7,6 +7,23 @@ import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import { Helmet } from 'react-helmet';
+
+<Helmet>
+  <title>How to Book Clinking Bubbles: Private Bartenders in NJ</title>
+  <meta name="description" content="From inquiry to celebration, our booking process is simple and smooth. Learn how to reserve Clinking Bubbles for your upcoming event." />
+  <meta name="keywords" content="book bartenders NJ, book bartenders NY, event bartending process, private event booking, NJ party bartenders, booking bartenders, cocktail service booking" />
+  <link rel="canonical" href="https://www.clinkingbubbles.com/booking-process" />
+
+  <meta property="og:title" content="How to Book Clinking Bubbles: Private Bartenders in NJ" />
+  <meta property="og:description" content="From inquiry to celebration, our booking process is simple and smooth. Learn how to reserve Clinking Bubbles for your upcoming event." />
+  <meta property="og:url" content="https://www.clinkingbubbles.com/booking-process" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/mainlogo.png" />
+  <meta property="og:site_name" content="Clinking Bubbles" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image:alt" content="Easily book private bartenders for NJ & NY events." />
+</Helmet>
 
 
 
