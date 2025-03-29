@@ -5,17 +5,6 @@ import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import logo from "../assets/logos/transparent.PNG"; // Adjust path if needed
-import { Helmet } from "react-helmet-async";
-
-<Helmet>
-  <title>About Us | Clinking Bubbles Private Bartending</title>
-  <meta name="description" content="Get to know Clinking Bubbles, NJ & NY's private bartending duo bringing warmth, creativity, and curated cocktails to every event." />
-  <link rel="canonical" href="https://www.clinkingbubbles.com/about" />
-  <meta property="og:title" content="About Us | Clinking Bubbles Private Bartending" />
-  <meta property="og:description" content="Meet the people behind Clinking Bubbles and their passion for unforgettable events." />
-  <meta property="og:url" content="https://www.clinkingbubbles.com/about" />
-  <meta property="og:image" content="https://www.clinkingbubbles.com/mainlogo.png" />
-</Helmet>
 
 
 

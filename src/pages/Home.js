@@ -8,18 +8,7 @@ import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
 import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <title>Clinking Bubbles | Private Bartending in NJ & NY</title>
-  <meta name="description" content="Clinking Bubbles offers private bartending services for weddings, parties, and special events across New Jersey and New York. Dazzle your guests with expertly crafted cocktails and warm service." />
-  <link rel="canonical" href="https://www.clinkingbubbles.com/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Clinking Bubbles | Private Bartending in NJ & NY" />
-  <meta property="og:description" content="Professional private bartenders serving NJ & NY. Weddings, parties, & more." />
-  <meta property="og:url" content="https://www.clinkingbubbles.com/" />
-  <meta property="og:image" content="https://www.clinkingbubbles.com/mainlogo.png" />
-</Helmet>
 
 // Lazy load the FillingCupAnimation so it's not in the initial bundle
 const FillingCupAnimation = React.lazy(() => import("../components/FillingCupAnimation"));

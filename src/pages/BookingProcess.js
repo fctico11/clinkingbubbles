@@ -7,17 +7,7 @@ import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <title>Booking Process | Clinking Bubbles</title>
-  <meta name="description" content="See how simple it is to book Clinking Bubbles for your next private event. A step-by-step guide to a seamless bartending experience." />
-  <link rel="canonical" href="https://www.clinkingbubbles.com/booking-process" />
-  <meta property="og:title" content="Booking Process | Clinking Bubbles" />
-  <meta property="og:description" content="Our stress-free process to book your private bartending service in NJ & NY." />
-  <meta property="og:url" content="https://www.clinkingbubbles.com/booking-process" />
-  <meta property="og:image" content="https://www.clinkingbubbles.com/mainlogo.png" />
-</Helmet>
 
 
 const BookingProcess = () => {

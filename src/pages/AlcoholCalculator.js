@@ -6,17 +6,6 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../components/ContactForm.css"; // Reuse styling if desired
-import { Helmet } from "react-helmet-async";
-
-<Helmet>
-  <title>Alcohol Calculator | Plan Your Party Drinks</title>
-  <meta name="description" content="Estimate how much alcohol you need for your event. Our calculator helps you plan drinks for weddings, parties, and special occasions." />
-  <link rel="canonical" href="https://www.clinkingbubbles.com/alcohol-calculator" />
-  <meta property="og:title" content="Alcohol Calculator | Clinking Bubbles" />
-  <meta property="og:description" content="Calculate drink quantities for your event. Beer, wine, and liquor estimates made easy." />
-  <meta property="og:url" content="https://www.clinkingbubbles.com/alcohol-calculator" />
-  <meta property="og:image" content="https://www.clinkingbubbles.com/mainlogo.png" />
-</Helmet>
 
 const SCROLL_OFFSET = 180;
 
