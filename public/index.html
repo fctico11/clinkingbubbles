@@ -5,14 +5,11 @@
     <link rel="icon" href="%PUBLIC_URL%/mainlogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Clinking Bubbles offers private bartending services to the New Jersey and New York areas that dazzle and delight. From private parties to grand events, we elevate every celebration with curated drinks and professional staff."
-    />
 
     <!-- Search Atlas Dynamic Optimization Script -->
     <!-- <script nowprocket nitro-exclude type="text/javascript" id="sa-dynamic-optimization" data-uuid="5e91ef99-09db-489f-be30-e31a7cbcf070" src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gIjVlOTFlZjk5LTA5ZGItNDg5Zi1iZTMwLWUzMWE3Y2JjZjA3MCI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="></script> -->
 
+    <!-- Local Business Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -30,7 +27,9 @@
         "areaServed": "NJ, NY",
         "description": "Private bartending services in NJ that elevate events with curated cocktails and professional service."
       }
-      </script>
+    </script>
+
+    <!-- Preload (optional) -->
     <!--
     <link
       rel="preload"
@@ -38,44 +37,35 @@
       href="%PUBLIC_URL%/assets/images/hero.webp"
       type="image/webp"
     /> -->
-    
+
+    <!-- Icons -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/mainlogo-180.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/mainlogo.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/mainlogo.png" />
-    
-    <title>Clinking Bubbles | Private Bartending Service</title>
-    
-    <!-- Open Graph / Facebook / Instagram -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Clinking Bubbles | Private Bartending Service" />
-    <meta
-      property="og:description"
-      content="Clinking Bubbles offers private bartending services to the New Jersey and New York areas that dazzle and delight. From private parties to grand events, we elevate every celebration with curated drinks and professional staff."
-    />
-    <meta property="og:image" content="%PUBLIC_URL%/mainlogo.png" />
-    <meta property="og:url" content="https://www.clinkingbubbles.com" />
 
+    <!-- 
+      Removed:
+      - Static <title>
+      - Static <meta name="description">
+      - Static <meta property="og:*">
+      - Static <meta name="twitter:*">
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Clinking Bubbles | Private Bartending Service" />
-    <meta
-      name="twitter:description"
-      content="Clinking Bubbles offers private bartending services to the New Jersey and New York areas that dazzle and delight. From private parties to grand events, we elevate every celebration with curated drinks and professional staff."
-    />
-    <meta name="twitter:image" content="%PUBLIC_URL%/mainlogo.png" />
-    
-    <!-- Load the Google Maps Places API script with your API key -->
+      These are now fully controlled via react-helmet page-by-page
+    -->
+
+    <!-- Google Maps API -->
     <!--
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQgCzOmUK7dZ06L22eHjYWC1rMIjCJU5Y&libraries=places"
       async
       defer
     ></script> -->
+    
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
