@@ -5,6 +5,18 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <title>Our Services | Wedding & Event Bartenders NJ & NY</title>
+  <meta name="description" content="Explore our private bartending packages for weddings, birthdays, corporate events, and private parties in NJ & NY." />
+  <link rel="canonical" href="https://www.clinkingbubbles.com/services" />
+  <meta property="og:title" content="Our Services | Clinking Bubbles" />
+  <meta property="og:description" content="From basic packages to luxury add-ons, discover our bartending services." />
+  <meta property="og:url" content="https://www.clinkingbubbles.com/services" />
+  <meta property="og:image" content="https://www.clinkingbubbles.com/mainlogo.png" />
+</Helmet>
+
 
 const ServicesPage = () => {
   useEffect(() => {
