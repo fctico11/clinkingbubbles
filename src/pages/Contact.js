@@ -1,4 +1,3 @@
-// src/pages/Contact.js
 import React from "react";
 import Navbar from "../components/Navbar";
 import ContactForm from "../components/ContactForm";
