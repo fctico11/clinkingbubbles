@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.clinkingbubbles.com/</loc>
+    <lastmod>2025-03-29</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/about</loc>
+    <lastmod>2025-03-29</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/contact</loc>
+    <lastmod>2025-03-29</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/booking-process</loc>
+    <lastmod>2025-03-29</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/services</loc>
+    <lastmod>2025-03-29</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/alcohol-calculator</loc>
+    <lastmod>2025-03-29</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
