@@ -55,7 +55,7 @@ const WhatWeBring = () => {
         <div className="mt-8" data-aos="zoom-in" data-aos-delay="300">
           <Link to="/services">
             <button className="bubbles-font text-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-3 rounded-full transition">
-              See More
+              View Complete Package Details
             </button>
           </Link>
         </div>
