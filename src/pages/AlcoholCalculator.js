@@ -392,7 +392,7 @@ const AlcoholCalculator = () => {
 
           <button
             type="submit"
-            className="bubbles-font text-lg w-full bg-[#493423] text-white p-3 rounded font-semibold"
+            className="bubbles-font text-lg w-full bg-[#493423] text-white p-3 rounded font-semibold hover:bg-[#3A2514] transition-colors duration-300"
             disabled={loading}
           >
             {loading ? "Calculating..." : "Calculate"}
