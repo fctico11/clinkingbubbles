@@ -35,8 +35,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // Force navbar background to be black on any route except homepage
-  const forceBlack = location.pathname !== "/";
+  // Force navbar background to be chocolate brown on any route except homepage
+  const forceBrown = location.pathname !== "/";
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -73,10 +73,10 @@ const Navbar = () => {
       {/* Navbar */}
       <nav
         className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-all duration-300 z-[999] ${
-          forceBlack
-            ? "bg-black"
+          forceBrown
+            ? "bg-[#493423]"
             : isScrolled
-            ? "bg-black shadow-lg"
+            ? "bg-[#493423] shadow-lg"
             : "bg-transparent"
         }`}
         style={{ minHeight: "64px" }}

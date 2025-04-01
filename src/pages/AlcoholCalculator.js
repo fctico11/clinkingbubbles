@@ -392,7 +392,7 @@ const AlcoholCalculator = () => {
 
           <button
             type="submit"
-            className="bubbles-font text-lg w-full bg-black text-white p-3 rounded font-semibold"
+            className="bubbles-font text-lg w-full bg-[#493423] text-white p-3 rounded font-semibold"
             disabled={loading}
           >
             {loading ? "Calculating..." : "Calculate"}
@@ -497,7 +497,7 @@ const AlcoholCalculator = () => {
           >
             <button
               onClick={() => navigate("/booking-process")}
-              className="bubbles-font text-lg bg-black text-white px-6 py-3 rounded font-semibold hover:bg-gray-800 transition"
+              className="bubbles-font text-lg bg-[#493423] text-white px-6 py-3 rounded font-semibold hover:bg-gray-800 transition"
             >
               Learn More About The Booking Process
             </button>

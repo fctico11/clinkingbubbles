@@ -428,7 +428,7 @@ const ContactForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="bubbles-font text-lg w-full bg-black text-white p-3 rounded font-semibold"
+            className="bubbles-font text-lg w-full bg-[#493423] text-white p-3 rounded font-semibold"
             disabled={loading}
           >
             {loading ? "Submitting..." : "Submit Form"}

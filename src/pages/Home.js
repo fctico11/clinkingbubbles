@@ -48,7 +48,7 @@ const Home = () => {
       <section className="py-12 text-center">
         <div className="flex flex-col items-center space-y-4">
           <Link to="/booking-process">
-            <button className="bubbles-font text-lg bg-black hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-full transition">
+            <button className="bubbles-font text-lg bg-[#493423] hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-full transition">
               Learn more about the Booking process
             </button>
           </Link>
