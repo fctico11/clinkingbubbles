@@ -1,4 +1,9 @@
 {
-    "cleanUrls": true
+    "rewrites": [
+      {
+        "source": "/((?!static|assets|favicon.ico|logo|robots.txt|sitemap.xml|mainlogo.png|mainlogo-180.png).*)",
+        "destination": "/index.html"
+      }
+    ]
   }
   
