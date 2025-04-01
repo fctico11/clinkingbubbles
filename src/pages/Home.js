@@ -28,7 +28,7 @@ const Home = () => {
         <meta property="og:description" content="Celebrate in style with luxury bartending services for private events in NJ & NY. Signature cocktails, pro staff, and seamless vibes." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Celebrate in style with luxury bartending services for private events in NJ & NY." />
