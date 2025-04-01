@@ -89,6 +89,11 @@ const About = () => {
         {/* Buttons Section */}
         <section className="py-8 px-4 text-center">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-center gap-4">
+          <Link to="/services">
+              <button className="bubbles-font text-lg bg-[#EBE6D6] text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-500 transition">
+                See Our Services
+              </button>
+            </Link>
             <Link to="/booking-process">
               <button className="bubbles-font text-lg bg-[#493423] text-white font-semibold px-6 py-3 rounded-full hover:bg-gray-800 transition">
                 Learn More About The Booking Process
