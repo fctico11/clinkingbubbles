@@ -10,7 +10,6 @@ import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
 import { Helmet } from 'react-helmet';
 
-
 // Lazy load the FillingCupAnimation so it's not in the initial bundle
 const FillingCupAnimation = React.lazy(() => import("../components/FillingCupAnimation"));
 
