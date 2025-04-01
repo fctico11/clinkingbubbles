@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet';
 <Helmet>
   <title>Private Bartending Services: NJ Weddings, Parties & More</title>
   <meta name="description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
-  <meta name="keywords" content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartending NJ, wedding bartenders NY, event bar services" />
+  <meta name="keywords" content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services" />
   <link rel="canonical" href="https://www.clinkingbubbles.com/services" />
 
   <meta property="og:title" content="Private Bartending Services: NJ Weddings, Parties & More" />
@@ -22,7 +22,6 @@ import { Helmet } from 'react-helmet';
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image:alt" content="Explore premium bartending services for NJ & NY." />
 </Helmet>
-
 
 const ServicesPage = () => {
   useEffect(() => {
@@ -246,17 +245,24 @@ const ServicesPage = () => {
             </div>
           </div>
 
-          {/* "Get a Quote!" Button */}
-          <div
-            className="mt-7 text-center"
-            data-aos="fade-up"
-            data-aos-delay="500"
-          >
-            <Link to="/contact">
-              <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
-                Get a Quote!
-              </button>
-            </Link>
+          {/* Buttons Section */}
+          <div className="mt-7 space-y-4" data-aos="fade-up">
+            {/* Learn More About The Booking Process Button */}
+            <div className="text-center">
+              <Link to="/booking-process">
+                <button className="bubbles-font text-lg bg-[#493423] text-white font-semibold px-6 py-3 rounded-full hover:bg-gray-800 transition">
+                  Learn More About The Booking Process
+                </button>
+              </Link>
+            </div>
+            {/* Get a Quote Button */}
+            <div className="text-center">
+              <Link to="/contact">
+                <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
+                  Get a Quote!
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
