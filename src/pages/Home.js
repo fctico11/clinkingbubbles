@@ -19,19 +19,24 @@ const Home = () => {
   return (
     <div className="relative">
       <Helmet>
-        <title>Clinking Bubbles: Premium Event Bartending Services in NJ</title>
-        <meta name="description" content="Celebrate in style with luxury bartending services for private events in NJ & NY. Signature cocktails, pro staff, and seamless vibes." />
-        <meta name="keywords" content="private bartending, event bartenders, NJ bartenders, NY bartenders, luxury bartending, mobile bar service, cocktail catering, party bartenders" />
+        <title>Clinking Bubbles | Private Event Bartending in NJ & NY</title>
+        <meta name="description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
+        <meta name="keywords" content="private bartending, wedding bartenders NJ, party bartenders NY, mobile bar, cocktail catering, bartending services" />
         <link rel="canonical" href="https://www.clinkingbubbles.com/" />
 
-        <meta property="og:title" content="Clinking Bubbles: Premium Event Bartending Services in NJ" />
-        <meta property="og:description" content="Celebrate in style with luxury bartending services for private events in NJ & NY. Signature cocktails, pro staff, and seamless vibes." />
-        <meta property="og:url" content="https://www.clinkingbubbles.com/" />
+  
         <meta property="og:type" content="website" />
+        <meta property="og:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
+        <meta property="og:description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
+        <meta property="og:url" content="https://www.clinkingbubbles.com/" />
         <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
+        
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image:alt" content="Celebrate in style with luxury bartending services for private events in NJ & NY." />
+        <meta name="twitter:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
+        <meta name="twitter:description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
+        <meta name="twitter:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta name="twitter:image:alt" content="Private event bartending for weddings and parties in NJ & NY." />
       </Helmet>
 
       <Navbar />
