@@ -7,22 +7,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from 'react-helmet';
 
-<Helmet>
-  <title>Private Bartending Services: NJ Weddings, Parties & More</title>
-  <meta name="description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
-  <meta name="keywords" content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services" />
-  <link rel="canonical" href="https://www.clinkingbubbles.com/services" />
-
-  <meta property="og:title" content="Private Bartending Services: NJ Weddings, Parties & More" />
-  <meta property="og:description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
-  <meta property="og:url" content="https://www.clinkingbubbles.com/services" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/mainlogo.png" />
-  <meta property="og:site_name" content="Clinking Bubbles" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image:alt" content="Explore premium bartending services for NJ & NY." />
-</Helmet>
-
 const ServicesPage = () => {
   useEffect(() => {
     AOS.init({
@@ -34,6 +18,21 @@ const ServicesPage = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Private Bartending Services: NJ Weddings, Parties & More</title>
+      <meta name="description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
+      <meta name="keywords" content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services" />
+      <link rel="canonical" href="https://www.clinkingbubbles.com/services" />
+
+      <meta property="og:title" content="Private Bartending Services: NJ Weddings, Parties & More" />
+      <meta property="og:description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
+      <meta property="og:url" content="https://www.clinkingbubbles.com/services" />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="/mainlogo.png" />
+      <meta property="og:site_name" content="Clinking Bubbles" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image:alt" content="Explore premium bartending services for NJ & NY." />
+    </Helmet>
       <Navbar />
 
       {/* Full-Width Section for Title & Intro */}

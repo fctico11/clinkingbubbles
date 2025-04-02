@@ -7,23 +7,6 @@ import Footer from "../components/Footer";
 import logo from "../assets/logos/transparent.PNG"; // Adjust path if needed
 import { Helmet } from 'react-helmet';
 
-<Helmet>
-  <title>Meet Clinking Bubbles: NJ's Private Bartending Specialists</title>
-  <meta name="description" content="Discover the story behind Clinking Bubbles — a passionate duo bringing joy, professionalism, and cocktails to events across NJ & NY." />
-  <meta name="keywords" content="about clinking bubbles, private bartenders NJ, private bartenders NY, bartending story, bartender duo, NJ events, NY events" />
-  <link rel="canonical" href="https://www.clinkingbubbles.com/about" />
-
-  <meta property="og:title" content="Meet Clinking Bubbles: NJ's Private Bartending Specialists" />
-  <meta property="og:description" content="Discover the story behind Clinking Bubbles — a passionate duo bringing joy, professionalism, and cocktails to events across NJ & NY." />
-  <meta property="og:url" content="https://www.clinkingbubbles.com/about" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/mainlogo.png" />
-  <meta property="og:site_name" content="Clinking Bubbles" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image:alt" content="Discover the story behind Clinking Bubbles." />
-</Helmet>
-
-
 
 const About = () => {
   useEffect(() => {
@@ -32,6 +15,21 @@ const About = () => {
 
   return (
     <div className="bg-white min-h-screen flex flex-col relative">
+      <Helmet>
+        <title>Meet Clinking Bubbles: NJ's Private Bartending Specialists</title>
+        <meta name="description" content="Discover the story behind Clinking Bubbles — a passionate duo bringing joy, professionalism, and cocktails to events across NJ & NY." />
+        <meta name="keywords" content="about clinking bubbles, private bartenders NJ, private bartenders NY, bartending story, bartender duo, NJ events, NY events" />
+        <link rel="canonical" href="https://www.clinkingbubbles.com/about" />
+
+        <meta property="og:title" content="Meet Clinking Bubbles: NJ's Private Bartending Specialists" />
+        <meta property="og:description" content="Discover the story behind Clinking Bubbles — a passionate duo bringing joy, professionalism, and cocktails to events across NJ & NY." />
+        <meta property="og:url" content="https://www.clinkingbubbles.com/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/mainlogo.png" />
+        <meta property="og:site_name" content="Clinking Bubbles" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image:alt" content="Discover the story behind Clinking Bubbles." />
+      </Helmet>
       {/* Navbar remains outside the animated container */}
       <Navbar />
 
