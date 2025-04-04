@@ -6,7 +6,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../components/ContactForm.css"; // Reuse styling if desired
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const SCROLL_OFFSET = 180;
 
@@ -189,6 +189,7 @@ const AlcoholCalculator = () => {
     <div className="bg-white min-h-screen flex flex-col justify-between relative">
       <Helmet>
         <title>Calculate Drinks for Your Event: Bartender Approved Tool</title>
+        {console.log("Helmet mounted for Alc Calc")}
         <meta name="description" content="Estimate how much alcohol you’ll need with our bartender-backed event drink calculator. Quick, easy, and tailored to your guest list." />
         <meta name="keywords" content="alcohol calculator, drink calculator, event drink planner, party alcohol estimate, NJ event planning, NY event planning, bar prep tool" />
         <link rel="canonical" href="https://www.clinkingbubbles.com/alcohol-calculator" />
@@ -197,7 +198,7 @@ const AlcoholCalculator = () => {
         <meta property="og:description" content="Estimate how much alcohol you’ll need with our bartender-backed event drink calculator. Quick, easy, and tailored to your guest list." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/alcohol-calculator" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Estimate drinks easily with Clinking Bubbles' calculator." />

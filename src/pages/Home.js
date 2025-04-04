@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import ChampagneClink from "../components/ChampagneClink";
 import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 // Lazy load the FillingCupAnimation so it's not in the initial bundle
 const FillingCupAnimation = React.lazy(() => import("../components/FillingCupAnimation"));
@@ -20,6 +20,7 @@ const Home = () => {
     <div className="relative">
       <Helmet>
         <title>Clinking Bubbles | Private Event Bartending in NJ & NY</title>
+        {console.log("Helmet mounted for Home")}
         <meta name="description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
         <meta name="keywords" content="private bartending, wedding bartenders NJ, party bartenders NY, mobile bar, cocktail catering, bartending services" />
         <link rel="canonical" href="https://www.clinkingbubbles.com/" />

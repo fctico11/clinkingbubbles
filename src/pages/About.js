@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import logo from "../assets/logos/transparent.PNG"; // Adjust path if needed
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 
 const About = () => {
@@ -17,6 +17,7 @@ const About = () => {
     <div className="bg-white min-h-screen flex flex-col relative">
       <Helmet>
         <title>Meet Clinking Bubbles: NJ's Private Bartending Specialists</title>
+        {console.log("Helmet mounted for About")}
         <meta name="description" content="Discover the story behind Clinking Bubbles — a passionate duo bringing joy, professionalism, and cocktails to events across NJ & NY." />
         <meta name="keywords" content="about clinking bubbles, private bartenders NJ, private bartenders NY, bartending story, bartender duo, NJ events, NY events" />
         <link rel="canonical" href="https://www.clinkingbubbles.com/about" />
@@ -25,7 +26,7 @@ const About = () => {
         <meta property="og:description" content="Discover the story behind Clinking Bubbles — a passionate duo bringing joy, professionalism, and cocktails to events across NJ & NY." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/about" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Discover the story behind Clinking Bubbles." />
