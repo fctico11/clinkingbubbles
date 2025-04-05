@@ -483,7 +483,7 @@ const AlcoholCalculator = () => {
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Total Estimated Spend On Alcohol*</h4>
               <p className="text-gray-600 text-sm">
-                Based On 1 Drink Per Person Per Hour (Adjust As Needed)
+                Based On {formData.drinks_per_hour} Drink{formData.drinks_per_hour > 1 ? "s" : ""} Per Person Per Hour (Adjust As Needed)
               </p>
               <p className="bubbles-font text-2xl font-bold">
                 ${resultsData.totalCost.toFixed(2)}
