@@ -128,7 +128,7 @@ const AlcoholCalculator = () => {
     // Hard-coded average prices:
     const priceBeerCase = 30; // $30 per case
     const priceWineBottle = 15; // $15 per bottle
-    const priceLiquorBottle = 20; // $20 per bottle
+    const priceLiquorBottle = 30; // $30 per bottle
 
     // Calculate costs
     const costBeer = beerCases * priceBeerCase;
