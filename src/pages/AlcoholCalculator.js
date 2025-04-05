@@ -475,7 +475,7 @@ const AlcoholCalculator = () => {
             </div>
             <div>
               <h4 className="bubbles-font text-lg font-semibold">Estimated Liquor Cost*</h4>
-              <p className="text-gray-600 text-sm">Avg. $20.00 Per 750ml Bottle</p>
+              <p className="text-gray-600 text-sm">Avg. $30.00 Per 750ml Bottle</p>
               <p className="bubbles-font text-2xl font-bold">
                 ${resultsData.costLiquor.toFixed(2)}
               </p>
