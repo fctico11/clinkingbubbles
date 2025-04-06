@@ -40,7 +40,7 @@ const WhatWeBring = () => {
             </h3>
             <p className="bubbles-font text-lg text-gray-600">
             Napkins, straws, cups, and those little finishing touches that make each
-            sip feel extra special—yes, we’ve got it all.
+            sip feel extra special - yes, we’ve got it all.
             </p>
           </div>
           <div className="p-4 border rounded-lg">

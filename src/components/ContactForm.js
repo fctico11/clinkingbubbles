@@ -4,9 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
-import Lottie from "lottie-react";
-import successAnimation from "../assets/success.json";
+//import Lottie from "lottie-react";
+//import successAnimation from "../assets/success.json";
 import "../components/ContactForm.css";
+
+
 
 const standardEventTypes = [
   "Birthday Party",
@@ -104,6 +106,21 @@ const ContactForm = () => {
   const [showDryHireOverlay, setShowDryHireOverlay] = useState(false);
   const [showOtherEventModal, setShowOtherEventModal] = useState(false);
   const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
+
+  const [LottieComponent, setLottieComponent] = useState(null);
+const [animationData, setAnimationData] = useState(null);
+
+// Inside useEffect when the success overlay is triggered:
+useEffect(() => {
+  if (showSuccessOverlay) {
+    import("lottie-react").then((mod) => {
+      setLottieComponent(() => mod.default);
+    });
+    import("../assets/success.json").then((data) => {
+      setAnimationData(data.default || data);
+    });
+  }
+}, [showSuccessOverlay]);
 
   // Handler to update eventAddress when an address is selected.
   const handleAddressSelect = (address) => {
@@ -522,7 +539,9 @@ const ContactForm = () => {
           </button>
           <div className="max-w-md mx-auto p-6 text-center text-white animate-fadeIn">
             <div className="w-40 h-40 mx-auto mb-4">
-              <Lottie loop autoplay animationData={successAnimation} />
+            {LottieComponent && animationData && (
+  <LottieComponent loop autoplay animationData={animationData} />
+)}
             </div>
             <h3 className="bubbles-font text-lg text-2xl font-extrabold mb-4">
               Thank you for submitting the contact form, we're almost ready to get this party started!
