@@ -1,15 +1,24 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import Lottie from "lottie-react";
-import fillingCupAnimation from "../assets/optimizedcup.json"; // Adjust path if needed
 
 const FillingCupAnimation = () => {
+  const [LottieComponent, setLottieComponent] = useState(null);
   const lottieRef = useRef(null);
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
-  // "forward" means play frames 0→120, "backward" means play frames 120→0.
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
   const [direction, setDirection] = useState("forward");
 
-  // When the component is in view and direction changes, play the appropriate segment.
+  // Dynamically load Lottie only when this component mounts
+  useEffect(() => {
+    import("lottie-react").then((mod) => {
+      setLottieComponent(() => mod.default);
+    });
+  }, []);
+
+  // Play segments depending on scroll direction
   useEffect(() => {
     if (inView && lottieRef.current) {
       if (direction === "forward") {
@@ -20,19 +29,21 @@ const FillingCupAnimation = () => {
     }
   }, [inView, direction]);
 
-  // onComplete callback toggles the direction so the segment replays.
   const handleComplete = () => {
     setDirection((prev) => (prev === "forward" ? "backward" : "forward"));
   };
 
+  // Wait until Lottie is loaded
+  if (!LottieComponent) return null;
+
   return (
-    <div ref={ref} className="w-full flex justify-center ">
+    <div ref={ref} className="w-full flex justify-center">
       <div className="w-48 h-48">
-        <Lottie
+        <LottieComponent
           lottieRef={lottieRef}
-          animationData={fillingCupAnimation}
-          loop={false}      // Looping is controlled via onComplete and state
-          autoplay={false}  // We'll trigger playback when in view
+          animationData={require("../assets/optimizedcup.json")}
+          loop={false}
+          autoplay={false}
           onComplete={handleComplete}
         />
       </div>
@@ -41,7 +52,3 @@ const FillingCupAnimation = () => {
 };
 
 export default FillingCupAnimation;
-
-
-
-
