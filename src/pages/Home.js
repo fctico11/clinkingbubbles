@@ -39,16 +39,7 @@ const Home = () => {
         <meta name="twitter:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta name="twitter:image:alt" content="Private event bartending for weddings and parties in NJ & NY." />
      
-        {/* Google Ads base script (only on this page) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16963394733"></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-16963394733');
-          `}
-        </script>
+        
       </Helmet>
 
       <Navbar />
