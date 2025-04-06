@@ -23,8 +23,13 @@ const Contact = () => {
         <meta name="twitter:image:alt" content="Get in touch with Clinking Bubbles." />
 
         {/* Google Ads conversion tracking snippet */}
-        <script type="text/javascript">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16963394733"></script>
+        <script>
           {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16963394733');
             gtag('event', 'conversion', {'send_to': 'AW-16963394733/gonpCNnu3rQaEK2545g_'});
           `}
         </script>
