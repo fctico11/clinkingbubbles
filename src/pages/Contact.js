@@ -21,6 +21,14 @@ const Contact = () => {
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Get in touch with Clinking Bubbles." />
+
+        {/* Google Ads conversion tracking snippet */}
+        <script type="text/javascript">
+          {`
+            gtag('event', 'conversion', {'send_to': 'AW-16963394733/gonpCNnu3rQaEK2545g_'});
+          `}
+        </script>
+      
       </Helmet>
       <Navbar />
       <ContactForm />
