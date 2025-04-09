@@ -7,6 +7,8 @@ import usePlacesAutocomplete from "use-places-autocomplete";
 //import Lottie from "lottie-react";
 //import successAnimation from "../assets/success.json";
 import "../components/ContactForm.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -291,14 +293,21 @@ useEffect(() => {
           {/* Date of Event */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Date of Event *</label>
-            <input
-              type="date"
-              name="eventDate"
+            <DatePicker
+              selected={formData.eventDate ? new Date(formData.eventDate) : null}
+              onChange={(date) => {
+                const iso = date.toISOString().split("T")[0]; //YYYY-MM-DD
+                setFormData({ ...formData, eventDate: iso });
+              }}
+              excludeDates={[
+                new Date("2025-04-15"),
+                new Date("2025-05-01")
+              ]}
+              placeholderText="Select a date"
+              minDate={new Date()} prevent past dates
               className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
-              onChange={handleChange}
-              value={formData.eventDate}
-              required
             />
+
           </div>
 
           {/* Type of Event */}
