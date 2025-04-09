@@ -55,5 +55,32 @@
       pulseUnderline 2s ease-in-out 4s infinite;
   }
   
+  .react-datepicker-popper {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    
+  }
 
   
+.react-datepicker__triangle {
+  display: none !important;
+}
+
+.react-datepicker {
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  padding: 2px;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #f59e0b !important;
+  color: white !important;
+  border-radius: 50% !important;
+}
+
+.react-datepicker__header {
+  background-color: #ebe6d6 !important;
+  border-bottom: none;
+}

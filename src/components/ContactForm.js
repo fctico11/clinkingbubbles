@@ -19,6 +19,12 @@ const standardEventTypes = [
   "Wedding",
 ];
 
+const getLocalDateFromISO = (isoString) => {
+  const [year, month, day] = isoString.split('-').map(Number);
+  return new Date(year, month - 1, day); // local time
+};
+
+
 // AddressAutocomplete component encapsulates the autocomplete hook.
 // It renders an input field and suggestion list.
 const AddressAutocomplete = ({ onSelect, initialValue }) => {
@@ -291,23 +297,96 @@ useEffect(() => {
           </div>
 
           {/* Date of Event */}
-          <div>
+          <div style={{position: 'relative'}}>
             <label className="bubbles-font text-lg block font-semibold mb-1">Date of Event *</label>
             <DatePicker
-              selected={formData.eventDate ? new Date(formData.eventDate) : null}
+              selected={formData.eventDate ? getLocalDateFromISO(formData.eventDate) : null}
+
               onChange={(date) => {
-                const iso = date.toISOString().split("T")[0]; //YYYY-MM-DD
+                // Zero the time in local time (not UTC)
+                const localDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                const iso = localDate.toISOString().split("T")[0];
                 setFormData({ ...formData, eventDate: iso });
               }}
-              excludeDates={[
-                new Date("2025-04-15"),
-                new Date("2025-05-01")
+              excludeDates={[ 
+                new Date(Date.UTC(2025, 4, 2)), // May 1, 2025
+                new Date(Date.UTC(2025, 6, 26)), // July 25, 2025
               ]}
               placeholderText="Select a date"
-              minDate={new Date()} prevent past dates
+              minDate={new Date()}
+              dateFormat="MMMM d, yyyy"
               className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
-            />
+              renderCustomHeader={({
+                date,
+                changeYear,
+                changeMonth,
+                decreaseMonth,
+                increaseMonth,
+                prevMonthButtonDisabled,
+                nextMonthButtonDisabled
+              }) => (
+                <div
+                  className="flex justify-between items-center px-3 py-2"
+                  style={{
+                    backgroundColor: '#ebe6d6', // beige
+                    fontWeight: 'bold'
+                  }}
+                >
+                  <button
+                  type="button"
+                    onClick={decreaseMonth}
+                    disabled={prevMonthButtonDisabled}
+                    className="text-black text-3xl px-2"
+                  >
+                    ‹
+                  </button>
 
+                  <div className="flex items-center gap-2">
+                    <select
+                      value={date.getMonth()}
+                      onChange={({ target: { value } }) => changeMonth(Number(value))}
+                      className="bg-transparent border-none outline-none bubbles-font text-lg"
+                    >
+                      {Array.from({ length: 12 }, (_, i) => (
+                        <option key={i} value={i}>
+                          {new Date(0, i).toLocaleString("default", { month: "long" })}
+                        </option>
+                      ))}
+                    </select>
+
+                    <select
+                      value={date.getFullYear()}
+                      onChange={({ target: { value } }) => changeYear(Number(value))}
+                      className="bg-transparent border-none outline-none bubbles-font text-lg"
+                    >
+                      {Array.from({ length: 10 }, (_, i) => {
+                        const year = new Date().getFullYear() + i;
+                        return (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+
+                  <button
+                  type="button"
+                    onClick={increaseMonth}
+                    disabled={nextMonthButtonDisabled}
+                    className="text-black text-3xl px-2"
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+              dayClassName={(date) => {
+                const selectedDate = formData.eventDate ? getLocalDateFromISO(formData.eventDate) : null;
+                return selectedDate && date.toDateString() === selectedDate.toDateString()
+                  ? "bg-[#f59e0b] text-white font-bold rounded-full"
+                  : undefined;
+              }}
+            />
           </div>
 
           {/* Type of Event */}
