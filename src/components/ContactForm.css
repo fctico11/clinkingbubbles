@@ -84,3 +84,7 @@
   background-color: #ebe6d6 !important;
   border-bottom: none;
 }
+
+.custom-calendar-scale .react-datepicker {
+  transform: scale(1.2);
+}

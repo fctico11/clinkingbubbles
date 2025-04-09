@@ -304,8 +304,8 @@ useEffect(() => {
           <div style={{position: 'relative'}}>
             <label className="bubbles-font text-lg block font-semibold mb-1">Date of Event *</label>
             <DatePicker
+              popperClassName="custom-calendar-scale"
               selected={formData.eventDate ? getLocalDateFromISO(formData.eventDate) : null}
-
               onChange={(date) => {
                 // Zero the time in local time (not UTC)
                 const localDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -314,6 +314,7 @@ useEffect(() => {
                 setIsCalendarOpen(false); //close after selecting
               }}
               onFocus={() => setIsCalendarOpen(true)} // manually open
+              onInputClick={()=> setIsCalendarOpen(true)}
               onClickOutside={() => setIsCalendarOpen(false)} // close on outside click
               open={isCalendarOpen}
               ref={dateInputRef}
