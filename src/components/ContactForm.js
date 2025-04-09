@@ -1,5 +1,5 @@
 // src/pages/ContactForm.js
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -116,7 +116,11 @@ const ContactForm = () => {
   const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
 
   const [LottieComponent, setLottieComponent] = useState(null);
-const [animationData, setAnimationData] = useState(null);
+  const [animationData, setAnimationData] = useState(null);
+
+  //date of event
+  const dateInputRef = useRef();
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
 // Inside useEffect when the success overlay is triggered:
 useEffect(() => {
@@ -307,7 +311,13 @@ useEffect(() => {
                 const localDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
                 const iso = localDate.toISOString().split("T")[0];
                 setFormData({ ...formData, eventDate: iso });
+                setIsCalendarOpen(false); //close after selecting
               }}
+              onFocus={() => setIsCalendarOpen(true)} // manually open
+              onClickOutside={() => setIsCalendarOpen(false)} // close on outside click
+              open={isCalendarOpen}
+              ref={dateInputRef}
+              readOnly // prevent keyboard
               excludeDates={[ 
                 new Date(Date.UTC(2025, 4, 2)), // May 1, 2025
                 new Date(Date.UTC(2025, 6, 26)), // July 25, 2025
