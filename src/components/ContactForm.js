@@ -489,7 +489,7 @@ useEffect(() => {
               value={formData.bartendingOption}
             >
               <option>Bartender(s) only</option>
-              <option>Bartender(s) + Mobile Bar</option>
+              <option>Bartender(s) + Portable Bar</option>
             </select>
           </div>
 
