@@ -2,9 +2,12 @@
 
 Welcome to **Clinking Bubbles**, a custom-built website for a private bartending company offering personalized drink services for events across New Jersey and beyond. The site allows clients to submit booking inquiries, estimate alcohol needs, and explore the services we offer — all wrapped in a sleek, mobile-friendly design.
 
-![Clinking Bubbles Demo](cbdemo.gif)
-
 ---
+
+🌐 **Live Site:** [www.clinkingbubbles.com](https://www.clinkingbubbles.com)
+
+> Explore the full experience on desktop or mobile — complete with animations, form validation, and a custom date picker!
+
 
 ## ✨ Features
 
