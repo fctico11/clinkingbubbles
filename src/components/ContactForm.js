@@ -322,6 +322,7 @@ useEffect(() => {
               excludeDates={[ 
                 new Date(Date.UTC(2025, 4, 2)), // May 1, 2025
                 new Date(Date.UTC(2025, 6, 26)), // July 25, 2025
+                new Date(Date.UTC(2025, 5, 7)), // June 6, 2025
               ]}
               placeholderText="Select a date"
               minDate={new Date()}
