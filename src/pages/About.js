@@ -66,7 +66,7 @@ const About = () => {
               connections behind the bar. After a few private bartending gigs, she realized how
               special it felt to create something more personal—something beyond a standard bar
               experience. Around the same time, she and Francisco started dreaming big together.
-              With his background in tech and business, and her passion for hospitality, the idea
+              With his background in business, and her passion for hospitality, the idea
               clicked: why not build a mobile bartending service that brings warmth, intention, and
               a little sparkle to private events?
             </p>
