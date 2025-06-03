@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import logo from "../assets/logos/transparent-v1.webp"; // smaller file size 
+import logo from "../assets/logos/transparent-v2.webp"; // smaller file size 
 import { Helmet } from 'react-helmet-async';
 
 
