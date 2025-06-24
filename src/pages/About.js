@@ -49,7 +49,7 @@ const About = () => {
         {/* Logo */}
         <div className="absolute top-[80px] left-4 sm:top-[100px] sm:left-12">
           <img
-            src="/images/whiteTransparentLogo.webp"
+            src="/images/whiteTransparentLogo-v1.webp"
             alt="Clinking Bubbles Logo"
             width="160"
             height="160"
