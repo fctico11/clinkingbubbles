@@ -6,6 +6,9 @@ import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from "react-helmet-async";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const ServicesPage = () => {
   useEffect(() => {
@@ -53,8 +56,6 @@ const ServicesPage = () => {
           name="twitter:image:alt"
           content="Explore premium bartending services for NJ & NY."
         />
-
-        {/* Preload hero image */}
         <link
           rel="preload"
           as="image"
@@ -117,7 +118,6 @@ const ServicesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            {/* LEFT COLUMN */}
             <div className="space-y-6">
               {[
                 ["Full Consultation", "We’ll collaborate closely with you to design the perfect bar experience, from specialty cocktails to bar styling details—making sure everything feels distinctly “you.”"],
@@ -135,7 +135,6 @@ const ServicesPage = () => {
               ))}
             </div>
 
-            {/* RIGHT COLUMN */}
             <div className="space-y-6">
               {[
                 ["Menu Design", "From elegant signage to custom cocktail menus, we’ll handle the design details so you can show off your curated beverage lineup in style."],
@@ -166,8 +165,41 @@ const ServicesPage = () => {
             a more immersive, high-end experience.
           </p>
 
+          <div data-aos="fade-up" className="border-b pb-6">
+            <h3 className="bubbles-font text-lg font-semibold mb-2">
+              6 ft. Solid Wooden Bar <span className="text-gray-500">...Inquire</span>
+            </h3>
+            <div className="mb-4">
+              <Swiper spaceBetween={10} slidesPerView={1} pagination={{ clickable: true }}>
+                <SwiperSlide>
+                  <img
+                    src="/images/bar1.webp"
+                    alt="Wooden Bar 1"
+                    className="w-full h-[350px] sm:h-[500px] object-cover object-bottom rounded-md"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src="/images/bar2.webp"
+                    alt="Wooden Bar 2"
+                    className="w-full h-[350px] sm:h-[500px] object-cover object-[center_50%] rounded-md"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src="/images/bar3.webp"
+                    alt="Wooden Bar 3"
+                    className="w-full h-[350px] sm:h-[500px] object-cover object-center rounded-md"
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </div>
+            <p className="bubbles-font text-lg text-gray-600">
+              A sleek, modern look that blends effortlessly into any décor, perfect for upscale events.
+            </p>
+          </div>
+
           {[
-            ["6 ft. Solid Wooden Bar", "A sleek, modern look that blends effortlessly into any décor, perfect for upscale events."],
             ["Hydration Package", "Stay refreshed with infused water dispensers, iced teas, or lemonade—perfect for hot days or all-ages events. This non-alcoholic option keeps guests cool and hydrated while adding a touch of elegance and flavor to your drink station."],
             ["6 ft. Folding Tables", "Whether you need extra space for drinks, food, decor, or gifts, these sturdy and sleek tables offer both functionality and convenience. Easy to set up and break down, they're ideal for all types of gatherings."],
             ["Popcorn Machine", "Freshly popped, buttery popcorn is the perfect snack to complement your drinks and elevate the party vibe. Great for any kind of event - because who doesn't love popcorn with their cocktails?"],
@@ -181,7 +213,6 @@ const ServicesPage = () => {
             </div>
           ))}
 
-          {/* Buttons Section */}
           <div className="mt-7 space-y-4" data-aos="fade-up">
             <div className="text-center">
               <Link to="/booking-process">
