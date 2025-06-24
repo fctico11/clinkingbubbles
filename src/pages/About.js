@@ -47,14 +47,14 @@ const About = () => {
           <img
             src={logo}
             alt="Clinking Bubbles Logo"
-            className="w-[100px] sm:w-[160px] h-auto"
+            className="w-[90px] sm:w-[160px] h-auto"
             loading="eager"
             decoding="sync"
           />
         </div>
 
         {/* Title Overlay */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center px-4">
+        <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 text-center px-4">
           <h1 className="clinking-font text-2xl sm:text-5xl text-white font-bold drop-shadow-lg whitespace-nowrap">
             About Clinking Bubbles
           </h1>
@@ -62,7 +62,7 @@ const About = () => {
       </section>
 
       {/* About Text */}
-      <section className="pt-12 pb-16 px-6 sm:px-10 text-center">
+      <section className="pt-8 pb-16 px-6 sm:px-10 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <p className="bubbles-font text-lg sm:text-xl text-black">
             Clinking Bubbles was born from a simple idea: that great drinks and great energy
