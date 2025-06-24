@@ -198,7 +198,7 @@ const ServicesPage = () => {
           <div className="space-y-6">
             <div data-aos="fade-up" className="border-b pb-3">
               <h3 className="bubbles-font text-lg font-semibold">
-                6 ft. Solid Black Bar{" "}
+                6 ft. Solid Wooden Bar{" "}
                 <span className="text-gray-500">...Inquire</span>
               </h3>
               <p className="bubbles-font text-lg text-gray-600 mt-2">

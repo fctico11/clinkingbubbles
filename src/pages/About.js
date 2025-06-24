@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import logo from "../assets/logos/whiteTransparentLogo.webp";
-import foundersImg from "../assets/images/aboutpage.webp";
 import { Helmet } from 'react-helmet-async';
 
 const About = () => {
@@ -23,14 +21,18 @@ const About = () => {
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Discover the story behind Clinking Bubbles." />
+
+        {/* Preload hero image and logo for faster paint */}
+        <link rel="preload" as="image" href="/images/aboutpage.webp" />
+        <link rel="preload" as="image" href="/images/logo.webp" />
       </Helmet>
 
       <Navbar />
 
-      {/* Hero Section with Image, Logo, and Title */}
+      {/* Hero Section */}
       <section className="relative w-full h-[60vh] sm:h-[700px]">
         <img
-          src={foundersImg}
+          src="/images/aboutpage-v2.webp"
           alt="Clinking Bubbles Founders"
           className="absolute inset-0 w-full h-full object-cover object-center"
           loading="eager"
@@ -41,7 +43,7 @@ const About = () => {
         {/* Logo */}
         <div className="absolute top-[80px] left-4 sm:top-[100px] sm:left-12">
           <img
-            src={logo}
+            src="/images/whiteTransparentLogo.webp"
             alt="Clinking Bubbles Logo"
             className="w-[90px] sm:w-[160px] h-auto"
             loading="eager"
@@ -88,7 +90,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Buttons Section */}
+      {/* Buttons */}
       <section className="py-8 px-4 text-center">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-center gap-4">
           <Link to="/services">
