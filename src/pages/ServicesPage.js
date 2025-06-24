@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 const ServicesPage = () => {
   useEffect(() => {
@@ -20,26 +20,52 @@ const ServicesPage = () => {
     <>
       <Helmet>
         <title>Private Bartending Services: NJ Weddings, Parties & More</title>
-        <meta name="description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
-        <meta name="keywords" content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services" />
+        <meta
+          name="description"
+          content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails."
+        />
+        <meta
+          name="keywords"
+          content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services"
+        />
         <link rel="canonical" href="https://www.clinkingbubbles.com/services" />
 
-        <meta property="og:title" content="Private Bartending Services: NJ Weddings, Parties & More" />
-        <meta property="og:description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
-        <meta property="og:url" content="https://www.clinkingbubbles.com/services" />
+        <meta
+          property="og:title"
+          content="Private Bartending Services: NJ Weddings, Parties & More"
+        />
+        <meta
+          property="og:description"
+          content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails."
+        />
+        <meta
+          property="og:url"
+          content="https://www.clinkingbubbles.com/services"
+        />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta
+          property="og:image"
+          content="https://www.clinkingbubbles.com/assets/mainlogo.png"
+        />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image:alt" content="Explore premium bartending services for NJ & NY." />
+        <meta
+          name="twitter:image:alt"
+          content="Explore premium bartending services for NJ & NY."
+        />
 
         {/* Preload hero image */}
-        <link rel="preload" as="image" href="/images/servicespic.webp" type="image/webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/servicespic.webp"
+          type="image/webp"
+        />
       </Helmet>
 
       <Navbar />
 
-      {/* Hero Section with Background Image */}
+      {/* Hero Section */}
       <section className="relative w-full h-[60vh] sm:h-[700px]">
         <img
           src="/images/servicespic.webp"
@@ -54,7 +80,6 @@ const ServicesPage = () => {
 
         {/* Hero Content */}
         <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
-          {/* Title */}
           <div
             className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 inline-block mx-auto"
             data-aos="fade-up"
@@ -64,10 +89,8 @@ const ServicesPage = () => {
             </h1>
           </div>
 
-          {/* Spacer */}
           <div className="mt-6 sm:mt-10"></div>
 
-          {/* Paragraph */}
           <div
             className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl"
             data-aos="fade-up"
@@ -83,15 +106,18 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Main Content (White Background) */}
+      {/* Main Content */}
       <div className="bg-white text-black px-4 py-10">
         <div className="max-w-6xl mx-auto">
           {/* BASIC PACKAGE */}
-          <h2 className="clinking-font text-2xl sm:text-3xl font-bold mb-6" data-aos="fade-up">
-            BASIC PACKAGE INCLUDES
-          </h2>
+          <div className="inline-block bg-[#f5f0e6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
+            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">
+              BASIC PACKAGE INCLUDES
+            </h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            {/* LEFT COLUMN */}
             <div className="space-y-6">
               {[
                 ["Full Consultation", "We’ll collaborate closely with you to design the perfect bar experience, from specialty cocktails to bar styling details—making sure everything feels distinctly “you.”"],
@@ -109,6 +135,7 @@ const ServicesPage = () => {
               ))}
             </div>
 
+            {/* RIGHT COLUMN */}
             <div className="space-y-6">
               {[
                 ["Menu Design", "From elegant signage to custom cocktail menus, we’ll handle the design details so you can show off your curated beverage lineup in style."],
@@ -128,9 +155,12 @@ const ServicesPage = () => {
           </div>
 
           {/* ACCESSORIES */}
-          <h2 className="clinking-font text-2xl sm:text-3xl font-bold mb-6" data-aos="fade-up">
-            ACCESSORIES
-          </h2>
+          <div className="inline-block bg-[#f5f0e6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
+            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">
+              ACCESSORIES
+            </h2>
+          </div>
+
           <p className="bubbles-font text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
             Elevate your bar setup with these additional items. Perfect for those who crave
             a more immersive, high-end experience.
