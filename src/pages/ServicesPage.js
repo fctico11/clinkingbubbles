@@ -46,17 +46,33 @@ const ServicesPage = () => {
           alt="Clinking Bubbles Services"
           width="1080"
           height="1400"
-          className="absolute inset-0 w-full h-full object-cover object-center fade-zoom-in"
+          className="absolute inset-0 w-full h-full object-cover object-center"
           loading="eager"
           decoding="sync"
         />
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-          <h1 className="clinking-font text-3xl sm:text-5xl text-white font-bold drop-shadow-lg mb-4">
-            OUR SERVICES
-          </h1>
-          <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl">
+        {/* Hero Content */}
+        <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
+          {/* Title */}
+          <div
+            className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 inline-block mx-auto"
+            data-aos="fade-up"
+          >
+            <h1 className="clinking-font text-4xl font-bold text-white text-center">
+              OUR SERVICES
+            </h1>
+          </div>
+
+          {/* Spacer */}
+          <div className="mt-6 sm:mt-10"></div>
+
+          {/* Paragraph */}
+          <div
+            className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <p className="bubbles-font text-md sm:text-lg text-white drop-shadow-sm">
               We believe every celebration should be a work of art. From chic gatherings to
               all-out bashes, our packages are designed to pamper your guests and let you
@@ -71,7 +87,7 @@ const ServicesPage = () => {
       <div className="bg-white text-black px-4 py-10">
         <div className="max-w-6xl mx-auto">
           {/* BASIC PACKAGE */}
-          <h2 className="clinking-font text-3xl font-bold mb-6" data-aos="fade-up">
+          <h2 className="clinking-font text-2xl font-bold mb-6" data-aos="fade-up">
             BASIC PACKAGE INCLUDES
           </h2>
 
@@ -112,7 +128,7 @@ const ServicesPage = () => {
           </div>
 
           {/* ACCESSORIES */}
-          <h2 className="clinking-font text-3xl font-bold mb-6" data-aos="fade-up">
+          <h2 className="clinking-font text-2xl font-bold mb-6" data-aos="fade-up">
             ACCESSORIES
           </h2>
           <p className="bubbles-font text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
