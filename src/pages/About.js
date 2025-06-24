@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import logo from "../assets/logos/whiteTransparentLogo.webp";
-import foundersImg from "../assets/images/aboutpage.jpg";
+import foundersImg from "../assets/images/aboutpage.webp";
 import { Helmet } from 'react-helmet-async';
 
 const About = () => {
@@ -34,7 +34,7 @@ const About = () => {
       <Navbar />
 
       {/* Hero Section with Image, Logo, and Title */}
-      <section className="relative w-full h-[600px] sm:h-[700px]">
+      <section className="relative w-full h-[60vh] sm:h-[700px]">
         <img
           src={foundersImg}
           alt="Clinking Bubbles Founders"
@@ -55,7 +55,7 @@ const About = () => {
 
         {/* Title Overlay */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center px-4">
-          <h1 className="clinking-font text-3xl sm:text-5xl text-white font-bold drop-shadow-lg whitespace-nowrap">
+          <h1 className="clinking-font text-2xl sm:text-5xl text-white font-bold drop-shadow-lg whitespace-nowrap">
             About Clinking Bubbles
           </h1>
         </div>
