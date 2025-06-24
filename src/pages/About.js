@@ -23,8 +23,8 @@ const About = () => {
         <meta name="twitter:image:alt" content="Discover the story behind Clinking Bubbles." />
 
         {/* Preload hero image and logo for faster paint */}
-        <link rel="preload" as="image" href="/images/aboutpage.webp" />
-        <link rel="preload" as="image" href="/images/logo.webp" />
+        <link rel="preload" as="image" href="/images/aboutpage-v3.webp" type="image/webp"/>
+        <link rel="preload" as="image" href="/images/logo.webp" type="image/webp"/>
       </Helmet>
 
       <Navbar />
@@ -32,8 +32,10 @@ const About = () => {
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] sm:h-[700px]">
         <img
-          src="/images/aboutpage-v2.webp"
+          src="/images/aboutpage-v3.webp"
           alt="Clinking Bubbles Founders"
+          width="1080"
+          height="1400"
           className="absolute inset-0 w-full h-full object-cover object-center"
           loading="eager"
           decoding="sync"
@@ -45,6 +47,8 @@ const About = () => {
           <img
             src="/images/whiteTransparentLogo.webp"
             alt="Clinking Bubbles Logo"
+            width="160"
+            height="160"
             className="w-[90px] sm:w-[160px] h-auto"
             loading="eager"
             decoding="sync"
