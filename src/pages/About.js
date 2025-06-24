@@ -38,7 +38,7 @@ const About = () => {
         <img
           src={foundersImg}
           alt="Clinking Bubbles Founders"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-0 animate-fadeIn"
         />
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
 
@@ -62,8 +62,13 @@ const About = () => {
       </section>
 
       {/* About Text */}
-      <section className="pt-8 pb-16 px-6 sm:px-10 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
+      <section className="pt-8 pb-4 px-6 sm:px-10 text-center">
+        <div
+          className="max-w-4xl mx-auto space-y-8"
+          data-aos="fade-up"
+          data-aos-offset="50"
+          data-aos-delay="100"
+        >
           <p className="bubbles-font text-lg sm:text-xl text-black">
             Clinking Bubbles was born from a simple idea: that great drinks and great energy
             can turn a gathering into something unforgettable.
@@ -94,7 +99,11 @@ const About = () => {
 
       {/* Buttons Section */}
       <section className="py-8 px-4 text-center">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-center gap-4">
+        <div
+          className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-center gap-4"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <Link to="/services">
             <button className="bubbles-font text-lg bg-[#EBE6D6] text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-500 transition">
               See Our Services
