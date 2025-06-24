@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Helmet } from 'react-helmet-async';
 
 const About = () => {
+  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
+
   return (
     <div className="bg-white min-h-screen flex flex-col relative">
       <Helmet>
@@ -22,21 +25,22 @@ const About = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Discover the story behind Clinking Bubbles." />
 
-        {/* Preload hero image and logo for faster paint */}
-        <link rel="preload" as="image" href="/images/aboutpage-v3.webp" type="image/webp"/>
-        <link rel="preload" as="image" href="/images/logo.webp" type="image/webp"/>
+        {/* Preload images */}
+        <link rel="preload" as="image" href="/images/aboutpage-v3.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/whiteTransparentLogo.webp" type="image/webp" />
       </Helmet>
 
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] sm:h-[700px]">
+      <section className="relative w-full h-[60vh] sm:h-[700px] bg-black overflow-hidden">
         <img
           src="/images/aboutpage-v3.webp"
           alt="Clinking Bubbles Founders"
           width="1080"
           height="1400"
-          className="absolute inset-0 w-full h-full object-cover object-center fade-zoom-in"
+          onLoad={() => setHeroLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-out ${heroLoaded ? "opacity-100" : "opacity-0"}`}
           loading="eager"
           decoding="sync"
         />
@@ -49,7 +53,8 @@ const About = () => {
             alt="Clinking Bubbles Logo"
             width="160"
             height="160"
-            className="w-[90px] sm:w-[160px] h-auto fade-zoom-in"
+            onLoad={() => setLogoLoaded(true)}
+            className={`w-[90px] sm:w-[160px] h-auto transition-opacity duration-700 ease-out ${logoLoaded ? "opacity-100" : "opacity-0"}`}
             loading="eager"
             decoding="sync"
           />
