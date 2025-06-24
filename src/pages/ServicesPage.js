@@ -82,7 +82,7 @@ const ServicesPage = () => {
         {/* Hero Content */}
         <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
           <div
-            className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 inline-block mx-auto"
+            //className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 inline-block mx-auto"
             data-aos="fade-up"
           >
             <h1 className="clinking-font text-4xl sm:text-6xl font-bold text-white text-center">
@@ -172,31 +172,49 @@ const ServicesPage = () => {
             <div className="mb-4">
               <Swiper spaceBetween={10} slidesPerView={1} pagination={{ clickable: true }}>
                 <SwiperSlide>
-                  <img
-                    src="/images/bar1.webp"
-                    alt="Wooden Bar 1"
-                    className="w-full h-[350px] sm:h-[500px] object-cover object-bottom rounded-md"
-                  />
+                  <div className="relative">
+                    <img
+                      src="/images/bar1.webp"
+                      alt="Wooden Bar 1"
+                      className="w-full h-[350px] sm:h-[500px] object-cover object-bottom rounded-md"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 px-4 py-2 backdrop-blur-sm bg-white/10 text-white rounded-b-md text-center">
+                      <p className="bubbles-font text-sm sm:text-base">
+                        Our signature solid wood bar with sleek finishes and customizable decor, captured in its full charm at night.
+                      </p>
+                    </div>
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img
-                    src="/images/bar2.webp"
-                    alt="Wooden Bar 2"
-                    className="w-full h-[350px] sm:h-[500px] object-cover object-[center_50%] rounded-md"
-                  />
+                  <div className="relative">
+                    <img
+                      src="/images/bar2.webp"
+                      alt="Wooden Bar 2"
+                      className="w-full h-[350px] sm:h-[500px] object-cover object-[center_50%] rounded-md"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 px-4 py-2 backdrop-blur-sm bg-white/10 text-white rounded-b-md text-center">
+                      <p className="bubbles-font text-sm sm:text-base">
+                        Seen here during the day, a closer look at the premium craftsmanship and attention to detail that sets our bar apart.
+                      </p>
+                    </div>
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img
-                    src="/images/bar3.webp"
-                    alt="Wooden Bar 3"
-                    className="w-full h-[350px] sm:h-[500px] object-cover object-center rounded-md"
-                  />
+                  <div className="relative">
+                    <img
+                      src="/images/bar3.webp"
+                      alt="Wooden Bar 3"
+                      className="w-full h-[350px] sm:h-[500px] object-cover object-center rounded-md"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 px-4 py-2 backdrop-blur-sm bg-white/10 text-white rounded-b-md text-center">
+                      <p className="bubbles-font text-sm sm:text-base">
+                        Stylish from every angle and an elegant look for any event.
+                      </p>
+                    </div>
+                  </div>
                 </SwiperSlide>
               </Swiper>
             </div>
-            <p className="bubbles-font text-lg text-gray-600">
-              A sleek, modern look that blends effortlessly into any décor, perfect for upscale events.
-            </p>
           </div>
 
           {[
