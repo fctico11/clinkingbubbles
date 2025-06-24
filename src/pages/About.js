@@ -36,7 +36,7 @@ const About = () => {
           alt="Clinking Bubbles Founders"
           width="1080"
           height="1400"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center fade-zoom-in"
           loading="eager"
           decoding="sync"
         />
@@ -49,7 +49,7 @@ const About = () => {
             alt="Clinking Bubbles Logo"
             width="160"
             height="160"
-            className="w-[90px] sm:w-[160px] h-auto"
+            className="w-[90px] sm:w-[160px] h-auto fade-zoom-in"
             loading="eager"
             decoding="sync"
           />
