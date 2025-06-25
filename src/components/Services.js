@@ -124,7 +124,7 @@ function Services() {
                     }}
                   >
                     <div className="card-content flex flex-col items-center justify-center gap-3">
-                      <div className="glassbox rounded-xl px-2 py-1 w-fit h-fit flex items-center justify-center">
+                      <div className="glassbox drop-shadow-[0_0_2px_black] rounded-xl px-2 py-1 w-fit h-fit flex items-center justify-center">
                         <img
                           src={service.icon}
                           alt={`${service.title} icon`}
@@ -133,13 +133,13 @@ function Services() {
                       </div>
 
                       <div className="glassbox px-5 py-2 rounded-xl">
-                        <h2 className="bubbles-font text-white text-lg sm:text-xl font-semibold text-center">
+                        <h2 className="bubbles-font text-white text-lg sm:text-xl font-semibold text-center drop-shadow-[0_0_2px_black]">
                           {service.title}
                         </h2>
                       </div>
 
-                      <div className="glassbox px-5 py-2 rounded-xl w-[90%] min-h-[3.5rem] flex items-center justify-center">
-                        <p className="bubbles-font text-white text-sm sm:text-base text-center leading-snug">
+                      <div className="glassbox bg-black/60 px-5 py-2 rounded-xl w-[90%] min-h-[3.5rem] flex items-center justify-center">
+                        <p className="bubbles-font text-white text-sm sm:text-base text-center leading-snug drop-shadow-[0_0_2px_black]">
                           {service.description}
                         </p>
                       </div>
