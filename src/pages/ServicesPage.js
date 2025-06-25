@@ -152,13 +152,13 @@ const ServicesPage = () => {
                   {
                     src: "/images/bar1.webp",
                     alt: "Wooden Bar 1",
-                    className: "object-[center_90%]",
+                    className: "object-[center_90%] sm:object-[center_65%]",
                     text: "Our signature solid wood bar with sleek finishes and customizable decor, captured in its full charm at night."
                   },
                   {
                     src: "/images/bar2.webp",
                     alt: "Wooden Bar 2",
-                    className: "object-center",
+                    className: "object-center sm:object-[center_30%]",
                     text: "Seen here during the day, a closer look at the premium craftsmanship and attention to detail that sets our bar apart."
                   },
                   {
