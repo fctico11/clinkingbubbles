@@ -647,7 +647,7 @@ useEffect(() => {
               Thank you for submitting the contact form, we're almost ready to get this party started!
             </h3>
             <p className="bubbles-font text-lg">
-              Hang tight while our team reviews your request. We'll be in touch within 48 hours.
+              Hang tight while our team reviews your request. We'll be in touch within 24 hours.
               In the meantime, feel free to check out our{" "}
               <span
                 className="bubbles-font text-lg underline cursor-pointer"
