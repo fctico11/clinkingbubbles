@@ -54,19 +54,19 @@ const HeroSection = () => {
             Elevate Your Experience
           </h1>
           <div className="flex flex-col items-center text-center">
-  <div className="backdrop-blur-sm bg-white/5 rounded-xl px-4 py-2 inline-block">
-    <p className="bubbles-font text-2xl md:text-2xl">
-      Private bartending services that dazzle and delight.
-    </p>
-  </div>
-  <div className="mt-6 sm:mt-3">
-    <Link to="/contact">
-      <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
-        Book Now
-      </button>
-    </Link>
-  </div>
-</div>
+            <div className="backdrop-blur-sm bg-white/5 rounded-xl px-4 py-2 inline-block">
+              <p className="bubbles-font text-2xl md:text-2xl">
+                Private bartending services that dazzle and delight.
+              </p>
+            </div>
+            <div className="mt-6 sm:mt-3">
+              <Link to="/contact">
+                <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
+                  Book Now
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>
