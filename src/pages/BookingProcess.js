@@ -64,7 +64,7 @@ const BookingProcess = () => {
           <p className="bubbles-font text-lg">
             Click the “Get a Quote” button in the menu or at the bottom of this page, then fill out 
             our inquiry form. Our team will carefully review your selections and get back to you 
-            within 48 hours.
+            within 24 hours.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ const BookingProcess = () => {
             Once you approve our proposal, we’ll set up payment plans and email you a contract and 
             invoice to secure your booking. A 20% deposit is required to reserve your event date—no 
             date will be finalized until this deposit is received. The remaining balance will be due 
-            7 days before your event.
+            14 days before your event.
           </p>
         </div>
 
