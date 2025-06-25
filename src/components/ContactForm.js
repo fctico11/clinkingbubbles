@@ -171,6 +171,13 @@ useEffect(() => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (!formData.eventDate) {
+      setFeedback("❌ Please select a valid date for your event.");
+      setLoading(false);
+      return;
+    }
+
     if (isNaN(formData.guestCount) || formData.guestCount.trim() === "") {
       setFeedback("❌ Please enter a numeric value for estimated guests.");
       setLoading(false);
@@ -399,6 +406,14 @@ useEffect(() => {
                   ? "bg-[#f59e0b] text-white font-bold rounded-full"
                   : undefined;
               }}
+            />
+            {/* Hidden input to trigger browser validation */}
+            <input
+              type="text"
+              value={formData.eventDate}
+              onChange={() => {}}
+              required
+              className="sr-only"
             />
           </div>
 
