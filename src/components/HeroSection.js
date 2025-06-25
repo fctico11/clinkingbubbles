@@ -53,14 +53,20 @@ const HeroSection = () => {
           <h1 className="clinking-font text-4xl md:text-6xl font-bold mb-4">
             Elevate Your Experience
           </h1>
-          <p className="bubbles-font text-2xl md:text-2xl mb-8">
-            Private bartending services that dazzle and delight.
-          </p>
-          <Link to="/contact">
-            <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
-              Book Now
-            </button>
-          </Link>
+          <div className="flex flex-col items-center text-center">
+  <div className="backdrop-blur-sm bg-white/5 rounded-xl px-4 py-2 inline-block">
+    <p className="bubbles-font text-2xl md:text-2xl">
+      Private bartending services that dazzle and delight.
+    </p>
+  </div>
+  <div className="mt-6 sm:mt-3">
+    <Link to="/contact">
+      <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition">
+        Book Now
+      </button>
+    </Link>
+  </div>
+</div>
         </div>
       </section>
     </>
