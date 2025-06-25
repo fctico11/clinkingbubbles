@@ -470,7 +470,9 @@ useEffect(() => {
               Estimated Number of Guests *
             </label>
             <input
-              type="number"
+              type="tel"
+              inputMode="numeric"
+              pattern="[0-9]*"
               name="guestCount"
               placeholder="e.g. 75"
               className="bubbles-font text-lg w-full p-3 rounded border border-gray-400"
