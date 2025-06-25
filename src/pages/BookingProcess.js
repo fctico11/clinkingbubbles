@@ -46,7 +46,7 @@ const BookingProcess = () => {
           alt="Booking Process"
           width="1080"
           height="1400"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-[center_80%] sm:object-[center_70%]"
           loading="eager"
           decoding="sync"
         />
