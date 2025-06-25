@@ -63,7 +63,7 @@ const About = () => {
         {/* Title Overlay */}
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center px-4">
           <div className="backdrop-blur-sm bg-white/5 rounded-xl px-4 py-2 inline-block">
-            <h1 className="clinking-font text-3xl sm:text-5xl text-white font-bold drop-shadow-lg whitespace-nowrap">
+            <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-3xl sm:text-5xl text-white font-bold drop-shadow-lg whitespace-nowrap">
               About Clinking Bubbles
             </h1>
           </div>

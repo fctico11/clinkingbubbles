@@ -50,12 +50,12 @@ const HeroSection = () => {
 
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="clinking-font text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl md:text-6xl font-bold mb-4">
             Elevate Your Experience
           </h1>
           <div className="flex flex-col items-center text-center">
             <div className="backdrop-blur-sm bg-white/5 rounded-xl px-4 py-2 inline-block">
-              <p className="bubbles-font text-2xl md:text-2xl">
+              <p className="bubbles-font drop-shadow-[0_0_2px_black] text-2xl md:text-2xl">
                 Private bartending services that dazzle and delight.
               </p>
             </div>

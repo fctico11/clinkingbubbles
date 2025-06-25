@@ -66,7 +66,7 @@ const ServicesPage = () => {
 
         <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
           <div data-aos="fade-up">
-            <h1 className="clinking-font text-4xl sm:text-6xl font-bold text-white text-center">
+            <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl sm:text-6xl font-bold text-white text-center">
               OUR SERVICES
             </h1>
           </div>
@@ -74,7 +74,7 @@ const ServicesPage = () => {
           <div className="mt-6 sm:mt-10"></div>
 
           <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
-            <p className="bubbles-font text-md sm:text-2xl text-white drop-shadow-sm">
+            <p className="bubbles-font drop-shadow-[0_0_2px_black] text-md sm:text-2xl text-white drop-shadow-sm">
               We believe every celebration should be a work of art. From chic gatherings to all-out bashes, our packages are designed to pamper your guests and let you sip, smile, and truly relax. Below, you’ll find our essential inclusions and an array of stylish add-ons to elevate your event to pure luxury.
             </p>
           </div>
@@ -176,7 +176,7 @@ const ServicesPage = () => {
                         className={`w-full h-[350px] sm:h-[500px] object-cover ${className} rounded-md`}
                       />
                       <div className="absolute bottom-0 left-0 right-0 px-4 py-2 backdrop-blur-sm bg-white/10 text-white rounded-b-md text-center">
-                        <p className="bubbles-font text-sm sm:text-base">{text}</p>
+                        <p className="bubbles-font drop-shadow-[0_0_2px_black] text-sm sm:text-base">{text}</p>
                       </div>
                     </div>
                   </SwiperSlide>

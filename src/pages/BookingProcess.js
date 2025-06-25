@@ -54,7 +54,7 @@ const BookingProcess = () => {
 
         <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
           <div data-aos="fade-up">
-            <h1 className="clinking-font text-4xl sm:text-6xl font-bold text-white text-center">
+            <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl sm:text-6xl font-bold text-white text-center">
               BOOKING PROCESS
             </h1>
           </div>
@@ -62,7 +62,7 @@ const BookingProcess = () => {
           <div className="mt-6 sm:mt-10"></div>
 
           <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
-            <p className="bubbles-font text-md sm:text-2xl text-white drop-shadow-sm">
+            <p className="bubbles-font drop-shadow-[0_0_2px_black] text-md sm:text-2xl text-white drop-shadow-sm">
               Our booking process is as smooth as a perfectly shaken cocktail. From your initial inquiry 
               to final confirmation, we’ll guide you through every step. Discover how simple it is to 
               secure your next unforgettable event!
