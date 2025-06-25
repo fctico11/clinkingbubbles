@@ -106,6 +106,7 @@ const ContactForm = () => {
     bartendingOption: "Bartender(s) only",
     additionalDetails: "",
     contactMethod: "Email",
+    referralSource: "",
     dryHireAccepted: false,
   });
 
@@ -524,6 +525,30 @@ useEffect(() => {
               <option>Phone call</option>
               <option>Text</option>
               <option>Email</option>
+            </select>
+          </div>
+
+          {/* Referral Source */}
+          <div>
+            <label className="bubbles-font text-lg block font-semibold mb-1">
+              How did you hear about us? *
+            </label>
+            <select
+              name="referralSource"
+              className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-white text-black"
+              onChange={handleChange}
+              value={formData.referralSource}
+              required
+            >
+              <option value="">Select one</option>
+              <option>Instagram</option>
+              <option>TikTok</option>
+              <option>Facebook</option>
+              <option>Yelp</option>
+              <option>Google search</option>
+              <option>Vendor referral</option>
+              <option>Client referral</option>
+              <option>Other</option>
             </select>
           </div>
 
