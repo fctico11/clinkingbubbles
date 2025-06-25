@@ -39,22 +39,36 @@ const BookingProcess = () => {
       </Helmet>
       <Navbar />
 
-      <section className="py-12 px-4 bg-[#EBE6D6] mt-5">
-        <h1
-          className="clinking-font text-4xl font-bold text-center mb-5 mt-10"
-          data-aos="fade-up"
-        >
-          Booking Process
-        </h1>
-        <p
-          className="bubbles-font text-xl max-w-3xl mx-auto text-center mb-0"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          Our booking process is as smooth as a perfectly shaken cocktail. From your initial inquiry 
-          to final confirmation, we’ll guide you through every step. Discover how simple it is to 
-          secure your next unforgettable event!
-        </p>
+      {/* Hero Section */}
+      <section className="relative w-full h-[60vh] sm:h-[700px]">
+        <img
+          src="/images/booking-v1.webp"
+          alt="Booking Process"
+          width="1080"
+          height="1400"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          loading="eager"
+          decoding="sync"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+        <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
+          <div data-aos="fade-up">
+            <h1 className="clinking-font text-4xl sm:text-6xl font-bold text-white text-center">
+              BOOKING PROCESS
+            </h1>
+          </div>
+
+          <div className="mt-6 sm:mt-10"></div>
+
+          <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+            <p className="bubbles-font text-md sm:text-2xl text-white drop-shadow-sm">
+              Our booking process is as smooth as a perfectly shaken cocktail. From your initial inquiry 
+              to final confirmation, we’ll guide you through every step. Discover how simple it is to 
+              secure your next unforgettable event!
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="py-12 px-4">
