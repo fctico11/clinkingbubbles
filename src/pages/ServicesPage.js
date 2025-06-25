@@ -53,7 +53,15 @@ const ServicesPage = () => {
 
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] sm:h-[700px]">
-        <img src="/images/servicespic.webp" alt="Clinking Bubbles Services" width="1080" height="1400" className="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="sync" />
+        <img
+          src="/images/servicespic.webp"
+          alt="Clinking Bubbles Services"
+          width="1080"
+          height="1400"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          loading="eager"
+          decoding="sync"
+        />
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
@@ -144,22 +152,29 @@ const ServicesPage = () => {
                   {
                     src: "/images/bar1.webp",
                     alt: "Wooden Bar 1",
+                    className: "object-[center_90%]",
                     text: "Our signature solid wood bar with sleek finishes and customizable decor, captured in its full charm at night."
                   },
                   {
                     src: "/images/bar2.webp",
                     alt: "Wooden Bar 2",
+                    className: "object-center",
                     text: "Seen here during the day, a closer look at the premium craftsmanship and attention to detail that sets our bar apart."
                   },
                   {
                     src: "/images/bar3.webp",
                     alt: "Wooden Bar 3",
+                    className: "object-center",
                     text: "Stylish from every angle and an elegant look for any event."
                   }
-                ].map(({ src, alt, text }, i) => (
+                ].map(({ src, alt, text, className }, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative">
-                      <img src={src} alt={alt} className="w-full h-[350px] sm:h-[500px] object-cover rounded-md" />
+                      <img
+                        src={src}
+                        alt={alt}
+                        className={`w-full h-[350px] sm:h-[500px] object-cover ${className} rounded-md`}
+                      />
                       <div className="absolute bottom-0 left-0 right-0 px-4 py-2 backdrop-blur-sm bg-white/10 text-white rounded-b-md text-center">
                         <p className="bubbles-font text-sm sm:text-base">{text}</p>
                       </div>
@@ -183,11 +198,12 @@ const ServicesPage = () => {
             </div>
           </div>
 
+          {/* Additional Accessories */}
           {[
-            ["Hydration Package", "Stay refreshed with infused water dispensers, iced teas, or lemonade—perfect for hot days or all-ages events..."],
-            ["6 ft. Folding Tables", "Whether you need extra space for drinks, food, decor, or gifts, these sturdy and sleek tables offer both functionality and convenience..."],
-            ["Popcorn Machine", "Freshly popped, buttery popcorn is the perfect snack to complement your drinks and elevate the party vibe..."],
-            ["Sony GTK-XB60 Speakers", "Turn up the energy with our Sony GTK-XB60 speakers! These powerful, portable speakers deliver deep bass and vibrant sound..."]
+            ["Hydration Package", "Stay refreshed with infused water dispensers, iced teas, or lemonade—perfect for hot days or all-ages events."],
+            ["6 ft. Folding Tables", "Whether you need extra space for drinks, food, decor, or gifts, these sturdy and sleek tables offer both functionality and convenience."],
+            ["Popcorn Machine", "Freshly popped, buttery popcorn is the perfect snack to complement your drinks and elevate the party vibe."],
+            ["Sony GTK-XB60 Speakers", "Turn up the energy with our Sony GTK-XB60 speakers! These powerful, portable speakers deliver deep bass and vibrant sound."]
           ].map(([title, desc], i) => (
             <div key={title} data-aos="fade-up" data-aos-delay={i * 100} className="border-b pb-3">
               <h3 className="bubbles-font text-lg font-semibold">
