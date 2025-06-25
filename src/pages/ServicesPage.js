@@ -75,8 +75,8 @@ const ServicesPage = () => {
 
       <div className="bg-white text-black px-4 py-10">
         <div className="max-w-6xl mx-auto">
-          {/* BASIC PACKAGE */}
-          <div className="inline-block bg-[#f5f0e6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
+          {/* BASIC PACKAGE bg-#f5f0e6 lighter beige*/}
+          <div className="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
             <h2 className="clinking-font text-2xl sm:text-3xl font-bold">BASIC PACKAGE INCLUDES</h2>
           </div>
 
@@ -117,7 +117,7 @@ const ServicesPage = () => {
           </div>
 
           {/* ACCESSORIES */}
-          <div className="inline-block bg-[#f5f0e6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
+          <div className="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
             <h2 className="clinking-font text-2xl sm:text-3xl font-bold">ACCESSORIES</h2>
           </div>
 
