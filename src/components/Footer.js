@@ -1,5 +1,5 @@
 import React from "react";
-import { FaInstagram, FaEnvelope, FaExternalLinkAlt } from "react-icons/fa"; 
+import { FaInstagram, FaFacebookF, FaEnvelope, FaExternalLinkAlt } from "react-icons/fa"; 
 import { SiTiktok } from "react-icons/si";
 import { Link } from "react-router-dom";
 
@@ -112,6 +112,35 @@ const Footer = () => {
             </div>
           </a>
 
+          {/* Facebook */}
+          <a
+            href="https://www.facebook.com/clinkingbubbles" 
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Clinking Bubbles Facebook"
+          >
+            <div className="relative inline-block w-[30px] h-[30px]">
+              <FaFacebookF
+                size={28}
+                className="absolute top-1/2 left-1/2 
+                          transform -translate-x-1/2 -translate-y-1/2
+                          text-black"
+              />
+              <FaFacebookF
+                size={30}
+                className="absolute top-1/2 left-1/2 
+                          transform -translate-x-1/2 -translate-y-1/2
+                          text-black"
+              />
+              <FaFacebookF
+                size={26}
+                className="absolute top-1/2 left-1/2 
+                          transform -translate-x-1/2 -translate-y-1/2
+                          text-white hover:text-yellow-500 transition"
+              />
+            </div>
+          </a>
+
           {/* Envelope */}
           <Link to="/contact" aria-label="Contact us via email">
             <div className="relative inline-block w-[30px] h-[30px]">
@@ -161,4 +190,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
