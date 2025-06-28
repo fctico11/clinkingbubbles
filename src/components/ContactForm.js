@@ -236,7 +236,7 @@ useEffect(() => {
         <p className="bubbles-font text-xl text-black max-w-2xl mx-auto mt-4">
           We’re excited to craft amazing drinks and create a fun atmosphere for your special occasion!
           Fill out the details below, and we’ll tailor our services to your needs. Once submitted,
-          you’ll be hearing from our team within 48 hours to finalize your consultation.
+          you’ll be hearing from our team within 24 hours to finalize your consultation.
         </p>
       </section>
 
