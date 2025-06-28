@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -133,6 +134,14 @@ const Navbar = () => {
             >
               <SiTiktok size={30} />
             </a>
+            <a
+              href="https://www.facebook.com/clinkingbubbles"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-yellow-500 hover:text-yellow-500 transition"
+            >
+              <FaFacebook size={30} />
+            </a>
           </div>
 
           <Link to="/contact">
@@ -220,6 +229,14 @@ const Navbar = () => {
                   className="mobile-social-icon"
                 >
                   <SiTiktok size={30} />
+                </a>
+                <a
+                  href="https://www.facebook.com/clinkingbubbles"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mobile-social-icon"
+                >
+                  <FaFacebook size={30} />
                 </a>
               </div>
             </div>
