@@ -39,12 +39,11 @@
 }
 
 .drawer-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
-  min-height: 100%; /* ensure full height content */
+  min-height: 100dvh; /* ensure full height content */
   box-sizing: border-box;
 }
 
@@ -103,12 +102,11 @@
 
 /* Social Icons Container at bottom */
 .drawer-social {
-  padding-bottom: calc(env(safe-area-inset-bottom, 1.5rem) + 2rem);;
-  display: flex;
-  width: 100%;
+  margin-top: 2rem;
+  padding-bottom: calc(env(safe-area-inset-bottom, 1rem) + 1rem);;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .mobile-social-icon {
