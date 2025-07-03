@@ -233,14 +233,38 @@ const AlcoholCalculator = () => {
         }
       `}</style>
 
-      {/* Intro Section */}
-      <section className="py-10 px-4 bg-[#EBE6D6] text-white text-center mt-5">
-        <h2 className="clinking-font text-black text-3xl font-bold mt-12">
-          Plan Your Event’s Drinks with Ease
-        </h2>
-        <p className="bubbles-font text-xl text-black max-w-2xl mx-auto mt-4">
-          Use our alcohol calculator to estimate the required quantities and costs for beer, wine, and liquor for your event.
-        </p>
+      {/* Hero Section */}
+      <section className="relative w-full h-[60vh] sm:h-[700px]">
+        <img
+          src="/images/drinkShot.webp" 
+          alt="Alcohol Calculator"
+          width="1080"
+          height="1400"
+          className="absolute inset-0 w-full h-full object-cover object-center sm:object-top"
+          loading="eager"
+          decoding="sync"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+        <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
+          <div data-aos="fade-up">
+            <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl sm:text-6xl font-bold text-white text-center">
+              ALCOHOL CALCULATOR
+            </h1>
+          </div>
+
+          <div className="mt-6 sm:mt-10"></div>
+
+          <div
+            className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <p className="bubbles-font drop-shadow-[0_0_2px_black] text-md sm:text-2xl text-white drop-shadow-sm">
+              Use our alcohol calculator to estimate the required quantities and costs for beer, wine, and liquor for your event.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Calculator Form */}
