@@ -45,6 +45,13 @@ const Footer = () => {
           </Link>
           <span className="text-black">|</span>
           <Link
+            to="/faq"
+            className="bubbles-font text-base text-black hover:text-yellow-500 transition"
+          >
+            FAQ
+          </Link>
+          <span className="text-black">|</span>
+          <Link
             to="/contact"
             className="bubbles-font text-base text-black hover:text-yellow-500 transition"
           >

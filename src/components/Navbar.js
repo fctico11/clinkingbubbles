@@ -115,6 +115,12 @@ const Navbar = () => {
           >
             Alcohol Calculator
           </Link>
+          <Link
+            to="/faq"
+            className="desktop-link bubbles-font text-lg text-yellow-500 transition"
+          >
+            FAQ
+          </Link>
 
           {/* Desktop Social Icons */}
           <div className="social-icons hidden md:flex items-center space-x-4">
@@ -202,6 +208,13 @@ const Navbar = () => {
                   onClick={toggleMenu}
                 >
                   Alcohol Calculator
+                </Link>
+                <Link
+                  to="/faq"
+                  className="bubbles-font drawer-link"
+                  onClick={toggleMenu}
+                >
+                  FAQ
                 </Link>
                 <Link
                   to="/contact"

@@ -8,6 +8,7 @@ import BookingProcess from "./pages/BookingProcess";
 import ScrollToTop from "./components/ScrollToTop";
 import ServicesPage from "./pages/ServicesPage";
 import AlcoholCalculator from "./pages/AlcoholCalculator";
+import Faq from "./pages/Faq";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/booking-process" element={<BookingProcess />} />
         <Route path="/alcohol-calculator" element={<AlcoholCalculator />} />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
