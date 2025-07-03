@@ -193,6 +193,9 @@ useEffect(() => {
     try {
       await axios.post("https://formspree.io/f/xjkyvqoe", submissionData);
       setShowSuccessOverlay(true);
+      if (window.fbq) {
+        window.fbq('track', 'Lead');
+      }
     } catch (error) {
       setFeedback("❌ There was an error submitting your request. Please try again.");
     }
@@ -691,15 +694,15 @@ useEffect(() => {
             X
           </button>
           <div
-  className="max-w-md mx-auto p-6 text-center text-white animate-fadeIn"
-  style={{
-    backdropFilter: "blur(10px)",
-    WebkitBackdropFilter: "blur(10px)",
-    backgroundColor: "rgba(255, 255, 255, 0.1)", // subtle glass effect
-    borderRadius: "1rem", // rounded glass edges
-    border: "1px solid rgba(255, 255, 255, 0.3)" // soft border
-  }}
->
+            className="max-w-md mx-auto p-6 text-center text-white animate-fadeIn"
+            style={{
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255, 255, 255, 0.1)", // subtle glass effect
+              borderRadius: "1rem", // rounded glass edges
+              border: "1px solid rgba(255, 255, 255, 0.3)" // soft border
+            }}
+          >
             <div className="w-40 h-40 mx-auto mb-4">
             {LottieComponent && animationData && (
               <LottieComponent loop autoplay animationData={animationData} />
