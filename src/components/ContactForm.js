@@ -460,7 +460,8 @@ useEffect(() => {
 
           {/* Hours of Event */}
           <div>
-            <label className="bubbles-font text-lg block font-semibold mb-1">Hours of Event *</label>
+            <label className="bubbles-font text-lg block font-semibold mb-1">Hours of Event * {" "}
+  <span className="text-gray-500 text-sm">(4-hour minimum)</span> </label>
             <div className="flex space-x-4">
               <div className="w-1/2">
                 <label className="bubbles-font text-lg block text-sm font-medium mb-1">Start Time</label>
@@ -599,6 +600,9 @@ useEffect(() => {
           >
             {loading ? "Submitting..." : "Submit Form"}
           </button>
+          <p className="bubbles-font text-base italic text-gray-500 text-center mt-2">
+            🔒 Your information is 100% private and secure.
+          </p>
           {feedback && <p className="text-center mt-4">{feedback}</p>}
         </form>
       </section>
@@ -686,11 +690,20 @@ useEffect(() => {
           >
             X
           </button>
-          <div className="max-w-md mx-auto p-6 text-center text-white animate-fadeIn">
+          <div
+  className="max-w-md mx-auto p-6 text-center text-white animate-fadeIn"
+  style={{
+    backdropFilter: "blur(10px)",
+    WebkitBackdropFilter: "blur(10px)",
+    backgroundColor: "rgba(255, 255, 255, 0.1)", // subtle glass effect
+    borderRadius: "1rem", // rounded glass edges
+    border: "1px solid rgba(255, 255, 255, 0.3)" // soft border
+  }}
+>
             <div className="w-40 h-40 mx-auto mb-4">
             {LottieComponent && animationData && (
-  <LottieComponent loop autoplay animationData={animationData} />
-)}
+              <LottieComponent loop autoplay animationData={animationData} />
+            )}
             </div>
             <h3 className="bubbles-font text-lg text-2xl font-extrabold mb-4">
               Thank you for submitting the contact form, we're almost ready to get this party started!
