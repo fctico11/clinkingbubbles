@@ -33,7 +33,7 @@ const Faq = () => {
         },
         {
           question: "What kind of events do you service?",
-          answer: "Whether it’s an elegant wedding, a lively birthday bash, a corporate mixer, or a cozy backyard get togethers, we tailor our bartending services to fit your vision. From engagement parties to holiday gatherings and everything in between—if there’s a reason to toast, we’re there to shake, stir, and serve."
+          answer: "Whether it’s an elegant wedding, a lively birthday bash, a corporate mixer, or cozy backyard get togethers, we tailor our bartending services to fit your vision. From engagement parties to holiday gatherings and everything in between—if there’s a reason to toast, we’re there to shake, stir, and serve."
         },
         {
           question: "What drinks can you serve? Do you offer non-alcoholic options?",
