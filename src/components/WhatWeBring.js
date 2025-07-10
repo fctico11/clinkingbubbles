@@ -19,7 +19,7 @@ const WhatWeBring = () => {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          Our expertise goes beyond the basics. Here’s a sneak peek at the extra touches we provide to elevate your event.
+          Our expertise goes beyond the basics. Here’s a sneak peek at the extra touches we provide to add magic to your event.
         </p>
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-8"

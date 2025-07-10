@@ -21,10 +21,10 @@ const servicesData = [
     backgroundPosition: "center"
   },
   {
-    title: "Corporate Events",
-    description: "Elevate your corporate gatherings with tailored cocktail experiences",
-    icon: corporateIcon,
-    image: "/images/car1.webp",
+    title: "Birthday Parties",
+    description: "Celebrate in style with custom cocktails and dedicated bartenders",
+    icon: birthdayIcon,
+    image: "/images/car4.webp",
     backgroundPosition: "center"
   },
   {
@@ -35,10 +35,10 @@ const servicesData = [
     backgroundPosition: "center"
   },
   {
-    title: "Birthday Parties",
-    description: "Celebrate in style with custom cocktails and dedicated bartenders",
-    icon: birthdayIcon,
-    image: "/images/car4.webp",
+    title: "Corporate Events",
+    description: "Enhance your corporate gatherings with tailored cocktail experiences",
+    icon: corporateIcon,
+    image: "/images/car1.webp",
     backgroundPosition: "center"
   },
   {
