@@ -75,7 +75,7 @@ const ServicesPage = () => {
 
           <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
             <p className="bubbles-font drop-shadow-[0_0_2px_black] text-md sm:text-2xl text-white drop-shadow-sm">
-              We believe every celebration should be a work of art. From chic gatherings to all-out bashes, our packages are designed to pamper your guests and let you sip, smile, and truly relax. Below, you’ll find our essential inclusions and an array of stylish add-ons to elevate your event to pure luxury.
+              We believe every celebration should be a work of art. From chic gatherings to all-out bashes, our packages are designed to pamper your guests and let you sip, smile, and truly relax. Below, you’ll find our essential inclusions and an array of stylish add-ons to add a layer of pure luxury to your event.
             </p>
           </div>
         </div>
@@ -85,7 +85,7 @@ const ServicesPage = () => {
         <div className="max-w-6xl mx-auto">
           {/* BASIC PACKAGE bg-#f5f0e6 lighter beige*/}
           <div className="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
-            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">BASIC PACKAGE INCLUDES</h2>
+            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">OUR SIGNATURE SERVICE</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
@@ -130,7 +130,7 @@ const ServicesPage = () => {
           </div>
 
           <p className="bubbles-font text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
-            Elevate your bar setup with these additional items. Perfect for those who crave a more immersive, high-end experience.
+            Perfect your bar setup with these additional items. Ideal for those who crave a more immersive, high-end experience.
           </p>
 
           <div data-aos="fade-up" className="border-b pb-6">
@@ -202,7 +202,7 @@ const ServicesPage = () => {
           {[
             ["Hydration Package", "Stay refreshed with infused water dispensers, iced teas, or lemonade—perfect for hot days or all-ages events."],
             ["6 ft. Folding Tables", "Whether you need extra space for drinks, food, decor, or gifts, these sturdy and sleek tables offer both functionality and convenience."],
-            ["Popcorn Machine", "Freshly popped, buttery popcorn is the perfect snack to complement your drinks and elevate the party vibe."],
+            ["Popcorn Machine", "Freshly popped, buttery popcorn is the perfect snack to complement your drinks and raise the party vibe."],
             ["Sony GTK-XB60 Speakers", "Turn up the energy with our Sony GTK-XB60 speakers! These powerful, portable speakers deliver deep bass and vibrant sound."]
           ].map(([title, desc], i) => (
             <div key={title} data-aos="fade-up" data-aos-delay={i * 100} className="border-b pb-3">
