@@ -77,32 +77,27 @@ const BookingProcess = () => {
           <h2 className="clinking-font text-2xl font-bold mb-4">Step 1 – Inquire</h2>
           <p className="bubbles-font text-lg">
             Click the “Get a Quote” button in the menu or at the bottom of this page, then fill out 
-            our inquiry form. Our team will carefully review your selections and get back to you 
-            within 24 hours.
+            our inquiry form. Our team will carefully review your event details and send a personalized quote within 24 hours.
           </p>
         </div>
 
         {/* Step 2 */}
         <div className="max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
           <h2 className="clinking-font text-2xl font-bold mb-4">
-            Step 2 – Discuss Logistics &amp; Choose Your Cocktails
+            Step 2 – Review &amp; Reserve
           </h2>
           <p className="bubbles-font text-lg">
-            A team member will reach out via your preferred method (call, text, or email) to clarify 
-            any logistics and answer your questions. Based on your preferences, we’ll present a curated 
-            list of cocktail options or help you design custom cocktails for your event. We will then 
-            send you a detailed quote.
+            Once you've reviewed your custom quote and are ready to move forward, we'll send over a contract and invoice.
+            A 20% deposit secures your date - no booking is finalized until this is received.
           </p>
         </div>
 
         {/* Step 3 */}
         <div className="max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">
-          <h2 className="clinking-font text-2xl font-bold mb-4">Step 3 – Pay and Sign</h2>
+          <h2 className="clinking-font text-2xl font-bold mb-4">Step 3 – Plan the details</h2>
           <p className="bubbles-font text-lg">
-            Once you approve our proposal, we’ll set up payment plans and email you a contract and 
-            invoice to secure your booking. A 20% deposit is required to reserve your event date—no 
-            date will be finalized until this deposit is received. The remaining balance will be due 
-            14 days before your event.
+            With your date secured, we'll work with you to fine-tune the details. 
+            From bar logistics to cocktail selections, our team will help craft a bar experience that's tailored perfectly to your celebration.
           </p>
         </div>
 
@@ -110,8 +105,7 @@ const BookingProcess = () => {
         <div className="max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="300">
           <h2 className="clinking-font text-2xl font-bold mb-4">Step 4 – Purchase the Alcohol</h2>
           <p className="bubbles-font text-lg">
-            Using our detailed shopping list, purchase the alcohol and have it ready for our team 
-            on the day of your event.
+            We’ll provide a detailed shopping list so you know exactly what to buy. Have everything ready for our team on the day of your event, and we’ll take it from there.
           </p>
         </div>
 
