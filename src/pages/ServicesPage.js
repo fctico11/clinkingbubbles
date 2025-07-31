@@ -162,6 +162,12 @@ const ServicesPage = () => {
                     text: "Seen here during the day, a closer look at the premium craftsmanship and attention to detail that sets our bar apart."
                   },
                   {
+                    src: "/images/ariparty.webp",
+                    alt: "Wooden Bar Decorated",
+                    className: "object-center sm:object-[center_30%]",
+                    text: "An example of how we tailor every detail ~ from florals to flair ~ to match your party’s personality and vibe."
+                  },
+                  {
                     src: "/images/bar3.webp",
                     alt: "Wooden Bar 3",
                     className: "object-center",
@@ -187,7 +193,7 @@ const ServicesPage = () => {
                   <TiChevronLeftOutline />
                 </button>
                 <div className="flex gap-2">
-                  {[0, 1, 2].map((i) => (
+                  {[0, 1, 2, 3].map((i) => (
                     <span key={i} className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${activeIndex === i ? "bg-orange-400" : "bg-gray-400"}`}></span>
                   ))}
                 </div>
