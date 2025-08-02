@@ -88,7 +88,7 @@ const BookingProcess = () => {
           </h2>
           <p className="bubbles-font text-lg">
             Once you've reviewed your custom quote and are ready to move forward, we'll send over a contract and invoice.
-            A 20% deposit secures your date - no booking is finalized until this is received.
+            A 20% deposit secures your date (30% for weddings) - no booking is finalized until this is received.
           </p>
         </div>
 
