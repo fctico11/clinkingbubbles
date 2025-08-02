@@ -66,7 +66,7 @@ const Faq = () => {
       items: [
         {
           question: "What do I need to book with you?",
-          answer: "A signed agreement and 20% deposit are required to secure your date."
+          answer: "A signed agreement and 20% deposit (30% for weddings) are required to secure your date."
         },
         {
           question: "How far in advance should I book?",
@@ -129,7 +129,7 @@ const Faq = () => {
       items: [
         {
           question: "What’s your payment and cancellation policy?",
-          answer: "A 20% deposit is due at booking. The balance is due 14 days before your event. Cancellations more than 30 days out get a refund minus deposit; within 30 days, 50% of the total is due."
+          answer: "A 20% deposit (30% for weddings) is due at booking. The balance is due 14 days before your event. Cancellations more than 30 days out get a refund minus deposit; within 30 days, 50% of the total is due."
         },
         {
           question: "Are you insured?",
