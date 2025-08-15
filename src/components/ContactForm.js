@@ -196,6 +196,14 @@ useEffect(() => {
       if (window.fbq) {
         window.fbq('track', 'Lead');
       }
+      // Google Ads Conversion
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-16963394733/gonpCNnu3rQaEK2545g_',
+          value: 1.0,
+          currency: 'USD',
+        });
+      }
     } catch (error) {
       setFeedback("❌ There was an error submitting your request. Please try again.");
     }
@@ -340,7 +348,10 @@ useEffect(() => {
                 new Date(Date.UTC(2025, 7, 10)), // August 9, 2025
                 new Date(Date.UTC(2025, 7, 11)), // August 10, 2025
                 new Date(Date.UTC(2025, 7, 12)), // August 11, 2025
+                new Date(Date.UTC(2025, 7, 23)), // August 22, 2025
                 new Date(Date.UTC(2025, 9, 5)), // Oct. 4, 2025
+                new Date(Date.UTC(2025, 9, 18)), // Oct. 17, 2025
+                new Date(Date.UTC(2025, 9, 19)), // Oct. 18, 2025
                 new Date(Date.UTC(2025, 9, 20)), // Oct. 19, 2025
               ]}
               placeholderText="Select a date"
