@@ -339,15 +339,6 @@ useEffect(() => {
               ref={dateInputRef}
               readOnly // prevent keyboard
               excludeDates={[ 
-                new Date(Date.UTC(2025, 4, 2)), // May 1, 2025
-                new Date(Date.UTC(2025, 5, 7)), // June 6, 2025
-                new Date(Date.UTC(2025, 6, 20)), // July 19, 2025
-                new Date(Date.UTC(2025, 6, 26)), // July 25, 2025
-                new Date(Date.UTC(2025, 7, 8)), // August 7, 2025
-                new Date(Date.UTC(2025, 7, 9)), // August 8, 2025
-                new Date(Date.UTC(2025, 7, 10)), // August 9, 2025
-                new Date(Date.UTC(2025, 7, 11)), // August 10, 2025
-                new Date(Date.UTC(2025, 7, 12)), // August 11, 2025
                 new Date(Date.UTC(2025, 7, 23)), // August 22, 2025
                 new Date(Date.UTC(2025, 9, 5)), // Oct. 4, 2025
                 new Date(Date.UTC(2025, 9, 18)), // Oct. 17, 2025
