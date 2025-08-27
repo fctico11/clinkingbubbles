@@ -340,11 +340,12 @@ useEffect(() => {
               readOnly // prevent keyboard
               excludeDates={[ 
                 new Date(Date.UTC(2025, 7, 23)), // August 22, 2025
-                new Date(Date.UTC(2025, 8, 14)), // september 14, 2025
+                new Date(Date.UTC(2025, 8, 14)), // september 13, 2025
                 new Date(Date.UTC(2025, 9, 5)), // Oct. 4, 2025
                 new Date(Date.UTC(2025, 9, 18)), // Oct. 17, 2025
                 new Date(Date.UTC(2025, 9, 19)), // Oct. 18, 2025
                 new Date(Date.UTC(2025, 9, 20)), // Oct. 19, 2025
+                new Date(Date.UTC(2026, 4, 10)), // May. 9. 2026
               ]}
               placeholderText="Select a date"
               minDate={new Date()}
