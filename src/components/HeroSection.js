@@ -1,52 +1,31 @@
-// src/components/HeroSection.js
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-
 import heroDesktop from "../assets/images/hero.webp";
-import heroMobile from "../assets/images/hero-mobile.webp";
 
 const HeroSection = () => {
-  // Decide if we're on mobile or desktop
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-
-  // Start with a placeholder (no background image) so text can render immediately
-  const [bgImage, setBgImage] = useState("none");
-
-  useEffect(() => {
-    // Pick the correct hero image based on viewport
-    const chosenImage = isMobile ? heroMobile : heroDesktop;
-
-    // Defer loading the background image until after text is painted
-    const img = new Image();
-    img.src = chosenImage;
-    img.onload = () => {
-      setBgImage(`url(${chosenImage})`);
-    };
-  }, [isMobile]);
-
   return (
     <>
-      {/* Preload whichever image is needed for the current viewport */}
       <Helmet>
-         <link rel="preload" as="image" href={heroDesktop} />
-          <link rel="preload" as="image" href={heroMobile} />
+        <link rel="preload" as="image" href={heroDesktop} fetchpriority="high" />
       </Helmet>
 
-      <section
-        className="relative text-white py-32 px-4 text-center"
-        style={{
-          backgroundColor: "#000", // placeholder color
-          backgroundImage: bgImage,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <section className="relative text-white text-center py-32 px-4">
+        {/* ✅ Use an <img> instead of background-image */}
+        <img
+          src={heroDesktop}
+          fetchpriority="high"
+          alt="Elevate your experience - Clinking Bubbles NJ"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          width="1920"
+          height="1080"
+        />
 
-        {/* Content */}
-        <div className="relative z-10 max-w-3xl mx-auto">
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+
+        {/* Text content */}
+        <div className="relative z-20 max-w-3xl mx-auto">
           <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl md:text-6xl font-bold mb-4">
             Elevate Your Experience
           </h1>
