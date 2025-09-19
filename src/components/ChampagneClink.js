@@ -39,6 +39,7 @@ const ChampagneClink = ({ onAnimationEnd }) => {
         speed={0.2} // ⏳ Slow animation significantly (40% of normal speed)
         onComplete={handleAnimationComplete}
         className="champagne-lottie"
+        style={{ width: "100vw", height: "100vh" }}
       />
     </div>
   );

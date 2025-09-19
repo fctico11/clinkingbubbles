@@ -29,11 +29,8 @@ const HeroSection = () => {
     <>
       {/* Preload whichever image is needed for the current viewport */}
       <Helmet>
-        <link
-          rel="preload"
-          as="image"
-          href={isMobile ? heroMobile : heroDesktop}
-        />
+         <link rel="preload" as="image" href={heroDesktop} />
+          <link rel="preload" as="image" href={heroMobile} />
       </Helmet>
 
       <section
