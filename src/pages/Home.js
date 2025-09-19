@@ -42,7 +42,7 @@ const Home = () => {
         <link rel="preload" href="/assets/champagne.json" as="fetch" type="application/json" crossorigin="anonymous" />
         <link
           rel="preload"
-          href="/media/VELISTA.ttf"
+          href="/media/VELISTA.otf"
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
