@@ -1,30 +1,53 @@
+// src/components/HeroSection.js
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import heroDesktop from "../assets/images/hero.webp";
+import heroMobile from "../assets/images/hero-mobile.webp";
 
 const HeroSection = () => {
   return (
     <>
       <Helmet>
-        <link rel="preload" as="image" href={heroDesktop} fetchpriority="high" />
+        {/* Preload both versions based on screen size */}
+        <link
+          rel="preload"
+          as="image"
+          href={heroDesktop}
+          media="(min-width: 768px)"
+          fetchpriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href={heroMobile}
+          media="(max-width: 767px)"
+          fetchpriority="high"
+        />
       </Helmet>
 
-      <section className="relative text-white text-center py-32 px-4">
-        {/* ✅ Use an <img> instead of background-image */}
-        <img
-          src={heroDesktop}
-          fetchpriority="high"
-          alt="Elevate your experience - Clinking Bubbles NJ"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          width="1920"
-          height="1080"
-        />
+      <section className="relative text-white text-center py-32 px-4 overflow-hidden">
+        {/* Responsive hero image with fetchpriority */}
+        <picture>
+          <source
+            srcSet={heroMobile}
+            media="(max-width: 767px)"
+            fetchpriority="high"
+          />
+          <img
+            src={heroDesktop}
+            fetchpriority="high"
+            alt="Elevate your experience - Clinking Bubbles NJ"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+            width="1920"
+            height="1080"
+          />
+        </picture>
 
-        {/* Dark overlay */}
+        {/* Overlay for contrast */}
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
 
-        {/* Text content */}
+        {/* Hero content */}
         <div className="relative z-20 max-w-3xl mx-auto">
           <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl md:text-6xl font-bold mb-4">
             Elevate Your Experience
