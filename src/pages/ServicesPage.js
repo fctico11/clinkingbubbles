@@ -35,18 +35,44 @@ const ServicesPage = () => {
     <>
       <Helmet>
         <title>Private Bartending Services: NJ Weddings, Parties & More</title>
-        <meta name="description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
-        <meta name="keywords" content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services" />
+        <meta
+          name="description"
+          content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails."
+        />
+        <meta
+          name="keywords"
+          content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services"
+        />
         <link rel="canonical" href="https://www.clinkingbubbles.com/services" />
-        <meta property="og:title" content="Private Bartending Services: NJ Weddings, Parties & More" />
-        <meta property="og:description" content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails." />
-        <meta property="og:url" content="https://www.clinkingbubbles.com/services" />
+        <meta
+          property="og:title"
+          content="Private Bartending Services: NJ Weddings, Parties & More"
+        />
+        <meta
+          property="og:description"
+          content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails."
+        />
+        <meta
+          property="og:url"
+          content="https://www.clinkingbubbles.com/services"
+        />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta
+          property="og:image"
+          content="https://www.clinkingbubbles.com/assets/mainlogo.png"
+        />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image:alt" content="Explore premium bartending services for NJ & NY." />
-        <link rel="preload" as="image" href="/images/servicespic.webp" type="image/webp" />
+        <meta
+          name="twitter:image:alt"
+          content="Explore premium bartending services for NJ & NY."
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/servicespic.webp"
+          type="image/webp"
+        />
       </Helmet>
 
       <Navbar />
@@ -73,9 +99,17 @@ const ServicesPage = () => {
 
           <div className="mt-6 sm:mt-10"></div>
 
-          <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+          <div
+            className="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 max-w-3xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <p className="bubbles-font drop-shadow-[0_0_2px_black] text-md sm:text-2xl text-white drop-shadow-sm">
-              We believe every celebration should be a work of art. From chic gatherings to all-out bashes, our packages are designed to pamper your guests and let you sip, smile, and truly relax. Below, you’ll find our essential inclusions and an array of stylish add-ons to add a layer of pure luxury to your event.
+              We believe every celebration should be a work of art. From chic
+              gatherings to all-out bashes, our packages are designed to pamper
+              your guests and let you sip, smile, and truly relax. Below,
+              you’ll find our essential inclusions and an array of stylish
+              add-ons to add a layer of pure luxury to your event.
             </p>
           </div>
         </div>
@@ -83,59 +117,112 @@ const ServicesPage = () => {
 
       <div className="bg-white text-black px-4 py-10">
         <div className="max-w-6xl mx-auto">
-          {/* BASIC PACKAGE bg-#f5f0e6 lighter beige*/}
-          <div className="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
-            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">OUR SIGNATURE SERVICE</h2>
+          {/* SIGNATURE SERVICE TIERS */}
+          <div
+            className="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6"
+            data-aos="fade-up"
+          >
+            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">
+              OUR SIGNATURE SERVICE
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            <div className="space-y-6">
-              {[
-                ["Full Consultation", "We’ll collaborate closely with you to design the perfect bar experience, from specialty cocktails to bar styling details—making sure everything feels distinctly “you.”"],
-                ["Bartenders Kit", "Shakers, stirrers, jiggers, muddlers, and more. Our expert bartenders come fully equipped so that every pour is as precise as it is delightful."],
-                ["Ice Tubs & Coolers", "Keep beverages frosty and fresh all event long. We’ll supply enough ice tubs and coolers to handle your thirstiest crowd."],
-                ["Bar Goods", "Napkins, straws, cups, and those little finishing touches that make each sip feel extra special—yes, we’ve got it all."],
-                ["Insurance", "We carry comprehensive general liability and liquor liability insurance, giving you total peace of mind. COIs are available upon request."]
-              ].map(([title, desc], i) => (
-                <div data-aos="fade-up" data-aos-delay={i * 100} key={title}>
-                  <h3 className="bubbles-font text-lg font-semibold">
-                    {title} <span className="text-gray-500">...Included</span>
-                  </h3>
-                  <p className="bubbles-font text-lg">{desc}</p>
-                </div>
-              ))}
+          <div
+  className="bubbles-font text-lg sm:text-xl mb-10 text-left max-w-4xl"
+  data-aos="fade-up"
+  data-aos-delay="100"
+>
+  <p className="ml-1 sm:ml-[0.3rem]">*Please keep in mind Clinking Bubbles operates as a dry-hire service. None of these packages include alcohol.*</p>
+  <p className="mt-2 ml-1 sm:ml-[0.3rem]">*4 hour service minimum. Bartenders and bar rentals priced separately.*</p>
+</div>
+
+          {[
+            {
+              title: "THE FULL EXPERIENCE",
+              price: "$$$",
+              items: [
+                "Disposable cups, lightly personalized agave straws, beverage napkins",
+                "Three signature cocktails or mocktail of your choice",
+                "Fresh mixers and garnishes for specialty cocktails",
+                "Bar supplies",
+                "Basic mixers: Coca-cola, Club soda, Tonic water, Cranberry juice, etc.",
+                "Custom framed bar menu display",
+                "Ice for serving and chilling beverages",
+                "Consultation on alcohol purchase/shopping list",
+                "Beer, wine & champagne service",
+              ],
+            },
+            {
+              title: "THE CUSTOM BLEND",
+              price: "$$",
+              items: [
+                "Disposable cups, lightly personalized agave straws & beverage napkins",
+                "Two signature cocktails or mocktail of your choice",
+                "Fresh mixers and garnishes for specialty cocktails",
+                "Bar supplies",
+                "Basic mixers: Coca-cola, Club soda, Tonic water, Cranberry juice, etc.",
+                "Custom framed bar menu display",
+                "Ice for serving and chilling beverages",
+                "Consultation on alcohol purchase/shopping list",
+                "Beer, wine & champagne service",
+              ],
+            },
+            {
+              title: "THE ESSENTIALS",
+              price: "$",
+              items: [
+                "Disposable cups, agave straws, beverage napkins",
+                "Basic mixers: Coca-cola, Club soda, Tonic water, Cranberry juice, etc.",
+                "Basic garnishes: lime & lemon wedges",
+                "Bar supplies",
+                "Mixers provided allow for popular classics such as: Jack & Coke, Tequila Soda, Vodka Cranberry, and more",
+                "Custom framed bar menu display",
+                "Ice for serving and chilling beverages",
+                "Consultation on alcohol purchase/shopping list",
+                "Beer, wine & champagne service",
+              ],
+            },
+          ].map((pkg, i) => (
+            <div
+              key={pkg.title}
+              className="bg-[rgba(250,248,243,0.6)] border border-[#d9c7b2] p-6 sm:p-10 rounded-lg shadow-sm max-w-5xl mx-auto mb-10 backdrop-blur-sm"
+              data-aos="fade-up"
+              data-aos-delay={i * 150}
+            >
+              <h3 className="clinking-font text-2xl sm:text-3xl font-bold mb-4 text-center">
+                {pkg.title}{" "}
+                <span className="text-[#493423] font-normal">{pkg.price}</span>
+              </h3>
+              <ul className="list-disc pl-5 bubbles-font text-base sm:text-lg space-y-2 text-gray-800">
+                {pkg.items.map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
             </div>
+          ))}
 
-            <div className="space-y-6">
-              {[
-                ["Menu Design", "From elegant signage to custom cocktail menus, we’ll handle the design details so you can show off your curated beverage lineup in style."],
-                ["Garnishes", "From classic citrus twists to artisanal floral elements, we ensure each cocktail looks as impressive as it tastes."],
-                ["Mixers", "House-made simple syrups, premium juices, and an array of specialty mixers—consider your bar menu upgraded."],
-                ["Drinkware", "Disposable cups come standard; however, if you’d like to level up to real glassware or a unique theme, we can arrange an upgrade."],
-                ["Ice Delivery", "No need to run last-minute ice errands! We’ll ensure you’re fully stocked for the duration of your event."]
-              ].map(([title, desc], i) => (
-                <div data-aos="fade-up" data-aos-delay={i * 100} key={title}>
-                  <h3 className="bubbles-font text-lg font-semibold">
-                    {title} <span className="text-gray-500">...Included</span>
-                  </h3>
-                  <p className="bubbles-font text-lg">{desc}</p>
-                </div>
-              ))}
-            </div>
+          {/* ACCESSORIES (unchanged) */}
+          <div
+            className="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6"
+            data-aos="fade-up"
+          >
+            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">
+              ACCESSORIES
+            </h2>
           </div>
 
-          {/* ACCESSORIES */}
-          <div className="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
-            <h2 className="clinking-font text-2xl sm:text-3xl font-bold">ACCESSORIES</h2>
-          </div>
-
-          <p className="bubbles-font text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
+          <p
+            className="bubbles-font text-lg sm:text-xl mb-8 text-left max-w-4xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Perfect your bar setup with these additional items. Ideal for those who crave a more immersive, high-end experience.
           </p>
 
           <div data-aos="fade-up" className="border-b pb-6">
             <h3 className="bubbles-font text-lg font-semibold mb-2">
-              6 ft. Solid Wooden Bar <span className="text-gray-500">...Inquire</span>
+              6 ft. Solid Wooden Bar{" "}
+              <span className="text-gray-500">...Inquire</span>
             </h3>
             <div className="mb-4">
               <Swiper
@@ -153,26 +240,26 @@ const ServicesPage = () => {
                     src: "/images/bar1.webp",
                     alt: "Wooden Bar 1",
                     className: "object-[center_90%] sm:object-[center_65%]",
-                    text: "Our signature solid wood bar with sleek finishes and customizable decor, captured in its full charm at night."
+                    text: "Our signature solid wood bar with sleek finishes and customizable decor, captured in its full charm at night.",
                   },
                   {
                     src: "/images/bar2.webp",
                     alt: "Wooden Bar 2",
                     className: "object-center sm:object-[center_30%]",
-                    text: "Seen here during the day, a closer look at the premium craftsmanship and attention to detail that sets our bar apart."
+                    text: "Seen here during the day, a closer look at the premium craftsmanship and attention to detail that sets our bar apart.",
                   },
                   {
                     src: "/images/ariparty.webp",
                     alt: "Wooden Bar Decorated",
                     className: "object-center sm:object-[center_30%]",
-                    text: "An example of how we tailor every detail ~ from florals to flair ~ to match your party’s personality and vibe."
+                    text: "An example of how we tailor every detail ~ from florals to flair ~ to match your party’s personality and vibe.",
                   },
                   {
                     src: "/images/bar3.webp",
                     alt: "Wooden Bar 3",
                     className: "object-center",
-                    text: "Stylish from every angle and an elegant look for any event."
-                  }
+                    text: "Stylish from every angle and an elegant look for any event.",
+                  },
                 ].map(({ src, alt, text, className }, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative">
@@ -182,22 +269,39 @@ const ServicesPage = () => {
                         className={`w-full h-[350px] sm:h-[500px] object-cover ${className} rounded-md`}
                       />
                       <div className="absolute bottom-0 left-0 right-0 px-4 py-2 backdrop-blur-sm bg-white/10 text-white rounded-b-md text-center">
-                        <p className="bubbles-font drop-shadow-[0_0_2px_black] text-sm sm:text-base">{text}</p>
+                        <p className="bubbles-font drop-shadow-[0_0_2px_black] text-sm sm:text-base">
+                          {text}
+                        </p>
                       </div>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
               <div className="flex items-center justify-center gap-4 mt-3">
-                <button onClick={handlePrev} aria-label="Previous" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#f5f0e6] text-orange-400 text-xl sm:text-2xl">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous"
+                  className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#f5f0e6] text-orange-400 text-xl sm:text-2xl"
+                >
                   <TiChevronLeftOutline />
                 </button>
                 <div className="flex gap-2">
                   {[0, 1, 2, 3].map((i) => (
-                    <span key={i} className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${activeIndex === i ? "bg-orange-400" : "bg-gray-400"}`}></span>
+                    <span
+                      key={i}
+                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${
+                        activeIndex === i
+                          ? "bg-orange-400"
+                          : "bg-gray-400"
+                      }`}
+                    ></span>
                   ))}
                 </div>
-                <button onClick={handleNext} aria-label="Next" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#f5f0e6] text-orange-500 text-xl sm:text-2xl">
+                <button
+                  onClick={handleNext}
+                  aria-label="Next"
+                  className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#f5f0e6] text-orange-500 text-xl sm:text-2xl"
+                >
                   <TiChevronRightOutline />
                 </button>
               </div>
@@ -206,16 +310,35 @@ const ServicesPage = () => {
 
           {/* Additional Accessories */}
           {[
-            ["Hydration Package", "Stay refreshed with infused water dispensers, iced teas, or lemonade—perfect for hot days or all-ages events."],
-            ["6 ft. Folding Tables", "Whether you need extra space for drinks, food, decor, or gifts, these sturdy and sleek tables offer both functionality and convenience."],
-            ["Popcorn Machine", "Freshly popped, buttery popcorn is the perfect snack to complement your drinks and raise the party vibe."],
-            ["Sony GTK-XB60 Speakers", "Turn up the energy with our Sony GTK-XB60 speakers! These powerful, portable speakers deliver deep bass and vibrant sound."]
+            [
+              "Hydration Package",
+              "Stay refreshed with infused water dispensers, iced teas, or lemonade—perfect for hot days or all-ages events.",
+            ],
+            [
+              "6 ft. Folding Tables",
+              "Whether you need extra space for drinks, food, decor, or gifts, these sturdy and sleek tables offer both functionality and convenience.",
+            ],
+            [
+              "Popcorn Machine",
+              "Freshly popped, buttery popcorn is the perfect snack to complement your drinks and raise the party vibe.",
+            ],
+            [
+              "Sony GTK-XB60 Speakers",
+              "Turn up the energy with our Sony GTK-XB60 speakers! These powerful, portable speakers deliver deep bass and vibrant sound.",
+            ],
           ].map(([title, desc], i) => (
-            <div key={title} data-aos="fade-up" data-aos-delay={i * 100} className="border-b pb-3">
+            <div
+              key={title}
+              data-aos="fade-up"
+              data-aos-delay={i * 100}
+              className="border-b pb-3"
+            >
               <h3 className="bubbles-font text-lg font-semibold">
                 {title} <span className="text-gray-500">...Inquire</span>
               </h3>
-              <p className="bubbles-font text-lg text-gray-600 mt-2">{desc}</p>
+              <p className="bubbles-font text-lg text-gray-600 mt-2">
+                {desc}
+              </p>
             </div>
           ))}
 
