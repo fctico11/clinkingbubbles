@@ -340,7 +340,11 @@ useEffect(() => {
               readOnly // prevent keyboard
               excludeDates={[ 
                 new Date(Date.UTC(2025, 7, 23)), // August 22, 2025
+                new Date(Date.UTC(2026, 0, 3)), // January 2, 2026
                 new Date(Date.UTC(2026, 0, 4)), // January 3, 2026
+                new Date(Date.UTC(2026, 0, 10)), // January 9, 2026
+                new Date(Date.UTC(2026, 0, 11)), // January 10, 2026
+                new Date(Date.UTC(2026, 0, 12)), // January 11, 2026
                 new Date(Date.UTC(2026, 4, 10)), // May. 9. 2026
               ]}
               placeholderText="Select a date"
