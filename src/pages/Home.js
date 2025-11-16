@@ -40,20 +40,6 @@ const Home = () => {
         <meta name="twitter:image:alt" content="Private event bartending for weddings and parties in NJ & NY." />
      
         <link rel="preload" href="/assets/champagne.json" as="fetch" type="application/json" crossorigin="anonymous" />
-        <link
-          rel="preload"
-          href="/media/VELISTA.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/media/AppleGaramond.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
       </Helmet>
 
       <Navbar />
