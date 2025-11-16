@@ -26,6 +26,22 @@
       }
     </script>
 
+      <!-- Preload hero images so LCP is discoverable in initial HTML -->
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero.webp"
+        media="(min-width: 768px)"
+        fetchpriority="high"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-mobile.webp"
+        media="(max-width: 767px)"
+        fetchpriority="high"
+      />
+
     <!--Icons -->
     <link rel="apple-touch-icon" href="/assets/mainlogo-v1-180.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/mainlogo-v1.png" />
