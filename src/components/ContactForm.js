@@ -74,18 +74,9 @@ const AddressAutocomplete = ({ onSelect, initialValue }) => {
 const ContactForm = () => {
   const navigate = useNavigate();
 
-  // Track if the Google Maps Places API script has loaded.
-  const [mapsScriptLoaded, setMapsScriptLoaded] = useState(false);
-
-  // Track if the animation has finished playing (check session storage)
-  const [isAnimationComplete, setIsAnimationComplete] = useState(() => {
-    return sessionStorage.getItem("hasViewedContactAnimation") === "true";
-  });
-
   // Dynamically load the Google Maps API script on mount.
   useEffect(() => {
     if (window.google && window.google.maps) {
-      setMapsScriptLoaded(true);
       return;
     }
     const script = document.createElement("script");
@@ -93,7 +84,6 @@ const ContactForm = () => {
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyBQgCzOmUK7dZ06L22eHjYWC1rMIjCJU5Y&libraries=places";
     script.async = true;
     script.defer = true;
-    script.onload = () => setMapsScriptLoaded(true);
     document.body.appendChild(script);
   }, []);
 
