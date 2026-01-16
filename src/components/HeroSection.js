@@ -1,36 +1,58 @@
 // src/components/HeroSection.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logos/whiteTransparentLogo1123.png";
 
-// Public URLs (files live in public/images)
-const heroDesktop = "/images/hero.webp";
-const heroMobile = "/images/hero-mobile.webp";
+// Carousel images
+const images = [
+  "/images/herocar1.webp",
+  "/images/herocar2.webp",
+  "/images/herocar3.webp",
+  "/images/herocar4.webp",
+  "/images/herocar5.webp",
+  "/images/herocar6.webp",
+];
 
 const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(3);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative text-white text-center py-32 px-4 overflow-hidden">
-      {/* Responsive hero image */}
-      <picture>
-        {/* Desktop */}
-        <source srcSet={heroDesktop} media="(min-width: 768px)" />
-        {/* Mobile */}
-        <source srcSet={heroMobile} media="(max-width: 767px)" />
-        <img
-          src={heroDesktop}
-          fetchPriority="high"
-          alt="Elevate your experience - Clinking Bubbles NJ"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          width="1920"
-          height="1080"
-        />
-      </picture>
+    <section className="relative text-white text-center h-screen flex items-center justify-center overflow-hidden pb-24">
+      {/* Background Carousel */}
+      <div className="absolute inset-0 z-0">
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Hero Slide ${index + 1}`}
+            fetchPriority={index === 0 ? "high" : "auto"}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ${index === currentImageIndex ? "opacity-100" : "opacity-0"
+              }`}
+          />
+        ))}
+      </div>
 
       {/* Overlay for contrast */}
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
 
       {/* Hero content */}
-      <div className="relative z-20 max-w-3xl mx-auto">
-        <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl md:text-6xl font-bold mb-4">
+      <div className="relative z-20 max-w-3xl mx-auto px-4 flex flex-col items-center">
+        {/* Logo */}
+        <img
+          src={logo}
+          alt="Clinking Bubbles Logo"
+          className="w-64 md:w-96 mb-12 md:mb-6 drop-shadow-[0_0_2px_black]"
+        />
+
+        <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl md:text-6xl font-bold mb-4 md:whitespace-nowrap">
           Elevate Your Experience
         </h1>
         <div className="flex flex-col items-center text-center">
