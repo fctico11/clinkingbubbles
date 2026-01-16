@@ -73,13 +73,12 @@ const Navbar = () => {
     <>
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-all duration-300 z-[999] ${
-          forceBrown
+        className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 transition-colors duration-300 z-[999] ${forceBrown
             ? "bg-[#493423]"
             : isScrolled
-            ? "bg-[#493423] shadow-lg"
-            : "bg-transparent"
-        }`}
+              ? "bg-[#493423] shadow-lg"
+              : "bg-transparent"
+          }`}
         style={{ minHeight: "64px" }}
       >
         {/* Hide Logo if the menu is open */}
