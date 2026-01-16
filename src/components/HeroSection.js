@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative text-white text-center h-screen flex items-center justify-center overflow-hidden pb-24">
+    <section className="relative text-white text-center h-screen flex items-center justify-center overflow-hidden">
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
         {images.map((img, index) => (
@@ -33,7 +33,7 @@ const HeroSection = () => {
             key={index}
             src={img}
             alt={`Hero Slide ${index + 1}`}
-            fetchPriority={index === 0 ? "high" : "auto"}
+            fetchPriority={index === 3 ? "high" : "auto"}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ${index === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
           />
