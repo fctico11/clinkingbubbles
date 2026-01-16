@@ -49,7 +49,7 @@ const HeroSection = () => {
         <img
           src={logo}
           alt="Clinking Bubbles Logo"
-          className="w-64 md:w-96 mb-12 md:mb-6 drop-shadow-[0_0_2px_black]"
+          className="w-52 md:w-96 mb-4 md:mb-6 drop-shadow-[0_0_2px_black]"
         />
 
         <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl md:text-6xl font-bold mb-4 md:whitespace-nowrap">
