@@ -79,9 +79,13 @@ const ContactForm = () => {
     return sessionStorage.getItem("hasViewedContactAnimation") === "true";
   });
 
+  // Track if the Google Maps Places API script has loaded.
+  const [mapsScriptLoaded, setMapsScriptLoaded] = useState(false);
+
   // Dynamically load the Google Maps API script on mount.
   useEffect(() => {
     if (window.google && window.google.maps) {
+      setMapsScriptLoaded(true);
       return;
     }
     const script = document.createElement("script");
@@ -89,6 +93,7 @@ const ContactForm = () => {
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyBQgCzOmUK7dZ06L22eHjYWC1rMIjCJU5Y&libraries=places";
     script.async = true;
     script.defer = true;
+    script.onload = () => setMapsScriptLoaded(true);
     document.body.appendChild(script);
   }, []);
 
@@ -295,10 +300,19 @@ const ContactForm = () => {
           {/* Event Address with Autocomplete */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Event Address *</label>
-            <AddressAutocomplete
-              onSelect={handleAddressSelect}
-              initialValue={formData.eventAddress}
-            />
+            {mapsScriptLoaded ? (
+              <AddressAutocomplete
+                onSelect={handleAddressSelect}
+                initialValue={formData.eventAddress}
+              />
+            ) : (
+              <input
+                type="text"
+                className="bubbles-font text-lg w-full p-3 rounded border border-gray-400 bg-gray-100"
+                placeholder="Loading address search..."
+                disabled
+              />
+            )}
           </div>
 
           {/* Event Location */}
