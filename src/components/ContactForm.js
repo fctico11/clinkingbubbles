@@ -77,6 +77,11 @@ const ContactForm = () => {
   // Track if the Google Maps Places API script has loaded.
   const [mapsScriptLoaded, setMapsScriptLoaded] = useState(false);
 
+  // Track if the animation has finished playing (check session storage)
+  const [isAnimationComplete, setIsAnimationComplete] = useState(() => {
+    return sessionStorage.getItem("hasViewedContactAnimation") === "true";
+  });
+
   // Dynamically load the Google Maps API script on mount.
   useEffect(() => {
     if (window.google && window.google.maps) {
@@ -211,14 +216,10 @@ const ContactForm = () => {
     setLoading(false);
   };
 
-  // Optional: If the Google Maps script isn't loaded yet, display a simple loading message.
-  if (!mapsScriptLoaded) {
-    return (
-      <div className="bg-white min-h-screen flex flex-col justify-center">
-        <ChampagneClink onAnimationEnd={() => { }} />
-      </div>
-    );
-  }
+  // ⚠️ Show ChampagneClink only if animation is not done
+  // logic moved to JSX to allow overlay behavior
+
+  /* Early return removed to allow concurrent rendering */
 
   return (
     <div className="bg-white min-h-screen flex flex-col justify-between relative">
@@ -736,6 +737,16 @@ const ContactForm = () => {
       )}
 
       <Footer />
+
+      {/* Loading Overlay - Renders on top until animation & scripts are done */}
+      {(!isAnimationComplete) && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 9999 }}>
+          <ChampagneClink onAnimationEnd={() => {
+            setIsAnimationComplete(true);
+            sessionStorage.setItem("hasViewedContactAnimation", "true");
+          }} />
+        </div>
+      )}
     </div>
   );
 };
