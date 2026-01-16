@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative text-white text-center h-[100svh] flex items-center justify-center overflow-hidden">
+    <section className="relative text-white text-center h-screen flex items-center justify-center overflow-hidden">
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
         {images.map((img, index) => (
@@ -49,8 +49,6 @@ const HeroSection = () => {
         <img
           src={logo}
           alt="Clinking Bubbles Logo"
-          fetchPriority="high"
-          loading="eager"
           className="w-52 md:w-96 mb-4 md:mb-6 drop-shadow-[0_0_2px_black]"
         />
 
