@@ -34,6 +34,7 @@ const HeroSection = () => {
             src={img}
             alt={`Hero Slide ${index + 1}`}
             fetchPriority={index === 3 ? "high" : "auto"}
+            loading={index === 3 ? "eager" : "lazy"}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ${index === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
           />
