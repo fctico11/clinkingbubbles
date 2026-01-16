@@ -62,7 +62,7 @@ html, body {
   /* Original larger transforms for desktop */
   transform:
     rotateY(calc(var(--offset) * 50deg))
-    scaleY(calc(1 + var(--abs-offset) * -0.4))
+    scale(calc(1 + var(--abs-offset) * -0.4))
     translateZ(calc(var(--abs-offset) * -30rem))
     translateX(calc(var(--direction) * -5rem));
   filter: blur(0);
