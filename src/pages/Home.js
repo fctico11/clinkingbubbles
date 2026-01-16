@@ -5,11 +5,12 @@ import HeroSection from "../components/HeroSection";
 import Footer from "../components/Footer";
 import { Helmet } from 'react-helmet-async';
 
-// Lazy load components
-const AboutSection = React.lazy(() => import("../components/AboutSection"));
-const Services = React.lazy(() => import("../components/Services"));
-const WhatWeBring = React.lazy(() => import("../components/WhatWeBring"));
-const CredentialSection = React.lazy(() => import("../components/CredentialSection"));
+import AboutSection from "../components/AboutSection";
+import Services from "../components/Services";
+import CredentialSection from "../components/CredentialSection";
+import WhatWeBring from "../components/WhatWeBring";
+
+// Lazy load the FillingCupAnimation so it's not in the initial bundle
 const FillingCupAnimation = React.lazy(() => import("../components/FillingCupAnimation"));
 
 const Home = () => {
@@ -42,13 +43,13 @@ const Home = () => {
 
       <Navbar />
       <HeroSection />
-      <Suspense fallback={<div></div>}>
-        <AboutSection />
+      <AboutSection />
+      <Suspense fallback={<div style={{ textAlign: "center", marginTop: "2rem" }}>Loading animation...</div>}>
         <FillingCupAnimation />
-        <Services />
-        <WhatWeBring />
-        <CredentialSection />
       </Suspense>
+      <Services />
+      <WhatWeBring />
+      <CredentialSection />
       <section className="py-12 text-center">
         <div className="flex flex-col items-center space-y-4">
           <Link to="/booking-process">
