@@ -50,6 +50,8 @@ const HeroSection = () => {
         <img
           src={logo}
           alt="Clinking Bubbles Logo"
+          fetchPriority="high"
+          loading="eager"
           className="w-52 md:w-96 mb-4 md:mb-6 drop-shadow-[0_0_2px_black]"
         />
 
