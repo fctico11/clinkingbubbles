@@ -8,16 +8,8 @@ const ChampagneClink = ({ onAnimationEnd }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const hasPlayed = localStorage.getItem("champagneClinkPlayed");
-
-    if (!hasPlayed) {
-      localStorage.setItem("champagneClinkPlayed", "true");
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-      onAnimationEnd(); // Immediately show homepage
-    }
-  }, [onAnimationEnd]);
+    setIsVisible(true);
+  }, []);
 
   const handleAnimationComplete = () => {
     setTimeout(() => {

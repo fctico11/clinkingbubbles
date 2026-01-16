@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import usePlacesAutocomplete from "use-places-autocomplete";
+import ChampagneClink from "./ChampagneClink";
 //import Lottie from "lottie-react";
 //import successAnimation from "../assets/success.json";
 import "../components/ContactForm.css";
@@ -123,17 +124,17 @@ const ContactForm = () => {
   const dateInputRef = useRef();
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-// Inside useEffect when the success overlay is triggered:
-useEffect(() => {
-  if (showSuccessOverlay) {
-    import("lottie-react").then((mod) => {
-      setLottieComponent(() => mod.default);
-    });
-    import("../assets/success.json").then((data) => {
-      setAnimationData(data.default || data);
-    });
-  }
-}, [showSuccessOverlay]);
+  // Inside useEffect when the success overlay is triggered:
+  useEffect(() => {
+    if (showSuccessOverlay) {
+      import("lottie-react").then((mod) => {
+        setLottieComponent(() => mod.default);
+      });
+      import("../assets/success.json").then((data) => {
+        setAnimationData(data.default || data);
+      });
+    }
+  }, [showSuccessOverlay]);
 
   // Handler to update eventAddress when an address is selected.
   const handleAddressSelect = (address) => {
@@ -214,10 +215,7 @@ useEffect(() => {
   if (!mapsScriptLoaded) {
     return (
       <div className="bg-white min-h-screen flex flex-col justify-center">
-        <div className="mt-20 mb-20 text-center">
-          <h2 className="text-xl">Loading Contact Form... Please Hang Tight</h2>
-        </div>
-        <Footer />
+        <ChampagneClink onAnimationEnd={() => { }} />
       </div>
     );
   }
@@ -320,7 +318,7 @@ useEffect(() => {
           </div>
 
           {/* Date of Event */}
-          <div style={{position: 'relative'}}>
+          <div style={{ position: 'relative' }}>
             <label className="bubbles-font text-lg block font-semibold mb-1">Date of Event *</label>
             <DatePicker
               popperClassName="custom-calendar-scale"
@@ -333,12 +331,12 @@ useEffect(() => {
                 setIsCalendarOpen(false); //close after selecting
               }}
               onFocus={() => setIsCalendarOpen(true)} // manually open
-              onInputClick={()=> setIsCalendarOpen(true)}
+              onInputClick={() => setIsCalendarOpen(true)}
               onClickOutside={() => setIsCalendarOpen(false)} // close on outside click
               open={isCalendarOpen}
               ref={dateInputRef}
               readOnly // prevent keyboard
-              excludeDates={[ 
+              excludeDates={[
                 new Date(Date.UTC(2025, 7, 23)), // August 22, 2025
                 new Date(Date.UTC(2026, 0, 3)), // January 2, 2026
                 new Date(Date.UTC(2026, 0, 4)), // January 3, 2026
@@ -368,7 +366,7 @@ useEffect(() => {
                   }}
                 >
                   <button
-                  type="button"
+                    type="button"
                     onClick={decreaseMonth}
                     disabled={prevMonthButtonDisabled}
                     className="text-black text-3xl px-2"
@@ -406,7 +404,7 @@ useEffect(() => {
                   </div>
 
                   <button
-                  type="button"
+                    type="button"
                     onClick={increaseMonth}
                     disabled={nextMonthButtonDisabled}
                     className="text-black text-3xl px-2"
@@ -426,7 +424,7 @@ useEffect(() => {
             <input
               type="text"
               value={formData.eventDate}
-              onChange={() => {}}
+              onChange={() => { }}
               required
               className="sr-only"
             />
@@ -447,8 +445,8 @@ useEffect(() => {
                   return isStandard
                     ? formData.eventType
                     : formData.eventType === "Other"
-                    ? "Other"
-                    : formData.eventType;
+                      ? "Other"
+                      : formData.eventType;
                 })()
               }
             >
@@ -469,7 +467,7 @@ useEffect(() => {
           {/* Hours of Event */}
           <div>
             <label className="bubbles-font text-lg block font-semibold mb-1">Hours of Event * {" "}
-  <span className="text-gray-500 text-sm">(4-hour minimum)</span> </label>
+              <span className="text-gray-500 text-sm">(4-hour minimum)</span> </label>
             <div className="flex space-x-4">
               <div className="w-1/2">
                 <label className="bubbles-font text-lg block text-sm font-medium mb-1">Start Time</label>
@@ -709,9 +707,9 @@ useEffect(() => {
             }}
           >
             <div className="w-40 h-40 mx-auto mb-4">
-            {LottieComponent && animationData && (
-              <LottieComponent loop autoplay animationData={animationData} />
-            )}
+              {LottieComponent && animationData && (
+                <LottieComponent loop autoplay animationData={animationData} />
+              )}
             </div>
             <h3 className="bubbles-font text-lg text-2xl font-extrabold mb-4">
               Thank you for submitting the contact form, we're almost ready to get this party started!

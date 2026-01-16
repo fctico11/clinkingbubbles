@@ -5,7 +5,6 @@ import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import Services from "../components/Services";
 import Footer from "../components/Footer";
-import ChampagneClink from "../components/ChampagneClink";
 import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
 import { Helmet } from 'react-helmet-async';
@@ -14,7 +13,6 @@ import { Helmet } from 'react-helmet-async';
 const FillingCupAnimation = React.lazy(() => import("../components/FillingCupAnimation"));
 
 const Home = () => {
-  const [showAnimation, setShowAnimation] = useState(true);
 
   return (
     <div className="relative">
@@ -25,20 +23,20 @@ const Home = () => {
         <meta name="keywords" content="private bartending, wedding bartenders NJ, party bartenders NY, mobile bar, cocktail catering, bartending services" />
         <link rel="canonical" href="https://www.clinkingbubbles.com/" />
 
-  
+
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
         <meta property="og:description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/" />
         <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
-        
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
         <meta name="twitter:description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
         <meta name="twitter:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta name="twitter:image:alt" content="Private event bartending for weddings and parties in NJ & NY." />
-     
+
         <link rel="preload" href="/assets/champagne.json" as="fetch" type="application/json" crossorigin="anonymous" />
       </Helmet>
 
@@ -66,7 +64,6 @@ const Home = () => {
         </div>
       </section>
       <Footer />
-      {showAnimation && <ChampagneClink onAnimationEnd={() => setShowAnimation(false)} />}
     </div>
   );
 };
