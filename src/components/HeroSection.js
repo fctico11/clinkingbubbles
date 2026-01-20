@@ -1,8 +1,9 @@
 // src/components/HeroSection.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logoLarge from "../assets/logos/whiteTransparentLogo-large.webp";
-import logoSmall from "../assets/logos/whiteTransparentLogo-small.webp";
+// Logo paths from public folder (for stable preloading)
+const logoLarge = "/images/logos/whiteTransparentLogo-large.webp";
+const logoSmall = "/images/logos/whiteTransparentLogo-small.webp";
 
 // Carousel images
 const images = [

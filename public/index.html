@@ -38,6 +38,12 @@
   <link rel="preload" as="image" href="/images/herocar4.webp" media="(min-width: 769px)" type="image/webp"
     fetchpriority="high" />
 
+  <!-- Preload logo (LCP element) for early discovery -->
+  <link rel="preload" as="image" href="/images/logos/whiteTransparentLogo-small.webp" media="(max-width: 768px)"
+    type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/logos/whiteTransparentLogo-large.webp" media="(min-width: 769px)"
+    type="image/webp" fetchpriority="high" />
+
   <!-- Critical CSS for immediate render -->
   <style>
     /* Minimal critical CSS - hero section only (~1.5KB) */
