@@ -41,6 +41,8 @@ const HeroSection = () => {
               <img
                 src={img}
                 alt={`Hero Slide ${index + 1}`}
+                width="1920"
+                height="2880"
                 fetchPriority={index === 3 ? "high" : "low"}
                 loading={index === 3 ? "eager" : "lazy"}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ${index === currentImageIndex ? "opacity-100" : "opacity-0"
@@ -60,6 +62,8 @@ const HeroSection = () => {
         <img
           srcSet={`${logoSmall} 400w, ${logoLarge} 1024w`}
           sizes="(max-width: 768px) 208px, 384px"
+          width="1024"
+          height="882"
           src={logoLarge}
           alt="Clinking Bubbles Logo"
           fetchPriority="high"
