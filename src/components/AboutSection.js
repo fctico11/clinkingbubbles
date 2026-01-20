@@ -48,7 +48,7 @@ const AboutSection = () => {
         </p>
 
         {/* Bullets & Animation Row */}
-        <div className="grid grid-cols-2 gap-4 md:gap-6 items-center mb-8">
+        <div className="grid grid-cols-[3fr_2fr] gap-2 md:grid-cols-2 md:gap-6 items-center mb-8">
 
           {/* Left Column: Bullet Points */}
           <ul className="space-y-3 w-fit mx-auto md:ml-auto md:mr-0">
@@ -57,7 +57,7 @@ const AboutSection = () => {
               "Professional Bartenders",
               "Elegant Bar Setups"
             ].map((item, index) => (
-              <li key={index} className="flex items-center space-x-3 text-base md:text-2xl bubbles-font font-bold">
+              <li key={index} className="flex items-center space-x-2 text-base md:text-2xl bubbles-font font-bold">
                 {/* Gold Checkmark SVG */}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M20 6L9 17L4 12" stroke="#E3A008" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -70,7 +70,7 @@ const AboutSection = () => {
           {/* Right Column: Lottie Animation - Sized Down & Next to Bullets */}
           <div className="flex justify-center md:justify-start" ref={ref}>
             {animationData && (
-              <div className="w-32 h-32 md:w-56 md:h-56">
+              <div className="w-24 h-24 md:w-56 md:h-56">
                 <Lottie
                   lottieRef={lottieRef}
                   animationData={animationData}
