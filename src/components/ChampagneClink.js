@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Lottie from "lottie-react";
 import champagneAnimation from "../assets/champagne.json"; // Ensure correct file format
 import "./ChampagneClink.css";
 
 const ChampagneClink = ({ onAnimationEnd }) => {
   const [isFading, setIsFading] = useState(false); // Controls fade effect
   const [isVisible, setIsVisible] = useState(true);
+  const [LottieComponent, setLottieComponent] = useState(null);
+
+  // Lazy load Lottie library
+  useEffect(() => {
+    import("lottie-react").then((module) => {
+      setLottieComponent(() => module.default);
+    });
+  }, []);
 
   useEffect(() => {
     setIsVisible(true);
@@ -25,14 +32,16 @@ const ChampagneClink = ({ onAnimationEnd }) => {
 
   return (
     <div className={`champagne-overlay ${isFading ? "fade-out" : ""}`}>
-      <Lottie
-        animationData={champagneAnimation}
-        loop={false}
-        speed={0.05} // ⏳ Slow animation significantly (5% of normal speed)
-        onComplete={handleAnimationComplete}
-        className="champagne-lottie"
-        style={{ width: "100vw", height: "100vh" }}
-      />
+      {LottieComponent && (
+        <LottieComponent
+          animationData={champagneAnimation}
+          loop={false}
+          speed={0.05} // ⏳ Slow animation significantly (5% of normal speed)
+          onComplete={handleAnimationComplete}
+          className="champagne-lottie"
+          style={{ width: "100vw", height: "100vh" }}
+        />
+      )}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import Lottie from "lottie-react";
 import { useInView } from "react-intersection-observer";
 
 const AboutSection = () => {
   const [animationData, setAnimationData] = useState(null);
+  const [LottieComponent, setLottieComponent] = useState(null);
   const lottieRef = useRef(null);
   const [direction, setDirection] = useState("forward");
 
@@ -12,9 +12,14 @@ const AboutSection = () => {
     threshold: 0.5,
   });
 
+  // Lazy load Lottie library and animation data
   useEffect(() => {
-    import("../assets/optimizedcup.json").then((data) => {
-      setAnimationData(data.default);
+    Promise.all([
+      import("lottie-react"),
+      import("../assets/optimizedcup.json")
+    ]).then(([lottieModule, animData]) => {
+      setLottieComponent(() => lottieModule.default);
+      setAnimationData(animData.default);
     });
   }, []);
 
@@ -69,9 +74,9 @@ const AboutSection = () => {
 
           {/* Right Column: Lottie Animation - Sized Down & Next to Bullets */}
           <div className="flex justify-center md:justify-start" ref={ref}>
-            {animationData && (
+            {animationData && LottieComponent && (
               <div className="w-24 h-24 md:w-56 md:h-56">
-                <Lottie
+                <LottieComponent
                   lottieRef={lottieRef}
                   animationData={animationData}
                   loop={false}
