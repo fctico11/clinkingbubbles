@@ -44,7 +44,7 @@ const AboutSection = () => {
 
         {/* Intro Text */}
         <p className="bubbles-font text-lg md:text-xl leading-relaxed text-gray-800 mb-8">
-          Luxury mobile bartending for weddings, private parties, and unforgettable celebrations across New Jersey.
+          Luxury mobile bartending for weddings, private parties, and unforgettable celebrations across NJ.
         </p>
 
         {/* Bullets & Animation Row */}
@@ -57,7 +57,7 @@ const AboutSection = () => {
               "Professional Bartenders",
               "Elegant Bar Setups"
             ].map((item, index) => (
-              <li key={index} className="flex items-center space-x-3 text-xl md:text-2xl bubbles-font font-medium">
+              <li key={index} className="flex items-center space-x-3 text-lg md:text-2xl bubbles-font font-medium">
                 {/* Gold Checkmark SVG */}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M20 6L9 17L4 12" stroke="#E3A008" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
