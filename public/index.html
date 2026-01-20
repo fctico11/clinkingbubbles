@@ -27,8 +27,112 @@
       }
     </script>
 
-  <!-- Preload hero images so LCP is discoverable in initial HTML -->
-  <link rel="preload" as="image" href="/images/herocar4.webp" fetchpriority="high" />
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+  <!-- Preload mobile hero image for mobile devices -->
+  <link rel="preload" as="image" href="/images/mobile/herocar4-mobile.webp" media="(max-width: 768px)" type="image/webp"
+    fetchpriority="high" />
+  <!-- Preload desktop hero image for desktop -->
+  <link rel="preload" as="image" href="/images/herocar4.webp" media="(min-width: 769px)" type="image/webp"
+    fetchpriority="high" />
+
+  <!-- Critical CSS for immediate render -->
+  <style>
+    /* Minimal critical CSS for hero section */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    .h-screen {
+      height: 100vh;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .absolute {
+      position: absolute;
+    }
+
+    .inset-0 {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .object-cover {
+      object-fit: cover;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .h-full {
+      height: 100%;
+    }
+
+    .opacity-0 {
+      opacity: 0;
+    }
+
+    .opacity-100 {
+      opacity: 1;
+    }
+
+    .transition-opacity {
+      transition-property: opacity;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+    }
+
+    .text-white {
+      color: rgb(255 255 255);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    .z-0 {
+      z-index: 0;
+    }
+
+    .z-10 {
+      z-index: 10;
+    }
+
+    .z-20 {
+      z-index: 20;
+    }
+  </style>
 
   <!--Icons -->
   <link rel="apple-touch-icon" href="/assets/mainlogo-v1-180.png" />

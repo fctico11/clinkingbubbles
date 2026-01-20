@@ -34,6 +34,7 @@ const HeroSection = () => {
           return (
             <picture key={index}>
               <source
+                type="image/webp"
                 media="(max-width: 768px)"
                 srcSet={`/images/mobile/${imgName}-mobile.webp`}
               />
