@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
@@ -10,8 +10,7 @@ import Services from "../components/Services";
 import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
 
-// Lazy load the FillingCupAnimation so it's not in the initial bundle
-const FillingCupAnimation = React.lazy(() => import("../components/FillingCupAnimation"));
+
 
 const Home = () => {
 
