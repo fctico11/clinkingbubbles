@@ -1,7 +1,8 @@
 // src/components/HeroSection.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logos/whiteTransparentLogo1123.png";
+import logoLarge from "../assets/logos/whiteTransparentLogo-large.webp";
+import logoSmall from "../assets/logos/whiteTransparentLogo-small.webp";
 
 // Carousel images
 const images = [
@@ -28,17 +29,25 @@ const HeroSection = () => {
     <section className="relative text-white text-center h-screen flex items-center justify-center overflow-hidden">
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
-        {images.map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            alt={`Hero Slide ${index + 1}`}
-            fetchPriority={index === 3 ? "high" : "auto"}
-            loading={index === 3 ? "eager" : "lazy"}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ${index === currentImageIndex ? "opacity-100" : "opacity-0"
-              }`}
-          />
-        ))}
+        {images.map((img, index) => {
+          const imgName = img.split('/').pop().replace('.webp', '');
+          return (
+            <picture key={index}>
+              <source
+                media="(max-width: 768px)"
+                srcSet={`/images/mobile/${imgName}-mobile.webp`}
+              />
+              <img
+                src={img}
+                alt={`Hero Slide ${index + 1}`}
+                fetchPriority={index === 3 ? "high" : "auto"}
+                loading={index === 3 ? "eager" : "lazy"}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ${index === currentImageIndex ? "opacity-100" : "opacity-0"
+                  }`}
+              />
+            </picture>
+          );
+        })}
       </div>
 
       {/* Overlay for contrast */}
@@ -48,7 +57,9 @@ const HeroSection = () => {
       <div className="relative z-20 max-w-3xl mx-auto px-4 flex flex-col items-center">
         {/* Logo */}
         <img
-          src={logo}
+          srcSet={`${logoSmall} 400w, ${logoLarge} 1024w`}
+          sizes="(max-width: 768px) 208px, 384px"
+          src={logoLarge}
           alt="Clinking Bubbles Logo"
           fetchPriority="high"
           loading="eager"
