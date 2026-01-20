@@ -44,9 +44,7 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <Suspense fallback={<div style={{ textAlign: "center", marginTop: "2rem" }}>Loading animation...</div>}>
-        <FillingCupAnimation />
-      </Suspense>
+
       <Services />
       <WhatWeBring />
       <CredentialSection />
