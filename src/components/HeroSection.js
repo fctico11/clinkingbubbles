@@ -56,12 +56,12 @@ const HeroSection = () => {
         />
 
         <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-3xl md:text-6xl font-bold mb-4 md:whitespace-nowrap">
-          Elevate Your Experience
+          NJ Private Bartending
         </h1>
         <div className="flex flex-col items-center text-center">
           <div className="backdrop-blur-sm bg-white/5 rounded-xl px-4 py-2 inline-block">
             <h2 className="bubbles-font drop-shadow-[0_0_2px_black] text-2xl md:text-2xl">
-              NJ Private Bartending Services that Dazzle and Delight.
+              Elevate Your Experience
             </h2>
           </div>
           <div className="mt-6 sm:mt-3">
