@@ -36,8 +36,6 @@ const Home = () => {
         <meta name="twitter:description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
         <meta name="twitter:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta name="twitter:image:alt" content="Private event bartending for weddings and parties in NJ & NY." />
-
-        <link rel="preload" href="/assets/champagne.json" as="fetch" type="application/json" crossorigin="anonymous" />
       </Helmet>
 
       <Navbar />
