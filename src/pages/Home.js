@@ -9,7 +9,7 @@ import AboutSection from "../components/AboutSection";
 import Services from "../components/Services";
 import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
-
+import ReviewsSection from "../components/ReviewsSection";
 
 
 const Home = () => {
@@ -59,6 +59,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      <ReviewsSection />
       <Footer />
     </div>
   );
