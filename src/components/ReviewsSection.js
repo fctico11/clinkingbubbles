@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaQuoteRight } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
+import { useSwipeable } from "react-swipeable";
 
 const reviewsData = [
   {
@@ -64,6 +65,12 @@ const ReviewsSection = () => {
     setCurrentIndex((prev) => (prev - 1 + reviewsData.length) % reviewsData.length);
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: nextReview,
+    onSwipedRight: prevReview,
+    preventScrollOnSwipe: true,
+  });
+
   const displayedReviews = [
     reviewsData[currentIndex % reviewsData.length],
     reviewsData[(currentIndex + 1) % reviewsData.length],
@@ -77,34 +84,47 @@ const ReviewsSection = () => {
           What Our Clients Say
         </h2>
         
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 items-start">
-            {displayedReviews.map((review, idx) => (
-              <div 
-                key={idx} 
-                className={`${idx === 0 ? 'flex' : 'hidden md:flex'} flex-col bg-white rounded-2xl shadow-sm p-6 items-start border border-gray-100 hover:shadow-md transition-shadow h-72 sm:h-64`}
-              >
-                <div className="flex items-center gap-3 mb-3 w-full">
-                  <div className="w-10 h-10 rounded-full bg-[#493423] text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
-                    {review.name.charAt(0).toUpperCase()}
+        <div className="relative" {...swipeHandlers}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 mb-12 items-start relative">
+            {displayedReviews.map((review, idx) => {
+              let mobileStackClass = "hidden md:flex";
+              if (idx === 0) {
+                mobileStackClass = "flex relative z-30 translate-y-0 scale-100 opacity-100 shadow-md";
+              } else if (idx === 1) {
+                mobileStackClass = "flex absolute inset-x-0 top-0 z-20 translate-y-4 scale-[0.95] opacity-60 pointer-events-none shadow-none md:pointer-events-auto border-b-0";
+              } else if (idx === 2) {
+                mobileStackClass = "flex absolute inset-x-0 top-0 z-10 translate-y-8 scale-[0.90] opacity-30 pointer-events-none shadow-none md:pointer-events-auto border-b-0";
+              }
+
+              return (
+                <div 
+                  key={`${currentIndex}-${idx}`} 
+                  className={`${mobileStackClass} md:relative md:!translate-y-0 md:!scale-100 md:!opacity-100 md:!shadow-sm md:!inset-auto md:!border-b flex-col bg-white rounded-2xl p-6 items-start border border-gray-100 border-t-4 border-t-[#f59e0b] hover:shadow-lg transition-all duration-300 ease-in-out h-72 sm:h-64 overflow-hidden`}
+                >
+                  <FaQuoteRight className="absolute bottom-4 right-4 text-[6rem] text-gray-100 opacity-40 z-0 pointer-events-none" />
+                  
+                  <div className="relative z-10 flex items-center gap-3 mb-3 w-full">
+                    <div className="w-10 h-10 rounded-full bg-[#493423] text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
+                      {review.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-gray-800 text-[15px] truncate">{review.name}</h3>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <FcGoogle className="text-2xl" />
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-gray-800 text-[15px] truncate">{review.name}</h3>
+                  <div className="relative z-10 flex text-yellow-400 mb-2 text-sm flex-shrink-0">
+                    {[...Array(review.stars)].map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
                   </div>
-                  <div className="flex-shrink-0">
-                    <FcGoogle className="text-2xl" />
-                  </div>
+                  <p className="relative z-10 text-gray-600 text-[15px] leading-relaxed whitespace-pre-wrap flex-grow overflow-hidden w-full">
+                    {renderReviewText(review.text)}
+                  </p>
                 </div>
-                <div className="flex text-yellow-400 mb-2 text-sm flex-shrink-0">
-                  {[...Array(review.stars)].map((_, i) => (
-                    <FaStar key={i} />
-                  ))}
-                </div>
-                <p className="text-gray-600 text-[15px] leading-relaxed whitespace-pre-wrap flex-grow overflow-hidden">
-                  {renderReviewText(review.text)}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Navigation Controls */}
