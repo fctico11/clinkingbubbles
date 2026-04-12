@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { Helmet } from 'react-helmet-async';
 
 import AboutSection from "../components/AboutSection";
+import SocialProofSection from "../components/SocialProofSection";
 import Services from "../components/Services";
 import CredentialSection from "../components/CredentialSection";
 import WhatWeBring from "../components/WhatWeBring";
@@ -41,6 +42,7 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <SocialProofSection />
       <Services />
       <WhatWeBring />
       <CredentialSection />
