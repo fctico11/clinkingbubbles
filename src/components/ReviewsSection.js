@@ -78,11 +78,12 @@ const ReviewsSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-zinc-50 text-black">
+    <section className="py-16 px-4 text-black" style={{ backgroundColor: '#faf8f5' }}>
       <div className="max-w-7xl mx-auto">
-        <h2 className="clinking-font text-3xl font-bold text-center mb-10 leading-tight">
+        <h2 className="clinking-font text-3xl font-bold text-center mb-2 leading-tight">
           What Our Clients Say
         </h2>
+        <div className="section-gold-accent mb-8"></div>
         
         <div className="relative" {...swipeHandlers}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 mb-12 items-start relative">

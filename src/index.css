@@ -17,3 +17,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Shared gold accent underline for section titles */
+.section-gold-accent {
+  width: 3rem;
+  height: 3px;
+  background: linear-gradient(90deg, #c9952e, #e6b84f);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+}

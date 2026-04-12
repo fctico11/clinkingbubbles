@@ -1,0 +1,244 @@
+/* ===== WHAT WE BRING SECTION ===== */
+
+.wwb-section {
+  padding: 3rem 1rem;
+  background-color: #faf8f5;
+}
+
+.wwb-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Title */
+.wwb-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Gold underline accent */
+.wwb-accent {
+  width: 3rem;
+  height: 3px;
+  background: linear-gradient(90deg, #c9952e, #e6b84f);
+  margin: 0 auto 1rem auto;
+  border-radius: 2px;
+}
+
+/* Intro paragraph */
+.wwb-intro {
+  font-size: 1.125rem;
+  color: #000;
+  max-width: 34rem;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+/* Cards grid — desktop: 3 columns */
+.wwb-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual card — desktop: vertical stack */
+.wwb-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.wwb-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Card image — desktop */
+.wwb-card-img {
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card body */
+.wwb-card-body {
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+}
+
+.wwb-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.wwb-card-desc {
+  font-size: 1.05rem;
+  color: #000;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+
+.wwb-card-link {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s;
+  float: right;
+}
+
+.wwb-card-link:hover {
+  color: #c9952e;
+}
+
+.wwb-card-link svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s;
+}
+
+.wwb-card-link:hover svg {
+  transform: translateX(3px);
+}
+
+/* Bottom CTA */
+.wwb-cta-text {
+  font-size: 1.05rem;
+  color: #000;
+  margin-bottom: 1.25rem;
+}
+
+.wwb-cta-text em {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.wwb-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #e6c34d 0%, #c9952e 50%, #e6c34d 100%);
+  background-size: 200% 200%;
+  box-shadow: 0 3px 12px rgba(201, 149, 46, 0.35);
+  transition: background-position 0.4s, transform 0.2s, box-shadow 0.2s;
+}
+
+.wwb-cta-btn:hover {
+  background-position: 100% 100%;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(201, 149, 46, 0.45);
+}
+
+.wwb-cta-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ===================================
+   MOBILE OVERRIDES (≤ 768px)
+   Match the design: horizontal cards
+   with image left, text right
+   =================================== */
+@media (max-width: 768px) {
+  .wwb-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .wwb-intro {
+    font-size: 1.125rem;
+  }
+
+  /* Stack cards vertically, 1 column */
+  .wwb-cards {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Card becomes horizontal row */
+  .wwb-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    border-bottom: 1px solid #e0d7cc;
+    padding: 1rem 0;
+  }
+
+  .wwb-card:first-child {
+    border-top: 1px solid #e0d7cc;
+  }
+
+  .wwb-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Image on left — square thumbnail */
+  .wwb-card-img {
+    width: 9rem;
+    min-width: 9rem;
+    height: 8rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  /* Text on right */
+  .wwb-card-body {
+    padding: 0 0 0 0.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .wwb-card-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .wwb-card-desc {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.45;
+  }
+
+  .wwb-card-link {
+    display: inline-flex;
+    font-size: 0.85rem;
+  }
+
+  /* CTA area */
+  .wwb-cta-text {
+    font-size: 0.95rem;
+  }
+
+  .wwb-cta-btn {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.75rem;
+  }
+}

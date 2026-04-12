@@ -43,9 +43,10 @@ const AboutSection = () => {
       <div className="max-w-4xl mx-auto text-center">
 
         {/* Title */}
-        <h2 className="clinking-font text-3xl font-bold mb-6 leading-tight">
+        <h2 className="clinking-font text-3xl font-bold mb-2 leading-tight">
           Sip, Smile, and Relax
         </h2>
+        <div className="section-gold-accent mb-4"></div>
 
         {/* Intro Text */}
         <p className="bubbles-font text-lg md:text-xl leading-relaxed text-gray-800 mb-8">

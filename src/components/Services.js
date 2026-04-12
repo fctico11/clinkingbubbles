@@ -93,7 +93,8 @@ function Services() {
 
   return (
     <section className="py-10 px-4 bg-white text-black">
-      <h2 className="clinking-font text-3xl font-bold text-center mb-10">Our Services</h2>
+      <h2 className="clinking-font text-3xl font-bold text-center mb-2">Our Services</h2>
+      <div className="section-gold-accent mb-8"></div>
 
       <div className="services-3d-wrapper">
         <div className="carousel-viewport">

@@ -41,7 +41,6 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
-
       <Services />
       <WhatWeBring />
       <CredentialSection />
@@ -53,7 +52,7 @@ const Home = () => {
             </button>
           </Link>
           <Link to="/contact">
-            <button className="bubbles-font text-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-full transition">
+            <button className="bubbles-font text-lg text-black font-semibold px-6 py-3 rounded-full transition hover:brightness-110" style={{ background: 'linear-gradient(135deg, #e6c34d 0%, #c9952e 50%, #e6c34d 100%)', backgroundSize: '200% 200%', boxShadow: '0 3px 12px rgba(201, 149, 46, 0.35)' }}>
               Get a Quote
             </button>
           </Link>
