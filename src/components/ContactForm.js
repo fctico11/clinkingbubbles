@@ -533,8 +533,11 @@ const ContactForm = () => {
               onChange={handleChange}
               value={formData.bartendingOption}
             >
+              <option>Full Package: Bartender(s) + Bar Rental + Supplies</option>
+              <option>Bartender(s) + Supplies</option>
+              <option>Bartender(s) + Bar Rental</option>
               <option>Bartender(s) only</option>
-              <option>Bartender(s) + Portable Bar</option>
+              <option>I'm not sure yet</option>
             </select>
           </div>
 
