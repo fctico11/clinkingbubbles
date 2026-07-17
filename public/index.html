@@ -273,6 +273,149 @@
       margin-top: 1rem;
     }
 
+    /* Static hero pre-paint (removed when React mounts) */
+    #static-hero {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #static-hero .sh-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #static-hero .sh-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #static-hero .sh-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      box-sizing: border-box;
+    }
+
+    #static-hero .sh-brand {
+      font-family: 'ClinkingBubblesFont', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      color: #eab308;
+    }
+
+    #static-hero .sh-menu {
+      color: #eab308;
+      display: block;
+    }
+
+    #static-hero .sh-content {
+      position: relative;
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #static-hero .sh-logo {
+      width: 13rem;
+      height: auto;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 2px black);
+    }
+
+    #static-hero .sh-h1 {
+      font-family: 'ClinkingBubblesFont', sans-serif;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      filter: drop-shadow(0 0 2px black);
+    }
+
+    #static-hero .sh-pill {
+      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.75rem;
+      padding: 0.5rem 1rem;
+      display: inline-block;
+    }
+
+    #static-hero .sh-h2 {
+      font-family: 'BubblesFont', sans-serif;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin: 0;
+      filter: drop-shadow(0 0 2px black);
+    }
+
+    #static-hero .sh-btnwrap {
+      margin-top: 1.5rem;
+    }
+
+    #static-hero .sh-btn {
+      display: inline-block;
+      font-family: 'BubblesFont', sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #e6c34d 0%, #c9952e 50%, #e6c34d 100%);
+      background-size: 200% 200%;
+      box-shadow: 0 3px 12px rgba(201, 149, 46, 0.35);
+    }
+
+    @media (min-width: 640px) {
+      #static-hero .sh-btnwrap {
+        margin-top: 0.75rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      #static-hero .sh-menu {
+        display: none;
+      }
+
+      #static-hero .sh-brand {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+      }
+
+      #static-hero .sh-logo {
+        width: 24rem;
+        margin-bottom: 1.5rem;
+      }
+
+      #static-hero .sh-h1 {
+        font-size: 3.75rem;
+        line-height: 1;
+        white-space: nowrap;
+      }
+    }
+
     /* Responsive utilities */
     @media (min-width: 768px) {
       .md\:flex {
@@ -323,6 +466,43 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <!-- Static hero pre-paint: pixel-identical copy of the React hero so the
+       browser (and LCP) paints at first render instead of waiting for the JS
+       bundle. Removed by HeroSection on mount; instantly removed on non-home
+       routes by the inline script below. -->
+  <div id="static-hero" aria-hidden="true">
+    <picture>
+      <source type="image/webp" media="(max-width: 768px)" srcset="/images/mobile/herocar4-mobile.webp" />
+      <img class="sh-bg" src="/images/herocar4.webp" alt="" />
+    </picture>
+    <div class="sh-overlay"></div>
+    <div class="sh-nav">
+      <span class="sh-brand">Clinking Bubbles</span>
+      <svg class="sh-menu" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </div>
+    <div class="sh-content">
+      <img class="sh-logo" src="/images/logos/whiteTransparentLogo-large.webp"
+        srcset="/images/logos/whiteTransparentLogo-small.webp 400w, /images/logos/whiteTransparentLogo-large.webp 1024w"
+        sizes="(max-width: 768px) 208px, 384px" width="400" height="345" alt="" fetchpriority="high" />
+      <div class="sh-h1">NJ Private Bartending</div>
+      <div class="sh-pill">
+        <div class="sh-h2">Elevate Your Experience</div>
+      </div>
+      <div class="sh-btnwrap"><span class="sh-btn">Book Now</span></div>
+    </div>
+  </div>
+  <script>
+    if (window.location.pathname !== '/' && window.location.pathname !== '') {
+      document.getElementById('static-hero').remove();
+    }
+  </script>
+
   <div id="root"></div>
 </body>
 

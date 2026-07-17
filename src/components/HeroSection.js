@@ -24,6 +24,12 @@ const HeroSection = () => {
   // initial slide is the only hero image competing for bandwidth (and LCP).
   const [carouselReady, setCarouselReady] = useState(false);
 
+  // The React hero below is a pixel-identical copy of the #static-hero
+  // pre-paint in index.html; once we've mounted, the static copy can go.
+  useEffect(() => {
+    document.getElementById("static-hero")?.remove();
+  }, []);
+
   useEffect(() => {
     let timeoutId;
     const start = () => {
