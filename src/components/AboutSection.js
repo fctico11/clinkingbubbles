@@ -12,8 +12,10 @@ const AboutSection = () => {
     threshold: 0.5,
   });
 
-  // Lazy load Lottie library and animation data
+  // Lazy load Lottie library and animation data, but only once the section
+  // is scrolled into view so the chunk doesn't compete with the initial load
   useEffect(() => {
+    if (!inView) return;
     Promise.all([
       import("lottie-react"),
       import("../assets/optimizedcup.json")
@@ -21,7 +23,7 @@ const AboutSection = () => {
       setLottieComponent(() => lottieModule.default);
       setAnimationData(animData.default);
     });
-  }, []);
+  }, [inView]);
 
   // Play segments depending on scroll direction - Logic from FillingCupAnimation
   useEffect(() => {
@@ -32,7 +34,7 @@ const AboutSection = () => {
         lottieRef.current.playSegments([1, 120], false);
       }
     }
-  }, [inView, direction]);
+  }, [inView, direction, LottieComponent, animationData]);
 
   const handleComplete = () => {
     setDirection((prev) => (prev === "forward" ? "backward" : "forward"));

@@ -32,6 +32,7 @@ const ArrowIcon = () => (
     viewBox="0 0 24 24"
     strokeWidth={2.5}
     stroke="currentColor"
+    aria-hidden="true"
   >
     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
   </svg>
@@ -64,6 +65,8 @@ const WhatWeBring = () => {
               <img
                 className="wwb-card-img"
                 src={card.img}
+                srcSet={`${card.img.replace('.webp', '-360.webp')} 360w, ${card.img} 720w`}
+                sizes="(max-width: 768px) 144px, 373px"
                 alt={card.alt}
                 loading="lazy"
                 width="400"
@@ -73,7 +76,7 @@ const WhatWeBring = () => {
                 <h3 className="bubbles-font wwb-card-title">{card.title}</h3>
                 <p className="bubbles-font wwb-card-desc">{card.desc}</p>
                 <Link to="/services" className="bubbles-font wwb-card-link">
-                  Learn More <ArrowIcon />
+                  Learn More<span className="sr-only"> about {card.title.toLowerCase()} and our other services</span> <ArrowIcon />
                 </Link>
               </div>
             </div>

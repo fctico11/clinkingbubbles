@@ -42,13 +42,13 @@ const renderReviewText = (text) => {
   return (
     <>
       {truncated}...{" "}
-      <a 
-        href="https://share.google/kgl36l7dVIDmGAlYE" 
-        target="_blank" 
-        rel="noopener noreferrer" 
+      <a
+        href="https://share.google/kgl36l7dVIDmGAlYE"
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-blue-600 hover:text-blue-800 hover:underline transition-colors font-medium whitespace-nowrap"
       >
-        read more
+        read more<span className="sr-only"> of this review on Google</span>
       </a>
     </>
   );

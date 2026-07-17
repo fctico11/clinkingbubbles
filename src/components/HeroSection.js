@@ -1,8 +1,10 @@
 // src/components/HeroSection.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logoLarge from "../assets/logos/whiteTransparentLogo-large.webp";
-import logoSmall from "../assets/logos/whiteTransparentLogo-small.webp";
+
+// Served from public/ so the URL is stable and matches the preload in index.html
+const logoSmall = "/images/logos/whiteTransparentLogo-small.webp";
+const logoLarge = "/images/logos/whiteTransparentLogo-large.webp";
 
 // Carousel images
 const images = [
@@ -14,22 +16,45 @@ const images = [
   "/images/herocar6.webp",
 ];
 
+const INITIAL_INDEX = 3;
+
 const HeroSection = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(3);
+  const [currentImageIndex, setCurrentImageIndex] = useState(INITIAL_INDEX);
+  // The rotating slides only mount after the page has fully loaded, so the
+  // initial slide is the only hero image competing for bandwidth (and LCP).
+  const [carouselReady, setCarouselReady] = useState(false);
 
   useEffect(() => {
+    let timeoutId;
+    const start = () => {
+      timeoutId = setTimeout(() => setCarouselReady(true), 2500);
+    };
+    if (document.readyState === "complete") {
+      start();
+    } else {
+      window.addEventListener("load", start);
+    }
+    return () => {
+      window.removeEventListener("load", start);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!carouselReady) return;
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 3000); // Change image every 3 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [carouselReady]);
 
   return (
     <section className="relative text-white text-center h-screen flex items-center justify-center overflow-hidden">
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
         {images.map((img, index) => {
+          if (index !== INITIAL_INDEX && !carouselReady) return null;
           const imgName = img.split('/').pop().replace('.webp', '');
           return (
             <picture key={index}>
@@ -41,8 +66,8 @@ const HeroSection = () => {
               <img
                 src={img}
                 alt={`Hero Slide ${index + 1}`}
-                fetchPriority={index === 3 ? "high" : "low"}
-                loading={index === 3 ? "eager" : "lazy"}
+                fetchPriority={index === INITIAL_INDEX ? "high" : "low"}
+                loading={index === INITIAL_INDEX ? "eager" : "lazy"}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ${index === currentImageIndex ? "opacity-100" : "opacity-0"
                   }`}
               />
@@ -62,9 +87,11 @@ const HeroSection = () => {
           sizes="(max-width: 768px) 208px, 384px"
           src={logoLarge}
           alt="Clinking Bubbles Logo"
+          width="400"
+          height="345"
           fetchPriority="high"
           loading="eager"
-          className="w-52 md:w-96 mb-4 md:mb-6 drop-shadow-[0_0_2px_black]"
+          className="w-52 md:w-96 h-auto mb-4 md:mb-6 drop-shadow-[0_0_2px_black]"
         />
 
         <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-3xl md:text-6xl font-bold mb-4 md:whitespace-nowrap">

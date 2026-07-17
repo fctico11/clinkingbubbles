@@ -38,9 +38,35 @@
   <link rel="preload" as="image" href="/images/herocar4.webp" media="(min-width: 769px)" type="image/webp"
     fetchpriority="high" />
 
+  <!-- Preload LCP logo image (imagesrcset/imagesizes mirror the <img> so the same file is chosen) -->
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
+    imagesrcset="/images/logos/whiteTransparentLogo-small.webp 400w, /images/logos/whiteTransparentLogo-large.webp 1024w"
+    imagesizes="(max-width: 768px) 208px, 384px" />
+
+  <!-- Preload display fonts (WOFF2) so text doesn't wait on the CSS -> font chain -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/VELISTA.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/AppleGaramond.woff2" crossorigin />
+
 
   <!-- Critical CSS for immediate render -->
   <style>
+    /* Display fonts (preloaded above) */
+    @font-face {
+      font-family: 'ClinkingBubblesFont';
+      src: url('/fonts/VELISTA.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'BubblesFont';
+      src: url('/fonts/AppleGaramond.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
     /* Expanded critical CSS - hero, navbar, buttons (~2.7KB) */
     body {
       margin: 0;
@@ -279,8 +305,8 @@
 
   <!--Icons -->
   <link rel="apple-touch-icon" href="/assets/mainlogo-v1-180.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/mainlogo-v1.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/mainlogo-v1.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/mainlogo-v1-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/mainlogo-v1-16.png" />
   <link rel="shortcut icon" href="/assets/favicon-v1.ico" />
 
   <!-- Google tag (gtag.js) -->

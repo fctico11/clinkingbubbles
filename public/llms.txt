@@ -1,0 +1,21 @@
+# Clinking Bubbles
+
+> Clinking Bubbles is a private event bartending company serving New Jersey and New York. We provide professional bartenders, curated signature cocktails, and full bar setups for weddings, parties, corporate events, and special occasions.
+
+Clinking Bubbles LLC is based in Mountainside, NJ. Bookings include a full consultation, bar goods (cups, napkins, straws, garnishes), and ice with premium coolers. Guests must be 21+ to be served alcohol.
+
+## Pages
+
+- [Home](https://www.clinkingbubbles.com/): Overview of our private bartending services
+- [About](https://www.clinkingbubbles.com/about): Who we are and our story
+- [Services](https://www.clinkingbubbles.com/services): Complete package details and what we bring
+- [Booking Process](https://www.clinkingbubbles.com/booking-process): How booking an event works, step by step
+- [Alcohol Calculator](https://www.clinkingbubbles.com/alcohol-calculator): Estimate how much alcohol your event needs
+- [FAQ](https://www.clinkingbubbles.com/faq): Frequently asked questions
+- [Contact](https://www.clinkingbubbles.com/contact): Get a quote for your event
+
+## Contact
+
+- Phone: (908) 414-8584
+- Instagram: https://www.instagram.com/clinkingbubbles
+- Service area: New Jersey and New York

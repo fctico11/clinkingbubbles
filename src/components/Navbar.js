@@ -128,24 +128,27 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-yellow-500 hover:text-yellow-500 transition"
+              aria-label="Clinking Bubbles Instagram"
             >
-              <FaInstagram size={30} />
+              <FaInstagram size={30} aria-hidden="true" />
             </a>
             <a
               href="https://www.tiktok.com/@clinkingbubbles"
               target="_blank"
               rel="noopener noreferrer"
               className="text-yellow-500 hover:text-yellow-500 transition"
+              aria-label="Clinking Bubbles TikTok"
             >
-              <SiTiktok size={30} />
+              <SiTiktok size={30} aria-hidden="true" />
             </a>
             <a
               href="https://www.facebook.com/clinkingbubbles"
               target="_blank"
               rel="noopener noreferrer"
               className="text-yellow-500 hover:text-yellow-500 transition"
+              aria-label="Clinking Bubbles Facebook"
             >
-              <FaFacebook size={30} />
+              <FaFacebook size={30} aria-hidden="true" />
             </a>
           </div>
 
@@ -231,24 +234,27 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mobile-social-icon"
+                  aria-label="Clinking Bubbles Instagram"
                 >
-                  <FaInstagram size={30} />
+                  <FaInstagram size={30} aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.tiktok.com/@clinkingbubbles"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mobile-social-icon"
+                  aria-label="Clinking Bubbles TikTok"
                 >
-                  <SiTiktok size={30} />
+                  <SiTiktok size={30} aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.facebook.com/clinkingbubbles"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mobile-social-icon"
+                  aria-label="Clinking Bubbles Facebook"
                 >
-                  <FaFacebook size={30} />
+                  <FaFacebook size={30} aria-hidden="true" />
                 </a>
               </div>
             </div>

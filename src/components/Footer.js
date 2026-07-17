@@ -68,7 +68,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             aria-label="Clinking Bubbles Instagram"
           >
-            <div className="relative inline-block w-[30px] h-[30px]">
+            <div className="relative inline-block w-[30px] h-[30px]" aria-hidden="true">
               <FaInstagram
                 size={28}
                 className="absolute top-1/2 left-1/2 
@@ -97,7 +97,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             aria-label="Clinking Bubbles TikTok"
           >
-            <div className="relative inline-block w-[30px] h-[30px]">
+            <div className="relative inline-block w-[30px] h-[30px]" aria-hidden="true">
               <SiTiktok
                 size={30}
                 className="absolute top-1/2 left-1/2
@@ -126,7 +126,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             aria-label="Clinking Bubbles Facebook"
           >
-            <div className="relative inline-block w-[30px] h-[30px]">
+            <div className="relative inline-block w-[30px] h-[30px]" aria-hidden="true">
               <FaFacebookF
                 size={28}
                 className="absolute top-1/2 left-1/2 
@@ -150,7 +150,7 @@ const Footer = () => {
 
           {/* Envelope */}
           <Link to="/contact" aria-label="Contact us via email">
-            <div className="relative inline-block w-[30px] h-[30px]">
+            <div className="relative inline-block w-[30px] h-[30px]" aria-hidden="true">
               <FaEnvelope
                 size={30}
                 className="absolute top-1/2 left-1/2
@@ -182,7 +182,7 @@ const Footer = () => {
               className="inline-block ml-1"
               aria-label="Link to professional help organization for alcohol use"
             >
-              <FaExternalLinkAlt size={12} />
+              <FaExternalLinkAlt size={12} aria-hidden="true" />
             </a>.
           </p>
         </div>

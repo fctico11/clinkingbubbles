@@ -1,21 +1,7 @@
-@font-face {
-  font-family: 'ClinkingBubblesFont';
-  src: url('../assets/fonts/VELISTA.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* @font-face declarations live in public/index.html so the fonts are
+   discoverable immediately instead of waiting on the CSS bundle. */
 .clinking-font {
   font-family: 'ClinkingBubblesFont', sans-serif;
-}
-
-@font-face {
-  font-family: 'BubblesFont';
-  src: url('../assets/fonts/AppleGaramond.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
 }
 
 .bubbles-font {
