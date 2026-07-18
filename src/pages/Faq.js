@@ -83,7 +83,9 @@ const Faq = () => {
               It depends on your guest count, how many hours we’re serving, and whether your crowd tends to be light or heavy drinkers. To help you estimate, we’ve created an easy-to-use tool. Check out our{' '}
               <Link to="/alcohol-calculator" className="text-yellow-500 underline hover:text-yellow-600">Alcohol Calculator</Link>.
             </span>
-          )
+          ),
+          // Plain-text version used for the FAQPage structured data
+          answerText: "It depends on your guest count, how many hours we're serving, and whether your crowd tends to be light or heavy drinkers. To help you estimate, we've created an easy-to-use Alcohol Calculator tool on our website."
         },
         {
           question: "Do you offer consultations or tastings?",
@@ -139,6 +141,23 @@ const Faq = () => {
     }
   ];
 
+  // FAQPage structured data, generated from the same array that renders the
+  // page so the schema always matches the visible content.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqCategories.flatMap((category) =>
+      category.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: typeof item.answer === "string" ? item.answer : item.answerText,
+        },
+      }))
+    ),
+  };
+
   return (
     <div>
       <Helmet>
@@ -154,6 +173,7 @@ const Faq = () => {
         <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
       <Navbar />
