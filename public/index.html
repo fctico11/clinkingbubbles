@@ -462,6 +462,11 @@
 
     gtag('config', 'AW-16963394733');
   </script>
+
+  <!-- Stylesheets (emitted here because automatic injection is disabled) -->
+  <% htmlWebpackPlugin.files.css.forEach(function (href) { %>
+  <link rel="stylesheet" href="<%= href %>" />
+  <% }); %>
 </head>
 
 <body>
@@ -504,6 +509,29 @@
   </script>
 
   <div id="root"></div>
+
+  <!-- Load the app bundles only after the browser's first paint so the
+       static hero above is never delayed by the JS download. async=false
+       preserves execution order; the timeout covers hidden/background tabs
+       where requestAnimationFrame doesn't fire. -->
+  <script>
+    (function () {
+      var srcs = <%= JSON.stringify(htmlWebpackPlugin.files.js) %>;
+      var loaded = false;
+      function loadApp() {
+        if (loaded) return;
+        loaded = true;
+        srcs.forEach(function (src) {
+          var el = document.createElement('script');
+          el.src = src;
+          el.async = false;
+          document.body.appendChild(el);
+        });
+      }
+      requestAnimationFrame(function () { requestAnimationFrame(loadApp); });
+      setTimeout(loadApp, 350);
+    })();
+  </script>
 </body>
 
 </html>
