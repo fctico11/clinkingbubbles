@@ -168,8 +168,10 @@ const Footer = () => {
         </div>
 
         {/* Disclaimer */}
-        <div className="text-sm text-gray-400">
-          <h3 className="text-yellow-500 font-bold">DRINK RESPONSIBLY</h3>
+        {/* Colors chosen as the lightest shades that pass WCAG 4.5:1 on the
+            #EBE6D6 footer background (axe color-contrast audit). */}
+        <div className="text-sm text-[#5b6472]">
+          <h3 className="text-[#8a5c08] font-bold">DRINK RESPONSIBLY</h3>
           <p className="mt-2">
             This website is intended for individuals 21 years of age or older. Please drink responsibly. 
             We do not condone excessive or irresponsible alcohol consumption. Always comply with the laws and 
@@ -188,7 +190,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <p className="mt-6 text-gray-500 text-xs">
+        <p className="mt-6 text-[#5b6472] text-xs">
           © {new Date().getFullYear()} Clinking Bubbles LLC. All rights reserved.
         </p>
       </div>

@@ -1,39 +1,19 @@
 import "./Navbar.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
-import { AnimatePresence, motion } from "framer-motion";
 
-// Framer Motion variants for the overlay slide-down
-const overlayVariants = {
-  hidden: {
-    y: "-100%",
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
-    },
-  },
-  exit: {
-    y: "-100%",
-    opacity: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
-    },
-  },
-};
+// The mobile drawer (and framer-motion with it) lives in its own chunk so the
+// main bundle stays small; it's preloaded after window load below.
+const NavbarDrawer = lazy(() => import("./NavbarDrawer"));
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [drawerReady, setDrawerReady] = useState(false);
   const location = useLocation();
 
   // Force navbar background to be chocolate brown on any route except homepage
@@ -43,6 +23,19 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // Warm the drawer chunk once the page has loaded so the first tap is instant
+  useEffect(() => {
+    const preload = () => {
+      import("./NavbarDrawer").then(() => setDrawerReady(true));
+    };
+    if (document.readyState === "complete") {
+      preload();
+    } else {
+      window.addEventListener("load", preload, { once: true });
+      return () => window.removeEventListener("load", preload);
+    }
+  }, []);
 
   // Close menu on route change
   useEffect(() => {
@@ -170,97 +163,11 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Full-Screen Overlay (above the navbar) */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="mobile-drawer-overlay"
-            variants={overlayVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            key="mobile-drawer"
-          >
-            <div className="drawer-content">
-              {/* Close Button */}
-              <button onClick={toggleMenu} className="close-btn" aria-label="Close menu">
-                <FiX size={30} />
-              </button>
-
-              {/* Navigation Links */}
-              <nav className="drawer-links">
-                <Link to="/" className="bubbles-font drawer-link" onClick={toggleMenu}>
-                  Home
-                </Link>
-                <Link to="/about" className="bubbles-font drawer-link" onClick={toggleMenu}>
-                  About
-                </Link>
-                <Link to="/services" className="bubbles-font drawer-link" onClick={toggleMenu}>
-                  Services
-                </Link>
-                <Link
-                  to="/booking-process"
-                  className="bubbles-font drawer-link"
-                  onClick={toggleMenu}
-                >
-                  Booking Process
-                </Link>
-                <Link
-                  to="/alcohol-calculator"
-                  className="bubbles-font drawer-link"
-                  onClick={toggleMenu}
-                >
-                  Alcohol Calculator
-                </Link>
-                <Link
-                  to="/faq"
-                  className="bubbles-font drawer-link"
-                  onClick={toggleMenu}
-                >
-                  FAQ
-                </Link>
-                <Link
-                  to="/contact"
-                  className="bubbles-font drawer-link quote-btn"
-                  onClick={toggleMenu}
-                >
-                  Get a Quote!
-                </Link>
-              </nav>
-
-              {/* Social Icons */}
-              <div className="drawer-social">
-                <a
-                  href="https://www.instagram.com/clinkingbubbles"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mobile-social-icon"
-                  aria-label="Clinking Bubbles Instagram"
-                >
-                  <FaInstagram size={30} aria-hidden="true" />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@clinkingbubbles"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mobile-social-icon"
-                  aria-label="Clinking Bubbles TikTok"
-                >
-                  <SiTiktok size={30} aria-hidden="true" />
-                </a>
-                <a
-                  href="https://www.facebook.com/clinkingbubbles"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mobile-social-icon"
-                  aria-label="Clinking Bubbles Facebook"
-                >
-                  <FaFacebook size={30} aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {(drawerReady || isOpen) && (
+        <Suspense fallback={null}>
+          <NavbarDrawer isOpen={isOpen} onClose={toggleMenu} />
+        </Suspense>
+      )}
     </>
   );
 };
