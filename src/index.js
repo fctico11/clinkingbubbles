@@ -37,11 +37,23 @@ if ('requestIdleCallback' in window) {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <HelmetProvider>
-    <App />
-  </HelmetProvider>
-);
+
+// Wait until the browser has painted once before mounting React, so the
+// #static-hero pre-paint in index.html is always the first (and LCP) paint
+// instead of racing the bundle. Double rAF fires just after the first paint;
+// the timeout is a fallback for hidden/backgrounded tabs where rAF stalls.
+let mounted = false;
+const mountApp = () => {
+  if (mounted) return;
+  mounted = true;
+  root.render(
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  );
+};
+requestAnimationFrame(() => requestAnimationFrame(mountApp));
+setTimeout(mountApp, 300);
 
 // Optional performance measurement
 reportWebVitals();
