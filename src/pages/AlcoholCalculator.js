@@ -198,7 +198,7 @@ const AlcoholCalculator = () => {
         <meta property="og:description" content="Estimate how much alcohol you’ll need with our bartender-backed event drink calculator. Quick, easy, and tailored to your guest list." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/alcohol-calculator" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Estimate drinks easily with Clinking Bubbles' calculator." />

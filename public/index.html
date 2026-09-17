@@ -6,6 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
 
+  <!-- Default title/description + social share tags. These are static (not
+       injected by react-helmet-async) because link-unfurling crawlers
+       (iMessage, Facebook, Slack, WhatsApp, etc.) read this raw HTML and do
+       not execute JS, so client-side Helmet tags never reach them. Per-page
+       Helmet tags still override these for real browsers/route changes. -->
+  <title>Clinking Bubbles | Private Event Bartending in NJ & NY</title>
+  <meta name="description"
+    content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
+  <meta property="og:description"
+    content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
+  <meta property="og:url" content="https://www.clinkingbubbles.com/" />
+  <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:site_name" content="Clinking Bubbles" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
+  <meta name="twitter:description"
+    content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
+  <meta name="twitter:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
+  <meta name="twitter:image:alt" content="Clinking Bubbles private event bartending logo." />
+
   <!-- Local Business Schema -->
   <script type="application/ld+json">
       {

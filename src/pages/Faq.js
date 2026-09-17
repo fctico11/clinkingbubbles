@@ -170,7 +170,7 @@ const Faq = () => {
         <meta property="og:description" content="Answers to all your questions about hiring Clinking Bubbles for your event." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/faq" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>

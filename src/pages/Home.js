@@ -29,13 +29,13 @@ const Home = () => {
         <meta property="og:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
         <meta property="og:description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Clinking Bubbles | Private Event Bartending in NJ & NY" />
         <meta name="twitter:description" content="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments." />
-        <meta name="twitter:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta name="twitter:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
         <meta name="twitter:image:alt" content="Private event bartending for weddings and parties in NJ & NY." />
       </Helmet>
 

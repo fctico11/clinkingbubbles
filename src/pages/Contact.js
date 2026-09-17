@@ -17,7 +17,7 @@ const Contact = () => {
         <meta property="og:description" content="Reach out to Clinking Bubbles for private bartending quotes, questions, or custom packages for your NJ or NY event. We'll respond quickly!" />
         <meta property="og:url" content="https://www.clinkingbubbles.com/contact" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Get in touch with Clinking Bubbles." />

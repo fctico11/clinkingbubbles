@@ -32,7 +32,7 @@ const BookingProcess = () => {
         <meta property="og:description" content="From inquiry to celebration, our booking process is simple and smooth. Learn how to reserve Clinking Bubbles for your upcoming event." />
         <meta property="og:url" content="https://www.clinkingbubbles.com/booking-process" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo.png" />
+        <meta property="og:image" content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png" />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="Easily book private bartenders for NJ & NY events." />

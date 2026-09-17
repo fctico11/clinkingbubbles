@@ -59,7 +59,7 @@ const ServicesPage = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://www.clinkingbubbles.com/assets/mainlogo.png"
+          content="https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png"
         />
         <meta property="og:site_name" content="Clinking Bubbles" />
         <meta name="twitter:card" content="summary_large_image" />
