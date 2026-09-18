@@ -1,0 +1,223 @@
+CLINKING BUBBLES — SEO / SITE ARCHITECTURE PROGRESS NOTES
+Last updated: 2026-07-22
+Status: Everything below is built locally and verified in a local build.
+        NOTHING HAS BEEN PUSHED / DEPLOYED YET. git status is all
+        uncommitted (new files untracked, edited files modified).
+
+============================================================
+WHY THIS WORK STARTED
+============================================================
+Goal: improve organic/SEO visibility. Competitor research identified
+"Stiiir" (stiirbar.com), a mobile bar company in NJ ranking #1 for
+the kind of searches Clinking Bubbles wants to win. Stiiir's site has
+~52 pages vs. our 7 at the time; the gap is almost entirely
+programmatic local-SEO landing pages (county pages, town pages,
+event-type pages) plus a real information architecture (not a flat
+page list). We reverse-engineered their structure via live site
+inspection (not scraped/copied content — original copy was written
+for every page, and Stiiir's exact chip/pill visual style was
+deliberately NOT copied per user instruction — see "DESIGN DECISIONS"
+below) and are replicating the STRATEGY, not the content.
+
+Stiiir also uses a third-party tool called "Flashquotes"
+(flashquotes.com) for instant booking/quotes — noted but NOT adopted;
+out of scope for now.
+
+============================================================
+SITE ARCHITECTURE (as of this session)
+============================================================
+Home page pattern preserved (static-hero perf architecture — see
+existing memory note "clinkingbubbles-perf-architecture" for that,
+unrelated to this SEO work and NOT to be broken).
+
+Top-level nav now: Home | About | Services | Packages | Service Areas
+| Booking Process | Alcohol Calculator | FAQ | (Get a Quote button)
+
+--- SERVICES SIDE ---
+/services            Hub page. "Explore by Event" grouped into 3
+                      Stiiir-style categories: Weddings & Celebrations,
+                      Private Events, Corporate & Brand. Each category
+                      currently has exactly ONE real page (see below);
+                      structure is ready to hold more as they're built.
+/packages             Pricing tiers (Full Experience / Custom Blend /
+                      Essentials) + accessories + bar-rental swiper.
+                      This is the OLD /services content, moved here
+                      wholesale when /services was repurposed into the
+                      event hub above.
+
+Event-type pages (category → page):
+  Weddings & Celebrations  -> /wedding-bartending
+  Private Events           -> /birthday-party-bartending
+  Corporate & Brand        -> /corporate-event-bartending
+
+NOT YET BUILT (open slots in the category structure, mentioned by
+user as the long-term shape, mirroring Stiiir's nav):
+  Weddings & Celebrations: Bridal Shower, Baby Shower, Getting Ready Bar
+  Private Events: Private Party, Backyard Party, Mocktail & Zero-Proof
+    (Bartending Service NJ already effectively covered by /services itself)
+  Corporate & Brand: Office Party, Conference Bar, Brand Activations,
+    Product Launch, Sports Events
+
+--- LOCATION SIDE ---
+/service-areas        Top-level location hub (parity with Stiiir's
+                       "New Jersey" flagship nav entry). Has a "New
+                       Jersey" section (cards: Union County, Saddle
+                       River) and a "New York" section (text only, no
+                       pages yet).
+/union-county-bartending   County hub (nested under /service-areas).
+                           Links to the 5 dedicated towns below, and
+                           lists the other 16 Union County towns by
+                           name in prose (no dedicated pages for those
+                           — see DECISION LOG on why).
+
+Dedicated Union County town pages (nested under /union-county-bartending,
+full breadcrumb Service Areas / Union County / [Town] on each):
+  /summit-bartending
+  /westfield-bartending
+  /berkeley-heights-bartending
+  /cranford-bartending
+  /scotch-plains-bartending
+
+Standalone (Bergen County, no county hub built yet):
+  /saddle-river-bartending   (breadcrumb: Service Areas / Saddle River)
+
+NOT YET BUILT — discussed multi-phase rollout plan (user has NOT yet
+approved starting Phase 2/3, and per the batching discussion below we
+agreed to pause new page creation for a while after this batch ships):
+  Phase 2: remaining 16 Union County towns — via prose mention in the
+    county hub only, NOT full dedicated pages (see decision log —
+    explicitly decided against 21 individual pages; a lot of these
+    towns have near-zero search volume for this niche).
+  Phase 3: statewide "richest towns" pages — Short Hills, Sea Girt,
+    Rumson, Fair Haven, Upper Saddle River, Franklin Lakes, Chatham,
+    Bernardsville, Mendham, Colts Neck, Ho-Ho-Kus, Englewood Cliffs.
+    (Income-ranking data sourced from HomeSnacks "10 Richest Cities in
+    New Jersey 2026" — verified, not guessed.)
+  A Bergen County hub page (parent for Saddle River, matching the
+  Union County pattern) has NOT been built — Saddle River currently
+  hangs directly off /service-areas.
+
+============================================================
+CROSS-LINKING / INTERNAL LINK MESH
+============================================================
+Every location page and every event-type page is now mutually linked:
+  - Location pages -> event-type pages via the "Planning a different
+    kind of event?" line inside the new PageCTA component.
+  - Event-type pages -> location pages via the "Also serving:" line,
+    also inside PageCTA.
+  - Each of the 6 town-level pages (5 Union County towns + Saddle
+    River) also has a "NearbyTownsStrip" — real bordering-municipality
+    data pulled from Wikipedia geography sections (verified per town,
+    not guessed), rendered as flowing prose. Where a bordering town
+    has its own page, it's a real link; otherwise it's plain text
+    (adds long-tail geo keyword coverage without a dead link or a
+    fabricated page).
+No page in the location/event tree is an orphan; click-depth to
+anything from anywhere is small.
+
+============================================================
+KEY DESIGN DECISIONS (so future-me doesn't redo this thinking)
+============================================================
+1. Hub-and-spoke, not flat nav. Nav only shows /services, /packages,
+   /service-areas — NOT individual town or event-type pages. This
+   matches Stiiir's actual nav (they only nav-link counties/flagship
+   cities, not every town) and avoids nav clutter as inventory grows.
+
+2. Union County: NOT all 21 towns get dedicated pages. Only 5 with
+   real event/wedding-venue density (Summit, Westfield, Berkeley
+   Heights, Cranford, Scotch Plains) got pages; the other 16 are
+   covered by name in the county hub's prose only. Reasoning: near-zero
+   search volume for hyper-small towns, and avoiding Google's "scaled
+   content abuse" pattern (many near-identical thin pages).
+
+3. Pill/chip badge UI was tried, then explicitly rejected by the user
+   as "exactly the same as Stiiir" (too literal a copy of their visual
+   language) and because two pill blocks stacked at the page bottom
+   read as a link dump. Replaced with:
+     - NearbyTownsStrip: flowing prose sentence, not badges.
+     - Event-type / service-area cross-links: folded into PageCTA as
+       small underlined text links, not a separate section.
+   Placement was also fixed: NearbyTownsStrip now sits mid-page (right
+   after the "Serving X & Union County" section), separated from the
+   bottom CTA by the entire FAQ section — not stacked together.
+
+4. PageCTA component (src/components/PageCTA.js) — new shared CTA used
+   on all 11 location/event pages. Deliberately matches the visual
+   language of the user's own (still-uncommitted) GetStartedSection.js
+   (gold gradient "Request Your Free Quote" button, gold-accent divider,
+   cream background) but is CSS/AOS-driven instead of framer-motion,
+   specifically to avoid pulling framer-motion into 11 separate lazy
+   page chunks. GetStartedSection.js itself is Home-page-only and
+   still has the known perf caveat noted in the earlier memory file
+   (statically imports framer-motion; not yet resolved, not this
+   session's problem to fix unless asked).
+
+5. /services vs /packages split: the OLD /services page (which had
+   pricing tiers) already had SEO history at that URL. New content
+   (event-type hub) was put AT /services (same URL, new meaning) and
+   the pricing content moved to a brand-new URL /packages (starts with
+   zero authority). This was a deliberate tradeoff, flagged to the user:
+   watch Search Console after launch to see how /services reindexes
+   under its new topic and how /packages ramps up separately.
+
+6. Rollout batching / scaled-content-abuse risk: discussed at length.
+   Conclusion reached: the current batch (~19 total pages, up from 7)
+   is fine to push as ONE deploy because every page has genuinely
+   differentiated content and sits in a real hierarchy (not flat
+   duplication). BUT: recommended pausing further NEW PAGE CREATION
+   for a few weeks after this deploy, to (a) let Google digest this
+   batch, and (b) gather Search Console data on how /services vs
+   /packages settle before adding more volume. This pause has NOT
+   formally started yet because nothing has been pushed live yet.
+
+============================================================
+CURRENT STATE / WHAT'S LEFT TO DO
+============================================================
+1. NOTHING IS DEPLOYED. All work is local, uncommitted. Next concrete
+   step when resuming: review the whole site once more locally
+   (`npm start`, or `npm run build && npx serve -s build`), then
+   decide on committing + pushing (git push to main -> Vercel
+   auto-deploys, confirmed workflow).
+2. There is a pre-existing, UNRELATED uncommitted change sitting in
+   the working tree: src/components/GetStartedSection.js (new) and
+   a Home.js diff wiring it in. This predates this SEO session and has
+   a known perf caveat (statically imports framer-motion, would add
+   ~38 KiB to the main bundle if committed as-is per the existing
+   perf-architecture memory note). Decide whether to commit this
+   alongside the SEO batch, hold it, or fix the framer-motion issue
+   first — this was never resolved, just carried along.
+3. Sitemap.xml has been kept up to date with every new URL as pages
+   were added — should still double check it's complete/correct
+   before pushing.
+4. Once live: submit updated sitemap in Google Search Console, request
+   indexing on the new URLs, and watch for a few weeks before starting
+   Phase 2 (remaining Union County towns via prose only — no new pages
+   planned there) or Phase 3 (statewide luxury towns) or filling out
+   the remaining event-type sub-categories (Bridal Shower, Backyard
+   Party, Office Party, etc.).
+
+============================================================
+FULL NEW-PAGE INVENTORY THIS SESSION
+============================================================
+src/pages/ServicesPage.js        (rewritten — was packages, now event hub)
+src/pages/Packages.js            (new — old /services content moved here)
+src/pages/ServiceAreas.js        (new)
+src/pages/UnionCountyBartending.js (new)
+src/pages/SummitBartending.js    (new)
+src/pages/WestfieldBartending.js (new)
+src/pages/BerkeleyHeightsBartending.js (new)
+src/pages/CranfordBartending.js  (new)
+src/pages/ScotchPlainsBartending.js (new)
+src/pages/SaddleRiverBartending.js (new)
+src/pages/WeddingBartending.js   (new)
+src/pages/BirthdayPartyBartending.js (new)
+src/pages/CorporateEventBartending.js (new)
+src/components/PageCTA.js        (new — shared elevated CTA)
+src/components/NearbyTownsStrip.js (new — prose-style bordering-town mentions)
+(EventTypesStrip.js / ServiceAreasStrip.js were built then DELETED —
+ superseded by folding those links into PageCTA)
+
+Also modified: src/App.js (routes), src/components/Navbar.js,
+NavbarDrawer.js, Footer.js (nav links), src/components/WhatWeBring.js
+(package links repointed), public/sitemap.xml, src/index.css (added
+.page-cta-arrow keyframe).

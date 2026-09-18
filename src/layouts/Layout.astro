@@ -1,0 +1,152 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  path: string; // e.g. "/" or "/about"
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  description,
+  keywords,
+  path,
+  ogImage = 'https://www.clinkingbubbles.com/assets/mainlogo-v1-1200.png',
+  ogImageAlt = 'Clinking Bubbles private event bartending logo.',
+  ogType = 'website',
+} = Astro.props;
+
+const canonical = `https://www.clinkingbubbles.com${path === '/' ? '/' : path}`;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://www.clinkingbubbles.com/#business',
+  name: 'Clinking Bubbles',
+  logo: 'https://www.clinkingbubbles.com/assets/mainlogo-v1-180.png',
+  image: 'https://www.clinkingbubbles.com/assets/mainlogo-v1-180.png',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '1600 Justin Place',
+    addressLocality: 'Mountainside',
+    addressRegion: 'NJ',
+    postalCode: '07092',
+  },
+  telephone: '+1-908-414-8584',
+  url: 'https://www.clinkingbubbles.com',
+  priceRange: '$$',
+  serviceType: [
+    'Private bartending',
+    'Mobile bartending',
+    'Wedding bartending',
+    'Corporate event bartending',
+    'Mobile bar service',
+  ],
+  areaServed: [
+    { '@type': 'State', name: 'New Jersey' },
+    { '@type': 'State', name: 'New York' },
+    { '@type': 'AdministrativeArea', name: 'Union County, NJ' },
+  ],
+  sameAs: [
+    'https://www.instagram.com/clinkingbubbles',
+    'https://www.tiktok.com/@clinkingbubbles',
+    'https://www.facebook.com/clinkingbubbles',
+  ],
+  description:
+    'Private and mobile bartending services in NJ & NY that elevate weddings, parties, and corporate events with curated cocktails and professional service.',
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Clinking Bubbles" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    <link rel="apple-touch-icon" href="/assets/mainlogo-v1-180.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/mainlogo-v1-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/mainlogo-v1-16.png" />
+    <link rel="shortcut icon" href="/assets/favicon-v1.ico" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/VELISTA.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/AppleGaramond.woff2" crossorigin />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <slot name="schema" />
+    <slot name="head" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16963394733"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'AW-16963394733');
+    </script>
+  </head>
+  <body>
+    <Navbar client:load path={path} />
+    <slot />
+    <Footer />
+
+    <script>
+      import AOS from 'aos';
+      AOS.init({ duration: 800, once: true });
+    </script>
+
+    <script is:inline>
+      // Meta Pixel, deferred until the browser is idle so it never competes
+      // with first paint.
+      function loadFacebookPixel() {
+        if (window.fbq) return;
+        (function (f, b, e, v, n, t, s) {
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = '2.0';
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, 'script');
+        window.fbq('init', '1167680571793485');
+        window.fbq('track', 'PageView');
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadFacebookPixel);
+      } else {
+        window.addEventListener('load', loadFacebookPixel);
+      }
+    </script>
+  </body>
+</html>

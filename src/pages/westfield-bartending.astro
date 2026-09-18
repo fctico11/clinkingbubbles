@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NearbyTownsStrip from '../components/NearbyTownsStrip.astro';
+import PageCTA from '../components/PageCTA.astro';
+
+const eventTypeLinks = [
+  { name: "Wedding Bartending", to: "/wedding-bartending" },
+  { name: "Birthday Party Bartending", to: "/birthday-party-bartending" },
+  { name: "Corporate Event Bartending", to: "/corporate-event-bartending" },
+];
+
+const nearbyTowns = [
+  { name: "Mountainside" },
+  { name: "Springfield Township" },
+  { name: "Garwood" },
+  { name: "Cranford", to: "/cranford-bartending" },
+  { name: "Clark" },
+  { name: "Scotch Plains", to: "/scotch-plains-bartending" },
+];
+
+const faqItems = [
+  {
+    question: "Do you travel to Westfield, NJ?",
+    answer:
+      "Yes — Westfield is part of our Union County home base, and we're glad to bring our full bar setup to homes and private venues there.",
+  },
+  {
+    question: "Can you set up a bar in a Westfield backyard?",
+    answer:
+      "Absolutely. Westfield's classic homes and yards are a great fit for a tented backyard bar — we bring a portable setup or work with a bar already on-site.",
+  },
+  {
+    question: "What events do you bartend in Westfield?",
+    answer:
+      "Weddings, engagement parties, milestone birthdays, holiday gatherings, and private corporate events — if there's a reason to celebrate, we're glad to be there.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Private Bartending",
+  name: "Private Bartending in Westfield, NJ",
+  description:
+    "Private and mobile bartending for weddings, parties, and private events in Westfield, NJ, with custom cocktail menus and certified bartenders.",
+  provider: { "@id": "https://www.clinkingbubbles.com/#business" },
+  areaServed: {
+    "@type": "City",
+    name: "Westfield",
+    containedInPlace: [
+      { "@type": "AdministrativeArea", name: "Union County" },
+      { "@type": "State", name: "New Jersey" },
+    ],
+  },
+};
+---
+
+<Layout
+  title="Westfield, NJ Private Bartending | Clinking Bubbles"
+  description="Private bartending in Westfield, NJ for weddings, parties, and private events. Custom cocktail menus, certified bartenders, and full bar setup."
+  keywords="Westfield NJ bartender, private bartending Westfield NJ, mobile bar Westfield NJ, Union County bartender, event bartending Westfield"
+  path="/westfield-bartending"
+  ogImageAlt="Private bartending service in Westfield, NJ."
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <link rel="preload" as="image" href="/images/bar3.webp" type="image/webp" slot="head" />
+
+  <div class="bg-white min-h-screen flex flex-col relative">
+    <section class="relative w-full h-[60vh] sm:h-[700px] bg-black overflow-hidden">
+      <img
+        src="/images/bar3.webp"
+        alt="Clinking Bubbles wooden bar setup at a private event"
+        width="2561"
+        height="3840"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        loading="eager"
+        decoding="sync"
+      />
+      <div class="absolute inset-0 bg-black/40"></div>
+
+      <div class="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
+        <div data-aos="fade-up">
+          <h1 class="clinking-font drop-shadow-[0_0_2px_black] text-4xl sm:text-6xl font-bold text-white text-center">
+            WESTFIELD, NJ
+          </h1>
+        </div>
+        <div
+          class="backdrop-blur-sm bg-white/5 rounded-xl p-4 sm:p-6 mt-6 max-w-3xl"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <p class="bubbles-font drop-shadow-[0_0_2px_black] text-md sm:text-2xl text-white">
+            Private bartending for Westfield's homes and celebrations —
+            signature cocktails, professional service, and a bar built
+            around your event.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-white text-black px-4 py-10">
+      <div class="max-w-4xl mx-auto">
+        <p class="bubbles-font text-sm text-gray-600 mb-4" data-aos="fade-up">
+          <a href="/service-areas" class="text-[#8a5c08] underline hover:text-yellow-600">Service Areas</a>
+          {" "}/{" "}
+          <a href="/union-county-bartending" class="text-[#8a5c08] underline hover:text-yellow-600">Union County</a>
+          {" "}/ Westfield
+        </p>
+        <section class="mb-12" data-aos="fade-up">
+          <p class="bubbles-font text-lg sm:text-xl text-black">
+            Westfield is one of Union County's most walkable,
+            community-oriented towns — tree-lined streets, a lively
+            downtown, and classic homes with the kind of backyards built
+            for a tent and a bar. Whether your event is downtown or at
+            home, we bring the full setup to you.
+          </p>
+        </section>
+
+        <section class="mb-12">
+          <div class="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
+            <h2 class="clinking-font text-2xl sm:text-3xl font-bold">
+              PRIVATE BAR SERVICE FOR WESTFIELD
+            </h2>
+          </div>
+          <ul
+            class="list-disc pl-5 bubbles-font text-lg space-y-3 text-gray-800 max-w-3xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <li>Full bar setup at private homes and backyards, indoors or outdoors</li>
+            <li>Custom cocktail menus tailored to your event and guest list</li>
+            <li>Certified bartenders trained in professional, attentive service</li>
+            <li>Beer, wine, and mocktails for every guest</li>
+            <li>Optional portable bar, hydration station, and tabling add-ons</li>
+          </ul>
+        </section>
+
+        <section class="mb-12" data-aos="fade-up">
+          <div class="bg-[rgba(250,248,243,0.6)] border border-[#d9c7b2] p-6 sm:p-10 rounded-lg shadow-sm">
+            <h3 class="clinking-font text-2xl font-bold mb-3">Events We Bartend in Westfield</h3>
+            <p class="bubbles-font text-lg text-gray-800 mb-4">
+              From{" "}
+              <a href="/wedding-bartending" class="text-[#8a5c08] underline hover:text-yellow-600">weddings</a>
+              {" "}and engagement parties to milestone birthdays, holiday
+              gatherings, and private corporate events — see our full
+              package details or reach out to talk through your event.
+            </p>
+            <a href="/packages">
+              <button class="bubbles-font text-lg bg-[#493423] text-white font-semibold px-6 py-3 rounded-full hover:bg-gray-800 transition">
+                View Packages & Pricing Tiers
+              </button>
+            </a>
+          </div>
+        </section>
+
+        <section class="mb-12" data-aos="fade-up">
+          <h2 class="clinking-font text-2xl sm:text-3xl font-bold mb-4">Serving Westfield & Union County</h2>
+          <p class="bubbles-font text-lg text-gray-800">
+            Westfield is part of our home turf — Clinking Bubbles is based
+            right in Union County, and we cover the whole county from
+            Westfield to{" "}
+            <a href="/union-county-bartending" class="text-[#8a5c08] underline hover:text-yellow-600">every town in between</a>.
+          </p>
+        </section>
+
+        <NearbyTownsStrip intro="Westfield borders" towns={nearbyTowns} />
+
+        <section class="mb-12">
+          <div class="inline-block bg-[#ebe6d6] px-3 py-2 rounded-md mb-6" data-aos="fade-up">
+            <h2 class="clinking-font text-2xl sm:text-3xl font-bold">WESTFIELD BAR SERVICE FAQ</h2>
+          </div>
+          <div class="space-y-6 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+            {faqItems.map((item) => (
+              <div class="border-b pb-4">
+                <h3 class="bubbles-font text-lg font-semibold">{item.question}</h3>
+                <p class="bubbles-font text-base text-gray-700 mt-2">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <PageCTA
+          heading="Ready to Plan Your Event in Westfield?"
+          crossLinksLabel="Planning a different kind of event?"
+          crossLinks={eventTypeLinks}
+        />
+      </div>
+    </div>
+  </div>
+</Layout>

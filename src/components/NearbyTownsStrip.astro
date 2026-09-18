@@ -1,0 +1,32 @@
+---
+// towns: [{ name: "Cranford", to: "/cranford-bartending" }, { name: "Garwood" }]
+// Omit `to` for real bordering towns that don't have a dedicated page yet.
+// Renders as a single flowing sentence rather than a badge list.
+interface Town {
+  name: string;
+  to?: string;
+}
+
+interface Props {
+  intro: string;
+  towns: Town[];
+}
+
+const { intro, towns } = Astro.props;
+---
+
+<section class="mb-12" data-aos="fade-up">
+  <p class="bubbles-font text-lg text-gray-800 max-w-3xl">
+    {intro}{" "}
+    {towns.map((town, i) => (
+      <>
+        {town.to ? (
+          <a href={town.to} class="text-[#8a5c08] underline hover:text-yellow-600">{town.name}</a>
+        ) : (
+          <span>{town.name}</span>
+        )}
+        {i < towns.length - 2 ? ", " : i === towns.length - 2 ? ", and " : "."}
+      </>
+    ))}
+  </p>
+</section>

@@ -1,62 +1,41 @@
 {
   "name": "clinkingbubbles",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --port ${PORT:-4321}",
+    "start": "astro dev --port ${PORT:-4321}",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@astrojs/react": "^6.0.6",
+    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/vercel": "^11.0.10",
+    "@tailwindcss/vite": "^4.3.3",
     "aos": "^2.3.4",
+    "astro": "^7.3.3",
     "axios": "^1.8.3",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.5.0",
     "lottie-react": "^2.4.1",
-    "react": "^19.0.0",
+    "react": "^19.3.0",
     "react-datepicker": "^8.3.0",
-    "react-dom": "^19.0.0",
-    "react-feather": "^2.0.10",
-    "react-helmet": "^6.1.0",
-    "react-helmet-async": "^2.0.5",
+    "react-dom": "^19.3.0",
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
-    "react-router-dom": "^7.3.0",
-    "react-scripts": "5.0.1",
     "react-swipeable": "^7.0.2",
     "swiper": "^11.2.8",
-    "use-places-autocomplete": "^4.0.1",
-    "web-vitals": "^2.1.4",
-    "yocto-queue": "^1.2.0"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "tailwindcss": "^4.3.3",
+    "use-places-autocomplete": "^4.0.1"
   },
   "devDependencies": {
-    "@craco/craco": "^7.1.0",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^3.4.17"
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0"
   }
 }

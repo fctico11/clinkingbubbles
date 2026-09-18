@@ -1,0 +1,59 @@
+---
+// Lighter-weight sibling of GetStartedSection.jsx (Home only) — same visual
+// language (gold gradient button, gold-accent divider) but CSS/AOS-driven
+// instead of framer-motion, since this mounts on every location/event page.
+interface CrossLink {
+  to: string;
+  name: string;
+}
+
+interface Props {
+  heading: string;
+  crossLinksLabel?: string;
+  crossLinks?: CrossLink[];
+}
+
+const { heading, crossLinksLabel, crossLinks } = Astro.props;
+---
+
+<section
+  class="py-16 px-6 text-center rounded-2xl mb-12"
+  style="background-color: #faf8f5"
+  data-aos="fade-up"
+>
+  <h2 class="clinking-font text-3xl md:text-5xl mb-4 font-bold uppercase" style="color: #493423">
+    {heading}
+  </h2>
+  <div class="section-gold-accent mb-6"></div>
+  <p class="bubbles-font text-lg md:text-xl mb-8 max-w-xl mx-auto text-gray-700">
+    Get a personalized, no-obligation quote tailored to your unique
+    vision. Our passionate team is ready to bring your dream event to
+    life and will be in touch within 24 hours.
+  </p>
+
+  <a href="/contact">
+    <button
+      class="bubbles-font text-lg md:text-xl text-black font-semibold px-10 py-4 rounded-full transition transform hover:-translate-y-1 hover:shadow-xl inline-flex items-center gap-2"
+      style="background: linear-gradient(135deg, #e6c34d 0%, #c9952e 50%, #e6c34d 100%); background-size: 200% 200%; box-shadow: 0 4px 15px rgba(201, 149, 46, 0.3)"
+    >
+      Request Your Free Quote
+      <span class="page-cta-arrow" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </button>
+  </a>
+
+  {crossLinks && crossLinks.length > 0 && (
+    <p class="bubbles-font text-sm text-gray-600 mt-8">
+      {crossLinksLabel}{" "}
+      {crossLinks.map((item, i) => (
+        <>
+          <a href={item.to} class="text-[#8a5c08] underline hover:text-yellow-600">{item.name}</a>
+          {i < crossLinks.length - 1 && <span class="mx-2 text-gray-400">·</span>}
+        </>
+      ))}
+    </p>
+  )}
+</section>

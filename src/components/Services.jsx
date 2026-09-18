@@ -3,14 +3,15 @@ import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 import { useSwipeable } from "react-swipeable";
 import "./Services.css";
 
-// import icons
-import ringsIcon from "../assets/icons/rings2.webp";
-import privateIcon from "../assets/icons/no-entry.webp";
-import corporateIcon from "../assets/icons/handshake.webp";
-import birthdayIcon from "../assets/icons/birthday-cake.webp";
-import graduationIcon from "../assets/icons/graduate.png";
-import anniversaryIcon from "../assets/icons/anniversary.png";
-import champagneIcon from "../assets/icons/champagne.png";
+// `?url` forces a plain string URL — without it, Astro's asset pipeline
+// resolves image imports to an { src, width, height } metadata object.
+import ringsIcon from "../assets/icons/rings2.webp?url";
+import privateIcon from "../assets/icons/no-entry.webp?url";
+import corporateIcon from "../assets/icons/handshake.webp?url";
+import birthdayIcon from "../assets/icons/birthday-cake.webp?url";
+import graduationIcon from "../assets/icons/graduate.png?url";
+import anniversaryIcon from "../assets/icons/anniversary.png?url";
+import champagneIcon from "../assets/icons/champagne.png?url";
 
 const servicesData = [
   {

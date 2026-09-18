@@ -12,7 +12,12 @@
   </url>
   <url>
     <loc>https://www.clinkingbubbles.com/services</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/packages</loc>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -34,5 +39,60 @@
     <loc>https://www.clinkingbubbles.com/faq</loc>
     <lastmod>2026-07-18</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/wedding-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/birthday-party-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/corporate-event-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/saddle-river-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/summit-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/westfield-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/berkeley-heights-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/cranford-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/scotch-plains-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/union-county-bartending</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.clinkingbubbles.com/service-areas</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.85</priority>
   </url>
 </urlset>

@@ -1,8 +1,5 @@
-// src/components/HeroSection.js
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
-// Served from public/ so the URL is stable and matches the preload in index.html
 const logoSmall = "/images/logos/whiteTransparentLogo-small.webp";
 const logoLarge = "/images/logos/whiteTransparentLogo-large.webp";
 
@@ -21,14 +18,9 @@ const INITIAL_INDEX = 3;
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(INITIAL_INDEX);
   // The rotating slides only mount after the page has fully loaded, so the
-  // initial slide is the only hero image competing for bandwidth (and LCP).
+  // initial slide (already server-rendered by Astro) is the only hero image
+  // competing for bandwidth (and LCP).
   const [carouselReady, setCarouselReady] = useState(false);
-
-  // The React hero below is a pixel-identical copy of the #static-hero
-  // pre-paint in index.html; once we've mounted, the static copy can go.
-  useEffect(() => {
-    document.getElementById("static-hero")?.remove();
-  }, []);
 
   useEffect(() => {
     let timeoutId;
@@ -83,7 +75,7 @@ const HeroSection = () => {
       </div>
 
       {/* Overlay for contrast */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+      <div className="absolute inset-0 bg-black/50 z-10"></div>
 
       {/* Hero content */}
       <div className="relative z-20 max-w-3xl mx-auto px-4 flex flex-col items-center">
@@ -110,11 +102,11 @@ const HeroSection = () => {
             </h2>
           </div>
           <div className="mt-6 sm:mt-3">
-            <Link to="/contact">
+            <a href="/contact">
               <button className="bubbles-font text-lg text-black font-semibold px-6 py-3 rounded-full transition hover:brightness-110" style={{ background: 'linear-gradient(135deg, #e6c34d 0%, #c9952e 50%, #e6c34d 100%)', backgroundSize: '200% 200%', boxShadow: '0 3px 12px rgba(201, 149, 46, 0.35)' }}>
                 Book Now
               </button>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

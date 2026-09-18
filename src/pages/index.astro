@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.jsx';
+import AboutSection from '../components/AboutSection.jsx';
+import SocialProofSection from '../components/SocialProofSection.jsx';
+import Services from '../components/Services.jsx';
+import WhatWeBring from '../components/WhatWeBring.astro';
+import CredentialSection from '../components/CredentialSection.astro';
+import ReviewsSection from '../components/ReviewsSection.jsx';
+import GetStartedSection from '../components/GetStartedSection.jsx';
+---
+
+<Layout
+  title="Clinking Bubbles | Private Event Bartending in NJ & NY"
+  description="Private bartending services for weddings, parties, and special events. Signature cocktails, professional bartenders, and unforgettable moments."
+  keywords="private bartending, wedding bartenders NJ, party bartenders NY, mobile bar, cocktail catering, bartending services"
+  path="/"
+  ogImageAlt="Private event bartending for weddings and parties in NJ & NY."
+>
+  <div class="relative">
+    <HeroSection client:load />
+    <AboutSection client:visible />
+    <SocialProofSection client:visible />
+    <Services client:visible />
+    <WhatWeBring />
+    <CredentialSection />
+    <section class="py-12 text-center">
+      <div class="flex flex-col items-center space-y-4">
+        <a href="/booking-process">
+          <button class="bubbles-font text-lg bg-[#493423] hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-full transition">
+            Learn more about the Booking process
+          </button>
+        </a>
+      </div>
+    </section>
+    <ReviewsSection client:visible />
+    <GetStartedSection client:visible />
+  </div>
+</Layout>

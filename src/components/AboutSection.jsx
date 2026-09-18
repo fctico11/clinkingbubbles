@@ -20,7 +20,9 @@ const AboutSection = () => {
       import("lottie-react"),
       import("../assets/optimizedcup.json")
     ]).then(([lottieModule, animData]) => {
-      setLottieComponent(() => lottieModule.default);
+      // Vite's dep pre-bundling double-wraps lottie-react's CJS export here
+      // (mod.default is the module namespace, not the component itself).
+      setLottieComponent(() => lottieModule.default?.default ?? lottieModule.default);
       setAnimationData(animData.default);
     });
   }, [inView]);

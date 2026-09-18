@@ -1,4 +1,4 @@
-// src/pages/ServicesPage.js
+// src/pages/Packages.js
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -11,7 +11,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 
-const ServicesPage = () => {
+const Packages = () => {
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -34,27 +34,27 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Private Bartending Services: NJ Weddings, Parties & More</title>
+        <title>Bartending Packages & Pricing Tiers | Clinking Bubbles</title>
         <meta
           name="description"
-          content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails."
+          content="Explore Clinking Bubbles' bartending packages and add-ons for NJ & NY events — from The Essentials to The Full Experience, plus bar rentals and accessories."
         />
         <meta
           name="keywords"
-          content="bartending services, private bartending NJ, private bartending NY, cocktail packages, event bartending, party bartenders NJ, wedding bartenders NY, event bar services"
+          content="bartending packages, private bartending pricing, cocktail packages NJ, event bar packages, party bartenders NJ, wedding bar packages, bar rental NJ"
         />
-        <link rel="canonical" href="https://www.clinkingbubbles.com/services" />
+        <link rel="canonical" href="https://www.clinkingbubbles.com/packages" />
         <meta
           property="og:title"
-          content="Private Bartending Services: NJ Weddings, Parties & More"
+          content="Bartending Packages & Pricing Tiers | Clinking Bubbles"
         />
         <meta
           property="og:description"
-          content="Explore our private bartending services for weddings, birthdays, and special events. Serving NJ & NY with style, heart, and crafted cocktails."
+          content="Explore Clinking Bubbles' bartending packages and add-ons for NJ & NY events — from The Essentials to The Full Experience, plus bar rentals and accessories."
         />
         <meta
           property="og:url"
-          content="https://www.clinkingbubbles.com/services"
+          content="https://www.clinkingbubbles.com/packages"
         />
         <meta property="og:type" content="website" />
         <meta
@@ -65,7 +65,7 @@ const ServicesPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:image:alt"
-          content="Explore premium bartending services for NJ & NY."
+          content="Explore bartending packages and pricing for NJ & NY events."
         />
         <link
           rel="preload"
@@ -81,7 +81,7 @@ const ServicesPage = () => {
       <section className="relative w-full h-[60vh] sm:h-[700px]">
         <img
           src="/images/servicespic.webp"
-          alt="Clinking Bubbles Services"
+          alt="Clinking Bubbles Packages"
           width="1080"
           height="1400"
           className="absolute inset-0 w-full h-full object-cover object-center"
@@ -93,7 +93,7 @@ const ServicesPage = () => {
         <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-28 sm:pt-48">
           <div data-aos="fade-up">
             <h1 className="clinking-font drop-shadow-[0_0_2px_black] text-4xl sm:text-6xl font-bold text-white text-center">
-              OUR SERVICES
+              OUR PACKAGES
             </h1>
           </div>
 
@@ -123,7 +123,7 @@ const ServicesPage = () => {
             data-aos="fade-up"
           >
             <h2 className="clinking-font text-2xl sm:text-3xl font-bold">
-              OUR SIGNATURE SERVICE
+              OUR SIGNATURE PACKAGES
             </h2>
           </div>
 
@@ -366,4 +366,4 @@ const ServicesPage = () => {
   );
 };
 
-export default ServicesPage;
+export default Packages;

@@ -1,7 +1,6 @@
 // Mobile full-screen drawer, split out of Navbar so framer-motion stays out
-// of the main bundle. Loaded after window load (see Navbar.js).
+// of the main bundle. Loaded after window load (see Navbar.jsx).
 import React from "react";
-import { Link } from "react-router-dom";
 import { FiX } from "react-icons/fi";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
@@ -50,43 +49,49 @@ const NavbarDrawer = ({ isOpen, onClose }) => (
 
           {/* Navigation Links */}
           <nav className="drawer-links">
-            <Link to="/" className="bubbles-font drawer-link" onClick={onClose}>
+            <a href="/" className="bubbles-font drawer-link" onClick={onClose}>
               Home
-            </Link>
-            <Link to="/about" className="bubbles-font drawer-link" onClick={onClose}>
+            </a>
+            <a href="/about" className="bubbles-font drawer-link" onClick={onClose}>
               About
-            </Link>
-            <Link to="/services" className="bubbles-font drawer-link" onClick={onClose}>
+            </a>
+            <a href="/services" className="bubbles-font drawer-link" onClick={onClose}>
               Services
-            </Link>
-            <Link
-              to="/booking-process"
+            </a>
+            <a href="/packages" className="bubbles-font drawer-link" onClick={onClose}>
+              Packages
+            </a>
+            <a href="/service-areas" className="bubbles-font drawer-link" onClick={onClose}>
+              Service Areas
+            </a>
+            <a
+              href="/booking-process"
               className="bubbles-font drawer-link"
               onClick={onClose}
             >
               Booking Process
-            </Link>
-            <Link
-              to="/alcohol-calculator"
+            </a>
+            <a
+              href="/alcohol-calculator"
               className="bubbles-font drawer-link"
               onClick={onClose}
             >
               Alcohol Calculator
-            </Link>
-            <Link
-              to="/faq"
+            </a>
+            <a
+              href="/faq"
               className="bubbles-font drawer-link"
               onClick={onClose}
             >
               FAQ
-            </Link>
-            <Link
-              to="/contact"
+            </a>
+            <a
+              href="/contact"
               className="bubbles-font drawer-link quote-btn"
               onClick={onClose}
             >
               Get a Quote!
-            </Link>
+            </a>
           </nav>
 
           {/* Social Icons */}

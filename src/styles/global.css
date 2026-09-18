@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@import "aos/dist/aos.css";
+
+@font-face {
+  font-family: 'ClinkingBubblesFont';
+  src: url('/fonts/VELISTA.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BubblesFont';
+  src: url('/fonts/AppleGaramond.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.clinking-font {
+  font-family: 'ClinkingBubblesFont', sans-serif;
+}
+
+.bubbles-font {
+  font-family: 'BubblesFont', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Shared gold accent underline for section titles */
+.section-gold-accent {
+  width: 3rem;
+  height: 3px;
+  background: linear-gradient(90deg, #c9952e, #e6b84f);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+}
+
+/* Nudges the arrow icon on page-level CTA buttons (see PageCTA.astro) */
+@keyframes arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+.page-cta-arrow {
+  display: inline-flex;
+  animation: arrow-nudge 1.5s ease-in-out infinite;
+}

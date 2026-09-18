@@ -1,6 +1,5 @@
 import "./Navbar.css";
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
@@ -8,16 +7,15 @@ import { SiTiktok } from "react-icons/si";
 
 // The mobile drawer (and framer-motion with it) lives in its own chunk so the
 // main bundle stays small; it's preloaded after window load below.
-const NavbarDrawer = lazy(() => import("./NavbarDrawer"));
+const NavbarDrawer = lazy(() => import("./NavbarDrawer.jsx"));
 
-const Navbar = () => {
+const Navbar = ({ path }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [drawerReady, setDrawerReady] = useState(false);
-  const location = useLocation();
 
   // Force navbar background to be chocolate brown on any route except homepage
-  const forceBrown = location.pathname !== "/";
+  const forceBrown = path !== "/";
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -27,7 +25,7 @@ const Navbar = () => {
   // Warm the drawer chunk once the page has loaded so the first tap is instant
   useEffect(() => {
     const preload = () => {
-      import("./NavbarDrawer").then(() => setDrawerReady(true));
+      import("./NavbarDrawer.jsx").then(() => setDrawerReady(true));
     };
     if (document.readyState === "complete") {
       preload();
@@ -36,11 +34,6 @@ const Navbar = () => {
       return () => window.removeEventListener("load", preload);
     }
   }, []);
-
-  // Close menu on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
 
   // Detect scroll (for non-forced backgrounds)
   useEffect(() => {
@@ -76,43 +69,49 @@ const Navbar = () => {
       >
         {/* Hide Logo if the menu is open */}
         {!isOpen && (
-          <Link
-            to="/"
+          <a
+            href="/"
             className="text-xl md:text-3xl font-bold text-yellow-500 clinking-font transition"
           >
             Clinking Bubbles
-          </Link>
+          </a>
         )}
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 items-center">
-          <Link to="/" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
+          <a href="/" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
             Home
-          </Link>
-          <Link to="/about" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
+          </a>
+          <a href="/about" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
             About
-          </Link>
-          <Link to="/services" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
+          </a>
+          <a href="/services" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
             Services
-          </Link>
-          <Link
-            to="/booking-process"
+          </a>
+          <a href="/packages" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
+            Packages
+          </a>
+          <a href="/service-areas" className="desktop-link bubbles-font text-lg text-yellow-500 transition">
+            Service Areas
+          </a>
+          <a
+            href="/booking-process"
             className="desktop-link bubbles-font text-lg text-yellow-500 transition"
           >
             Booking Process
-          </Link>
-          <Link
-            to="/alcohol-calculator"
+          </a>
+          <a
+            href="/alcohol-calculator"
             className="desktop-link bubbles-font text-lg text-yellow-500 transition"
           >
             Alcohol Calculator
-          </Link>
-          <Link
-            to="/faq"
+          </a>
+          <a
+            href="/faq"
             className="desktop-link bubbles-font text-lg text-yellow-500 transition"
           >
             FAQ
-          </Link>
+          </a>
 
           {/* Desktop Social Icons */}
           <div className="social-icons hidden md:flex items-center space-x-4">
@@ -145,11 +144,11 @@ const Navbar = () => {
             </a>
           </div>
 
-          <Link to="/contact">
+          <a href="/contact">
             <button className="bubbles-font text-lg bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition">
               Get a Quote!
             </button>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Menu Button (Hamburger) */}
