@@ -80,18 +80,18 @@ const ReviewsSection = () => {
   });
 
   return (
-    <section className="py-20 px-4 text-black" style={{ backgroundColor: "#faf8f5" }}>
+    <section className="py-12 md:py-20 px-4 text-black" style={{ backgroundColor: "#faf8f5" }}>
       <div className="max-w-5xl mx-auto">
         <h2 className="clinking-font text-3xl font-bold text-center mb-2 leading-tight">
           What Our Clients Say
         </h2>
-        <div className="section-gold-accent mb-12"></div>
+        <div className="section-gold-accent mb-4 md:mb-12"></div>
 
         <div {...swipeHandlers} className="relative text-center">
           <span
             aria-hidden="true"
-            className="bubbles-font block text-8xl leading-none select-none"
-            style={{ color: "#e6d8bf", height: "3.25rem" }}
+            className="bubbles-font block text-8xl leading-none select-none h-[3rem] md:h-[3.25rem]"
+            style={{ color: "#e6d8bf" }}
           >
             &ldquo;
           </span>
@@ -105,7 +105,7 @@ const ReviewsSection = () => {
                 className="m-0 col-start-1 row-start-1 flex flex-col items-center transition-opacity duration-500 ease-out"
                 style={{ opacity: i === index ? 1 : 0, pointerEvents: i === index ? "auto" : "none" }}
               >
-                <div className="flex text-xl mb-6" style={{ color: "#f0a800" }} aria-label="5 out of 5 stars">
+                <div className="flex text-xl mb-4 md:mb-6" style={{ color: "#f0a800" }} aria-label="5 out of 5 stars">
                   {[...Array(review.stars)].map((_, s) => (
                     <FaStar key={s} className="mx-0.5" />
                   ))}
@@ -116,7 +116,7 @@ const ReviewsSection = () => {
                 >
                   &ldquo;{review.excerpt}&rdquo;
                 </blockquote>
-                <figcaption className="mt-8 flex flex-col items-center gap-1">
+                <figcaption className="mt-6 md:mt-8 flex flex-col items-center gap-1">
                   <span className="font-semibold text-[15px] tracking-wide" style={{ color: "#493423" }}>
                     {review.name}
                   </span>
@@ -144,7 +144,7 @@ const ReviewsSection = () => {
         <div
           role="tablist"
           aria-label="Choose a review"
-          className="mt-14 grid border-t border-[#493423]/15"
+          className="mt-8 md:mt-14 grid border-t border-[#493423]/15"
           style={{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }}
         >
           {reviews.map((review, i) => {
@@ -177,7 +177,7 @@ const ReviewsSection = () => {
           })}
         </div>
 
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8 md:mt-12">
           <a
             href={REVIEWS_URL}
             target="_blank"
